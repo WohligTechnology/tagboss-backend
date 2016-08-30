@@ -21,7 +21,7 @@ $box-background: #F2F2F2 !default;
 
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 body {
-  padding-top: 70px;
+  padding-top: 18px;
 }
 img.loading {
   text-align: center;
@@ -58,6 +58,43 @@ a, .btn {
   outline: 0;
   @include box-shadow(none);
 }
+
+
+.tagboss-logo{
+  img{
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+  }
+}
+
+.login{
+  .form-login{
+    padding: 22px;
+    background-color: #ccc;
+    border-top: 10px solid $panel-border;
+    h2{
+      text-transform: uppercase;
+    }
+    .form-control
+    { text-align: center;}
+
+
+  }
+  input, button{
+    border: none;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  // button{
+  //   background-color: $lightblue;
+  // }
+  .checkbox label{
+    margin: 10px;
+  }
+}
+
 //bootstrap forms
 /* Start writing sass here */
 @import "yash";
