@@ -27,10 +27,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.header='views/header1.html';
 })
 
-.controller('ABCPageCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
 
-  $scope.template = TemplateService.changecontent("abc");
-  $scope.menutitle = NavigationService.makeactive("ABC");
+  $scope.template = TemplateService.changecontent("dashboard");
+  $scope.menutitle = NavigationService.makeactive("Dashboard");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })

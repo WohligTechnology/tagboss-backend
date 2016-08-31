@@ -64,7 +64,53 @@ a, .btn {
   @include box-shadow(none);
 }
 
+
+
 header{
+
+
+
+  .navbar-inverse {
+    background-color: $darkblue;
+    border: none;
+      h1{
+        color: #fff;
+        font-size: 26px;
+        margin: 12px 0 0 0;
+      }
+      .date{
+        color: #fff;
+        margin: 16px 0 0 0;
+      }
+
+
+      .seller, .buyer, .h-icon{
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        i{
+           background-color: #414156;
+           border-radius: 20%;
+           padding: 5px;
+           font-size: 30px;
+           color: #fff;
+           margin: 8px 0 8px 0;
+         }
+         .badge{
+           position: absolute;
+           background-color: red;
+           top:-7px;
+           right:-7px;
+         }
+      label {font-size: 10px;}
+    }
+  .resize{
+    border-radius: 0;
+  }
+}
+}
+
+.header1{
   .tagboss-logo  {
     img{
       margin: 0 auto;
@@ -122,6 +168,32 @@ button{
     margin: 10px;
   }
 }
+
+.side-menu{
+  position: relative;
+  .sidebar {
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      display: block;
+      padding: 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #17172B;
+      /* border-right: 1px solid #eee; */
+
+      a{
+        color: #fff;
+        &:hover{
+          color: $darkblue;
+        }
+      }
+  }
+}
+
+
 
 //bootstrap forms
 /* Start writing sass here */

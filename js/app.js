@@ -23,10 +23,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   templateUrl: "views/template.html",
   controller: 'LoginPageCtrl'
 })
-.state('abc', {
-url: "/abc",
+.state('dashboard', {
+url: "/dashboard",
 templateUrl: "views/template.html",
-controller: 'ABCPageCtrl'
+controller: 'DashboardCtrl'
 });
   $urlRouterProvider.otherwise("/");
   $locationProvider.html5Mode(isproduction);
