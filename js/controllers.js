@@ -19,21 +19,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('LoginPageCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-  //Used to name the .html file
-
-  console.log("Testing Consoles");
 
   $scope.template = TemplateService.changecontent("loginpage");
   $scope.menutitle = NavigationService.makeactive("Login Page");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  TemplateService.header='views/header1.html';
+})
 
-  // $scope.mySlides = [
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
-  // ];
+.controller('ABCPageCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+
+  $scope.template = TemplateService.changecontent("abc");
+  $scope.menutitle = NavigationService.makeactive("ABC");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
 })
 
 .controller('headerctrl', function($scope, TemplateService) {
