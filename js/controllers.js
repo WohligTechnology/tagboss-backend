@@ -1,23 +1,5 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-  //Used to name the .html file
-
-  console.log("Testing Consoles");
-
-  $scope.template = TemplateService.changecontent("home");
-  $scope.menutitle = NavigationService.makeactive("Home");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-
-  $scope.mySlides = [
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
-  ];
-})
-
 .controller('LoginPageCtrl', function($scope, TemplateService, NavigationService, $timeout) {
 
   $scope.template = TemplateService.changecontent("loginpage");
@@ -28,13 +10,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-
   $scope.template = TemplateService.changecontent("dashboard");
   $scope.menutitle = NavigationService.makeactive("Dashboard");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
 
+.controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+
+  $scope.template = TemplateService.changecontent("orders");
+  $scope.menutitle = NavigationService.makeactive("Orders");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {

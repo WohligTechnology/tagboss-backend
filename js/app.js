@@ -13,11 +13,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   // for http request with session
   $httpProvider.defaults.withCredentials = true;
   $stateProvider
-    .state('home', {
-    url: "/",
-    templateUrl: "views/template.html",
-    controller: 'HomeCtrl'
-  })
   .state('loginpage', {
   url: "/loginpage",
   templateUrl: "views/template.html",
@@ -27,8 +22,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 url: "/dashboard",
 templateUrl: "views/template.html",
 controller: 'DashboardCtrl'
+})
+.state('orders', {
+url: "/orders",
+templateUrl: "views/template.html",
+controller: 'OrdersCtrl'
 });
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/dashboard");
   $locationProvider.html5Mode(isproduction);
 });
 
