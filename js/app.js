@@ -17,20 +17,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   url: "/loginpage",
   templateUrl: "views/template.html",
   controller: 'LoginPageCtrl'
-})
-.state('dashboard', {
-url: "/dashboard",
-templateUrl: "views/template.html",
-controller: 'DashboardCtrl'
-})
-.state('orders', {
-url: "/orders",
-templateUrl: "views/template.html",
-controller: 'OrdersCtrl'
-});
-  $urlRouterProvider.otherwise("/dashboard");
-  $locationProvider.html5Mode(isproduction);
-});
+  })
+  .state('dashboard', {
+  url: "/dashboard",
+  templateUrl: "views/template.html",
+  controller: 'DashboardCtrl'
+  })
+  .state('orders', {
+  url: "/orders",
+  templateUrl: "views/template.html",
+  controller: 'OrdersCtrl'
+  })
+  .state('categories', {
+  url: "/categories",
+  templateUrl: "views/template.html",
+  controller: 'CategogiesCtrl'
+  });
+    $urlRouterProvider.otherwise("/dashboard");
+    $locationProvider.html5Mode(isproduction);
+  });
 
 
 firstapp.directive('img', function($compile, $parse) {

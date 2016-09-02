@@ -23,6 +23,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
+
+.controller('CategogiesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+
+  $scope.template = TemplateService.changecontent("categories");
+  $scope.menutitle = NavigationService.makeactive("Categories");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
