@@ -32,6 +32,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   url: "/categories",
   templateUrl: "views/template.html",
   controller: 'CategogiesCtrl'
+  })
+  .state('view_orders', {
+  url: "/view-orders",
+  templateUrl: "views/template.html",
+  controller: 'ViewOrdersCtrl'
   });
     $urlRouterProvider.otherwise("/dashboard");
     $locationProvider.html5Mode(isproduction);
