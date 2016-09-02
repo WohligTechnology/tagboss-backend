@@ -1,6 +1,6 @@
-.orders{
+.orders, .view_orders{
   margin-left:200px;
-  .order{
+  .order, .view_order{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
                display: flex;
@@ -77,7 +77,7 @@
 
       }
       .order-table{
-        
+
            tr{width: 100%;}
            td{width: 25%;}
          .view{
@@ -90,4 +90,64 @@
 
 
 
+  }
+         // this css is for page view_orders
+  .view_orders{
+    .view_order{
+      .order-heading{
+        border-top: solid 10px $panel-border;
+        padding-top: 5px;
+        padding-bottom: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: $box-background;
+        margin-bottom: 25px;
+          .checkbox{
+              margin-top: 0px;
+              margin-bottom: 0px;
+              }
+
+        }
+      .details{
+        .head{
+          position: relative;
+          cursor: pointer;
+          margin: 0;
+        &:after{
+            border-right: 35px solid transparent;
+            border-left: 35px solid transparent;
+            border-top: 30px solid #E6E6E6;
+            position: absolute;
+            z-index: 10;
+            left: 10%;
+            /* bottom: -55px; */
+            transform: translatex(0);
+            top: 100%;
+          }
+        }
+        .info{
+          background-color: #F8F8F8;
+          padding: 40px 0 10px 20px;
+          line-height: 30px;
+          font-size: 12px;
+          margin-bottom: 7px;
+        }
+        h2{
+          background-color:#E6E6E6;
+          font-size: 18px;
+          padding: 10px;
+          color: #043E77;
+          border-top: 6px solid;
+          margin: 0;
+        }
+      }
+      .table thead{
+        background-color:#E6E6E6;
+        border-top: 6px solid $panel-border; }
+        tbody{
+            background-color: #F8F8F8;
+            border:1px solid #000000;
+          
+        }
+    }
   }

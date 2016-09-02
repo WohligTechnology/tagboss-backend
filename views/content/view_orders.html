@@ -1,0 +1,131 @@
+<section class="dashboard view_orders ">
+  <div class="container-fluid">
+    <div class="view_order">
+              <div class="search-content">
+
+                <div class="row">
+                <div class="col-md-6" >
+                    <div class="period ">
+                    <span>FROM</span>
+                    <div class="input-group date">
+                      <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                      </span>
+                    </div>
+
+                     <span>TO</span>
+                       <div class="input-group date">
+                     <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                     <span class="input-group-btn">
+                       <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
+                     </span>
+                   </div>
+                 </div>
+                </div>
+
+                 <div class="col-md-6">
+                  <div class="search-tuto" >
+                    <div class="input-group search-inside pull-right ">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                        <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                     <div class="dropdown dropdown-inside pull-right">
+                      <button class="btn btn-default dropdown-toggle label-btn " type="button" data-toggle="dropdown">Filter by Status
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                 </div>
+
+              </div>
+          </div>
+
+          <div class="order-heading">
+              <div class="checkbox pull-left">
+                <label><input type="checkbox"> ORDER ID TB00_1</label>
+              </div>
+               <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+          </div>
+
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="details">
+                          <div class="head">
+                            <h2>orders</h2>
+                          </div>
+                          <div class="info">
+                            <p>1. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>2. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>3. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>4. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>5. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="details">
+                          <div class="head">
+                            <h2>orders</h2>
+                          </div>
+                          <div class="info">
+                            <p>1. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>2. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>3. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>4. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                            <p>5. Mirage Steel, Ahemdabad
+                              Rs.75,550/-</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+             <div class="row">
+               <div class="col-md-12">
+                 <table class="table">
+                   <thead>
+                     <tr>
+                       <th><strong>SR.NO</strong></th>
+                       <th><strong>ORDER DETAILS</strong></th>
+                       <th><strong>QTY</strong></th>
+                       <th><strong>AMOUNT</strong></th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>John</td>
+                       <td>Doe</td>
+                       <td>john@example.com</td>
+                       <td>john@example.com</td>
+                     </tr>
+                     <tr>
+                       <td>Mary</td>
+                       <td>Moe</td>
+                       <td>mary@example.com</td>
+                       <td></td>
+                     </tr>
+                  </tbody>
+                 </table>
+               </div>
+             </div>
+
+
+        </div>
+
+  </div>
+</section>
