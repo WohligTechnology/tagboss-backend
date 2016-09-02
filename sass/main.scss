@@ -166,6 +166,7 @@ a, .btn {
         content: '';
         border: 1px solid $magic-border-color;
         background-color: #fff;
+        border-radius: 0;
       }
       &:after {
         position: absolute;
@@ -519,7 +520,11 @@ button{
       }
     }
   }
-  .details{
+  .details-1{
+    margin: 0!important;
+    border: none!important;
+  }
+  .details, .details-1{
     margin-top: 15px;
     border-top: 1px solid #043E77;
     .head{
@@ -531,16 +536,16 @@ button{
         font-size: 18px;
         color: #043E77;
         margin: 0;
+        padding: 0 0 0 25px;
       }
-      .magic-form{
-        width: 50%;
-      }
-      .add-categ{
-        display: inline-flex;
+      // .magic-form{
+      //   width: 50%;
+      // }
+
         .edit-categ{
-          width: 50%;
           input{
             border-radius: 10px 0 0 10px;
+            background: none;
           }
           span{
             border: 0;
@@ -550,12 +555,31 @@ button{
             color: #fff;
           }
         }
-      }
+        .edit-btn{
+          padding: 0 0 0 15px;
+        }
+        .trash-icon{
+          padding: 0 0 0 15px;
+          font-size: 24px;
+          color: #043E77;
+        }
 
     }
     .info{
       background-color: #F8F8F8;
-      padding: 40px 0 10px 20px;
+      padding: 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+      h3{
+        font-size: 22px;
+        text-transform: none;
+        color: #043E77;
+      }
+    }
+    .info-1{
+      background-color: #fff;
+      padding: 35px;
       line-height: 30px;
       font-size: 12px;
       margin-bottom: 7px;
