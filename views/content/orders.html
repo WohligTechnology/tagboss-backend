@@ -1,18 +1,64 @@
-<section class="side-menu">
+<section class="orders">
   <div class="container-fluid">
-    <div class="row">
+      <div class="order">
+          <div class="search-content">
+
+            <div class="row">
+            <div class="col-md-6" >
+                <div class="period ">
+                <span>FROM</span>
+                <div class="input-group date">
+                  <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                  </span>
+                </div>
+
+                 <span>TO</span>
+                   <div class="input-group date">
+                 <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                 <span class="input-group-btn">
+                   <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
+                 </span>
+               </div>
+             </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+              <div class="search-tuto" >
+                <div class="input-group search-inside pull-right ">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
+                    <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+                  </span>
+                </div>
+                 <div class="dropdown dropdown-inside pull-right">
+                  <button class="btn btn-default dropdown-toggle label-btn " type="button" data-toggle="dropdown">Filter by Status
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
+            </div>
+
+
 
           </div>
-          <div class="col-sm-2"></div>
-      <div class="col-sm-10 order">
-          <div class="search-content"></div>
           <div class="order-details ">
               <div class="checkbox pull-left">
-                <label><input type="checkbox"> Remember me</label>
+                <label><input type="checkbox"> ORDER ID TB00_1</label>
               </div>
                <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
           </div>
-          <table class="table table-bordered">
+          <table class="table table-bordered order-table">
                 <thead>
                   <tr>
                     <th><strong>ORDER</strong></th>
@@ -32,12 +78,174 @@
                     <td>Mary</td>
                     <td>Moe</td>
                     <td>mary@example.com</td>
-                    <td>john@example.com</td>
+                    <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
                   </tr>
 
                 </tbody>
               </table>
 
-    </div>
+              <div class="order-details ">
+                  <div class="checkbox pull-left">
+                    <label><input type="checkbox"> ORDER ID TB00_2</label>
+                  </div>
+                   <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+              </div>
+              <table class="table table-bordered order-table">
+                    <thead>
+                      <tr>
+                        <th><strong>ORDER</strong></th>
+                        <th><strong>BUYER</strong></th>
+                        <th><strong>TOTAL AMOUNT</strong></th>
+                        <th><strong>ORDER STATUS</strong></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>john@example.com</td>
+                      </tr>
+                      <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                        <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                  <div class="order-details ">
+                      <div class="checkbox pull-left">
+                        <label><input type="checkbox"> ORDER ID TB00_3</label>
+                      </div>
+                       <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+                  </div>
+                  <table class="table table-bordered order-table">
+                        <thead>
+                          <tr>
+                            <th><strong>ORDER</strong></th>
+                            <th><strong>BUYER</strong></th>
+                            <th><strong>TOTAL AMOUNT</strong></th>
+                            <th><strong>ORDER STATUS</strong></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                            <td>john@example.com</td>
+                          </tr>
+                          <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                            <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                      <div class="order-details ">
+                          <div class="checkbox pull-left">
+                            <label><input type="checkbox"> ORDER ID TB00_4</label>
+                          </div>
+                           <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+                      </div>
+                      <table class="table table-bordered order-table">
+                            <thead>
+                              <tr>
+                                <th><strong>ORDER</strong></th>
+                                <th><strong>BUYER</strong></th>
+                                <th><strong>TOTAL AMOUNT</strong></th>
+                                <th><strong>ORDER STATUS</strong></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                              </tr>
+                              <tr>
+                                <td>Mary</td>
+                                <td>Moe</td>
+                                <td>mary@example.com</td>
+                                <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+
+
+
+                           <div class="order-details ">
+                              <div class="checkbox pull-left order-table">
+                                <label><input type="checkbox"> ORDER ID TB00_5</label>
+                              </div>
+                               <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+                          </div>
+                          <table class="table table-bordered order-table">
+                                <thead>
+                                  <tr>
+                                    <th><strong>ORDER</strong></th>
+                                    <th><strong>BUYER</strong></th>
+                                    <th><strong>TOTAL AMOUNT</strong></th>
+                                    <th><strong>ORDER STATUS</strong></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>john@example.com</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Mary</td>
+                                    <td>Moe</td>
+                                    <td>mary@example.com</td>
+                                    <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+
+                              <div class="order-details ">
+                                  <div class="checkbox pull-left">
+                                    <label><input type="checkbox"> ORDER ID TB00_6</label>
+                                  </div>
+                                   <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+                              </div>
+                              <table class="table table-bordered order-table">
+                                    <thead>
+                                      <tr>
+                                        <th><strong>ORDER</strong></th>
+                                        <th><strong>BUYER</strong></th>
+                                        <th><strong>TOTAL AMOUNT</strong></th>
+                                        <th><strong>ORDER STATUS</strong></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                        <td>john@example.com</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Mary</td>
+                                        <td>Moe</td>
+                                        <td>mary@example.com</td>
+                                        <td>john@example.com<a href="#"><label class="view">VIEW ALL</label></a></td>
+                                      </tr>
+
+                                    </tbody>
+                                  </table>
+
+
+      </div>
   </div>
 </section>
