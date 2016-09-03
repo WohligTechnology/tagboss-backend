@@ -736,7 +736,7 @@ button{
   }
 }
 
-.grades-standards{
+.grades-standards, .grades-standards1 {
   h2{
     font-size: 26px;
   }
@@ -762,7 +762,7 @@ button{
 
     .date{
       background-color: #ffffff;
-      width: 40%;
+      width: 39%;
       border: none;
       .cal-btn{
         background: none;
@@ -853,6 +853,12 @@ button{
         }
 
     }
+    .editor-box{
+      border: 1px solid #ccc;
+      border-top: 30px solid #ccc;
+      border-bottom: 25px solid #ccc;
+      padding: 15px;
+    }
     .info{
       background-color: #F8F8F8;
       padding: 35px;
@@ -896,6 +902,115 @@ button{
 }
 
 
+
+.inspection-agencies{
+  .search-top{
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 6px;
+    input{
+      border: none;
+    }
+    span{
+      i{
+        border: none;
+        &:hover{
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .more-opt{
+    border-left: 1px solid #ccc;
+    float: right;
+    padding: 12px;
+    display: inline-flex;
+    input{
+      width: 20px;
+      height: 20px;
+      margin: 0 10px 0 0;
+    }
+    span{
+      margin: 6px 0 0 8px;
+      .caret {
+          border-top: 8px dashed !important;
+          border-right: 8px solid transparent !important;
+          border-left: 8px solid transparent !important;
+      }
+    }
+  }
+  .details-1{
+    margin: 0!important;
+    border: none!important;
+  }
+  .details, .details-1{
+    margin-top: 15px;
+    border-top: 1px solid #043E77;
+    .head{
+      background-color: #E6E6E6;
+      padding: 10px;
+      border-top: 6px solid #043E77;
+      margin: 2px 0 0 0;
+      h2{
+        font-size: 18px;
+        color: #043E77;
+        margin: 0;
+        padding: 0 0 0 25px;
+      }
+      // .magic-form{
+      //   width: 50%;
+      // }
+
+        .edit-categ{
+          margin: 7px;
+        }
+        .edit-btn{
+          padding: 0 0 0 15px;
+        }
+        .trash-icon{
+          padding: 0 0 0 15px;
+          font-size: 24px;
+          color: #043E77;
+        }
+
+    }
+    .info{
+      background-color: #F8F8F8;
+      padding: 0 35px;
+      line-height: 30px;
+      font-size: 12px;
+      padding-bottom: 20px;
+      margin-bottom: 7px;
+      .rounded-mid{
+        display: inline-flex;
+        border-bottom: 1px solid #ccc;
+        .rounded-pipes{
+          width: 50%;
+          text-align: center;
+          h3{
+            font-size: 22px;
+            text-transform: none;
+            color: #043E77;
+          }
+          h4{
+            font-size: 18px;
+            text-transform: none;
+            color: #043E77;
+            margin: 25px 0 0 0;
+          }
+        }
+        .edit-type{
+          width: 50%;
+          p{
+            margin: 20px 0 10px 30px;
+            font-size: 17px;
+          }
+        }
+      }
+
+    }
+  }
+}
 
 
 

@@ -52,6 +52,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   url: "/grades-standards",
   templateUrl: "views/template.html",
   controller: 'GradesStandardsCtrl'
+  })
+  .state('grades-standards1', {
+  url: "/grades-standards1",
+  templateUrl: "views/template.html",
+  controller: 'GradesStandards1Ctrl'
+  })
+  .state('inspection-agencies', {
+  url: "/inspection-agencies",
+  templateUrl: "views/template.html",
+  controller: 'InspectionAgenciesCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");
