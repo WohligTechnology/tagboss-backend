@@ -33,7 +33,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   templateUrl: "views/template.html",
   controller: 'CategogiesCtrl'
   })
-  .state('view_orders', {
+  .state('view-orders', {
   url: "/view-orders",
   templateUrl: "views/template.html",
   controller: 'ViewOrdersCtrl'

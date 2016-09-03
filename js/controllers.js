@@ -17,8 +17,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('ViewOrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-  $scope.template = TemplateService.changecontent("view_orders");
-  $scope.menutitle = NavigationService.makeactive("View_orders");
+  $scope.template = TemplateService.changecontent("view-orders");
+  $scope.menutitle = NavigationService.makeactive("View orders");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.today = function() {

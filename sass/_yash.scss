@@ -1,5 +1,4 @@
 .orders, .view_orders{
-  margin-left:200px;
   .order, .view_order{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
@@ -92,7 +91,7 @@
 
   }
          // this css is for page view_orders
-  .view_orders{
+.view_orders{
     .view_order{
       .order-heading{
         border-top: solid 10px $panel-border;
@@ -147,7 +146,7 @@
         tbody{
             background-color: #F8F8F8;
             border:1px solid #000000;
-          
+
         }
     }
   }

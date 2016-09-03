@@ -73,7 +73,10 @@ a, .btn {
   @include box-shadow(none);
 }
 
-
+.body-main{
+  margin-left: 200px;
+  padding-top: 162px;
+}
 
 .magic-form{
   .magic-resize{
@@ -444,8 +447,6 @@ button{
 }
 
 .dashboard{
-  margin-left: 200px;
-  padding-top: 162px;
   .details{
     .head{
       position: relative;
@@ -483,8 +484,6 @@ button{
 }
 
 .categories{
-  margin-left: 200px;
-  padding-top: 162px;
   .search-top{
     border: 1px solid;
     border-radius: 20px;
