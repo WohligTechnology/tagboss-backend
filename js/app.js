@@ -43,6 +43,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   templateUrl: "views/template.html",
   controller: 'SellersCtrl'
 })
+  .state('material-construct', {
+  url: "/material-construct",
+  templateUrl: "views/template.html",
+  controller: 'MaterialConstructCtrl'
+  })
+  .state('grades-standards', {
+  url: "/grades-standards",
+  templateUrl: "views/template.html",
+  controller: 'GradesStandardsCtrl'
+  });
+
     $urlRouterProvider.otherwise("/dashboard");
     $locationProvider.html5Mode(isproduction);
   });
