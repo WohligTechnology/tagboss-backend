@@ -37,7 +37,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   url: "/view-orders",
   templateUrl: "views/template.html",
   controller: 'ViewOrdersCtrl'
-  });
+  })
+  .state('sellers', {
+  url: "/sellers",
+  templateUrl: "views/template.html",
+  controller: 'SellersCtrl'
+})
     $urlRouterProvider.otherwise("/dashboard");
     $locationProvider.html5Mode(isproduction);
   });

@@ -1,0 +1,52 @@
+<section class="body-main buyers">
+  <div class="container-fluid">
+    <div class="buyer">
+      <div class="search-content">
+        <div class="row">
+                  <div class="col-md-6" >
+                      <div class="period ">
+                      <span>FROM</span>
+                      <div class="input-group date">
+                        <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                      </div>
+
+                       <span>TO</span>
+                         <div class="input-group date">
+                       <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                       <span class="input-group-btn">
+                         <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
+                       </span>
+                     </div>
+                   </div>
+                  </div>
+
+
+
+                  <div class="col-md-6">
+                    <div class="search-tuto" >
+                      <div class="input-group search-inside pull-right ">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                          <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                       <div class="dropdown dropdown-inside pull-right">
+                        <button class="btn btn-default dropdown-toggle label-btn " type="button" data-toggle="dropdown">Filter by Status
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">HTML</a></li>
+                          <li><a href="#">CSS</a></li>
+                          <li><a href="#">JavaScript</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+       </div>
+      </div>
+
+    </div>
+  </div>
+</div>
