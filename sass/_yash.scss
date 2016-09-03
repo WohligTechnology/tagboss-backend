@@ -1,5 +1,5 @@
-.orders, .view_orders, .sellers {
-  .order, .view_order, .seller {
+.orders, .view_orders, .sellers, .buyers {
+  .order, .view_order, .seller , .buyer{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
                display: flex;
@@ -62,7 +62,7 @@
             }
     }
   }
-    .order-details, .seller-details{
+    .order-details, .seller-details, .buyer-details{
       border-top: solid 10px $panel-border;
       padding-top: 5px;
       padding-bottom: 25px;
@@ -92,7 +92,7 @@
 
         }
       }
-       .seller-table{
+       .seller-table, .buyer-table{
          @extend .order-table;
          td{ width:20%; }
 
@@ -194,3 +194,157 @@
         }
     }
   }
+
+  // --------------this css is for buyers and sellers----------
+
+  .sellers, .buyers
+  {
+    .seller, .buyer{
+      .search-top{
+        border: 1px solid;
+        border-radius: 20px;
+        padding: 6px;
+        input{
+          border: none;
+        }
+        span{
+          i{
+            border: none;
+            &:hover{
+              background-color: #fff;
+            }
+          }
+        }
+      }
+      .filter{
+        margin-right: 40px;
+        margin-top: 12px;
+        label {font-weight: inherit;}
+      }
+      .more-opt{
+        border-left: 1px solid #ccc;
+        float: right;
+        padding: 12px;
+        display: inline-flex;
+        input{
+          width: 20px;
+          height: 20px;
+          margin: 0 10px 0 0;
+        }
+        span{
+          margin: 6px 0 0 8px;
+          .caret {
+              border-top: 8px dashed !important;
+              border-right: 8px solid transparent !important;
+              border-left: 8px solid transparent !important;
+          }
+        }
+      }
+    }
+  }
+
+  // -----------this css is for view-sellers and view-buyers-----------
+  .view-sellers{
+    .view-seller{
+      .search-content{
+        margin-bottom: 25px;
+      .period{
+
+        display: inline-flex;
+        height: 50px;
+        align-items: center;
+        border: 1px solid;
+        border-radius: 20px;
+        width: 100%;
+        padding-left: 25px;
+        .search-i{
+          i{
+            border: none;
+            border-left: 1px solid;
+            &:hover{
+              background-color: #fff;
+            }
+          }
+        }
+
+
+        .date{
+          background-color: #ffffff;
+          width: 40%;
+          border: none;
+          .cal-btn{
+            background: none;
+            border:none;
+            }
+            .cal-input{
+                border:none;
+            }
+          }
+      }
+      .more-opt{
+        border-left: 1px solid #ccc;
+        float: right;
+        padding: 12px;
+        display: inline-flex;
+        input{
+          width: 20px;
+          height: 20px;
+          margin: 0 10px 0 0;
+        }
+        span{
+          margin: 6px 0 0 8px;
+          .caret {
+              border-top: 8px dashed !important;
+              border-right: 8px solid transparent !important;
+              border-left: 8px solid transparent !important;
+          }
+        }
+      }
+
+    }
+    .buyer-details{
+      border-top: solid 10px $panel-border;
+      padding-top: 5px;
+      padding-bottom: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: $box-background;
+        .checkbox{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            }
+        .starred{
+             margin-top: -4px;
+             margin-left: 40px;
+             cursor:pointer;
+             font-size: 20px;
+        }
+
+      }
+      .row{border-bottom: 1px solid #000;}
+      .col-1{padding-right: 0px;}
+      .col-2{padding-right: 0px;
+        padding-left:0px}
+      .col-3{padding-left: 0px;}
+      .order-content{
+        background-color: aqua;
+        height:200px;
+      }
+      .refund-content{
+        background-color: pink;
+        height:200px;
+      }
+      .address-content{
+        background-color: blue;
+        height:200px;
+      }
+      .sale-content{
+        background-color: blue;
+        height:350px;
+      }
+      .frequancy-content{
+        background-color: aqua;
+        height:350px;
+      }
+  }
+}

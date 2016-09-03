@@ -43,6 +43,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   templateUrl: "views/template.html",
   controller: 'SellersCtrl'
 })
+.state('buyers', {
+url: "/buyers",
+templateUrl: "views/template.html",
+controller: 'BuyersCtrl'
+})
+.state('view-sellers', {
+url: "/view-sellers",
+templateUrl: "views/template.html",
+controller: 'View-sellersCtrl'
+})
   .state('material-construct', {
   url: "/material-construct",
   templateUrl: "views/template.html",
