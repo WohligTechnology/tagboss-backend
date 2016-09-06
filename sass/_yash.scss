@@ -1,4 +1,4 @@
-.orders, .view_orders, .sellers, .buyers {
+.orders, .view_orders, .sellers, .buyers, .request-sellers, .request-buyers, .view-request-seller{
   .order, .view_order, .seller , .buyer{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
@@ -62,7 +62,7 @@
             }
     }
   }
-    .order-details, .seller-details, .buyer-details{
+    .order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
       border-top: solid 10px $panel-border;
       padding-top: 5px;
       padding-bottom: 25px;
@@ -81,7 +81,7 @@
         }
 
       }
-      .order-table{
+      .order-table, .request-seller-table, .request-buyer-table{
            background-color: #F8F8F8;
            tr{width: 100%;}
            td{width: 25%;}
@@ -244,8 +244,8 @@
   }
 
   // -----------this css is for view-sellers and view-buyers-----------
-  .view-sellers{
-    .view-seller{
+  .view-sellers, .view-buyers{
+    .view-seller, .view-buyer{
       .search-content{
         margin-bottom: 25px;
       .period{
@@ -321,30 +321,241 @@
         }
 
       }
-      .row{border-bottom: 1px solid #000;}
-      .col-1{padding-right: 0px;}
-      .col-2{padding-right: 0px;
-        padding-left:0px}
-      .col-3{padding-left: 0px;}
-      .order-content{
-        background-color: aqua;
-        height:200px;
-      }
-      .refund-content{
-        background-color: pink;
-        height:200px;
-      }
-      .address-content{
-        background-color: blue;
-        height:200px;
-      }
-      .sale-content{
-        background-color: blue;
-        height:350px;
-      }
-      .frequancy-content{
-        background-color: aqua;
-        height:350px;
-      }
+  .stat-row-1{background-color: yellow;
+              height:200px;
+              margin-left: 0px;
+              margin-right: 0px;
+              border-bottom: 1px solid #000;
+              padding-top: 20px;
+              padding-bottom:20px;
+              p{
+                font-weight: bold;
+              }
+              }
+
+
+              .stat-cols{
+
+                padding-right: 0px;
+                padding-left:0px;
+                height:100%;}
+
+               .diagram{
+                 height: 140px;
+              }
+
+              .order-content{
+                 background-color: aqua;
+                  height:100%;
+                border-right:1px solid;
+                }
+                .refund-content{
+                  border-right:1px solid;
+                  height:100%;
+                }
+                .address-content{
+                    padding-left: 20px;
+                    padding-right:20px;
+                    height:100%;
+                }
+      .stat-row-2{
+              height:350px;
+              padding-top: 20px;
+              padding-bottom:20px;
+              background-color: yellow;
+              margin-bottom: 40px;
+              p{
+                font-weight: bold;
+              }
+              .diagram{
+                 height: 290px;
+
+             }
+            }
+
+
+              .row{
+                height:100%;
+                margin-left: 0px;
+                margin-right: 0px;
+              }
+              .sale-content{
+                height: 100%;
+                  border-right:1px solid;
+              }
+              .frequancy-content{
+                background-color: aqua;
+                height: 100%;
+
+
+              }
+
+          table{
+          width:80%;}
+    }
+
   }
-}
+  // -------this css is for request-seller and request-buyer---------------
+  .request-sellers, .request-buyers{
+    .request-seller, .request-buyer{
+      .search-content{
+        margin-bottom: 25px;
+      .period{
+
+        display: inline-flex;
+        height: 50px;
+        align-items: center;
+        border: 1px solid;
+        border-radius: 20px;
+        width: 100%;
+        padding-left: 25px;
+        .search-i{
+          i{
+            border: none;
+            border-left: 1px solid;
+            &:hover{
+              background-color: #fff;
+            }
+          }
+        }
+
+
+        .date{
+          background-color: #ffffff;
+          width: 40%;
+          border: none;
+          .cal-btn{
+            background: none;
+            border:none;
+            }
+            .cal-input{
+                border:none;
+            }
+          }
+      }
+      .more-opt{
+        border-left: 1px solid #ccc;
+        float: right;
+        padding: 12px;
+        display: inline-flex;
+        input{
+          width: 20px;
+          height: 20px;
+          margin: 0 10px 0 0;
+        }
+        span{
+          margin: 6px 0 0 8px;
+          .caret {
+              border-top: 8px dashed !important;
+              border-right: 8px solid transparent !important;
+              border-left: 8px solid transparent !important;
+          }
+        }
+      }
+
+    }
+
+    }
+  }
+
+  // ----------this css is for view-request-sellers and view-reuest-buyers ----------
+  .view-request-sellers, .view-request-buyers{
+    .view-request-seller, .view-request-buyer{
+              .search-content{
+                margin-bottom: 25px;
+              .period{
+
+                display: inline-flex;
+                height: 50px;
+                align-items: center;
+                border: 1px solid;
+                border-radius: 20px;
+                width: 100%;
+                padding-left: 25px;
+                .search-i{
+                  i{
+                    border: none;
+                    border-left: 1px solid;
+                    &:hover{
+                      background-color: #fff;
+                    }
+                  }
+                }
+
+
+                .date{
+                  background-color: #ffffff;
+                  width: 40%;
+                  border: none;
+                  .cal-btn{
+                    background: none;
+                    border:none;
+                    }
+                    .cal-input{
+                        border:none;
+                    }
+                  }
+              }
+          }
+
+
+        .view-request-seller-table{
+          background-color: #F8F8F8;
+          tr{width: 100%;}
+          td{width: 33.33%;}
+        }
+
+        .progress{
+          background-color: red;
+          height:50px;
+          margin-bottom: 20px;
+        }
+        .certifications{
+          background-color: aquamarine;
+          height: 800px;
+          margin-bottom: 40px;
+          .certification-header{
+            height:40px;
+            border-bottom: 1px solid;
+            padding-left: 10px;
+            padding-top: 20px;
+          }
+          .col-1{
+            padding-right: 0px;
+          }
+          .col-2{
+            padding-left: 0px;
+            padding-right: 0px;}
+          .col-3{
+            padding-left: 0px;
+          }
+        .abc{
+          height: 760px;
+          background-color: pink;
+          padding: 15px;
+          p{text-align:center;}
+          .cert-image{
+            background-color: red;
+            height: 650px;
+            margin-bottom: 10px;
+          }
+
+          }
+        }
+        .comment-area{
+          text-align: center;
+                    .form-group{
+                            display: inline-block;
+                            width:50%;
+                            .form-control{
+                              background-color: #F2F2F2;
+                              }
+                      .comment{
+                              color: $panel-border;
+                              font-weight: normal;
+                            }
+
+                          }
+                    }
+    }
+  }

@@ -53,6 +53,27 @@ url: "/view-sellers",
 templateUrl: "views/template.html",
 controller: 'View-sellersCtrl'
 })
+.state('view-buyers', {
+url: "/view-buyers",
+templateUrl: "views/template.html",
+controller: 'View-buyersCtrl'
+})
+.state('request-sellers', {
+url: "/request-sellers",
+templateUrl: "views/template.html",
+controller: 'Request-sellersCtrl'
+})
+.state('request-buyers', {
+url: "/request-buyers",
+templateUrl: "views/template.html",
+controller: 'Request-buyersCtrl'
+})
+.state('view-request-sellers', {
+url: "/view-request-sellers",
+templateUrl: "views/template.html",
+controller: 'View-request-sellersCtrl'
+})
+
   .state('material-construct', {
   url: "/material-construct",
   templateUrl: "views/template.html",

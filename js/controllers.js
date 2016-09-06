@@ -446,6 +446,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
+.controller('View-buyersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("view-buyers");
+  $scope.menutitle = NavigationService.makeactive("View-buyers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('Request-sellersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("request-sellers");
+  $scope.menutitle = NavigationService.makeactive("Request-sellers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('Request-buyersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("request-buyers");
+  $scope.menutitle = NavigationService.makeactive("Request-buyers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('View-request-sellersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("view-request-sellers");
+  $scope.menutitle = NavigationService.makeactive("View-request-sellers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
 
 
 .controller('headerctrl', function($scope, TemplateService) {
