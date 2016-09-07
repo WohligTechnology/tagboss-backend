@@ -23,6 +23,61 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
+.controller('InspectionAgenciesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("inspection-agencies");
+  $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('AddInspectionAgencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("add-inspection-agency");
+  $scope.menutitle = NavigationService.makeactive("Add Inspection Agency");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('AddTransporterCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("add-transporter");
+  $scope.menutitle = NavigationService.makeactive("Add Transporter");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('TransportersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("transporters");
+  $scope.menutitle = NavigationService.makeactive("Transporters");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('AdsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("ads");
+  $scope.menutitle = NavigationService.makeactive("Ads");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('AddAdCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("add-ad");
+  $scope.menutitle = NavigationService.makeactive("Add ad");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('ReportsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("reports");
+  $scope.menutitle = NavigationService.makeactive("Reports");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('TransporterPaymentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("transporter-payment");
+  $scope.menutitle = NavigationService.makeactive("Transporter Payment");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
 
 .controller('GradesStandardsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("grades-standards");

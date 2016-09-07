@@ -93,6 +93,41 @@ controller: 'View-request-sellersCtrl'
   url: "/inspection-agencies",
   templateUrl: "views/template.html",
   controller: 'InspectionAgenciesCtrl'
+  })
+  .state('add-inspection-agency', {
+  url: "/add-inspection-agency",
+  templateUrl: "views/template.html",
+  controller: 'AddInspectionAgencyCtrl'
+  })
+  .state('add-transporter', {
+  url: "/add-transporter",
+  templateUrl: "views/template.html",
+  controller: 'AddTransporterCtrl'
+  })
+  .state('transporters', {
+  url: "/transporters",
+  templateUrl: "views/template.html",
+  controller: 'TransportersCtrl'
+  })
+  .state('ads', {
+  url: "/ads",
+  templateUrl: "views/template.html",
+  controller: 'AdsCtrl'
+  })
+  .state('add-ad', {
+  url: "/add-ad",
+  templateUrl: "views/template.html",
+  controller: 'AddAdCtrl'
+  })
+  .state('reports', {
+  url: "/reports",
+  templateUrl: "views/template.html",
+  controller: 'ReportsCtrl'
+  })
+  .state('transporter-payment', {
+  url: "/transporter-payment",
+  templateUrl: "views/template.html",
+  controller: 'TransporterPaymentCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");
