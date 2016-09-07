@@ -1,0 +1,162 @@
+<section class="body-main assign-agency">
+  <div class="container-fluid">
+    <div class="assign">
+      <div class="search-content">
+        <div class="row">
+           <div class="col-md-6">
+             <div class="period ">
+                    <span>FROM</span>
+                    <div class="input-group date">
+                      <input type="text" class="form-control cal-input ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date ng-touched" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required"><div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html" class="ng-not-empty ng-invalid ng-invalid-date-disabled" style="">
+  <!-- ngIf: isOpen -->
+                       </div>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                      </span>
+                    </div>
+
+                     <span>TO</span>
+                       <div class="input-group date">
+                     <input type="text" class="form-control cal-input ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required"><div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html" class="ng-not-empty ng-valid">
+  <!-- ngIf: isOpen -->
+                       </div>
+                     <span class="input-group-btn">
+                       <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
+                     </span>
+                   </div>
+                   <span class="input-group-btn search-i">
+                      <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+                    </span>
+                 </div>
+        </div>
+
+          <div class="col-md-6">
+            <div class="more-opt pull-right">
+              <input type="checkbox">More
+              <span class="caret"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="assign-agency-details ">
+        <div class="checkbox pull-left">
+          <label><input type="checkbox"> REQUEST FOR INSPECTION</label>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star-o" aria-hidden="true"></i></div>
+         <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+
+    </div>
+    <table class="table table-bordered assign-agency-table">
+          <thead>
+            <tr>
+              <th><strong>NAME</strong></th>
+              <th><strong>PRODUCT</strong></th>
+              <th><strong>QUANTITY</strong></th>
+              <th><strong>INSPECTION AGENCY</strong></th>
+             <th><strong></strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="magic-form">
+                  <div class="magic-resize">
+                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                      <label class="text" for="add-one">
+                        <p>15/18 Rhythm House,
+                          Kaala Ghoda, Fort,
+                          Mumbai - 400005
+                          India</p>
+                      </label>
+                  </div>
+                </div>
+              </td>
+              <td>Tata Steel
+                  Product + MOC
+                  Grade/Standard
+                  SCH
+                  OD in mm
+                  Thicknesss
+                  Length
+                  Weight</td>
+              <td>200</td>
+
+              <td> <div class="dropdown">
+                    <button type="button" class="btn btn-default">Inspection Agency , City</button>
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">HTML</a></li>
+                      <li><a href="#">CSS</a></li>
+                      <li><a href="#">JavaScript</a></li>
+                    </ul>
+                  </div></td>
+
+              <td class="text-center">
+                <button type="button" class="btn btn-primary assign-btn">Assign</button>
+                <p>  The product is upto mark.</p>
+                <img src="img/pdf-image.png">
+                <input type="text">
+                <div class="">
+                  <button type="button" class="btn btn-primary accept">Accept</button>
+                  <button type="button" class="btn btn-primary reject">Reject</button>
+                </div>
+                <a href="#" class="pull-right"><label class="view">VIEW DETAILS</label></a>
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="magic-form">
+                  <div class="magic-resize">
+                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                      <label class="text" for="add-one">
+                        <p>15/18 Rhythm House,
+                          Kaala Ghoda, Fort,
+                          Mumbai - 400005
+                          India</p>
+                      </label>
+                  </div>
+                </div>
+              </td>
+              <td>Tata Steel
+                  Product + MOC
+                  Grade/Standard
+                  SCH
+                  OD in mm
+                  Thicknesss
+                  Length
+                  Weight</td>
+              <td>200</td>
+
+              <td> <div class="dropdown">
+                    <button type="button" class="btn btn-default">Inspection Agency , City</button>
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">HTML</a></li>
+                      <li><a href="#">CSS</a></li>
+                      <li><a href="#">JavaScript</a></li>
+                    </ul>
+                  </div></td>
+
+              <td class="text-center">
+                <button type="button" class="btn btn-primary assign-btn">Assign</button>
+                <p>  The product is upto mark.</p>
+                <img src="img/pdf-image.png">
+                <input type="text">
+                <div class="">
+                  <button type="button" class="btn btn-primary accept">Accept</button>
+                  <button type="button" class="btn btn-primary reject">Reject</button>
+                </div>
+                <a href="#" class="pull-right"><label class="view">VIEW DETAILS</label></a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</section>

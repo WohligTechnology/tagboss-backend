@@ -1,4 +1,4 @@
-.orders, .view_orders, .sellers, .buyers, .request-sellers, .request-buyers, .view-request-seller{
+.orders, .view_orders, .sellers, .buyers, .request-sellers, .request-buyers, .view-request-sellers, .view-request-buyers{
   .order, .view_order, .seller , .buyer{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
@@ -499,7 +499,7 @@
           }
 
 
-        .view-request-seller-table{
+        .view-request-seller-table, .view-request-buyer-table{
           background-color: #F8F8F8;
           tr{width: 100%;}
           td{width: 33.33%;}
@@ -511,7 +511,7 @@
           margin-bottom: 20px;
         }
         .certifications{
-          background-color: aquamarine;
+          background-color: $box-background;
           height: 800px;
           margin-bottom: 40px;
           .certification-header{
@@ -531,7 +531,7 @@
           }
         .abc{
           height: 760px;
-          background-color: pink;
+
           padding: 15px;
           p{text-align:center;}
           .cert-image{
@@ -544,6 +544,7 @@
         }
         .comment-area{
           text-align: center;
+          margin-bottom: 40px;
                     .form-group{
                             display: inline-block;
                             width:50%;
@@ -557,5 +558,342 @@
 
                           }
                     }
+        .accept-reject{
+          text-align: center;
+          margin-bottom: 40px;
+          button{
+            display: inline-block;
+            background-color: $panel-border;
+          }
+        }
     }
   }
+// ---------------this css is for payment-to-sellers  ---------------------
+
+.payment-to-sellers{
+  .payment-to-seller{
+                .search-content{
+                  margin-bottom: 25px;
+                .period{
+
+                  display: inline-flex;
+                  height: 50px;
+                  align-items: center;
+                  border: 1px solid;
+                  border-radius: 20px;
+                  width: 100%;
+                  padding-left: 25px;
+                  .search-i{
+                    i{
+                      border: none;
+                      border-left: 1px solid;
+                      &:hover{
+                        background-color: #fff;
+                      }
+                    }
+                  }
+
+
+                  .date{
+                    background-color: #ffffff;
+                    width: 40%;
+                    border: none;
+                    .cal-btn{
+                      background: none;
+                      border:none;
+                      }
+                      .cal-input{
+                          border:none;
+                      }
+                    }
+                }
+                .more-opt{
+                  border-left: 1px solid #ccc;
+                  float: right;
+                  padding: 12px;
+                  display: inline-flex;
+                  input{
+                    width: 20px;
+                    height: 20px;
+                    margin: 0 10px 0 0;
+                  }
+                  span{
+                    margin: 6px 0 0 8px;
+                    .caret {
+                        border-top: 8px dashed !important;
+                        border-right: 8px solid transparent !important;
+                        border-left: 8px solid transparent !important;
+                    }
+                  }
+                }
+
+              }
+
+
+              .received-sent{
+                height: 100px;
+                background-color: #F8F8F8;
+                border-top: 12px solid;
+                border-color: $panel-border;
+                margin-bottom: 20px;
+                .received{
+                  padding: 15px;
+                  font-size: 20px;
+                  color: $lightblue;
+                  height: 88px;
+                  font-weight: bold;
+                }
+                .sent{
+                  padding: 15px;
+                  font-size: 20px;
+                  color: $lightblue;
+                  height: 88px;
+                  font-weight: bold;
+                }
+              }
+
+              .accordion-main {
+                .panel{border-radius: 0px;}
+                .panel-body{padding: 0px;
+                background-color: #F8F8F8;}
+                .panel-heading {
+                  padding: 0;
+                  border-radius: 0px;
+                }
+                .accordion-main-content {
+                  .table > tbody > tr > td:last-child { font-weight: bold; }
+                  .table > thead > tr>th{color: $lightblue;}
+                }
+              }
+
+              .received-sent-details{
+                border-top: solid 10px $panel-border;
+                padding-top: 8px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 2px;
+                background-color: $box-background;
+                  .checkbox{
+                      margin-top: 0px;
+                      margin-bottom: 0px;
+                      }
+                  .starred{
+                       margin-top: -4px;
+                       margin-left: 40px;
+                       cursor:pointer;
+                       font-size: 20px;
+                  }
+              }
+
+  }
+}
+// --------------this css for refunf-to-buyer ---------------
+.refund-to-buyers{
+  .refund-to-buyer{
+              .search-content{
+                margin-bottom: 25px;
+              .period{
+
+                display: inline-flex;
+                height: 50px;
+                align-items: center;
+                border: 1px solid;
+                border-radius: 20px;
+                width: 100%;
+                padding-left: 25px;
+                .search-i{
+                  i{
+                    border: none;
+                    border-left: 1px solid;
+                    &:hover{
+                      background-color: #fff;
+                    }
+                  }
+                }
+
+
+                .date{
+                  background-color: #ffffff;
+                  width: 40%;
+                  border: none;
+                  .cal-btn{
+                    background: none;
+                    border:none;
+                    }
+                    .cal-input{
+                        border:none;
+                    }
+                  }
+              }
+              .more-opt{
+                border-left: 1px solid #ccc;
+                float: right;
+                padding: 12px;
+                display: inline-flex;
+                input{
+                  width: 20px;
+                  height: 20px;
+                  margin: 0 10px 0 0;
+                }
+                span{
+                  margin: 6px 0 0 8px;
+                  .caret {
+                      border-top: 8px dashed !important;
+                      border-right: 8px solid transparent !important;
+                      border-left: 8px solid transparent !important;
+                      }
+                  }
+                }
+
+            }
+            .bar{
+              margin-bottom: 20px;
+              .total-request{
+                height: 180px;
+                background-color: pink   ;
+              }
+              .pending-request{
+                height: 180px;
+                background-color: pink;
+              }
+            }
+            .refund-to-buyer-details{
+              border-top: solid 10px $panel-border;
+              padding-top: 5px;
+              padding-bottom: 25px;
+              padding-left: 20px;
+              padding-right: 20px;
+              background-color: $box-background;
+                .checkbox{
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    }
+                .starred{
+                     margin-top: -4px;
+                     margin-left: 40px;
+                     cursor:pointer;
+                     font-size: 20px;
+                }
+            }
+            .refund-to-buyer-table{
+                    background-color: #F8F8F8;
+                    tr{width: 100%;}
+                    td{width: 25%;}
+                  .view{
+                   text-decoration: underline;
+                   cursor: pointer;
+                   color: $panel-border;
+                  }
+                }
+
+  }
+}
+// --------------this css is assign-agency-----------------
+.assign-agency{
+  .assign{
+              .search-content{
+                margin-bottom: 25px;
+              .period{
+
+                display: inline-flex;
+                height: 50px;
+                align-items: center;
+                border: 1px solid;
+                border-radius: 20px;
+                width: 100%;
+                padding-left: 25px;
+                .search-i{
+                  i{
+                    border: none;
+                    border-left: 1px solid;
+                    &:hover{
+                      background-color: #fff;
+                    }
+                  }
+                }
+
+
+                .date{
+                  background-color: #ffffff;
+                  width: 40%;
+                  border: none;
+                  .cal-btn{
+                    background: none;
+                    border:none;
+                    }
+                    .cal-input{
+                        border:none;
+                    }
+                  }
+              }
+              .more-opt{
+                border-left: 1px solid #ccc;
+                float: right;
+                padding: 12px;
+                display: inline-flex;
+                input{
+                  width: 20px;
+                  height: 20px;
+                  margin: 0 10px 0 0;
+                }
+                span{
+                  margin: 6px 0 0 8px;
+                  .caret {
+                      border-top: 8px dashed !important;
+                      border-right: 8px solid transparent !important;
+                      border-left: 8px solid transparent !important;
+                      }
+                  }
+                }
+
+            }
+            .assign-agency-details{
+              border-top: solid 10px $panel-border;
+              padding-top: 5px;
+              padding-bottom: 25px;
+              padding-left: 20px;
+              padding-right: 20px;
+              background-color: $box-background;
+                .checkbox{
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    }
+                .starred{
+                     margin-top: -4px;
+                     margin-left: 40px;
+                     cursor:pointer;
+                     font-size: 20px;
+                }
+            }
+            .assign-agency-table{
+                    background-color: #F8F8F8;
+                    tr{width: 100%;}
+                    td{width: 20%;}
+                  .view{
+                   text-decoration: underline;
+                   cursor: pointer;
+                   font-weight: normal;
+                   color: #000000;
+                  }
+                }
+            .btn-primary{
+              background-color: $panel-border;
+              border-color: $panel-border;
+            }
+            .assign-btn{
+              margin-bottom: 10px;
+            }
+            img{
+              display:inline-block;
+              vertical-align: top;
+              height: 25px;
+            }
+            input{width:100px;}
+            .accept, .reject{
+              font-size: 10px;
+              margin-top: 10px;
+              margin-bottom: 20px;
+            }
+
+  }
+}

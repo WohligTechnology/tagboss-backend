@@ -525,6 +525,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
+.controller('View-request-buyersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("view-request-buyers");
+  $scope.menutitle = NavigationService.makeactive("View-request-buyers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('Payment-to-sellersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("payment-to-sellers");
+  $scope.menutitle = NavigationService.makeactive("Payment-to-sellers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
+})
+.controller('Refund-to-buyersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("refund-to-buyers");
+  $scope.menutitle = NavigationService.makeactive("Refund-to-buyers");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('Assign-agencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("assign-agency");
+  $scope.menutitle = NavigationService.makeactive("Assign-agency");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
 
 
 
