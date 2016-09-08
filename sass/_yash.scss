@@ -1,4 +1,4 @@
-.orders, .view_orders, .sellers, .buyers, .request-sellers, .request-buyers, .view-request-sellers, .view-request-buyers{
+.orders, .view_orders, .sellers, .buyers, .view-sellers, .view-buyers, .request-sellers, .request-buyers, .view-request-sellers, .view-request-buyers{
   .order, .view_order, .seller , .buyer{
     .search-content{margin-bottom: 20px;
             .search-tuto, {
@@ -19,6 +19,7 @@
                       }
                       span{
                         i{
+                          border-left: 1px solid;
                           border: none;
                           &:hover{
                             background-color: #fff;
@@ -64,21 +65,26 @@
   }
     .order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
       border-top: solid 10px $panel-border;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 4px;
+      padding-bottom: 4px;
       padding-left: 20px;
       padding-right: 20px;
       background-color: $box-background;
       color: $panel-border;
        .magic-form{
          display: inline-block;
-         }
+         .detail-heading{
+               font-size: 18px;
+               padding: 0px;
+                 }
+           }
         .detail-heading{
            margin-bottom: 0px;
            font-weight: bold;
           }
         .date{
-          margin-top: 5px;
+
+          font-size: 15px;
         }
         .starred{
 
@@ -92,17 +98,32 @@
       .order-table, .request-seller-table, .request-buyer-table{
            background-color: #F8F8F8;
            tr{width: 100%;}
-           td{width: 25%;}
+           td, th {
+             width: 20%;
+             padding-left: 25px;
+             padding-right: 25px;
+             span{
+                   display: block;
+                 }
+             }
          .view{
           text-decoration: underline;
           cursor: pointer;
           color: $panel-border;
+          font-size: 18px;
 
         }
       }
        .seller-table, .buyer-table{
          @extend .order-table;
-         td{ width:20%; }
+         td{
+           width:20%;
+           .result{
+             font-weight: bold;
+             font-size: 16px;
+           }
+          }
+
 
        }
 
@@ -209,15 +230,19 @@
   {
     .seller, .buyer{
       .search-top{
-        border: 1px solid;
+        color:#454559;
+        border: 2px solid #C1C1C7;
         border-radius: 20px;
         padding: 6px;
         input{
           border: none;
         }
         span{
+          border-left: 1px solid #ccc;
           i{
+            color:#C1C1C7;
             border: none;
+            border-left: 1px solid #ccc !important;
             &:hover{
               background-color: #fff;
             }
@@ -227,17 +252,20 @@
       .filter{
         margin-right: 40px;
         margin-top: 12px;
-        label {font-weight: inherit;}
-      }
+        label {
+            top: -3px;
+            position: relative;
+            font-weight: inherit;
+            }
+        }
       .more-opt{
         border-left: 1px solid #ccc;
         float: right;
         padding: 12px;
         display: inline-flex;
-        input{
-          width: 20px;
-          height: 20px;
-          margin: 0 10px 0 0;
+        .magic-resize{
+          margin-top: -5px;
+          margin-left: 15px;
           }
         }
         .carrot{
@@ -295,111 +323,117 @@
           width: 20px;
           height: 20px;
           margin: 0 10px 0 0;
-        }
-        span{
-          margin: 6px 0 0 8px;
-          .caret {
-              border-top: 8px dashed !important;
-              border-right: 8px solid transparent !important;
-              border-left: 8px solid transparent !important;
           }
+          .carrot{
+              margin-top: -3px;
+              font-size: 25px;
+              margin-left: 10px;
+              }
         }
-      }
 
-    }
-    .buyer-details{
-      border-top: solid 10px $panel-border;
-      padding-top: 5px;
-      padding-bottom: 25px;
-      padding-left: 20px;
-      padding-right: 20px;
-      background-color: $box-background;
-        .checkbox{
-            margin-top: 0px;
-            margin-bottom: 0px;
-            }
         .starred{
-             margin-top: -4px;
+
              margin-left: 40px;
              cursor:pointer;
              font-size: 20px;
-        }
-
-      }
-  .stat-row-1{background-color: yellow;
-              height:200px;
-              margin-left: 0px;
-              margin-right: 0px;
-              border-bottom: 1px solid #000;
-              padding-top: 20px;
-              padding-bottom:20px;
-              p{
-                font-weight: bold;
-              }
-              }
-
-
-              .stat-cols{
-
-                padding-right: 0px;
-                padding-left:0px;
-                height:100%;}
-
-               .diagram{
-                 height: 140px;
-              }
-
-              .order-content{
-                 background-color: aqua;
-                  height:100%;
-                border-right:1px solid;
+             color: #B3B3B3;
                 }
-                .refund-content{
-                  border-right:1px solid;
-                  height:100%;
-                }
-                .address-content{
-                    padding-left: 20px;
-                    padding-right:20px;
-                    height:100%;
-                }
-      .stat-row-2{
-              height:350px;
-              padding-top: 20px;
-              padding-bottom:20px;
-              background-color: yellow;
-              margin-bottom: 40px;
-              p{
-                font-weight: bold;
-              }
-              .diagram{
-                 height: 290px;
-
-             }
-            }
+          } //search-content end
+          .stat-row-1{background-color: yellow;
+                      height:200px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      border-bottom: 1px solid #000;
+                      padding-top: 20px;
+                      padding-bottom:20px;
+                      p{
+                        font-weight: bold;
+                      }
+                      }
 
 
-              .row{
-                height:100%;
-                margin-left: 0px;
-                margin-right: 0px;
-              }
-              .sale-content{
-                height: 100%;
-                  border-right:1px solid;
-              }
-              .frequancy-content{
-                background-color: aqua;
-                height: 100%;
+                      .stat-cols{
+
+                        padding-right: 0px;
+                        padding-left:0px;
+                        height:100%;}
+
+                       .diagram{
+                         height: 140px;
+                      }
+
+                      .order-content{
+                         background-color: aqua;
+                          height:100%;
+                        border-right:1px solid;
+                        }
+                        .refund-content{
+                          border-right:1px solid;
+                          height:100%;
+                        }
+                        .address-content{
+                            padding-left: 20px;
+                            padding-right:20px;
+                            height:100%;
+                        }
+              .stat-row-2{
+                      height:350px;
+                      padding-top: 20px;
+                      padding-bottom:20px;
+                      background-color: yellow;
+                      margin-bottom: 40px;
+                      p{
+                        font-weight: bold;
+                      }
+                      .diagram{
+                         height: 290px;
+
+                     }
+                    }
 
 
-              }
+                      .row{
+                        height:100%;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                      }
+                      .sale-content{
+                        height: 100%;
+                          border-right:1px solid;
+                      }
+                      .frequancy-content{
+                        background-color: aqua;
+                        height: 100%;
 
-          table{
-          width:80%;}
+
+                      }
+
+                  table{
+                  width:80%;}
     }
+}
 
-  }
+
+    // .seller-details{
+    //   border-top: solid 10px $panel-border;
+    //   padding-top: 5px;
+    //   padding-bottom: 25px;
+    //   padding-left: 20px;
+    //   padding-right: 20px;
+    //   background-color: $box-background;
+    //     .checkbox{
+    //         margin-top: 0px;
+    //         margin-bottom: 0px;
+    //         }
+    //     .starred{
+    //          margin-top: -4px;
+    //          margin-left: 40px;
+    //          cursor:pointer;
+    //          font-size: 20px;
+    //     }
+    //
+    //   }
+
   // -------this css is for request-seller and request-buyer---------------
   .request-sellers, .request-buyers{
     .request-seller, .request-buyer{

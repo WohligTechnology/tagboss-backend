@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search by Category or Type">
+              <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
               <span class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
                 <!-- <button class="btn btn-default" type="button">Go!</button> -->
@@ -14,7 +14,14 @@
           </div>
           <div class="col-md-6">
             <div class="more-opt pull-right">
-              <input type="checkbox">More
+              <div class="magic-form">
+                <div class="magic-resize">
+                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                    <label class="detail-heading" for="add-one">
+                      More
+                    </label>
+                </div>
+              </div>
               <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
             </div>
             <div class="filter pull-right">
@@ -29,8 +36,8 @@
              <div class="seller-details ">
                <div class="magic-form">
                  <div class="magic-resize">
-                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                     <label class="detail-heading" for="add-one">
+                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
+                     <label class="detail-heading" for="add-more">
                        TBS001 MIRAGE STEEL LTD.
                      </label>
                  </div>
@@ -51,30 +58,40 @@
                    </thead>
                    <tbody>
                      <tr>
-                       <td>15/18 Rhythm House,
+                       <td>
+                          15/18 Rhythm House,
                            Kaala Ghoda, Fort,
                            Mumbai - 400005
                            India</td>
-                       <td>0987
-                           6251
-                           5589</td>
-                       <td>200 - SS - ASTM 303H
-                           500 - MS - ASTM 103L
-                           125 - AL - ASTM 98</td>
-                       <td>Rs. 7,85,587/-
-                           Rs. 8,58,756/-
-                           Rs. 3,55,898/-</td>
-                       <td>Raj SteelRaj Steel
-                           Dhanera Steel
-                           H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></td>
+                       <td>
+                        <span>0987</span>
+                        <span>6251</span>
+                        <span>5589</span>
+                        </td>
+                       <td>
+                         <span>200 - SS - ASTM 303H</span>
+                         <span>v500 - MS - ASTM 103L</span>
+                         <span>125 - AL - ASTM 98</span>
+                       </td>
+                       <td>
+                         <span>Rs. 7,85,587/-</span>
+                         <span> Rs. 8,58,756/-</span>
+                         <span>Rs. 3,55,898/-</span>
+                         <span class="result">Rs. 5,55,55,666/-</span>
+                         </td>
+                       <td>
+                         <span>Raj SteelRaj Steel</span>
+                         <span>Dhanera Steel</span>
+                         <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                       </td>
                      </tr>
                    </tbody>
                  </table>
                  <div class="seller-details ">
                    <div class="magic-form">
                      <div class="magic-resize">
-                       <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                         <label class="detail-heading" for="add-one">
+                       <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
+                         <label class="detail-heading" for="add-two">
                            TBS001 MIRAGE STEEL LTD.
                          </label>
                      </div>
@@ -95,31 +112,43 @@
                        </thead>
                        <tbody>
                          <tr>
-                           <td>15/18 Rhythm House,
+                           <td>
+                              15/18 Rhythm House,
                                Kaala Ghoda, Fort,
                                Mumbai - 400005
                                India</td>
-                           <td>0987
-                               6251
-                               5589</td>
-                           <td>200 - SS - ASTM 303H
-                               500 - MS - ASTM 103L
-                               125 - AL - ASTM 98</td>
-                           <td>Rs. 7,85,587/-
-                               Rs. 8,58,756/-
-                               Rs. 3,55,898/-</td>
-                           <td>Raj SteelRaj Steel
-                               Dhanera Steel
-                               H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></td>
+                           <td>
+                            <span>0987</span>
+                            <span>6251</span>
+                            <span>5589</span>
+                            </td>
+                           <td>
+                             <span>200 - SS - ASTM 303H</span>
+                             <span>v500 - MS - ASTM 103L</span>
+                             <span>125 - AL - ASTM 98</span>
+                           </td>
+                           <td>
+                             <span>Rs. 7,85,587/-</span>
+                             <span> Rs. 8,58,756/-</span>
+                             <span>Rs. 3,55,898/-</span>
+                            <span class="result">Rs. 5,55,55,666/-</span>
+                             </td>
+                           <td>
+                             <span>Raj SteelRaj Steel</span>
+                             <span>Dhanera Steel</span>
+                             <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                           </td>
                          </tr>
                        </tbody>
                      </table>
 
+
+
                      <div class="seller-details ">
                        <div class="magic-form">
                          <div class="magic-resize">
-                           <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                             <label class="detail-heading" for="add-one">
+                           <input class="magic-checkbox" type="checkbox" name="layout" id="add-three" value="option1">
+                             <label class="detail-heading" for="add-three">
                                TBS001 MIRAGE STEEL LTD.
                              </label>
                          </div>
@@ -140,22 +169,32 @@
                            </thead>
                            <tbody>
                              <tr>
-                               <td>15/18 Rhythm House,
+                               <td>
+                                  15/18 Rhythm House,
                                    Kaala Ghoda, Fort,
                                    Mumbai - 400005
                                    India</td>
-                               <td>0987
-                                   6251
-                                   5589</td>
-                               <td>200 - SS - ASTM 303H
-                                   500 - MS - ASTM 103L
-                                   125 - AL - ASTM 98</td>
-                               <td>Rs. 7,85,587/-
-                                   Rs. 8,58,756/-
-                                   Rs. 3,55,898/-</td>
-                               <td>Raj SteelRaj Steel
-                                   Dhanera Steel
-                                   H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW </label></a></td>
+                               <td>
+                                <span>0987</span>
+                                <span>6251</span>
+                                <span>5589</span>
+                                </td>
+                               <td>
+                                 <span>200 - SS - ASTM 303H</span>
+                                 <span>v500 - MS - ASTM 103L</span>
+                                 <span>125 - AL - ASTM 98</span>
+                               </td>
+                               <td>
+                                 <span>Rs. 7,85,587/-</span>
+                                 <span> Rs. 8,58,756/-</span>
+                                 <span>Rs. 3,55,898/-</span>
+                                  <span class="result">Rs. 5,55,55,666/-</span>
+                                 </td>
+                               <td>
+                                 <span>Raj SteelRaj Steel</span>
+                                 <span>Dhanera Steel</span>
+                                 <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                               </td>
                              </tr>
                            </tbody>
                          </table>
@@ -163,8 +202,8 @@
                          <div class="seller-details ">
                            <div class="magic-form">
                              <div class="magic-resize">
-                               <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                 <label class="detail-heading" for="add-one">
+                               <input class="magic-checkbox" type="checkbox" name="layout" id="add-four" value="option1">
+                                 <label class="detail-heading" for="add-four">
                                    TBS001 MIRAGE STEEL LTD.
                                  </label>
                              </div>
@@ -185,30 +224,40 @@
                                </thead>
                                <tbody>
                                  <tr>
-                                   <td>15/18 Rhythm House,
+                                   <td>
+                                      15/18 Rhythm House,
                                        Kaala Ghoda, Fort,
                                        Mumbai - 400005
                                        India</td>
-                                   <td>0987
-                                       6251
-                                       5589</td>
-                                   <td>200 - SS - ASTM 303H
-                                       500 - MS - ASTM 103L
-                                       125 - AL - ASTM 98</td>
-                                   <td>Rs. 7,85,587/-
-                                       Rs. 8,58,756/-
-                                       Rs. 3,55,898/-</td>
-                                   <td>Raj SteelRaj Steel
-                                       Dhanera Steel
-                                       H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW </label></a></td>
+                                   <td>
+                                    <span>0987</span>
+                                    <span>6251</span>
+                                    <span>5589</span>
+                                    </td>
+                                   <td>
+                                     <span>200 - SS - ASTM 303H</span>
+                                     <span>v500 - MS - ASTM 103L</span>
+                                     <span>125 - AL - ASTM 98</span>
+                                   </td>
+                                   <td>
+                                     <span>Rs. 7,85,587/-</span>
+                                     <span> Rs. 8,58,756/-</span>
+                                     <span>Rs. 3,55,898/-</span>
+                                      <span class="result">Rs. 5,55,55,666/-</span>
+                                     </td>
+                                   <td>
+                                     <span>Raj SteelRaj Steel</span>
+                                     <span>Dhanera Steel</span>
+                                     <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                                   </td>
                                  </tr>
                                </tbody>
                              </table>
                              <div class="seller-details ">
                                <div class="magic-form">
                                  <div class="magic-resize">
-                                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                     <label class="detail-heading" for="add-one">
+                                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-five" value="option1">
+                                     <label class="detail-heading" for="add-five">
                                        TBS001 MIRAGE STEEL LTD.
                                      </label>
                                  </div>
@@ -229,30 +278,40 @@
                                    </thead>
                                    <tbody>
                                      <tr>
-                                       <td>15/18 Rhythm House,
+                                       <td>
+                                          15/18 Rhythm House,
                                            Kaala Ghoda, Fort,
                                            Mumbai - 400005
                                            India</td>
-                                       <td>0987
-                                           6251
-                                           5589</td>
-                                       <td>200 - SS - ASTM 303H
-                                           500 - MS - ASTM 103L
-                                           125 - AL - ASTM 98</td>
-                                       <td>Rs. 7,85,587/-
-                                           Rs. 8,58,756/-
-                                           Rs. 3,55,898/-</td>
-                                       <td>Raj SteelRaj Steel
-                                           Dhanera Steel
-                                           H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW </label></a></td>
+                                       <td>
+                                        <span>0987</span>
+                                        <span>6251</span>
+                                        <span>5589</span>
+                                        </td>
+                                       <td>
+                                         <span>200 - SS - ASTM 303H</span>
+                                         <span>v500 - MS - ASTM 103L</span>
+                                         <span>125 - AL - ASTM 98</span>
+                                       </td>
+                                       <td>
+                                         <span>Rs. 7,85,587/-</span>
+                                         <span> Rs. 8,58,756/-</span>
+                                         <span>Rs. 3,55,898/-</span>
+                                          <span class="result">Rs. 5,55,55,666/-</span>
+                                         </td>
+                                       <td>
+                                         <span>Raj SteelRaj Steel</span>
+                                         <span>Dhanera Steel</span>
+                                         <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                                       </td>
                                      </tr>
                                    </tbody>
                                  </table>
                                  <div class="seller-details ">
                                    <div class="magic-form">
                                      <div class="magic-resize">
-                                       <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                         <label class="detail-heading" for="add-one">
+                                       <input class="magic-checkbox" type="checkbox" name="layout" id="add-six" value="option1">
+                                         <label class="detail-heading" for="add-six">
                                            TBS001 MIRAGE STEEL LTD.
                                          </label>
                                      </div>
@@ -273,22 +332,32 @@
                                        </thead>
                                        <tbody>
                                          <tr>
-                                           <td>15/18 Rhythm House,
+                                           <td>
+                                              15/18 Rhythm House,
                                                Kaala Ghoda, Fort,
                                                Mumbai - 400005
                                                India</td>
-                                           <td>0987
-                                               6251
-                                               5589</td>
-                                           <td>200 - SS - ASTM 303H
-                                               500 - MS - ASTM 103L
-                                               125 - AL - ASTM 98</td>
-                                           <td>Rs. 7,85,587/-
-                                               Rs. 8,58,756/-
-                                               Rs. 3,55,898/-</td>
-                                           <td>Raj SteelRaj Steel
-                                               Dhanera Steel
-                                               H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW </label></a></td>
+                                           <td>
+                                            <span>0987</span>
+                                            <span>6251</span>
+                                            <span>5589</span>
+                                            </td>
+                                           <td>
+                                             <span>200 - SS - ASTM 303H</span>
+                                             <span>v500 - MS - ASTM 103L</span>
+                                             <span>125 - AL - ASTM 98</span>
+                                           </td>
+                                           <td>
+                                             <span>Rs. 7,85,587/-</span>
+                                             <span> Rs. 8,58,756/-</span>
+                                             <span>Rs. 3,55,898/-</span>
+                                              <span class="result">Rs. 5,55,55,666/-</span>
+                                             </td>
+                                           <td>
+                                             <span>Raj SteelRaj Steel</span>
+                                             <span>Dhanera Steel</span>
+                                             <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                                           </td>
                                          </tr>
                                        </tbody>
                                      </table>
@@ -317,22 +386,32 @@
                                            </thead>
                                            <tbody>
                                              <tr>
-                                               <td>15/18 Rhythm House,
+                                               <td>
+                                                  15/18 Rhythm House,
                                                    Kaala Ghoda, Fort,
                                                    Mumbai - 400005
                                                    India</td>
-                                               <td>0987
-                                                   6251
-                                                   5589</td>
-                                               <td>200 - SS - ASTM 303H
-                                                   500 - MS - ASTM 103L
-                                                   125 - AL - ASTM 98</td>
-                                               <td>Rs. 7,85,587/-
-                                                   Rs. 8,58,756/-
-                                                   Rs. 3,55,898/-</td>
-                                               <td>Raj SteelRaj Steel
-                                                   Dhanera Steel
-                                                   H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW </label></a></td>
+                                               <td>
+                                                <span>0987</span>
+                                                <span>6251</span>
+                                                <span>5589</span>
+                                                </td>
+                                               <td>
+                                                 <span>200 - SS - ASTM 303H</span>
+                                                 <span>v500 - MS - ASTM 103L</span>
+                                                 <span>125 - AL - ASTM 98</span>
+                                               </td>
+                                               <td>
+                                                 <span>Rs. 7,85,587/-</span>
+                                                 <span> Rs. 8,58,756/-</span>
+                                                 <span>Rs. 3,55,898/-</span>
+                                                  <span class="result">Rs. 5,55,55,666/-</span>
+                                                 </td>
+                                               <td>
+                                                 <span>Raj SteelRaj Steel</span>
+                                                 <span>Dhanera Steel</span>
+                                                 <span>H. R Steel<br><a href="#" class="pull-right"><label class="view">VIEW</label></a></span>
+                                               </td>
                                              </tr>
                                            </tbody>
                                          </table>
