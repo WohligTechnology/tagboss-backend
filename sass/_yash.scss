@@ -65,19 +65,27 @@
     .order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
       border-top: solid 10px $panel-border;
       padding-top: 5px;
-      padding-bottom: 25px;
+      padding-bottom: 5px;
       padding-left: 20px;
       padding-right: 20px;
       background-color: $box-background;
-        .checkbox{
-            margin-top: 0px;
-            margin-bottom: 0px;
-            }
+      color: $panel-border;
+       .magic-form{
+         display: inline-block;
+         }
+        .detail-heading{
+           margin-bottom: 0px;
+           font-weight: bold;
+          }
+        .date{
+          margin-top: 5px;
+        }
         .starred{
-             margin-top: -4px;
+
              margin-left: 40px;
              cursor:pointer;
              font-size: 20px;
+             color: #B3B3B3;
         }
 
       }
@@ -230,16 +238,13 @@
           width: 20px;
           height: 20px;
           margin: 0 10px 0 0;
-        }
-        span{
-          margin: 6px 0 0 8px;
-          .caret {
-              border-top: 8px dashed !important;
-              border-right: 8px solid transparent !important;
-              border-left: 8px solid transparent !important;
           }
         }
-      }
+        .carrot{
+            margin-top: -3px;
+            font-size: 25px;
+            margin-left: 10px;
+            }
     }
   }
 
@@ -850,10 +855,15 @@
             .assign-agency-details{
               border-top: solid 10px $panel-border;
               padding-top: 5px;
-              padding-bottom: 25px;
+              padding-bottom: 5px;
               padding-left: 20px;
               padding-right: 20px;
               background-color: $box-background;
+              color:$panel-border;
+                .detail-heading{
+                 margin-bottom: 0px;
+                 font-weight: bold;
+                }
                 .checkbox{
                     margin-top: 0px;
                     margin-bottom: 0px;
@@ -863,6 +873,7 @@
                      margin-left: 40px;
                      cursor:pointer;
                      font-size: 20px;
+                     color: #B3B3B3;
                 }
             }
             .assign-agency-table{
