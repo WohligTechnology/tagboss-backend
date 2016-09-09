@@ -70,7 +70,7 @@
 }
 
 // -------------thsi css is for details----------------
-.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
+.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details, .refund-to-buyer-details{
   border-top: solid 10px $panel-border;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -82,13 +82,12 @@
      display: inline-block;
      .detail-heading{
            font-size: 18px;
-           padding-tops: 0px;
+           padding-top: 0px !important;
+           margin-bottom: 0px;
+           font-weight: bold;
              }
        }
-    .detail-heading{
-       margin-bottom: 0px;
-       font-weight: bold;
-      }
+
     .date{
 
       font-size: 15px;
@@ -512,10 +511,11 @@
                         margin-bottom: 40px;
                                   .form-group{
                                           display: inline-block;
-
+                                            textarea{resize:none;}
                                           .form-control{
                                             background-color: #E6E6E6;
                                             width:80%;
+                                            height: 140px;
                                             border: none;
                                             }
                                           .comment{
@@ -550,62 +550,6 @@
 
 .payment-to-sellers{
   .payment-to-seller{
-                .search-content{
-                  margin-bottom: 25px;
-                .period{
-
-                  display: inline-flex;
-                  height: 50px;
-                  align-items: center;
-                  border: 1px solid;
-                  border-radius: 20px;
-                  width: 100%;
-                  padding-left: 25px;
-                  .search-i{
-                    i{
-                      border: none;
-                      border-left: 1px solid;
-                      &:hover{
-                        background-color: #fff;
-                      }
-                    }
-                  }
-
-
-                  .date{
-                    background-color: #ffffff;
-                    width: 40%;
-                    border: none;
-                    .cal-btn{
-                      background: none;
-                      border:none;
-                      }
-                      .cal-input{
-                          border:none;
-                      }
-                    }
-                }
-                .more-opt{
-                  border-left: 1px solid #ccc;
-                  float: right;
-                  padding: 12px;
-                  display: inline-flex;
-                  input{
-                    width: 20px;
-                    height: 20px;
-                    margin: 0 10px 0 0;
-                  }
-                  span{
-                    margin: 6px 0 0 8px;
-                    .caret {
-                        border-top: 8px dashed !important;
-                        border-right: 8px solid transparent !important;
-                        border-left: 8px solid transparent !important;
-                    }
-                  }
-                }
-
-              }
 
 
               .received-sent{
@@ -649,7 +593,7 @@
                 padding-top: 8px;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-bottom: 2px;
+                padding-bottom: 5px;
                 background-color: $box-background;
                   .checkbox{
                       margin-top: 0px;
@@ -668,62 +612,7 @@
 // --------------this css for refunf-to-buyer ---------------
 .refund-to-buyers{
   .refund-to-buyer{
-              .search-content{
-                margin-bottom: 25px;
-              .period{
 
-                display: inline-flex;
-                height: 50px;
-                align-items: center;
-                border: 1px solid;
-                border-radius: 20px;
-                width: 100%;
-                padding-left: 25px;
-                .search-i{
-                  i{
-                    border: none;
-                    border-left: 1px solid;
-                    &:hover{
-                      background-color: #fff;
-                    }
-                  }
-                }
-
-
-                .date{
-                  background-color: #ffffff;
-                  width: 40%;
-                  border: none;
-                  .cal-btn{
-                    background: none;
-                    border:none;
-                    }
-                    .cal-input{
-                        border:none;
-                    }
-                  }
-              }
-              .more-opt{
-                border-left: 1px solid #ccc;
-                float: right;
-                padding: 12px;
-                display: inline-flex;
-                input{
-                  width: 20px;
-                  height: 20px;
-                  margin: 0 10px 0 0;
-                }
-                span{
-                  margin: 6px 0 0 8px;
-                  .caret {
-                      border-top: 8px dashed !important;
-                      border-right: 8px solid transparent !important;
-                      border-left: 8px solid transparent !important;
-                      }
-                  }
-                }
-
-            }
             .bar{
               margin-bottom: 20px;
               .total-request{
@@ -735,24 +624,7 @@
                 background-color: pink;
               }
             }
-            .refund-to-buyer-details{
-              border-top: solid 10px $panel-border;
-              padding-top: 5px;
-              padding-bottom: 25px;
-              padding-left: 20px;
-              padding-right: 20px;
-              background-color: $box-background;
-                .checkbox{
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                    }
-                .starred{
-                     margin-top: -4px;
-                     margin-left: 40px;
-                     cursor:pointer;
-                     font-size: 20px;
-                }
-            }
+
             .refund-to-buyer-table{
                     background-color: #F8F8F8;
                     tr{width: 100%;}
