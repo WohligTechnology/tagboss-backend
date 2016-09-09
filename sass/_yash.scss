@@ -1,5 +1,112 @@
-.orders, .view_orders, .sellers, .buyers, .view-sellers, .view-buyers, .request-sellers, .request-buyers, .view-request-sellers, .view-request-buyers{
-  .order, .view_order, .seller , .buyer{
+// -----------common css--------------------
+.search-content{
+  padding-bottom: 20px;
+  border-bottom: 1px solid #C1C1C7;
+  margin-bottom: 5px;
+  .search-top{
+    color:#454559;
+    border: 2px solid #C1C1C7;
+    border-radius: 20px;
+    padding: 6px;
+    input{
+      border: none;
+    }
+    span{
+      border-left: 1px solid #ccc;
+      i{
+        color:#C1C1C7;
+        border: none;
+        border-left: 1px solid #ccc !important;
+        &:hover{
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .filter{
+    margin-right: 40px;
+    margin-top: 12px;
+    label {
+        top: -3px;
+        position: relative;
+        font-weight: inherit;
+        }
+    }
+  .more-opt{
+    border-left: 1px solid #ccc;
+    float: right;
+    padding: 12px;
+    display: inline-flex;
+    .magic-resize{
+      margin-top: -5px;
+      margin-left: 15px;
+      }
+    }
+    .carrot{
+        margin-top: -3px;
+        font-size: 25px;
+        margin-left: 10px;
+        }
+}
+// ----------common css for table-----------------
+.order-table, .request-seller-table, .request-buyer-table{
+     background-color: #F8F8F8;
+     tr{width: 100%;}
+     td, th {
+       width: 20%;
+       padding-left: 25px;
+       padding-right: 25px;
+       span{
+             display: block;
+           }
+       }
+   .view{
+    text-decoration: underline;
+    cursor: pointer;
+    color: $panel-border;
+    font-size: 18px;
+
+  }
+}
+
+// -------------thsi css is for details----------------
+.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
+  border-top: solid 10px $panel-border;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: $box-background;
+  color: $panel-border;
+   .magic-form{
+     display: inline-block;
+     .detail-heading{
+           font-size: 18px;
+           padding-tops: 0px;
+             }
+       }
+    .detail-heading{
+       margin-bottom: 0px;
+       font-weight: bold;
+      }
+    .date{
+
+      font-size: 15px;
+    }
+    .starred{
+
+         margin-left: 40px;
+         cursor:pointer;
+         font-size: 20px;
+         color: #B3B3B3;
+    }
+
+  }
+
+  // ------------------------------------------------------------------------------------------------
+
+.orders, .view_orders, .view-sellers, .view-buyers, {
+  .order, .view_order, {
     .search-content{margin-bottom: 20px;
             .search-tuto, {
                display: flex;
@@ -63,69 +170,7 @@
             }
     }
   }
-    .order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details{
-      border-top: solid 10px $panel-border;
-      padding-top: 4px;
-      padding-bottom: 4px;
-      padding-left: 20px;
-      padding-right: 20px;
-      background-color: $box-background;
-      color: $panel-border;
-       .magic-form{
-         display: inline-block;
-         .detail-heading{
-               font-size: 18px;
-               padding: 0px;
-                 }
-           }
-        .detail-heading{
-           margin-bottom: 0px;
-           font-weight: bold;
-          }
-        .date{
 
-          font-size: 15px;
-        }
-        .starred{
-
-             margin-left: 40px;
-             cursor:pointer;
-             font-size: 20px;
-             color: #B3B3B3;
-        }
-
-      }
-      .order-table, .request-seller-table, .request-buyer-table{
-           background-color: #F8F8F8;
-           tr{width: 100%;}
-           td, th {
-             width: 20%;
-             padding-left: 25px;
-             padding-right: 25px;
-             span{
-                   display: block;
-                 }
-             }
-         .view{
-          text-decoration: underline;
-          cursor: pointer;
-          color: $panel-border;
-          font-size: 18px;
-
-        }
-      }
-       .seller-table, .buyer-table{
-         @extend .order-table;
-         td{
-           width:20%;
-           .result{
-             font-weight: bold;
-             font-size: 16px;
-           }
-          }
-
-
-       }
 
 
 
@@ -229,50 +274,16 @@
   .sellers, .buyers
   {
     .seller, .buyer{
-      .search-top{
-        color:#454559;
-        border: 2px solid #C1C1C7;
-        border-radius: 20px;
-        padding: 6px;
-        input{
-          border: none;
-        }
-        span{
-          border-left: 1px solid #ccc;
-          i{
-            color:#C1C1C7;
-            border: none;
-            border-left: 1px solid #ccc !important;
-            &:hover{
-              background-color: #fff;
-            }
-          }
-        }
+      .seller-table, .buyer-table{
+              @extend .order-table;
+              td{
+                width:20%;
+                .result{
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+               }
       }
-      .filter{
-        margin-right: 40px;
-        margin-top: 12px;
-        label {
-            top: -3px;
-            position: relative;
-            font-weight: inherit;
-            }
-        }
-      .more-opt{
-        border-left: 1px solid #ccc;
-        float: right;
-        padding: 12px;
-        display: inline-flex;
-        .magic-resize{
-          margin-top: -5px;
-          margin-left: 15px;
-          }
-        }
-        .carrot{
-            margin-top: -3px;
-            font-size: 25px;
-            margin-left: 10px;
-            }
     }
   }
 
@@ -280,7 +291,7 @@
   .view-sellers, .view-buyers{
     .view-seller, .view-buyer{
       .search-content{
-        margin-bottom: 25px;
+        margin-bottom: 20px;
       .period{
 
         display: inline-flex;
@@ -289,7 +300,8 @@
         border: 1px solid;
         border-radius: 20px;
         width: 100%;
-        padding-left: 25px;
+        padding-left: 30px;
+        padding-right: 20px;
         .search-i{
           i{
             border: none;
@@ -314,32 +326,11 @@
             }
           }
       }
-      .more-opt{
-        border-left: 1px solid #ccc;
-        float: right;
-        padding: 12px;
-        display: inline-flex;
-        input{
-          width: 20px;
-          height: 20px;
-          margin: 0 10px 0 0;
-          }
-          .carrot{
-              margin-top: -3px;
-              font-size: 25px;
-              margin-left: 10px;
-              }
-        }
 
-        .starred{
 
-             margin-left: 40px;
-             cursor:pointer;
-             font-size: 20px;
-             color: #B3B3B3;
-                }
+
           } //search-content end
-          .stat-row-1{background-color: yellow;
+          .stat-row-1{
                       height:200px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -348,6 +339,8 @@
                       padding-bottom:20px;
                       p{
                         font-weight: bold;
+                        font-size:20px;
+                         color:#999999;;
                       }
                       }
 
@@ -363,7 +356,7 @@
                       }
 
                       .order-content{
-                         background-color: aqua;
+
                           height:100%;
                         border-right:1px solid;
                         }
@@ -380,10 +373,12 @@
                       height:350px;
                       padding-top: 20px;
                       padding-bottom:20px;
-                      background-color: yellow;
                       margin-bottom: 40px;
+                      border-bottom: 1px solid;
                       p{
                         font-weight: bold;
+                        font-size:20px;
+                         color: #999999;
                       }
                       .diagram{
                          height: 290px;
@@ -402,14 +397,18 @@
                           border-right:1px solid;
                       }
                       .frequancy-content{
-                        background-color: aqua;
+
                         height: 100%;
 
 
                       }
 
                   table{
-                  width:80%;}
+
+                              width:80%;
+                              // border:1px solid;
+
+                        }
     }
 }
 
@@ -437,62 +436,24 @@
   // -------this css is for request-seller and request-buyer---------------
   .request-sellers, .request-buyers{
     .request-seller, .request-buyer{
-      .search-content{
-        margin-bottom: 25px;
-      .period{
 
-        display: inline-flex;
-        height: 50px;
-        align-items: center;
-        border: 1px solid;
-        border-radius: 20px;
-        width: 100%;
-        padding-left: 25px;
-        .search-i{
-          i{
-            border: none;
-            border-left: 1px solid;
-            &:hover{
-              background-color: #fff;
-            }
-          }
-        }
+                .request-seller-table, .request-buyer-table{
+                    @extend .order-table;
+                    td{
+                      width:20%;
+                      .result{
+                        font-weight: bold;
+                        font-size: 16px;
+                      }
+                     }
+                  }
+                  .view-td{
+                    vertical-align: bottom;
+                    padding: 0;
+                    text-align: center;
+                    label{width: 100%;}
+                  }
 
-
-        .date{
-          background-color: #ffffff;
-          width: 40%;
-          border: none;
-          .cal-btn{
-            background: none;
-            border:none;
-            }
-            .cal-input{
-                border:none;
-            }
-          }
-      }
-      .more-opt{
-        border-left: 1px solid #ccc;
-        float: right;
-        padding: 12px;
-        display: inline-flex;
-        input{
-          width: 20px;
-          height: 20px;
-          margin: 0 10px 0 0;
-        }
-        span{
-          margin: 6px 0 0 8px;
-          .caret {
-              border-top: 8px dashed !important;
-              border-right: 8px solid transparent !important;
-              border-left: 8px solid transparent !important;
-          }
-        }
-      }
-
-    }
 
     }
   }
@@ -500,113 +461,91 @@
   // ----------this css is for view-request-sellers and view-reuest-buyers ----------
   .view-request-sellers, .view-request-buyers{
     .view-request-seller, .view-request-buyer{
-              .search-content{
-                margin-bottom: 25px;
-              .period{
-
-                display: inline-flex;
-                height: 50px;
-                align-items: center;
-                border: 1px solid;
-                border-radius: 20px;
-                width: 100%;
-                padding-left: 25px;
-                .search-i{
-                  i{
-                    border: none;
-                    border-left: 1px solid;
-                    &:hover{
-                      background-color: #fff;
-                    }
-                  }
-                }
 
 
-                .date{
-                  background-color: #ffffff;
-                  width: 40%;
-                  border: none;
-                  .cal-btn{
-                    background: none;
-                    border:none;
-                    }
-                    .cal-input{
-                        border:none;
-                    }
-                  }
-              }
-          }
+                      .view-request-seller-table, .view-request-buyer-table{
+                        background-color: #F8F8F8;
+                        tr{width: 100%;}
+                        td{width: 33.33%;}
+                      }
+
+                      .progress{
+                        background-color: red;
+                        height:50px;
+                        margin-bottom: 20px;
+                      }
+                      .certifications{
+                        background-color: $box-background;
+                        font-size: 16px;
+                        margin-bottom: 40px;
+                        .certification-header{
+                          height:40px;
+                          border-bottom: 1px solid;
+                          padding-left: 10px;
+                          padding-top: 20px;
+                          font-weight: bold;
+                        }
+                        .col-1{
+                          padding-right: 0px;
+                        }
+                        .col-2{
+                          padding-left: 0px;
+                          padding-right: 0px;}
+                        .col-3{
+                          padding-left: 0px;
+                        }
+                      .abc{
 
 
-        .view-request-seller-table, .view-request-buyer-table{
-          background-color: #F8F8F8;
-          tr{width: 100%;}
-          td{width: 33.33%;}
-        }
+                        padding: 15px;
+                        p{text-align:center;}
+                        .cert-image{
+                          background-color: red;
+                          height: 400px;
+                          margin-bottom: 10px;
+                        }
 
-        .progress{
-          background-color: red;
-          height:50px;
-          margin-bottom: 20px;
-        }
-        .certifications{
-          background-color: $box-background;
-          height: 800px;
-          margin-bottom: 40px;
-          .certification-header{
-            height:40px;
-            border-bottom: 1px solid;
-            padding-left: 10px;
-            padding-top: 20px;
-          }
-          .col-1{
-            padding-right: 0px;
-          }
-          .col-2{
-            padding-left: 0px;
-            padding-right: 0px;}
-          .col-3{
-            padding-left: 0px;
-          }
-        .abc{
-          height: 760px;
+                        }
+                      }
+                      .comment-area{
+                        text-align: center;
+                        margin-bottom: 40px;
+                                  .form-group{
+                                          display: inline-block;
 
-          padding: 15px;
-          p{text-align:center;}
-          .cert-image{
-            background-color: red;
-            height: 650px;
-            margin-bottom: 10px;
-          }
+                                          .form-control{
+                                            background-color: #E6E6E6;
+                                            width:80%;
+                                            border: none;
+                                            }
+                                          .comment{
+                                            color: $panel-border;
+                                            font-weight: normal;
+                                            width: 20%;
+                                            font-size: 20px;
+                                          }
 
-          }
-        }
-        .comment-area{
-          text-align: center;
-          margin-bottom: 40px;
-                    .form-group{
-                            display: inline-block;
-                            width:50%;
-                            .form-control{
-                              background-color: #F2F2F2;
-                              }
-                      .comment{
-                              color: $panel-border;
-                              font-weight: normal;
-                            }
-
+                                        }
                           }
-                    }
-        .accept-reject{
-          text-align: center;
-          margin-bottom: 40px;
-          button{
-            display: inline-block;
-            background-color: $panel-border;
-          }
-        }
+
+                      .accept-reject{
+                        text-align: center;
+                        margin-bottom: 40px;
+                        button{
+                          font-size: 18px;
+                          display: inline-block;
+                          background-color: $panel-border;
+                          margin-left: 20px;
+                          padding-left: 25px;
+                          padding-right: 25px;
+                        }
+                      }
     }
   }
+
+
+
+
 // ---------------this css is for payment-to-sellers  ---------------------
 
 .payment-to-sellers{
