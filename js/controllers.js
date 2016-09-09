@@ -387,6 +387,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Categories");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
 })
 
 .controller('SellersCtrl', function($scope, TemplateService, NavigationService, $timeout) {

@@ -53,7 +53,7 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-a, .btn {
+a, .btn label{
   cursor: pointer;
   @include transition(all ease 300ms);
 }
@@ -316,6 +316,7 @@ header{
         width: 50px;
         vertical-align: middle;
         height: 55px;
+        cursor: pointer;
         i{
            background-color: #414156;
            border-radius: 20%;
@@ -352,6 +353,7 @@ header{
       height: 55px;
       padding: 18px;
       margin: 5px 0;
+      cursor: pointer;
       i{
          font-size: 18px;
          color: #fff;
@@ -465,6 +467,8 @@ button{
       position: relative;
       cursor: pointer;
       margin: 0;
+      background-color:#E6E6E6;
+      border-top: 6px solid #043E77;
     &:after{
         content: '';
         border-right: 35px solid transparent;
@@ -483,58 +487,27 @@ button{
       padding: 40px 0 10px 20px;
       line-height: 30px;
       font-size: 12px;
-      margin-bottom: 7px;
+      margin-bottom: 10px;
     }
     h2{
-      background-color:#E6E6E6;
-      font-size: 18px;
-      padding: 10px;
-      color: #043E77;
-      border-top: 6px solid;
-      margin: 0;
+        font-size: 16px;
+        padding: 10px;
+        color: #043E77;
+        margin: 0;
+        font-weight: 700;
     }
   }
 }
 
 .categories{
-  .head{
-    background-color: #E6E6E6;
-    padding: 10px;
-    border-top: 6px solid #043E77;
-    margin: 2px 0 0 0;
-    h2{
-      font-size: 18px;
-      color: #043E77;
-      margin: 0;
-      padding: 0 0 0 25px;
+  a{
+    color: #043E77;
+    label{
+      font-weight: normal;
+
     }
-    // .magic-form{
-    //   width: 50%;
-    // }
-
-      .edit-categ{
-        input{
-          border-radius: 10px 0 0 10px;
-          background: none;
-        }
-        span{
-          border: 0;
-          background: #043E77;
-          border-radius: 0 10px 10px 0;
-          text-transform: uppercase;
-          color: #fff;
-        }
-      }
-      .edit-btn{
-        padding: 0 0 0 15px;
-      }
-      .trash-icon{
-        padding: 0 0 0 15px;
-        font-size: 24px;
-        color: #043E77;
-      }
-
   }
+
   .search-top{
     border: 1px solid;
     border-radius: 20px;
@@ -544,6 +517,7 @@ button{
     }
     span{
       i{
+        border-left: 1px solid #ccc !important;
         border: none;
         &:hover{
           background-color: #fff;
@@ -570,14 +544,89 @@ button{
       }
     }
   }
-  .details-1{
-    margin: 0!important;
-    border: none!important;
-  }
-  .details, .details-1{
-    margin-top: 15px;
-    border-top: 1px solid #043E77;
 
+  .details{
+      margin: 15px 10px;
+      .head{
+        background-color: #E6E6E6;
+        padding: 3px 0 0 10px;
+        border-top: 6px solid #043E77;
+        margin: 0;
+        line-height: 22px;
+        h2{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          padding: 0 0 0 4em;
+        }
+        // .magic-form{
+        //   width: 50%;
+        // }
+
+          .edit-categ{
+            input{
+              border-radius: 10px 0 0 10px;
+              background: none;
+              height: 30px;
+            }
+            span{
+              border: 0;
+              background: #043E77;
+              border-radius: 0 10px 10px 0;
+              text-transform: uppercase;
+              color: #fff;
+            }
+          }
+          .edit-btn{
+            padding: 7px 0 0 15px;
+          }
+          .trash-icon{
+            padding: 0 0 0 15px;
+            font-size: 24px;
+            color: #043E77;
+          }
+
+      }
+      .child-head{
+        background-color: #E6E6E6;
+        padding: 3px 0 0 10px;
+        border-top: 3px solid #043E77;
+        margin: 0;
+        line-height: 22px;
+        h2{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          padding: 7px 0 0 3.5em;
+        }
+        // .magic-form{
+        //   width: 50%;
+        // }
+
+          .edit-categ{
+            input{
+              border-radius: 10px 0 0 10px;
+              background: none;
+              height: 30px;
+            }
+            span{
+              border: 0;
+              background: #043E77;
+              border-radius: 0 10px 10px 0;
+              text-transform: uppercase;
+              color: #fff;
+            }
+          }
+          .edit-btn{
+            padding: 7px 0 0 15px;
+          }
+          .trash-icon{
+            padding: 0 0 0 15px;
+            font-size: 24px;
+            color: #043E77;
+          }
+
+      }
     .info{
       background-color: #F8F8F8;
       padding: 0 35px;
@@ -587,10 +636,10 @@ button{
       .rounded-mid{
         display: inline-flex;
         border-bottom: 1px solid #ccc;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         .rounded-pipes{
           width: 50%;
-          text-align: center;
+          padding: 0 0 0 6em;
           h3{
             font-size: 22px;
             text-transform: none;
@@ -640,6 +689,7 @@ button{
       }
     }
   }
+
   .more-opt{
     border-left: 1px solid #ccc;
     float: right;
@@ -659,6 +709,7 @@ button{
       }
     }
   }
+
   .details-1{
     margin: 0!important;
     border: none!important;
