@@ -147,6 +147,11 @@ controller: 'Assign-agencyCtrl'
   url: "/transporter-payment",
   templateUrl: "views/template.html",
   controller: 'TransporterPaymentCtrl'
+  })
+  .state('pending-delivery', {
+  url: "/pending-delivery",
+  templateUrl: "views/template.html",
+  controller: 'PendingDeliveryCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");

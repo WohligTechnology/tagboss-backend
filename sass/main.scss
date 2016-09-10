@@ -245,13 +245,14 @@ a, .btn label{
 }
 
 
+// start header css //
 
-
-header{
+header, .header1{
   position: fixed;
   z-index: 9999;
   background-color: #fff;
   padding-top: 20px;
+  width: 100%;
   p{
     margin: 0;
   }
@@ -261,6 +262,7 @@ header{
     padding: 6px;
     input{
       border: none;
+      font-size: 12px;
     }
     span{
       i{
@@ -295,11 +297,15 @@ header{
   .navbar-inverse {
     background-color: $darkblue;
     border: none;
+    .admin-head{
+      min-height: 65px;
       h1{
         color: #fff;
         font-size: 24px;
         margin: 20px 0 0 0;
       }
+    }
+
       .date{
         color: #fff;
         margin: 24px 0 0 20px;
@@ -377,39 +383,18 @@ header{
 }
 }
 
-.header1{
-  .tagboss-logo{
-    img{
-      margin: 0 auto;
-      padding: 0 0 20px 0;
-    }
-  }
-  nav .admin-head{
-    h1{
-      color: #fff;
-      font-size: 26px;
-      margin: 12px 0 0 0;
-    }
-    .date{
-      color: #fff;
-      margin: 16px 0 0 0;
-    }
-  }
-  .navbar-inverse {
-    background-color: $darkblue;
-    border: none;
-  }
-  .resize{
-    border-radius: 0;
-  }
-}
+// end header css //
 
-button{
-  background-color: $lightblue;
-  color: #fff;
-}
+//
+// button{
+//   background-color: $lightblue;
+//   color: #fff;
+// }
+
+// start login css //
 
 .login{
+  margin: 0;
     .form-login{
     padding: 22px;
     background-color: #ccc;
@@ -436,6 +421,10 @@ button{
   }
 }
 
+// end login css //
+
+// start side menu css //
+
 .side-menu{
   position: relative;
   .sidebar {
@@ -460,6 +449,10 @@ button{
   }
 
 }
+
+// end side menu css //
+
+// start dashboard css //
 
 .dashboard{
   .details{
@@ -499,10 +492,19 @@ button{
   }
 }
 
+// end dashboard css //
+
+
+
+
+
+// start main all css //
+
 span, label, i{cursor: pointer;}
 
 .categories, .material-construct, .inspection-agencies, .add-inspetion-agency, .transporters,
-.add-transporter, .ads, .add-ad, .reports, .transporter-payment, .grades-standards, .grades-standards1{
+.add-transporter, .ads, .add-ad, .reports, .transporter-payment, .grades-standards, .grades-standards1,
+.pending-delivery{
   table tr > th, td{
     color: #1D1D35;
     padding: 10px;
@@ -527,6 +529,7 @@ span, label, i{cursor: pointer;}
     margin: 0 0 0 10px;
     input{
       border: none;
+      font-size: 12px;
     }
     span{
       i{
@@ -598,6 +601,7 @@ span, label, i{cursor: pointer;}
               border-radius: 10px 0 0 10px;
               background: none;
               height: 30px;
+              font-size: 12px;
             }
             span{
               border: 0;
@@ -622,7 +626,7 @@ span, label, i{cursor: pointer;}
               margin: 0;
               padding: 0;
             }
-            .add-prod-cate{width: 50%;}
+            .add-prod-cate{width: 50%; padding: 0 7px 0 0;}
             li{
               list-style-type: none;
               display: inline-block;
@@ -633,6 +637,8 @@ span, label, i{cursor: pointer;}
           }
 
       }
+
+      // start child head css
 
       .child-head{
         background-color: #E6E6E6;
@@ -646,16 +652,13 @@ span, label, i{cursor: pointer;}
           margin: 0;
           padding: 7px 0 0 3.5em;
         }
-        // .magic-form{
-        //   width: 50%;
-        // }
-
 
           .edit-categ{
             input{
               border-radius: 10px 0 0 10px;
               background: none;
               height: 30px;
+              font-size: 12px;
             }
             span{
               border: 0;
@@ -680,7 +683,7 @@ span, label, i{cursor: pointer;}
               margin: 0;
               padding: 0;
             }
-            .add-prod-cate{width: 50%;}
+            .add-prod-cate{width: 50%; padding: 0 7px 0 0;}
             li{
               list-style-type: none;
               display: inline-block;
@@ -752,7 +755,6 @@ span, label, i{cursor: pointer;}
           }
         }
         .edit-assign-type{
-
           p{
             margin: 20px 0 7px 0;
             font-size: 17px;
@@ -797,6 +799,9 @@ span, label, i{cursor: pointer;}
       }
     }
   }
+
+  // start details-1 css
+
   .details-1{
     margin: 15px 10px;
     border-top: 6px solid #043E77;
@@ -931,121 +936,73 @@ span, label, i{cursor: pointer;}
   }
 }
 
-.transporter-payment{
+// end main all css //
+
+
+
+// start transporter payment styles //
+
+.transporter-payment, .pending-delivery{
   label {
-    margin-top: 15px;
-    display: inline-block;
+    margin: 15px 0 0 10px;
+    /* display: inline-block; */
     text-transform: uppercase;
   }
-  .search-top{
-    border: 1px solid;
-    border-radius: 20px;
-    padding: 6px;
-    display: inline-block;
-    width: 85%;
-    vertical-align: top;
-    input{
-      width: 85%;
-      border: none;
-    }
-    span{
-      i{
+  table tr > th{
+        padding: 15px;
+        text-transform: uppercase;
+      }
+      .delivery-status{
+        width: 12%!important;
+      }
+  .date-to{
+    display: inline-flex;
+    .search-top{
+      border: 1px solid;
+      border-radius: 20px;
+      padding: 6px;
+      display: inline-block;
+      width: 30%;
+      vertical-align: top;
+      input{
         border: none;
-        &:hover{
-          background-color: #fff;
+      }
+      span{
+        i{
+          border: none;
+          &:hover{
+            background-color: #fff;
+          }
         }
       }
     }
   }
-  .details, .details-1{
-    margin-top: 15px;
-    .head{
-      background-color: #E6E6E6;
-      padding: 10px;
-      border-top: 6px solid #043E77;
-      margin: 2px 0 0 0;
-      h2{
-        font-size: 18px;
-        color: #043E77;
-        margin: 0;
-        padding: 0 0 0 25px;
-      }
-      // .magic-form{
-      //   width: 50%;
-      // }
 
-        .edit-categ{
-          margin: 7px;
-        }
-        .edit-btn{
-          padding: 0 0 0 15px;
-        }
-        .trash-icon{
-          padding: 0 0 0 15px;
-          font-size: 24px;
-          color: #043E77;
-        }
-
-    }
-    table tr > th, td{
-      padding: 15px;
-      color: #043E77;
-    }
+  .details{
     .info{
-      background-color: #F8F8F8;
-      padding: 15px 35px;
-      line-height: 30px;
-      font-size: 12px;
-      margin-bottom: 7px;
-      .rounded-mid{
-        border-bottom: 1px solid #ccc;
-        .rounded-pipes{
-          width: 50%;
-          width: 50%;
-          display: inline-block;
-          h3{
-            font-size: 22px;
-            text-transform: none;
-            color: #043E77;
-          }
-          h4{
-            font-size: 18px;
-            text-transform: none;
-            color: #043E77;
-            margin: 25px 0 0 0;
-          }
-        }
-
-        .edit-type{
-          width: 50%;
-          text-align: right;
-          p{
-            margin: 20px 0 10px 30px;
-            font-size: 17px;
-          }
-        }
-        .edit-type-1{
-          width: 50%;
-          text-align: right;
-          margin: 10px 0 0 0;
-          p{
-            font-size: 17px;
-          }
-        }
-      }
-      table tr > th{
-        width: 10%;
-      }
+      padding: 0;
     }
   }
+
 }
 
-.grades-standards, .grades-standards1 {
-  h2{
-    font-size: 26px;
-  }
-  .period{
+// end transporter payment styles //
 
+// start grades standards styles //
+
+.grades-standards, .grades-standards1 {
+
+  .magic-form .magic-resize .magic-checkbox + label:after {
+    top: 6px;
+    left: -19px;
+    box-sizing: border-box;
+    width: 6px;
+    height: 12px;
+    transform: rotate(45deg);
+    border: none;
+}
+
+  .period{
     display: inline-flex;
     height: 50px;
     align-items: center;
@@ -1053,6 +1010,7 @@ span, label, i{cursor: pointer;}
     border-radius: 20px;
     width: 100%;
     padding-left: 25px;
+    margin: 0 0 0 10px;
     .search-i{
       i{
         border: none;
@@ -1077,84 +1035,17 @@ span, label, i{cursor: pointer;}
         }
       }
   }
-  .search-top{
-    border: 1px solid;
-    border-radius: 20px;
-    padding: 6px;
-    input{
-      border: none;
-    }
-    span{
-      border: none;
-      i{
-
-        border-left: 1px solid;
-        &:hover{
-          background-color: #fff;
-        }
-      }
-    }
-  }
-
-  .more-opt{
-    border-left: 1px solid #ccc;
-    float: right;
-    padding: 12px;
-    display: inline-flex;
-    input{
-      width: 20px;
-      height: 20px;
-      margin: 0 10px 0 0;
-    }
-    span{
-      margin: 6px 0 0 8px;
-      .caret {
-          border-top: 8px dashed !important;
-          border-right: 8px solid transparent !important;
-          border-left: 8px solid transparent !important;
-      }
-    }
-  }
 
   .details{
-    margin-top: 15px;
-    border-top: 1px solid #043E77;
+
     .head{
       background-color: #E6E6E6;
-      padding: 10px;
+      padding: 3px 0 0 10px;
       border-top: 6px solid #043E77;
       margin: 2px 0 0 0;
-      h2{
-        font-size: 18px;
-        color: #043E77;
-        margin: 0;
-        padding: 0 0 0 25px;
+      .grades-head{
+        padding: 7px 0 0 5em!important;
       }
-      // .magic-form{
-      //   width: 50%;
-      // }
-
-        .edit-categ{
-          input{
-            border-radius: 10px 0 0 10px;
-            background: none;
-          }
-          span{
-            border: 0;
-            background: #043E77;
-            border-radius: 0 10px 10px 0;
-            text-transform: uppercase;
-            color: #fff;
-          }
-        }
-        .edit-btn{
-          padding: 0 0 0 15px;
-        }
-        .trash-icon{
-          padding: 0 0 0 15px;
-          font-size: 24px;
-          color: #043E77;
-        }
 
     }
     .editor-box{
@@ -1170,26 +1061,7 @@ span, label, i{cursor: pointer;}
       font-size: 12px;
       padding-bottom: 20px;
       margin-bottom: 7px;
-      // .rounded-mid{
-      //   display: inline-flex;
-      //   border-bottom: 1px solid #ccc;
-      //   .rounded-pipes{
-      //     width: 50%;
-      //     text-align: center;
-      //     h3{
-      //       font-size: 22px;
-      //       text-transform: none;
-      //       color: #043E77;
-      //     }
-      //   }
-      //   .edit-type{
-      //     width: 50%;
-      //     p{
-      //       margin: 20px 0 10px 30px;
-      //       font-size: 17px;
-      //     }
-      //   }
-      // }
+
       .magic-form{
         padding: 15px;
       }
@@ -1206,6 +1078,7 @@ span, label, i{cursor: pointer;}
   }
 }
 
+// end grades standards styles //
 
 
 
