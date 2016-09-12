@@ -312,8 +312,26 @@ header, .header1{
         text-align: left;
       }
       .icons{
+        float: right;
+        padding: 0 15px;
         div+div{
           border-left: 1px solid #fff;
+        }
+      }
+      .head-tag{
+        padding: 0 15px 0 0;
+        div+div{
+          border-left: 1px solid #fff;
+        }
+        label{
+          font-size: 14px;
+          padding: 23px 0 0 0;
+          font-weight: normal;
+          color: #fff;
+          &:hover{
+            color: #b5b5bc;
+            text-decoration: underline;
+          }
         }
       }
       .seller, .buyer{
@@ -348,7 +366,7 @@ header, .header1{
             right: 7px;
             position: absolute;
          }
-         label {font-size: 10px; color: #fff;}
+         label {font-size: 10px; color: #fff; padding: 0;}
     }
     label {font-size: 14px; color: #fff; cursor: pointer;}
     .h-icon{
@@ -364,6 +382,10 @@ header, .header1{
          font-size: 18px;
          color: #fff;
         //  margin: 8px 0 0 0;
+       }
+       label{
+         padding: 0;
+         font-weight: bold;
        }
      }
     // .h-icon{
@@ -397,7 +419,7 @@ header, .header1{
   margin: 0;
     .form-login{
     padding: 22px;
-    background-color: #ccc;
+    background-color: #f2f2f2;
     border-top: 10px solid $panel-border;
     h2{
       text-transform: uppercase;
@@ -406,7 +428,7 @@ header, .header1{
     .form-control
     { text-align: center;}
   }
-  input, button{
+  input{
     border: none;
     width: 75%;
     margin: 0 auto;
@@ -416,8 +438,26 @@ header, .header1{
       color: #fff;
     }
   }
-  .checkbox label{
+  button{
+    border: none;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    background: #1c5083;
+    &:hover{
+      color: #fff;
+    }
+    &:focus{
+      outline: 0;
+      color: #fff;
+    }
+  }
+  label{
     margin: 10px;
+    color: #7d7d7d;
+    font-weight: normal;
   }
 }
 
@@ -481,6 +521,50 @@ header, .header1{
       line-height: 30px;
       font-size: 12px;
       margin-bottom: 10px;
+      position: relative;
+      min-height: 123px;
+      label{
+        padding: 0 0 0 7px;
+      }
+      table tr > th, td{
+        // color: #1D1D35;
+        padding: 7px 0 0 7px;
+        margin: 0;
+        width: 10%;
+        i{
+          padding: 0 0 0 5px;
+          font-size: 14px;
+        }
+      }
+      ol{
+        margin: 0;
+        padding: 0 5em 0 22px;
+      }
+      li{
+        line-height: 30px;
+        font-size: 14px;
+        p{
+          line-height: 10px;
+        }
+      }
+      .add-new{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding:0;
+        label{
+          font-size: 15px;
+          display: block;
+          margin: 18px 5px 25px;
+          text-decoration: underline;
+          color: #144a7f;
+          font-weight: normal;
+          line-height: 0;
+          &:first-child{
+            text-transform: uppercase;
+          }
+        }
+      }
     }
     h2{
         font-size: 16px;
@@ -501,6 +585,13 @@ header, .header1{
 // start main all css //
 
 span, label, i{cursor: pointer;}
+
+table tr > th{
+  color: #515151!important;
+}
+table tr > td{
+  color: #666666!important;
+}
 
 .categories, .material-construct, .inspection-agencies, .add-inspetion-agency, .transporters,
 .add-transporter, .ads, .add-ad, .reports, .transporter-payment, .grades-standards, .grades-standards1,
@@ -577,7 +668,7 @@ span, label, i{cursor: pointer;}
         min-height: 45px;
         h2{
           font-size: 18px;
-          color: #043E77;
+          color: #313147;
           margin: 0;
           padding: 0 0 0 4em;
         }
@@ -602,6 +693,10 @@ span, label, i{cursor: pointer;}
               background: none;
               height: 30px;
               font-size: 12px;
+              &:focus{
+                outline: 0;
+                border-color: #ccc;
+              }
             }
             span{
               border: 0;
@@ -639,7 +734,8 @@ span, label, i{cursor: pointer;}
       }
 
       // start child head css
-
+    .edit-child-head{
+      padding: 0 20px;
       .child-head{
         background-color: #E6E6E6;
         padding: 3px 0 0 10px;
@@ -648,7 +744,7 @@ span, label, i{cursor: pointer;}
         line-height: 22px;
         h2{
           font-size: 18px;
-          color: #313147;
+          color: #043E77;
           margin: 0;
           padding: 7px 0 0 3.5em;
         }
@@ -659,6 +755,10 @@ span, label, i{cursor: pointer;}
               background: none;
               height: 30px;
               font-size: 12px;
+              &:focus{
+                outline: 0;
+                border-color: #ccc;
+              }
             }
             span{
               border: 0;
@@ -694,6 +794,22 @@ span, label, i{cursor: pointer;}
           }
 
       }
+    }
+
+
+
+
+
+
+
+      .info-edit{
+          padding: 0 15px!important;
+
+          .rounded-mid .rounded-pipes{
+              padding: 0 0 0 7.5em!important;
+        }
+      }
+
     .info{
       background-color: #F8F8F8;
       padding: 0 35px;
@@ -764,7 +880,7 @@ span, label, i{cursor: pointer;}
           width: 40%;
           float: right;
           p{
-            margin: 20px 0 7px 0;
+            margin: 12px 0 7px 0;
             font-size: 17px;
           }
         }
@@ -1080,7 +1196,230 @@ span, label, i{cursor: pointer;}
 
 // end grades standards styles //
 
+.super-admin{
+  .search-top{
+    margin: 0 0 0 10px;
+  }
+  label {
+    margin: 15px 0 0 10px;
+    /* display: inline-block; */
+    text-transform: uppercase;
+  }
+  table tr > th{
+        padding: 15px;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+  .date-to{
+    display: inline-flex;
+    .search-top{
+      border: 1px solid;
+      border-radius: 20px;
+      padding: 6px;
+      display: inline-block;
+      width: 30%;
+      vertical-align: top;
+      input{
+        border: none;
+      }
+      span{
+        i{
+          border: none;
+          &:hover{
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .details{
+      margin: 15px 10px;
 
+      .head{
+        background-color: #E6E6E6;
+        padding: 3px 0 0 10px;
+        border-top: 6px solid #043E77;
+        margin: 0;
+        line-height: 22px;
+        min-height: 45px;
+        h2{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          padding: 0 0 0 4em;
+        }
+        p{
+  	      font-size: 18px;
+  	      color: #043E77;
+  	      margin: 0;
+  	      // padding: 0 0 0 25px;
+  	      text-align: left;
+  	      padding: 0 0 0 10em;
+  	    }
+        // .magic-form{
+        //   width: 50%;
+        // }
+        .location{
+          padding: 5px 0 0 0;
+        }
+
+          .edit-categ{
+            input{
+              border-radius: 10px 0 0 10px;
+              background: none;
+              height: 30px;
+              font-size: 12px;
+            }
+            span{
+              border: 0;
+              background: #043E77;
+              border-radius: 0 10px 10px 0;
+              text-transform: uppercase;
+              color: #fff;
+            }
+          }
+          .edit-btn{
+            padding: 6px 5px 0 5px;
+          }
+          .trash-icon{
+            padding: 6px 10px 0 5px;
+            font-size: 20px;
+            color: #043E77;
+            height: 33px;
+          }
+          .product-category{
+            text-align: right;
+            ul{
+              margin: 0;
+              padding: 0;
+            }
+            .add-prod-cate{width: 50%; padding: 0 7px 0 0;}
+            li{
+              list-style-type: none;
+              display: inline-block;
+            }
+            li+li{
+              border-left: 1px solid;
+            }
+          }
+
+      }
+
+
+    .info{
+      background-color: #F8F8F8;
+      padding: 0 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+
+      tr:nth-child(2){
+        background-color: #E6E6E6;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+
+      .edit-x-type{
+        width: 50%;
+        float: left;
+      }
+      .views-disab-type{
+        width: 50%;
+        padding: 14px 0 0 0;
+        float: left;
+      }
+      p{
+        font-size: 14px;
+        margin: 0;
+      }
+      .analytics{
+        display: inline-block;
+        margin-bottom: 10px;
+
+        .analytics-cont{
+          width: 50%;
+          padding: 0 0 0 6em;
+          float: left;
+
+          h4{
+            font-size: 18px;
+            color: #043E77;
+            margin: 25px 0 0 0;
+            font-weight: 700;
+          }
+        }
+
+      }
+
+      .rounded-mid{
+        display: inline-block;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+
+        .rounded-pipes{
+          width: 50%;
+          padding: 0 0 0 6em;
+          float: left;
+          h3{
+            font-size: 18px;
+            text-transform: none;
+            color: #606060;
+          }
+	        h4{
+            font-size: 18px;
+            text-transform: none;
+            color: #27273E;
+            margin: 25px 0 0 0;
+          }
+        }
+        .edit-assign-type{
+          p{
+            margin: 20px 0 7px 0;
+            font-size: 17px;
+          }
+        }
+        .edit-type{
+          width: 40%;
+          float: right;
+          p{
+            margin: 20px 0 7px 0;
+            font-size: 17px;
+          }
+        }
+	      .edit-type-1{
+          width: 50%;
+          text-align: right;
+          margin: 10px 0 0 0;
+          p{
+            font-size: 17px;
+          }
+        }
+      }
+
+
+    }
+    table tr > th, td{
+      // color: #1D1D35;
+      padding: 10px;
+      margin: 0;
+      width: 10%;
+    }
+    .info-1{
+      background-color: #fff;
+      padding: 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+      h3{
+        font-size: 18px;
+        text-transform: none;
+        color: #606060;
+        padding: 0 0 0 2.4em;
+      }
+    }
+  }
+}
 
 
 

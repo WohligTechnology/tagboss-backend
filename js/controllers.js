@@ -7,6 +7,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   TemplateService.header='views/header1.html';
+  TemplateService.sidemenu='';
 })
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -82,6 +83,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('PendingDeliveryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("pending-delivery");
   $scope.menutitle = NavigationService.makeactive("Pending Delivery");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('SuperAdminCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("super-admin");
+  $scope.menutitle = NavigationService.makeactive("Super Admin");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })

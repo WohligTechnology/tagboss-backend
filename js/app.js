@@ -157,6 +157,11 @@ controller: 'Inspection-panelCtrl'
   url: "/pending-delivery",
   templateUrl: "views/template.html",
   controller: 'PendingDeliveryCtrl'
+  })
+  .state('super-admin', {
+  url: "/super-admin",
+  templateUrl: "views/template.html",
+  controller: 'SuperAdminCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");
