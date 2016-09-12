@@ -7,7 +7,7 @@
                 <div class="col-md-6" >
                     <div class="period ">
                     <span>FROM</span>
-                    <div class="input-group date">
+                    <div class="input-group date date1">
                       <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                       <span class="input-group-btn">
                         <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
@@ -21,13 +21,17 @@
                        <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
                      </span>
                    </div>
+                   <span class="input-group-btn search-i">
+                      <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+                    </span>
                  </div>
                 </div>
 
                  <div class="col-md-6">
-                   <div class="filter pull-right">
+                   <div class="filter text-center">
                      <label>Filter by Status</label>
                      <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+
                    </div>
                  </div>
 
@@ -38,7 +42,8 @@
 
             <label>  ORDER ID TB00_1  </label>
             <div class="starred pull-left"><i class="fa fa-star" aria-hidden="true"></i></div>
-
+            <span class="pull-right refresh">Refresh</span>
+            <span class="pull-right">Edit</span>
           </div>
 
                     <div class="row">
@@ -70,36 +75,180 @@
                       </div>
                     </div>
 
-             <div class="row">
-               <div class="col-md-12">
-                 <div class="table-responsive">
-                 <table class="table">
-                   <thead>
-                     <tr>
-                       <th><strong>SR.NO</strong></th>
-                       <th><strong>ORDER DETAILS</strong></th>
-                       <th><strong>QTY</strong></th>
-                       <th><strong>AMOUNT</strong></th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     <tr>
-                       <td>John</td>
-                       <td>Doe</td>
-                       <td>john@example.com</td>
-                       <td>john@example.com</td>
-                     </tr>
-                     <tr>
-                       <td>Mary</td>
-                       <td>Moe</td>
-                       <td>mary@example.com</td>
-                       <td></td>
-                     </tr>
-                  </tbody>
-                 </table>
+                    <div class="row">
+                   <div class="col-md-12">
+                       <div class="ordertable">
+                           <table class="table table-bordered">
+                               <thead class="text-uppercase font-karla-bold">
+                                   <th>Order Id</th>
+                                   <th colspan="2">Order details</th>
+                                   <th>Qty</th>
+                                   <th>Transport</th>
+                                   <th>Amount</th>
+                               </thead>
+                               <tbody>
+                                   <tr>
+                                       <td>101_1</td>
+                                       <td>Product</td>
+                                       <td>Seamless Rounded Pipes</td>
+                                       <td>4</td>
+                                       <td>500</td>
+                                       <td>50,000</td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Seller Name</td>
+                                       <td>Abc
+                                           <br>
+                                           <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" class="table-rating" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                       </td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Transporter
+                                           <br>XYZ transporter</td>
+                                       <td class="font-karla-bold">Dispatched from bhivandi.
+                                           <br>Currently at check post.</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Manufacturer</td>
+                                       <td>Tata Steel, India</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Material of Construct </td>
+                                       <td>Stainless Steel</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Standard/Grade</td>
+                                       <td>ASTM A-312</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>OD (inches)</td>
+                                       <td>1</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>OD (mm)</td>
+                                       <td>25.4</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>OD/NB</td>
+                                       <td>10/12</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>SCH</td>
+                                       <td>10</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Thickness (mm)</td>
+                                       <td>12mm</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Total length (m)</td>
+                                       <td>1000</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Mode of transport</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Rate per meter</td>
+                                       <td>1500</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>CST % extra</td>
+                                       <td>5%</td>
+                                       <td></td>
+                                       <td>5%</td>
+                                       <td>2500</td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>VAT % extra</td>
+                                       <td>12%</td>
+                                       <td></td>
+                                       <td>12%</td>
+                                       <td>6000</td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Per KG Excise Modvat (inclusive in price/kg)</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Theoritical Wt/mtr</td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                       <td></td>
+                                   </tr>
+                                   <tr>
+                                       <td></td>
+                                       <td>Discount </td>
+                                       <td></td>
+                                       <td></td>
+                                       <td>10%</td>
+                                       <td>500</td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                   </div>
                </div>
-               </div>
-             </div>
 
              <div class="row">
                <div class="col-md-8">
