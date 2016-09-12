@@ -93,6 +93,11 @@ url: "/assign-agency",
 templateUrl: "views/template.html",
 controller: 'Assign-agencyCtrl'
 })
+.state('inspection-panel', {
+url: "/inspection-panel",
+templateUrl: "views/template.html",
+controller: 'Inspection-panelCtrl'
+})
   .state('material-construct', {
   url: "/material-construct",
   templateUrl: "views/template.html",

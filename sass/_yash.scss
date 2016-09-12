@@ -128,8 +128,8 @@
 }
 
 
-// -------------thsi css is for details----------------
-.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details, .refund-to-buyer-details, {
+// -------------this css is for details----------------
+.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details, .refund-to-buyer-details, .inspection-details {
   border-top: solid 10px $panel-border;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -599,8 +599,14 @@
 .refund-to-buyers{
   .refund-to-buyer{
 
+              .search-content{
+                border-bottom: none;
+              }
             .bar{
-              margin-bottom: 20px;
+              padding-bottom: 15px;
+              margin-bottom: 5px;
+              border-bottom: 1px solid #C1C1C7;
+
               .total-request{
                 height: 180px;
                 background-color: pink   ;
@@ -725,6 +731,32 @@
 
             }
 
+
+  }
+}
+
+// ----------this css is for inspection-panel------------------
+.inspection-panel
+{
+  .inspection{
+
+                .search-content{
+                  border-bottom: none;
+                }
+                .bar{
+                  padding-bottom: 15px;
+                  margin-bottom: 5px;
+                  border-bottom: 1px solid #C1C1C7;
+
+                  .total-request{
+                    height: 180px;
+                    background-color: pink   ;
+                  }
+                  .pending-request{
+                    height: 180px;
+                    background-color: pink;
+                  }
+                }
 
   }
 }
