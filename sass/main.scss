@@ -452,7 +452,7 @@ header, .header1{
   }
 }
 
-.edi-agen-details{
+.edi-agen-details, .inspection-login{
   .details{
     .info{
       background-color: #F8F8F8;
@@ -466,12 +466,23 @@ header, .header1{
         color: #434343;
         margin: 0;
       }
+      a{
+        color: #333;
+      }
+      span{
+        margin: 10px;
+        color: #7d7d7d;
+        font-weight: normal;
+      }
       input, select, textarea{
         background: none;
         &:focus{
           outline: 0;
           border-color: #ccc;
         }
+      }
+      .forgot{
+        font-size: 14px;
       }
       button{
           border: none;
@@ -1284,6 +1295,10 @@ table tr > td{
       display: inline-block;
       width: 30%;
       vertical-align: top;
+      button{
+        border: none;
+        background: none;
+      }
       input{
         border: none;
       }
@@ -1305,12 +1320,11 @@ table tr > td{
         min-height: 45px;
         h2{
           font-size: 18px;
-          color: #313147;
+          color: #043E77;
           margin: 0;
           padding: 0 0 0 10px;
           font-weight: bold;
         }
-
       }
       .head{
         background-color: #E6E6E6;
@@ -1391,7 +1405,94 @@ table tr > td{
 }
 
 
-
+.alloted-bar {
+    width: 100%;
+    height: 50px;
+    .mile {
+        p {
+            text-transform: uppercase;
+            color: #363636;
+            font-size: 12px;
+            text-align: left;
+            margin: 0;
+            font-weight: 500;
+        }
+    }
+    .progress {
+        width: 100%;
+        height: 85px;
+        border: 0;
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+        .progress-bar {
+            position: relative;
+            width: 25%;
+            box-shadow: none;
+            background: transparent;
+        }
+        .bar-color {
+            height: 6px;
+            margin: 20px 0 30px;
+            background: #171730;
+            // background: linear-gradient(to right,#5fb6ac,$button-color);
+        }
+        .circle {
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            color: #fffefe;
+            background-color: #171730;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            position: absolute;
+            top: 23px;
+            text-align: center;
+            line-height: 33px;
+            /* vertical-align: middle; */
+            // left: 15px;
+            right: -17px;
+            transform: translate(-50%,-50%);
+        }
+        .circles{
+          margin: 0;
+          padding: 0;
+          font-size: 13px;
+          color: #fffefe;
+          background-color: #171730;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          position: absolute;
+          top: 23px;
+          text-align: center;
+          line-height: 30px;
+          /* vertical-align: middle; */
+          // left: 15px;
+          left: 0;
+          transform: translate(-50%,-50%);
+        }
+        // .lgcolors {
+        //     background-image: linear-gradient(to right,$button-color,#4ce2b7);
+        // }
+        .green-color {
+            background-color: #4ce2b7;
+            -webkit-box-shadow: inset 0 0 6px 1px rgba(0,0,0,0.12);
+            -moz-box-shadow: inset 0 0 6px 1px rgba(0,0,0,0.12);
+            box-shadow: inset 0 0 6px 1px rgba(0,0,0,0.12);
+        }
+        // .lgcolor {
+        //     background-image: linear-gradient(to right,#4ce2b7,$button-color);
+        // }
+        .blue-color {
+            background-color: #666666;
+            -webkit-box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.12);
+            box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.12);
+        }
+    }
+}
 
 
 //bootstrap forms

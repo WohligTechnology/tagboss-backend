@@ -177,6 +177,11 @@ controller: 'View-productsCtrl'
   url: "/edit-agency-details",
   templateUrl: "views/template.html",
   controller: 'EditAgencyDetailsCtrl'
+  })
+  .state('inspection-login', {
+  url: "/inspection-login",
+  templateUrl: "views/template.html",
+  controller: 'InspectionLoginCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");
