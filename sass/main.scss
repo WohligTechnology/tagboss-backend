@@ -388,17 +388,7 @@ header, .header1{
          font-weight: bold;
        }
      }
-    // .h-icon{
-    //   position: relative;
-    //   display: inline-block;
-    //   top: 0;
-    //   width: 50px;
-    //   i{
-    //      font-size: 30px;
-    //      color: #fff;
-    //      margin: 8px 0 0 0;
-    //    }
-    // }
+
   .resize{
     border-radius: 0;
   }
@@ -459,6 +449,24 @@ header, .header1{
     color: #7d7d7d;
     font-weight: normal;
   }
+}
+
+.edi-agen-details{
+  .details{
+    .info{
+      background-color: #F8F8F8;
+      padding: 0 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+            
+      p{
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+
 }
 
 // end login css //
@@ -685,6 +693,7 @@ table tr > td{
         // }
         .location{
           padding: 5px 0 0 0;
+          font-size: 16px;
         }
 
           .edit-categ{
@@ -836,7 +845,7 @@ table tr > td{
 
         .analytics-cont{
           width: 50%;
-          padding: 0 0 0 6em;
+          padding: 0 0 0 8em;
           float: left;
 
           h4{
@@ -849,6 +858,9 @@ table tr > td{
 
       }
 
+      .rounded-mid-changes{
+        padding: 0 35px;
+      }
       .rounded-mid{
         display: inline-block;
         border-bottom: 1px solid #ccc;
@@ -873,6 +885,15 @@ table tr > td{
         .edit-assign-type{
           p{
             margin: 20px 0 7px 0;
+            font-size: 17px;
+            padding: 0 20px 0 0;
+          }
+        }
+        .edit-type-2{
+          float: right;
+          padding: 0 20px 0 0;
+          p{
+            margin: 12px 0 7px 0;
             font-size: 17px;
           }
         }
@@ -1078,7 +1099,7 @@ table tr > td{
       border-radius: 20px;
       padding: 6px;
       display: inline-block;
-      width: 30%;
+      width: 35%;
       vertical-align: top;
       input{
         border: none;
@@ -1196,7 +1217,27 @@ table tr > td{
 
 // end grades standards styles //
 
-.super-admin{
+.payment-transaction-master{
+  .details{
+    .info{
+      background-color: #F8F8F8;
+      padding: 0 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+
+      tr:nth-child(2){
+        background:none!important;
+        font-weight: normal!important;
+        text-transform: none!important;
+        font-size: 12px!important;
+      }
+    }
+  }
+
+}
+
+.super-admin, .payment-transaction-master{
   .search-top{
     margin: 0 0 0 10px;
   }
@@ -1235,6 +1276,18 @@ table tr > td{
   .details{
       margin: 15px 10px;
 
+      .head-text{
+        padding: 3px 0 0 15px;
+        min-height: 45px;
+        h2{
+          font-size: 18px;
+          color: #313147;
+          margin: 0;
+          padding: 0 0 0 10px;
+          font-weight: bold;
+        }
+
+      }
       .head{
         background-color: #E6E6E6;
         padding: 3px 0 0 10px;
@@ -1252,13 +1305,10 @@ table tr > td{
   	      font-size: 18px;
   	      color: #043E77;
   	      margin: 0;
-  	      // padding: 0 0 0 25px;
   	      text-align: left;
   	      padding: 0 0 0 10em;
   	    }
-        // .magic-form{
-        //   width: 50%;
-        // }
+
         .location{
           padding: 5px 0 0 0;
         }
@@ -1278,31 +1328,6 @@ table tr > td{
               color: #fff;
             }
           }
-          .edit-btn{
-            padding: 6px 5px 0 5px;
-          }
-          .trash-icon{
-            padding: 6px 10px 0 5px;
-            font-size: 20px;
-            color: #043E77;
-            height: 33px;
-          }
-          .product-category{
-            text-align: right;
-            ul{
-              margin: 0;
-              padding: 0;
-            }
-            .add-prod-cate{width: 50%; padding: 0 7px 0 0;}
-            li{
-              list-style-type: none;
-              display: inline-block;
-            }
-            li+li{
-              border-left: 1px solid;
-            }
-          }
-
       }
 
 
@@ -1320,82 +1345,14 @@ table tr > td{
         font-size: 14px;
       }
 
-      .edit-x-type{
-        width: 50%;
-        float: left;
-      }
-      .views-disab-type{
-        width: 50%;
-        padding: 14px 0 0 0;
-        float: left;
-      }
+
       p{
         font-size: 14px;
         margin: 0;
       }
-      .analytics{
-        display: inline-block;
-        margin-bottom: 10px;
 
-        .analytics-cont{
-          width: 50%;
-          padding: 0 0 0 6em;
-          float: left;
 
-          h4{
-            font-size: 18px;
-            color: #043E77;
-            margin: 25px 0 0 0;
-            font-weight: 700;
-          }
-        }
 
-      }
-
-      .rounded-mid{
-        display: inline-block;
-        border-bottom: 1px solid #ccc;
-        margin-bottom: 10px;
-
-        .rounded-pipes{
-          width: 50%;
-          padding: 0 0 0 6em;
-          float: left;
-          h3{
-            font-size: 18px;
-            text-transform: none;
-            color: #606060;
-          }
-	        h4{
-            font-size: 18px;
-            text-transform: none;
-            color: #27273E;
-            margin: 25px 0 0 0;
-          }
-        }
-        .edit-assign-type{
-          p{
-            margin: 20px 0 7px 0;
-            font-size: 17px;
-          }
-        }
-        .edit-type{
-          width: 40%;
-          float: right;
-          p{
-            margin: 20px 0 7px 0;
-            font-size: 17px;
-          }
-        }
-	      .edit-type-1{
-          width: 50%;
-          text-align: right;
-          margin: 10px 0 0 0;
-          p{
-            font-size: 17px;
-          }
-        }
-      }
 
 
     }
@@ -1405,19 +1362,7 @@ table tr > td{
       margin: 0;
       width: 10%;
     }
-    .info-1{
-      background-color: #fff;
-      padding: 35px;
-      line-height: 30px;
-      font-size: 12px;
-      margin-bottom: 7px;
-      h3{
-        font-size: 18px;
-        text-transform: none;
-        color: #606060;
-        padding: 0 0 0 2.4em;
-      }
-    }
+
   }
 }
 

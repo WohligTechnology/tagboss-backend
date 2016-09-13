@@ -95,6 +95,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
+.controller('PaymentTransactionMasterCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("payment-transaction-master");
+  $scope.menutitle = NavigationService.makeactive("Payment Transaction Master");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('EditAgencyDetailsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("edit-agency-details");
+  $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
 .controller('GradesStandardsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("grades-standards");
   $scope.menutitle = NavigationService.makeactive("Grades Standards");

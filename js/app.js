@@ -167,6 +167,16 @@ controller: 'View-productsCtrl'
   url: "/super-admin",
   templateUrl: "views/template.html",
   controller: 'SuperAdminCtrl'
+  })
+  .state('payment-transaction-master', {
+  url: "/payment-transaction-master",
+  templateUrl: "views/template.html",
+  controller: 'PaymentTransactionMasterCtrl'
+  })
+  .state('edit-agency-details', {
+  url: "/edit-agency-details",
+  templateUrl: "views/template.html",
+  controller: 'EditAgencyDetailsCtrl'
   });
 
     $urlRouterProvider.otherwise("/dashboard");
