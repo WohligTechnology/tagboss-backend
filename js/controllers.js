@@ -663,7 +663,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('Assign-agencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("assign-agency");
   $scope.menutitle = NavigationService.makeactive("Assign-agency");
-  TemplateService.title = $scope.menutitle;
+  TemplateService.title = $scope.menutitle;TBS001
   $scope.navigation = NavigationService.getnav();
 })
 .controller('Inspection-panelCtrl', function($scope, TemplateService, NavigationService, $timeout) {
