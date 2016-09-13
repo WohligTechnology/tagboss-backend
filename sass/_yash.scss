@@ -393,6 +393,13 @@
   .view-sellers, .view-buyers{
     .view-seller, .view-buyer{
 
+      .seller-details, .buyer-details{
+        span{
+          margin-left: 10px;
+          font-size: 17px;
+        }
+      }
+
           .stat-row-1{
                       height:200px;
                       margin-left: 0px;
@@ -929,57 +936,56 @@
 .view-products{
   .view-product{
 
-    .inspection-table{
-            background-color: #F8F8F8;
-            tr{width: 100%;}
-            td, th{
-              width: 20%;
-              padding-left: 15px;
-            }
-            td:last-child{
-              width: 25%;
-            }
-            .prod-details{
-              list-style-type:none;
-              padding-left: 0px;
-              .list-head{
-                  background-color:#E6E6E6;
-                  margin-left: -10px;
-                  padding-left: 8px;
-               }
-            }
-            .last-col{
-                    padding-left:20px;
-                    padding-right: 15px;
-                    textarea{
-                              background-color: transparent;
-                              resize:none;
-                              font-size: 10px;
-                              margin-bottom: 15px;
-                              &:focus{
+          .search-content{
+            padding-bottom: 60px;
 
-                                border-color: #ccc;
-                              }
-                    }
-                    .btn-primary{
-                      background-color: $panel-border;
-                      border-color: $panel-border;
+            .excel-upload{
 
-                    }
-                    .upload{
-                      padding:0 6px;
-                    }
-                    .submit{
-                      padding: 2px 20px;
-                      margin-top: 40px;
-                      margin-bottom: 25px;
-                    }
-                    select{
-                      height: 22px;
-                      width: 35%;
-                    }
+              bottom: -50px;
+              position: absolute;
+              left: 185px;
+              label{
+                text-decoration: underline;
+                color: #1D7044;
+              }
             }
-    }
+
+            .select-prod{
+              padding-left: 30px;
+              border-left: 1px solid #ccc;
+              height: 45px;
+              display: inline-block;
+              select{
+                width: 125px;
+                margin-top: 12px;
+                background-color: transparent;
+              }
+            }
+
+          }
+
+
+
+          .inspection-table{
+
+                      background-color: #F8F8F8;
+                      tr{width: 100%;}
+                      td, th{
+                        width: 20%;
+                        padding-left: 15px;
+                      }
+
+                      .prod-details{
+                        list-style-type:none;
+                        padding-left: 0px;
+                        .list-head{
+                            background-color:#E6E6E6;
+                            margin-left: -10px;
+                            padding-left: 8px;
+                         }
+                      }
+
+          }
 
   }
 }
