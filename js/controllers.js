@@ -22,6 +22,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Material Construct");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
 })
 
 .controller('InspectionAgenciesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -616,12 +617,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("View-sellers");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.rate = 3;
+  $scope.max = 5;
+  $scope.isReadonly = false;
+
+  $scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
 })
 .controller('View-buyersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("view-buyers");
   $scope.menutitle = NavigationService.makeactive("View-buyers");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.rate = 3;
+  $scope.max = 5;
+  $scope.isReadonly = false;
+
+  $scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
 })
 .controller('Request-sellersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("request-sellers");
@@ -663,12 +680,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('Assign-agencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("assign-agency");
   $scope.menutitle = NavigationService.makeactive("Assign-agency");
-  TemplateService.title = $scope.menutitle;TBS001
+  TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
 .controller('Inspection-panelCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("inspection-panel");
   $scope.menutitle = NavigationService.makeactive("Inspection-panel");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('View-productsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("view-products");
+  $scope.menutitle = NavigationService.makeactive("View-products");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })

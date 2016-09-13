@@ -98,6 +98,11 @@ url: "/inspection-panel",
 templateUrl: "views/template.html",
 controller: 'Inspection-panelCtrl'
 })
+.state('view-products', {
+url: "/view-products",
+templateUrl: "views/template.html",
+controller: 'View-productsCtrl'
+})
   .state('material-construct', {
   url: "/material-construct",
   templateUrl: "views/template.html",

@@ -141,7 +141,7 @@
 
 
 // -------------this css is for details----------------
-.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details, .refund-to-buyer-details, .inspection-details{
+.order-details, .seller-details, .buyer-details, .request-seller-details, .request-buyer-details, .refund-to-buyer-details, .inspection-details, .view-products-details{
   border-top: solid 10px $panel-border;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -472,7 +472,11 @@
                   table{
 
                               width:80%;
+                              tr:last-child{
 
+                                  font-weight: bold;
+
+                              }
                         }
     }
 }
@@ -638,6 +642,11 @@
                   .table > tbody > tr > td:last-child { font-weight: bold; }
                   .table > thead > tr>th{color: $lightblue;}
                 }
+              }
+              .payment-to-sellers-table{
+                background-color: #F8F8F8;
+                th{color: $lightblue !important;}
+                td:last-child { font-weight: bold; }
               }
 
               .received-sent-details{
@@ -913,6 +922,64 @@
                                 }
                         }
                 }
+
+  }
+}
+// ------------this css is for view-products----------
+.view-products{
+  .view-product{
+
+    .inspection-table{
+            background-color: #F8F8F8;
+            tr{width: 100%;}
+            td, th{
+              width: 20%;
+              padding-left: 15px;
+            }
+            td:last-child{
+              width: 25%;
+            }
+            .prod-details{
+              list-style-type:none;
+              padding-left: 0px;
+              .list-head{
+                  background-color:#E6E6E6;
+                  margin-left: -10px;
+                  padding-left: 8px;
+               }
+            }
+            .last-col{
+                    padding-left:20px;
+                    padding-right: 15px;
+                    textarea{
+                              background-color: transparent;
+                              resize:none;
+                              font-size: 10px;
+                              margin-bottom: 15px;
+                              &:focus{
+
+                                border-color: #ccc;
+                              }
+                    }
+                    .btn-primary{
+                      background-color: $panel-border;
+                      border-color: $panel-border;
+
+                    }
+                    .upload{
+                      padding:0 6px;
+                    }
+                    .submit{
+                      padding: 2px 20px;
+                      margin-top: 40px;
+                      margin-bottom: 25px;
+                    }
+                    select{
+                      height: 22px;
+                      width: 35%;
+                    }
+            }
+    }
 
   }
 }
