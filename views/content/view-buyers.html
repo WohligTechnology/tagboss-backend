@@ -4,38 +4,34 @@
       <div class="search-content">
     <div class="row">
       <div class="col-md-6">
-        <div class="period ">
-                    <span>FROM</span>
-                    <div class="input-group date">
-                      <input type="text" class="form-control cal-input ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date ng-touched" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required"><div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html" class="ng-not-empty ng-invalid ng-invalid-date-disabled" style="">
-  <!-- ngIf: isOpen -->
-                       </div>
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
-                      </span>
-                    </div>
+          <div class="period ">
+              <span>FROM</span>
+              <div class="input-group date date1">
+                  <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                  <span class="input-group-btn">
+          <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+        </span>
+              </div>
 
-                     <span>TO</span>
-                       <div class="input-group date">
-                     <input type="text" class="form-control cal-input ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required"><div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html" class="ng-not-empty ng-valid">
-  <!-- ngIf: isOpen -->
-                       </div>
-                     <span class="input-group-btn">
-                       <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
-                     </span>
-                   </div>
-                   <span class="input-group-btn search-i">
-                      <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
-                    </span>
-                 </div>
-        </div>
+              <span>TO</span>
+              <div class="input-group date">
+                  <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                  <span class="input-group-btn">
+         <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
+       </span>
+              </div>
+              <span class="input-group-btn search-i">
+        <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
+      </span>
+          </div>
+      </div>
 
           <div class="col-md-6">
             <div class="more-opt pull-right">
               <div class="magic-form">
                 <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                    <label class="detail-heading" for="add-one">
+                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
+                    <label class="detail-heading" for="add-more">
                       More
                     </label>
                 </div>
@@ -57,7 +53,7 @@
           </div>
         </div>
           <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-           <div class="date pull-right">02 June, 2016 | 11.51 PM</div>
+           <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
       </div>
 
       <div class="row">
