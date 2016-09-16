@@ -18,6 +18,7 @@ var jsArray = [
     './bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
     './bower_components/angular-swiper/dist/angular-swiper.js',
     './bower_components/highcharts/highcharts.src.js',
+    './bower_components/highcharts-ng/dist/highcharts-ng.min.js',
 
     './js/app.js',
     './js/language.js',
