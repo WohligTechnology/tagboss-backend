@@ -439,32 +439,33 @@
 
           .stat-row-1{
                       height:200px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      border-bottom: 1px solid #000;
                       padding-top: 20px;
                       padding-bottom:20px;
                       text-align: center;
+                      border-bottom: 1px solid #000;
                       label{
                         font-weight: bold;
                         font-size:20px;
                          color:#999999;
                       }
-                      .order-content{
 
-                          height:100%;
-                        border-right:1px solid;
+                        .order-content{
+                          border-right: 1px solid #000;
+
                         }
-                      .refund-content{
-                          border-right:1px solid;
-                          height:100%;
+
+                        .refund-content{
+                          border-right: 1px solid #000;
+
                         }
+
                         .address-content{
                             padding-left: 20px;
                             padding-right:20px;
                             height:100%;
                             text-align: initial;
                             label{color: #4A4A54}
+
                         }
                       }
 
@@ -482,29 +483,45 @@
                                color: #999999;
                             }
                             .diagram{
-                               height: 290px;
-
-                           }
-                           .sale-content{
-                             height: 100%;
-                               border-right:1px solid;
-                           }
-                           .frequancy-content{
-
-                             height: 100%;
+                               height: auto;
 
                            }
                     }
 
+                    #chart1{
+                      highcharts-data-labels{
+                        path{
+                           display: none;
+                        }
+
+                      }
+                    }
+                    #chart2{
+
+                    }
+                    #chart3{
+
+                          border-right: 1px solid #000;
+                          .highcharts-legend{
+                            display: none;
+                          }
+                          .highcharts-series{
+                            rect{
+                              fill:$panel-border;
+                            }
+                          }
+
+                    }
+                    #chart4{
+
+                    }
                     .stat-cols{
 
                       padding-right: 0px;
                       padding-left:0px;
                       height:100%;}
 
-                     .diagram{
-                       height: 140px;
-                    }
+
 
                     .table > tbody > tr > td {
                         &:nth-child(1) {

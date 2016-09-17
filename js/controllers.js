@@ -626,46 +626,259 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.rate = 3;
         $scope.max = 5;
         $scope.isReadonly = false;
+        $scope.salesBar = {
 
-        $scope.chartConfig = {
-            chart: {
-                type: 'pie',
-                options3d: {
-                    enabled: true,
-                    alpha: 45
+            options: {
+                //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                //will be overriden by values specified below.
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: null
                 }
+
+
             },
-            title: {
-                text: 'Contents of Highsoft\'s weekly fruit delivery'
+            //The below properties are watched separately for changes.
+
+            //Series object (optional) - a list of series using normal Highcharts series options.
+            series: [{
+                data: _.times(12, function() {
+                    return Math.random(100);
+                })
+            }],
+
+            loading: false,
+
+            yAxis: {
+
+              // currentMin: 0,
+              // currentMax: 100,
+                title: {
+                    text: 'ORDERS',
+                    align: 'low'
+                }
+
             },
-            subtitle: {
-                text: '3D donut in Highcharts'
+
+            xAxis: {
+                currentMin: 0,
+                currentMax: 11,
+
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ],
+                title: {
+                    text: 'MONTHS',
+                    align: 'low'
+                }
+
+            },
+            size: {
+                width: 700,
+                height: 300
+            },
+
+            //function (optional)
+            func: function(chart) {
+                //setup some logic for the chart
+            }
+        };
+
+
+        $scope.freqPie = {
+
+            options: {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 60,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: null
+                }
+
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 0,
+                layout: 'vertical'
+            },
+
+
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
             plotOptions: {
                 pie: {
-                    innerSize: 100,
-                    depth: 45
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 50,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
                 }
             },
             series: [{
-                name: 'Delivered amount',
+                type: 'pie',
+                name: 'Browser share',
                 data: [
-                    ['Bananas', 8],
-                    ['Kiwi', 3],
-                    ['Mixed nuts', 1],
-                    ['Oranges', 6],
-                    ['Apples', 8],
-                    ['Pears', 4],
-                    ['Clementines', 4],
-                    ['Reddish (bag)', 1],
-                    ['Grapes (bunch)', 1]
+                    ['Firefox', 35.0],
+
+                    {
+                        name: 'Chrome',
+                        y: 15.0,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari', 30],
+                    ['Opera', 20]
+
                 ]
             }],
             size: {
-                width: 400,
+                width: 350,
                 height: 300
             }
         };
+
+        $scope.orderPie = {
+
+            options: {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 60,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: null
+                }
+
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 0,
+                layout: 'vertical'
+            },
+
+
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 50,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox', 70.0],
+
+                    {
+                        name: 'Chrome',
+                        y: 30.0,
+                        sliced: true,
+                        selected: true
+                    },
+
+                ]
+            }],
+            size: {
+                width: 350,
+                height: 139
+            }
+        };
+
+        $scope.refundPie = {
+
+            options: {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 60,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: null
+                }
+
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 0,
+                layout: 'vertical'
+            },
+
+
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 50,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox', 65.0],
+
+                    {
+                        name: 'Chrome',
+                        y: 35.0,
+                        sliced: true,
+                        selected: true
+                    },
+
+
+                ]
+            }],
+            size: {
+                width: 350,
+                height: 139
+            }
+        };
+
+
 
 
 
@@ -749,8 +962,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             //Series object (optional) - a list of series using normal Highcharts series options.
             series: [{
-                data:  _.times(4, function() {
-                  return Math.random(100);
+                data: _.times(4, function() {
+                    return Math.random(100);
                 })
             }],
 

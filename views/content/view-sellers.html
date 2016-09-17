@@ -1,142 +1,138 @@
 <section class="body-main view-sellers">
-  <div class="container-fluid">
-    <div class="view-seller">
-      <div class="search-content">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="period ">
-            <span>FROM</span>
-            <div class="input-group date date1">
-                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                <span class="input-group-btn">
+    <div class="container-fluid">
+        <div class="view-seller">
+            <div class="search-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="period ">
+                            <span>FROM</span>
+                            <div class="input-group date date1">
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                <span class="input-group-btn">
         <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
       </span>
-            </div>
+                            </div>
 
-            <span>TO</span>
-            <div class="input-group date">
-                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                <span class="input-group-btn">
+                            <span>TO</span>
+                            <div class="input-group date">
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                <span class="input-group-btn">
        <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
      </span>
-            </div>
-            <span class="input-group-btn search-i">
+                            </div>
+                            <span class="input-group-btn search-i">
       <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
     </span>
-        </div>
-        </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6">
-            <div class="more-opt pull-right">
-              <div class="magic-form">
-                <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
-                    <label class="detail-heading" for="add-more">
+                    <div class="col-md-6">
+                        <div class="more-opt pull-right">
+                            <div class="magic-form">
+                                <div class="magic-resize">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
+                                    <label class="detail-heading" for="add-more">
                       More
                     </label>
+                                </div>
+                            </div>
+                            <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
             </div>
-        </div>
-      </div>
-    </div>
 
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-              <label class="detail-heading" for="add-one">
+            <div class="seller-details ">
+                <div class="magic-form">
+                    <div class="magic-resize">
+                        <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                        <label class="detail-heading" for="add-one">
                 TBS001 MIRAGE STEEL LTD.
               </label>
-              <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
-          </div>
-        </div>
-          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-           <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-      </div>
-
-      <div class="row">
-        <div class="stat-row-1">
-        <div class="col-md-4 stat-cols">
-          <div class ="order-content">
-            <div class="diagram">
-
-              <highchart id="chart1" config="chartConfig"></highchart>
-
+                        <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                    </div>
+                </div>
+                <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
             </div>
-            <label class="text-center">ORDERS</label>
-          </div>
-        </div>
-        <div class="col-md-4 stat-cols">
-          <div class ="refund-content">
-            <div class="diagram"></div>
-            <label class="text-center">REFUND REQUEST</label>
-          </div>
-        </div>
-        <div class="col-md-4 stat-cols">
-          <div class ="address-content">
-            <label>ADDRESS </label>
-          </div>
-        </div>
-      </div>
-      </div>
 
-      <div class="stat-row-2">
-      <div class="row">
-        <div class="col-md-8 stat-cols ">
-          <div class ="sale-content ">
-            <div class="diagram"></div>
-              <label class="text-center">SALE</label>
-          </div>
+            <div class="stat-row-1">
+                <div class="row">
+                    <div class="col-md-4 stat-cols">
+                        <div class="order-content">
+                            <highchart id="chart1" config="orderPie"></highchart>
+                            <label class="text-center">ORDERS</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stat-cols">
+                        <div class="refund-content">
+                            <highchart id="chart2" config="refundPie"></highchart>
+                            <label class="text-center">REFUND REQUEST</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stat-cols">
+                        <div class="address-content">
+                            <label>ADDRESS </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-row-2">
+                <div class="row">
+                    <div class="col-md-8 stat-cols ">
+                        <div class="sale-content">
+                            <highchart id="chart3" config="salesBar"></highchart>
+                            <label class="text-center">SALE</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stat-cols">
+                        <div class="frequancy-content">
+                            <highchart id="chart4" config="freqPie"></highchart>
+                            <label class="text-center">FREQUANTLY SOLD</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ORDER ID</th>
+                        <th>ORDER DETAIL</th>
+                        <th>SALE TILL DATE</th>
+                        <th>BUYER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TBO002</td>
+                        <td>200 - SS - ASTM 303H</td>
+                        <td>Rs. 7,85,587/-</td>
+                        <td>Raj SteelRaj Steel</td>
+                    </tr>
+                    <tr>
+                        <td>TBO002</td>
+                        <td>200 - SS - ASTM 303H</td>
+                        <td>Rs. 7,85,587/-</td>
+                        <td>Raj SteelRaj Steel</td>
+                    </tr>
+                    <tr>
+                        <td>TBO002</td>
+                        <td>200 - SS - ASTM 303H</td>
+                        <td>Rs. 7,85,587/-</td>
+                        <td>Raj SteelRaj Steel</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Rs. 24,85,587/-</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
         </div>
-        <div class="col-md-4 stat-cols">
-          <div class ="frequancy-content">
-            <div class="diagram"></div>
-              <label class="text-center">FREQUANTLY SOLD</label>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>ORDER ID</th>
-        <th>ORDER DETAIL</th>
-        <th>SALE TILL DATE</th>
-        <th>BUYER</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>TBO002</td>
-        <td>200 - SS - ASTM 303H</td>
-        <td>Rs. 7,85,587/-</td>
-        <td>Raj SteelRaj Steel</td>
-      </tr>
-      <tr>
-        <td>TBO002</td>
-        <td>200 - SS - ASTM 303H</td>
-        <td>Rs. 7,85,587/-</td>
-        <td>Raj SteelRaj Steel</td>
-      </tr>
-      <tr>
-        <td>TBO002</td>
-        <td>200 - SS - ASTM 303H</td>
-        <td>Rs. 7,85,587/-</td>
-       <td>Raj SteelRaj Steel</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td>Rs. 24,85,587/-</td>
-       <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-   </div>
- </div>
-</div>
+    </div>
