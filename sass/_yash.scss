@@ -430,6 +430,48 @@
 
 
 
+
+
+
+.details-1{
+  margin: 15px 10px;
+  border-top: 6px solid #043E77;
+  // line-height: 22px;
+  .head-1{
+      background-color: #F8F8F8;
+      padding: 7px 0 7px 0;
+      /* border-top: 6px solid #043E77; */
+      /* margin: 2px 0 0 0; */
+      border-bottom: 1px solid #ccc;
+      .glance-cont{
+
+        p{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          text-transform: uppercase;
+          text-align: center;
+          padding: 15px 7em;
+        }
+        .values{
+          font-size: 16px;
+          .rating{
+            padding: 0 0 0 15px;
+          }
+        }
+        label{
+          text-transform: uppercase;
+          display: inline-block;
+          span{
+            display: block;
+          }
+        }
+      }
+   }
+}
+
+
+
       .seller-details, .buyer-details{
         span{
           margin-left: 10px;

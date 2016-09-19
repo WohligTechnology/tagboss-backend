@@ -1092,6 +1092,31 @@ table tr > td{
   	    /* border-top: 6px solid #043E77; */
   	    /* margin: 2px 0 0 0; */
   	    border-bottom: 1px solid #ccc;
+        .glance-cont{
+
+          p{
+    	      font-size: 18px;
+    	      color: #043E77;
+    	      margin: 0;
+    	      text-transform: uppercase;
+            text-align: center;
+            padding: 15px 7em;
+    	    }
+          .values{
+            font-size: 16px;
+          }
+          label{
+            text-transform: uppercase;
+            display: inline-block;
+            span{
+              display: block;
+            }
+          }
+    	    // input{
+    	    //   height: 30px;
+    	    //   width: 75%;
+    	    // }
+        }
   	    .pos{
   	      p{
         		font-size: 16px;
@@ -1630,6 +1655,15 @@ table tr > td{
   .details{
       margin: 15px 10px;
 
+      th, td:nth-child(n+1){
+        border-right: 1px solid #ddd;
+      }
+      th:last-child {
+        border-right: none!important;
+      }
+      td:last-child {
+        border-right: none!important;
+      }
       .head-text{
         padding: 3px 0 0 15px;
         min-height: 30px;

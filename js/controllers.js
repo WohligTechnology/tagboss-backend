@@ -244,6 +244,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Seller Dashboard");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.rate = 3;
+    $scope.max = 5;
 })
 
 .controller('GradesStandardsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
