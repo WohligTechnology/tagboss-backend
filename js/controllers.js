@@ -211,6 +211,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 })
 
+.controller('PaymentProcessCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("payment-process");
+    $scope.menutitle = NavigationService.makeactive("Payment Process");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
 .controller('PaymentTransactionMasterCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("payment-transaction-master");
     $scope.menutitle = NavigationService.makeactive("Payment Transaction Master");
@@ -228,6 +235,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('InspectionLoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("inspection-login");
     $scope.menutitle = NavigationService.makeactive("Inspection Login");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
+.controller('SellerDashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("seller-dashboard");
+    $scope.menutitle = NavigationService.makeactive("Seller Dashboard");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 })

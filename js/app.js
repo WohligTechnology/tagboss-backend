@@ -23,6 +23,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   templateUrl: "views/template.html",
   controller: 'DashboardCtrl'
   })
+  .state('seller-dashboard', {
+  url: "/seller-dashboard",
+  templateUrl: "views/template.html",
+  controller: 'SellerDashboardCtrl'
+  })
   .state('orders', {
   url: "/orders",
   templateUrl: "views/template.html",
@@ -172,6 +177,11 @@ controller: 'View-productsCtrl'
   url: "/payment-transaction-master",
   templateUrl: "views/template.html",
   controller: 'PaymentTransactionMasterCtrl'
+  })
+  .state('payment-process', {
+  url: "/payment-process",
+  templateUrl: "views/template.html",
+  controller: 'PaymentProcessCtrl'
   })
   .state('edit-agency-details', {
   url: "/edit-agency-details",

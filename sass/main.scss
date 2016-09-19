@@ -664,7 +664,7 @@ table tr > td{
   color: #666666!important;
 }
 
-.categories, .material-construct, .inspection-agencies, .add-inspetion-agency, .transporters,
+.categories, .material-construct, .inspection-agencies, .add-inspetion-agency, .seller-dashboard, .transporters,
 .add-transporter, .ads, .add-ad, .reports, .transporter-payment, .grades-standards, .grades-standards1,
 .pending-delivery{
 
@@ -1075,7 +1075,11 @@ table tr > td{
   }
 
   // start details-1 css
-
+  .at-a-glance{
+    h2{
+      font-size: 16px;
+    }
+  }
   .details-1{
     margin: 15px 10px;
     border-top: 6px solid #043E77;
@@ -1437,7 +1441,7 @@ table tr > td{
 
 }
 
-.super-admin, .payment-transaction-master{
+.super-admin, .payment-transaction-master,{
   margin-bottom: 30px!important;
 
   .status{
@@ -1589,6 +1593,93 @@ table tr > td{
 
   }
 }
+
+
+
+.payment-process{
+  margin-bottom: 30px!important;
+
+  .total-payment{
+    padding: 10px;
+    width: 35%;
+    label {
+      margin: 15px 0 0 10px;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #4d4d4d;
+      width: 79%;
+    }
+    span {
+      margin: 15px 0 0 10px;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #4d4d4d;
+      font-weight: bold;
+      float: right;
+    }
+  }
+
+  table tr > th{
+        padding: 15px;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+
+  .details{
+      margin: 15px 10px;
+
+      .head-text{
+        padding: 3px 0 0 15px;
+        min-height: 30px;
+        h2{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          padding: 0 0 0 10px;
+          font-weight: bold;
+        }
+      }
+      .head{
+        background-color: #E6E6E6;
+        padding: 3px 0 0 10px;
+        border-top: 6px solid #043E77;
+        margin: 0;
+        line-height: 22px;
+        min-height: 45px;
+        h2{
+          font-size: 18px;
+          color: #043E77;
+          margin: 0;
+          padding: 0 0 0 4em;
+        }
+        p{
+  	      font-size: 18px;
+  	      color: #043E77;
+  	      margin: 0;
+  	      text-align: left;
+  	      padding: 0 0 0 10em;
+  	    }
+      }
+    .info{
+      background-color: #F8F8F8;
+      padding: 0 35px;
+      line-height: 30px;
+      font-size: 12px;
+      margin-bottom: 7px;
+      p{
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+    table tr > th, td{
+      // color: #1D1D35;
+      padding: 10px;
+      margin: 0;
+      width: 9%;
+    }
+  }
+}
+
 
 
 .alloted-bar {
