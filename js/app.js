@@ -108,6 +108,11 @@ url: "/view-products",
 templateUrl: "views/template.html",
 controller: 'View-productsCtrl'
 })
+.state('coupon-code', {
+url: "/coupon-code",
+templateUrl: "views/template.html",
+controller: 'Coupon-codeCtrl'
+})
   .state('material-construct', {
   url: "/material-construct",
   templateUrl: "views/template.html",
