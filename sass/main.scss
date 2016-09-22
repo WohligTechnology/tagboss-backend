@@ -664,9 +664,22 @@ table tr > td{
   color: #666666!important;
 }
 
+
+
+.width80 {
+  background: rgba(0, 43, 127, 0.59);
+  .modal-dialog {
+    width: 80%;
+  }
+}
+
+
+
 .categories, .material-construct, .inspection-agencies, .add-inspetion-agency, .seller-dashboard, .transporters,
 .add-transporter, .ads, .add-ad, .reports, .transporter-payment, .grades-standards, .grades-standards1,
 .pending-delivery{
+
+
 
   table tr > th, td{
     color: #1D1D35;
@@ -919,6 +932,9 @@ table tr > td{
       .edit-x-type{
         width: 50%;
         float: left;
+        span+span{
+          padding-left: 5px;
+        }
       }
       .views-disab-type{
         width: 50%;
@@ -948,7 +964,6 @@ table tr > td{
             font-weight: 700;
           }
         }
-
       }
 
       .perfo-tot{
@@ -1350,6 +1365,7 @@ table tr > td{
                     width: 85%;
                     padding-left: 30px;
                     padding-right: 45px;
+                    margin: 0 0 0 10px;
                     .cal-btn:focus {
                         outline: 0;
                       }
