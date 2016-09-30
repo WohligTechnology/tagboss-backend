@@ -1,200 +1,221 @@
 <section class="body-main view-sellers">
-    <div class="container-fluid">
-        <div class="view-seller">
-            <div class="search-content">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="period ">
-                            <span>FROM</span>
-                            <div class="input-group date date1">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
+  <div class="container-fluid">
+    <div class="view-seller">
+      <div class="search-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="period ">
+              <span>FROM</span>
+              <div class="input-group date date1">
+                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened"
+                  datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                />
+                <span class="input-group-btn">
         <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
       </span>
-                            </div>
+              </div>
 
-                            <span>TO</span>
-                            <div class="input-group date">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
+              <span>TO</span>
+              <div class="input-group date">
+                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened"
+                  datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                />
+                <span class="input-group-btn">
        <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
      </span>
-                            </div>
-                            <span class="input-group-btn search-i">
+              </div>
+              <span class="input-group-btn search-i">
       <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
     </span>
-                        </div>
-                    </div>
+            </div>
+          </div>
 
-                    <div class="col-md-6">
-                        <div class="more-opt pull-right">
-                            <div class="magic-form">
-                                <div class="magic-resize">
-                                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
-                                    <label class="detail-heading" for="add-more">
+          <div class="col-md-6">
+            <div class="more-opt pull-right">
+              <div class="magic-form">
+                <div class="magic-resize">
+                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
+                  <label class="detail-heading" for="add-more">
                       More
                     </label>
-                                </div>
-                            </div>
-                            <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <div class="seller-details ">
-                <div class="magic-form">
-                    <div class="magic-resize">
-                        <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                        <label class="detail-heading" for="add-one">
-                TBS001 MIRAGE STEEL LTD.
-              </label>
-                        <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
-                    </div>
-                </div>
-                <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-            </div>
-
-
-
-  <div class="details-1">
-
-      <div class="head-1">
-
-        <div class="glance-cont">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <p>seller rating</p>
-              <div class="values">
-
-
-                <span uib-rating="" ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"><span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3" aria-valuetext="three">
-    <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
-    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="one"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
-    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="two"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
-    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="three"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
-    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="4"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
-    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="5"></i><!-- end ngRepeat: r in range track by $index -->
-</span>
-</span>
-
-
-
-                <label class="rating">3.5</label>
               </div>
-            </div>
-
-            <div class="col-md-6 text-center">
-              <p>gross sales</p>
-              <div class="values">
-                <i class="fa fa-inr" aria-hidden="true"></i>
-                <label>28,00,500</label>
-              </div>
+              <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
             </div>
           </div>
         </div>
-
       </div>
 
-      <div class="head-1">
+      <div class="seller-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+            <label class="detail-heading" for="add-one">
+                TBS001 MIRAGE STEEL LTD.
+              </label>
+            <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
+              titles="['one','two','three']" aria-labelledby="default-rating"></span>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+      </div>
 
-        <div class="glance-cont">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <p>order cancellations by seller</p>
-              <div class="values">
-                <label>25/100</label>
+
+
+      <div class="details-1">
+
+        <div class="head-1">
+
+          <div class="glance-cont">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <p>seller rating</p>
+                <div class="values">
+
+
+                  <span uib-rating="" ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
+                    titles="['one','two','three']" aria-labelledby="default-rating" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"><span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3" aria-valuetext="three">
+    <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
+                  <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star"
+                    ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                    ng-attr-title="{{r.title}}" title="one"></i>
+                  <!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
+                  <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star"
+                    ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                    ng-attr-title="{{r.title}}" title="two"></i>
+                  <!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
+                  <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star"
+                    ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                    ng-attr-title="{{r.title}}" title="three"></i>
+                  <!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+                  <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty"
+                    ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                    ng-attr-title="{{r.title}}" title="4"></i>
+                  <!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+                  <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty"
+                    ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                    ng-attr-title="{{r.title}}" title="5"></i>
+                  <!-- end ngRepeat: r in range track by $index -->
+                  </span>
+                  </span>
+
+
+
+                  <label class="rating">3.5</label>
+                </div>
+              </div>
+
+              <div class="col-md-6 text-center">
+                <p>gross sales</p>
+                <div class="values">
+                  <i class="fa fa-inr" aria-hidden="true"></i>
+                  <label>28,00,500</label>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-6 text-center">
-              <p>top product categories (by revenue)</p>
-              <div class="values">
-                <label>
+        </div>
+
+        <div class="head-1">
+
+          <div class="glance-cont">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <p>order cancellations by seller</p>
+                <div class="values">
+                  <label>25/100</label>
+                </div>
+              </div>
+
+              <div class="col-md-6 text-center">
+                <p>top product categories (by revenue)</p>
+                <div class="values">
+                  <label>
                   <span>pipes</span>
                   <span>sheets</span>
                   <span>coil</span>
                 </label>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+        <div class="head-1">
 
-      <div class="head-1">
-
-        <div class="glance-cont">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <p>ready to dispatch breaches</p>
-              <div class="values">
-                <label>25/100</label>
+          <div class="glance-cont">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <p>ready to dispatch breaches</p>
+                <div class="values">
+                  <label>25/100</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-6 text-center">
-              <p>number of orders</p>
-              <div class="values">
-                <label>280</label>
+              <div class="col-md-6 text-center">
+                <p>number of orders</p>
+                <div class="values">
+                  <label>280</label>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+        <div class="head-1">
 
-      <div class="head-1">
-
-        <div class="glance-cont">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <p>original mtc</p>
-              <div class="values">
-                <label>29/50</label>
+          <div class="glance-cont">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <p>original mtc</p>
+                <div class="values">
+                  <label>29/50</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-6 text-center">
-              <p>quality check</p>
-              <div class="values">
-                <label>failed 8/50</label>
+              <div class="col-md-6 text-center">
+                <p>quality check</p>
+                <div class="values">
+                  <label>failed 8/50</label>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+        <div class="head-1 no-border">
 
-      <div class="head-1 no-border">
-
-        <div class="glance-cont">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <p>customer returns</p>
-              <div class="values">
-                <label>8/150</label>
+          <div class="glance-cont">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <p>customer returns</p>
+                <div class="values">
+                  <label>8/150</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-6 text-center">
-              <p>average order dispatch time</p>
-              <div class="values">
-                <label>5 days</label>
+              <div class="col-md-6 text-center">
+                <p>average order dispatch time</p>
+                <div class="values">
+                  <label>5 days</label>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
+
+
+
 
       </div>
 
-
-
-
-</div>
-
-            <!-- <div class="stat-row-1">
+      <!-- <div class="stat-row-1">
                 <div class="row">
                     <div class="col-md-4 stat-cols">
                         <div class="order-content">
@@ -232,45 +253,50 @@
                     </div>
                 </div>
             </div> -->
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ORDER ID</th>
-                        <th>ORDER DETAIL</th>
-                        <th>SALE TILL DATE</th>
-                        <th>BUYER</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>TBO002</td>
-                        <td>200 - SS - ASTM 303H</td>
-                        <td>Rs. 7,85,587/-</td>
-                        <td>Raj SteelRaj Steel</td>
-                    </tr>
-                    <tr>
-                        <td>TBO002</td>
-                        <td>200 - SS - ASTM 303H</td>
-                        <td>Rs. 7,85,587/-</td>
-                        <td>Raj SteelRaj Steel</td>
-                    </tr>
-                    <tr>
-                        <td>TBO002</td>
-                        <td>200 - SS - ASTM 303H</td>
-                        <td>Rs. 7,85,587/-</td>
-                        <td>Raj SteelRaj Steel</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Rs. 24,85,587/-</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-
-
+      <div class="col-md-4 stat-cols">
+        <div class="frequancy-content">
+          <highchart id="chart4" config="freqPie"></highchart>
+          <label class="text-center">FREQUANTLY SOLD</label>
         </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ORDER ID</th>
+            <th>ORDER DETAIL</th>
+            <th>SALE TILL DATE</th>
+            <th>BUYER</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TBO002</td>
+            <td>200 - SS - ASTM 303H</td>
+            <td>Rs. 7,85,587/-</td>
+            <td>Raj SteelRaj Steel</td>
+          </tr>
+          <tr>
+            <td>TBO002</td>
+            <td>200 - SS - ASTM 303H</td>
+            <td>Rs. 7,85,587/-</td>
+            <td>Raj SteelRaj Steel</td>
+          </tr>
+          <tr>
+            <td>TBO002</td>
+            <td>200 - SS - ASTM 303H</td>
+            <td>Rs. 7,85,587/-</td>
+            <td>Raj SteelRaj Steel</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Rs. 24,85,587/-</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
-    </div>
+  </div>
+  </div>

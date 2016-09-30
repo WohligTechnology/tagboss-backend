@@ -8,7 +8,9 @@
                         <div class="period ">
                             <span>FROM</span>
                             <div class="input-group date date1">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened"
+                                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                />
                                 <span class="input-group-btn">
                         <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
                       </span>
@@ -16,7 +18,9 @@
 
                             <span>TO</span>
                             <div class="input-group date">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened"
+                                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                />
                                 <span class="input-group-btn">
                        <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
                      </span>
@@ -27,13 +31,13 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <div class="filter text-center">
                             <label>Filter by Status</label>
                             <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
 
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
             </div>
@@ -75,180 +79,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ordertable">
-                        <table class="table table-bordered">
-                            <thead class="text-uppercase font-karla-bold">
-                                <th>Order Id</th>
-                                <th colspan="2">Order details</th>
-                                <th>Qty</th>
-                                <th>Transport</th>
-                                <th>Amount</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>101_1</td>
-                                    <td>Seller</td>
-                                    <td>TBS002 - Raj Steel and Accessories</td>
-                                    <td>4</td>
-                                    <td>500</td>
-                                    <td>50,000</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Product</td>
-                                    <td>Seamless Round Pipes</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Transporter
-                                        <br>XYZ transporter</td>
-                                    <td>Dispatched from bhivandi.
-                                        <br>Currently at check post.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>MOC</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Standard/Grade </td>
-                                    <td>ASTM A312</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>OD (inches)</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>OD (mm)</td>
-                                    <td>25.4mm</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>OD/NB</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>SCH</td>
-                                    <td>10</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Thickness (mm)</td>
-                                    <td>3.02</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Total length (m)</td>
-                                    <td>12mm</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Total wt of Stock (kgs)</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Mode of transport</td>
-                                    <td>1000</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Rate per meter</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td>CST % extra</td>
-                                    <td>5%</td>
-                                    <td></td>
-                                    <td>5%</td>
-                                    <td>2500</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>VAT % extra</td>
-                                    <td>12%</td>
-                                    <td></td>
-                                    <td>12%</td>
-                                    <td>6000</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Per KG Excise Modvat (inclusive in price/kg)</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Theoritical Wt/mtr</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Discount </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>10%</td>
-                                    <td>500</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="alloted-bars">
                     <div class="progress">
@@ -292,6 +122,186 @@
                                 <p>07/07/2016</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ordertable">
+                        <table class="table table-bordered">
+                            <thead class="text-uppercase font-karla-bold">
+                                <th>Order Id</th>
+                                <th colspan="2">Order details</th>
+                                <th>Qty</th>
+                                <!--<th>Transport</th>-->
+                                <th>Amount</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>101_1</td>
+                                    <td>Seller</td>
+                                    <td>TBS002 - Raj Steel and Accessories</td>
+                                    <td>4m</td>
+                                    <!--<td>500</td>-->
+                                    <td>50,000</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Product</td>
+                                    <td>Seamless Round Pipes</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <!--<tr>
+                                    <td></td>
+                                    <td>Transporter
+                                        <br>XYZ transporter</td>
+                                    <td>Dispatched from bhivandi.
+                                        <br>Currently at check post.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>-->
+                                <tr>
+                                    <td></td>
+                                    <td>MOC</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Standard/Grade </td>
+                                    <td>ASTM A312</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>OD (inches)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>OD (mm)</td>
+                                    <td>25.4mm</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>OD/NB</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>SCH</td>
+                                    <td>10</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Thickness (mm)</td>
+                                    <td>3.02</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Total length (m)</td>
+                                    <td>12mm</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Total wt of Stock (kgs)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Mode of transport</td>
+                                    <td>1000</td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Rate per meter</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td>CST % extra</td>
+                                    <td>5%</td>
+                                    <td></td>
+                                    <!--<td>5%</td>-->
+                                    <td>2500</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>VAT % extra</td>
+                                    <td>12%</td>
+                                    <td></td>
+                                    <!--<td>12%</td>-->
+                                    <td>6000</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Per KG Excise Modvat (inclusive in price/kg)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Theoritical Wt/mtr</td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td></td>-->
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Discount </td>
+                                    <td></td>
+                                    <td></td>
+                                    <!--<td>10%</td>-->
+                                    <td>500</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Logistics Service Provider</td>
+                                    <td>pqrs</td>
+                                    <td></td>
+                                    <!--<td>10%</td>-->
+                                    <td>500</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
