@@ -143,6 +143,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'AddTransporterCtrl'
     })
+    .state('transport-order', {
+      url: "/transport-order",
+      templateUrl: "views/template.html",
+      controller: 'TransportorderCtrl'
+    })
     .state('transporters', {
       url: "/transporters",
       templateUrl: "views/template.html",

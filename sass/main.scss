@@ -1819,6 +1819,92 @@ table tr>td {
   }
 }
 
+
+/*-------------------------------------------------------------------------------------*/
+
+.enable {
+  margin: 6px -155px;
+}
+
+.cent-align {
+  margin-top: 112px;
+}
+
+.assign-space {
+  margin: 12px 0 0;
+}
+
+
+/*---------------------------Transport Order--------------------------------------------*/
+
+.transport-order {
+  text-align: center;
+  font-weight: bold;
+  color: #515151;
+  // .btn-primary {
+  //   background-color: #043E77;
+  //   border-color: #043E77;
+  // }
+  // .trans-order {
+  //   background-color: #043E77;
+  // }
+}
+
+.sub-head {
+  font-weight: bold;
+  font-size: 18px;
+  color: #043E77;
+  text-align: center;
+  margin: 16px 0 0;
+  span {
+    font-weight: bold;
+    color: #515151;
+    font-size: 16px;
+  }
+}
+
+// -----------------------------------------------------------------------------------------
+.vieworders1 {
+  .btn-primary {
+    background-color: #043E77;
+    border-color: #043E77;
+  }
+  .return {
+    background-color: #043E77;
+    &:active {
+      background-color: #043E77;
+    }
+  }
+}
+
+.info1 {
+  background-color: #F8F8F8;
+  padding: 40px 0 0 50px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  height: 145px;
+}
+
+.pin {
+  position: relative;
+  margin: 8px 0;
+  width: 38%;
+  .txt-box {
+    border: 1px solid #dedede;
+    padding: 0 12px;
+  }
+  img {
+    position: absolute;
+    top: 2px;
+    right: -35px;
+    width: 31px;
+  }
+}
+
+.btn-add {
+  margin-top: 8px 0;
+}
+
 //bootstrap forms
 
 /* Start writing sass here */

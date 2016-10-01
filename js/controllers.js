@@ -222,11 +222,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('AddTransporterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("add-transporter");
-    $scope.menutitle = NavigationService.makeactive("Add Transporter");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-})
+        $scope.template = TemplateService.changecontent("add-transporter");
+        $scope.menutitle = NavigationService.makeactive("Add Transporter");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('TransportorderCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("transport-order");
+        $scope.menutitle = NavigationService.makeactive("Transport Order");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
 
 .controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("brands");

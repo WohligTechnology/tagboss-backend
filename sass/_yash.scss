@@ -187,6 +187,14 @@
             font-weight: bold;
             padding-left: 15px !important;
         }
+        .bordr {
+            border-style: solid;
+            border-left: dashed single #043E77;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+            padding: 0 10PX;
+        }
     }
     .date {
         font-size: 15px;
@@ -206,12 +214,10 @@
 }
 
 // ------------------------------------------------------------------------------------------------
-,
 .orders,
 .view-buyers,
 .view-sellers,
 .view_orders {
-    ,
     .order,
     .view_order {
         .view {
@@ -539,7 +545,6 @@
                 }
             }
         }
-        #chart2 {}
         #chart3 {
             border-right: 1px solid #000;
             .highcharts-legend {
@@ -551,7 +556,6 @@
                 }
             }
         }
-        #chart4 {}
         .stat-cols {
             padding-right: 0;
             padding-left: 0;
@@ -588,6 +592,7 @@
             }
             border-color: #333333;
             width: 80%;
+            margin-top: 30px;
             tr:last-child {
                 font-weight: bold;
             }
@@ -917,6 +922,22 @@
             }
         }
     }
+    .order-head {
+        font-size: 24px;
+        color: #043E77;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    .total-head {
+        font-size: 20px;
+        color: #043E77;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: right;
+        span {
+            color: #515151;
+        }
+    }
 }
 
 // --------------this css is assign-agency-----------------
@@ -992,7 +1013,7 @@
             vertical-align: top;
         }
         .feed-col {
-            vertical-align: bottom;
+            vertical-align: middle;
             .btn-primary {
                 background-color: $panel-border;
                 border-color: $panel-border;
@@ -1010,10 +1031,10 @@
             }
             .accept,
             .reject {
-                font-size: 10px;
+                font-size: 13px;
                 margin-top: 10px;
                 margin-bottom: 20px;
-                padding: 2px 12px;
+                // padding: 2px 12px;
             }
         }
     }
