@@ -1888,16 +1888,17 @@ table tr>td {
 .pin {
   position: relative;
   margin: 8px 0;
-  width: 38%;
+  width: 48%;
   .txt-box {
     border: 1px solid #dedede;
     padding: 0 12px;
   }
   img {
     position: absolute;
-    top: 2px;
+    top: 1px;
     right: -35px;
     width: 31px;
+    cursor: pointer;
   }
 }
 
