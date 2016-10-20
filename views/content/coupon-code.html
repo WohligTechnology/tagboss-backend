@@ -1,53 +1,86 @@
-<section class="coupon body-main">
+<section class="coupon-code body-main">
     <div class="container-fluid">
+      <div class="details">
+
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <div class="coupon-pop">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>COUPON CODES</label>
-                            <input type="text" id="">
-                        </div>
-                        <div class="col-md-6">
-                            <label>VALUE</label>
-                            <input type="text" id="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>TYPE</label>
-                            <select>
-                                  <option selected hidden></option>
-                                  <option value="volvo">Volvo</option>
-                                  <option value="saab">Saab</option>
-                                  <option value="mercedes">Mercedes</option>
-                                  <option value="audi">Audi</option>
-                           </select>
-                        </div>
-                        <div class="col-md-6">
-                        <label>MAX. USAGE</label>
-                        <input type="text" id="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>MIN. AMOUNT</label>
-                           <textarea rows="2"></textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label>BY CATEGORY</label>
-                            <select>
-                                 <option selected hidden>ALL</option>
-                                  <option value="volvo"> Pipes</option>
-                                  <option value="saab">Rounded bar</option>
-                                  <option value="mercedes">Coil</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
+          <div class="col-md-2 pull-right">
+            <div class="input-group add-btn pull-right">
+              <a ng-click="openedit();">
+                <label class="view">Add</label>
+              </a>
             </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Coupon Code</th>
+                        <th>Start &amp; End date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>City</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>001</td>
+                        <td>01-10-2016 to 30-10-2016</td>
+                        <td>percent</td>
+                        <td>10</td>
+                        <td>Mumbai</td>
+                        <td>
+                          <div class="text-center">
+                                <span ng-click="openedit();">Edit</span>
+                                <span>|</span>
+                                <span ui-sref="view-orders">View</span>
+                                <span>|</span>
+                                <span ui-sref="" href="">Delete</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>001</td>
+                        <td>01-10-2016 to 30-10-2016</td>
+                        <td>amount</td>
+                        <td>30,000</td>
+                        <td>Mumbai</td>
+                        <td>
+                          <div class="text-center">
+                                <span ui-sref="" href="" ng-click="openedit();">Edit</span>
+                                <span>|</span>
+                                <span ui-sref="view-orders">View</span>
+                                <span>|</span>
+                                <span ui-sref="" href="">Delete</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>001</td>
+                        <td>01-10-2016 to 30-10-2016</td>
+                        <td>amount</td>
+                        <td>30,000</td>
+                        <td>Mumbai</td>
+                        <td>
+                          <div class="text-center">
+                                <span ui-sref="" href="" ng-click="openedit();">Edit</span>
+                                <span>|</span>
+                                <span ui-sref="view-orders">View</span>
+                                <span>|</span>
+                                <span ui-sref="" href="">Delete</span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 </section>

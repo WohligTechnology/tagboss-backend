@@ -258,7 +258,7 @@ a,
 header,
 .header1 {
   position: fixed;
-  z-index: 9999;
+  z-index: 9;
   background-color: #fff;
   padding-top: 20px;
   width: 100%;
@@ -564,7 +564,7 @@ header,
         border-left: 35px solid transparent;
         border-top: 30px solid #E6E6E6;
         position: absolute;
-        z-index: 10;
+        z-index: 1;
         left: 10%;
         /* bottom: -55px; */
         transform: translatex(0);
@@ -654,12 +654,43 @@ table tr>td {
   color: #666666!important;
 }
 
-.width80 {
+.width60 {
   background: rgba(0, 43, 127, 0.59);
   .modal-dialog {
-    width: 80%;
+    width: 60%;
   }
 }
+
+
+.coupon-code{
+  h4{
+    margin: 15px 0 0 10px;
+  }
+  select{
+    background: #fff;
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 75%;
+  }
+  label{
+    font-size: 18px;
+    font-weight: 500;
+    color: #2B2B41;
+    margin: 0;
+    text-align: left;
+    padding: 0 0 0 4em !important;
+  }
+  span+span{padding-left: 5px;}
+  table tr > th{
+    font-size: 16px;
+  }
+
+  table tr > th,
+  td{
+    width: auto !important;
+  }
+}
+
 
 .categories,
 .material-construct,
@@ -674,7 +705,8 @@ table tr>td {
 .transporter-payment,
 .grades-standards,
 .grades-standards1,
-.pending-delivery {
+.pending-delivery,
+.coupon-code {
   table tr>th,
   td {
     color: #1D1D35;

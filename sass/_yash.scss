@@ -1192,43 +1192,43 @@
     }
 }
 
-.coupon {
-    .coupon-pop {
-        border: 5px solid $panel-border;
-        padding: 40px 40px 80px;
-        background-color: #F2F2F2;
-        .row {
-            margin-bottom: 10px;
-        }
-        select {
-            background-color: #ffffff;
-            float: right;
-            height: 25px;
-            width: 50%;
-            border: none;
-            &:hover {
-                outline: none;
-            }
-            &:active {
-                outline: none;
-            }
-        }
-        input {
-            float: right;
-            width: 50%;
-            border: none;
-            &:hover {
-                outline: none;
-            }
-        }
-        textarea {
-            float: right;
-            width: 50%;
-            border: none;
-            resize: none;
-            &:hover {
-                outline: none;
-            }
-        }
-    }
-}
+// .coupon {
+//     .coupon-pop {
+//         border: 5px solid $panel-border;
+//         padding: 40px 40px 80px;
+//         background-color: #F2F2F2;
+//         .row {
+//             margin-bottom: 10px;
+//         }
+//         select {
+//             background-color: #ffffff;
+//             float: right;
+//             height: 25px;
+//             width: 50%;
+//             border: none;
+//             &:hover {
+//                 outline: none;
+//             }
+//             &:active {
+//                 outline: none;
+//             }
+//         }
+//         input {
+//             float: right;
+//             width: 50%;
+//             border: none;
+//             &:hover {
+//                 outline: none;
+//             }
+//         }
+//         textarea {
+//             float: right;
+//             width: 50%;
+//             border: none;
+//             resize: none;
+//             &:hover {
+//                 outline: none;
+//             }
+//         }
+//     }
+// }

@@ -1232,11 +1232,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
     })
 
-.controller('Coupon-codeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('Coupon-codeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("coupon-code");
     $scope.menutitle = NavigationService.makeactive("Coupon-code");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.openedit = function () {
+        $uibModal.open({
+            animation: true,
+            controller: 'Coupon-codeCtrl',
+            templateUrl: "views/modal/openedit.html",
+            scope: $scope,
+            windowClass: "width60",
+        });
+    };
 })
 
 .controller('headerctrl', function ($scope, TemplateService) {
