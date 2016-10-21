@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper'])
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
 
@@ -204,6 +204,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Material Construct");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+})
+
+.controller('ProdApprovalCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("product-approval");
+    $scope.menutitle = NavigationService.makeactive("Product Approval");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.brands = [{
+        name: 'Tata Steel'
+    }, {
+        name: 'Tata Steel'
+    }, {
+        name: 'Tata Steel'
+    }];
 
 })
 

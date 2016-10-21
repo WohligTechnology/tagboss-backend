@@ -7,6 +7,7 @@
 @import "../bower_components/swiper/dist/css/swiper.min.css";
 @import "../bower_components/smart-app-banner/smart-app-banner.css";
 @import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
+@import "../bower_components/angular-ui-select/dist/select.css";
 
 /* Bootstrap Variables Goes Here */
 
@@ -525,6 +526,7 @@ header,
 // start side menu css //
 .side-menu {
   position: relative;
+  z-index: 0;
   .sidebar {
     position: fixed;
     top: 142px;
@@ -546,6 +548,11 @@ header,
     }
   }
 }
+
+
+
+
+// end side menu css //
 
 .ordertable .table>tbody>.border-none>td,
 .ordertable .table>tbody>tr>td:nth-child(1){
@@ -587,7 +594,40 @@ header,
 .ha{
   height: auto !important;
 }
-// end side menu css //
+
+.inline-block{
+  display: inline-block;
+}
+.relative{
+  position: relative;
+}
+.side-btn2{
+  position: absolute;
+  right: 2%;
+  top: 16px;
+}
+.addproduct{
+  label{
+    font-size: 20px;
+    float: right;
+  }
+  select{
+    background: #fff;
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 100%;
+  }
+  .sec-foot{
+    position: relative;
+    .side-btn{
+      position: absolute;
+      right: -40%;
+      top: 0;
+    }
+  }
+
+}
+
 // start dashboard css //
 .dashboard {
   margin-bottom: 30px!important;

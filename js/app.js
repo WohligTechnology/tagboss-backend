@@ -43,6 +43,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'ViewOrdersCtrl'
     })
+    .state('product-approval', {
+      url: "/product-approval",
+      templateUrl: "views/template.html",
+      controller: 'ProdApprovalCtrl'
+    })
     .state('sellers', {
       url: "/sellers",
       templateUrl: "views/template.html",

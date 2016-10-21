@@ -35,7 +35,8 @@
     "smart-app-banner": "https://github.com/kudago/smart-app-banner.git",
     "bootstrap": "^3.3.7",
     "highcharts-ng": "^0.0.12",
-    "highcharts": "^4.2.6"
+    "highcharts": "^4.2.6",
+    "angular-ui-select": "^0.19.5"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"
