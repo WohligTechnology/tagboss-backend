@@ -547,6 +547,46 @@ header,
   }
 }
 
+.ordertable .table>tbody>.border-none>td,
+.ordertable .table>tbody>tr>td:nth-child(1){
+    border-top: none!important;
+    border-bottom: none!important;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+.no-margin{
+  margin: 0 !important;
+}
+.delivery-status{
+  p{
+    font-size: 18px;
+  }
+
+}
+.vieworders1{
+  padding: 40px 30px 0 30px !important;
+}
+.attach{
+  margin-bottom: 10px;
+}
+.subbtn{
+  margin-bottom: 25px;;
+}
+.mbn{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.mt5{
+  margin-top: 5px;
+}
+.text-uppercase{
+  text-transform: uppercase;
+}
+.ha{
+  height: auto !important;
+}
 // end side menu css //
 // start dashboard css //
 .dashboard {

@@ -8,9 +8,7 @@
                         <div class="period ">
                             <span>FROM</span>
                             <div class="input-group date date1">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened"
-                                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                />
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                                 <span class="input-group-btn">
                         <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
                       </span>
@@ -18,9 +16,7 @@
 
                             <span>TO</span>
                             <div class="input-group date">
-                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened"
-                                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                />
+                                <input type="text" class="form-control cal-input" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                                 <span class="input-group-btn">
                        <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
                      </span>
@@ -51,13 +47,25 @@
             </div>
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="details">
                         <div class="head">
                             <h2>BUYER</h2>
                         </div>
                         <div class="info">
                             Mirage Steel Ltd
+                            <br> Delivery Address:
+                            <br> Contact:
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="details">
+                        <div class="head">
+                            <h2>SELLER</h2>
+                        </div>
+                        <div class="info">
+                            Raj Steel Ltd
                             <br> Delivery Address:
                             <br> Contact:
                         </div>
@@ -85,7 +93,7 @@
                         <div class="progress-bar">
                             <div class="bar-color lgcolor"></div>
                             <div class="circle green-color">
-                                <span>0</span>
+                                <!-- <span>0</span> -->
                             </div>
                             <div class="mile">
                                 <p>Order Placed</p>
@@ -95,7 +103,7 @@
                         <div class="progress-bar">
                             <div class="bar-color lgcolors"></div>
                             <div class="circle blue-color">
-                                <span>5</span>
+                                <!-- <span>5</span> -->
                             </div>
                             <div class="mile">
                                 <p>Payment of Order</p>
@@ -105,7 +113,7 @@
                         <div class="progress-bar">
                             <div class="bar-color lgcolor"></div>
                             <div class="circle green-color">
-                                <span>6</span>
+                                <!-- <span>6</span> -->
                             </div>
                             <div class="mile">
                                 <p>Order Dispatched</p>
@@ -115,7 +123,7 @@
                         <div class="progress-bar">
                             <div class="bar-color"></div>
                             <div class="circles green-color">
-                                <span>5</span>
+                                <!-- <span>5</span> -->
                             </div>
                             <div class="mile miles">
                                 <p>Order Delivered</p>
@@ -132,75 +140,63 @@
                             <thead class="text-uppercase font-karla-bold">
                                 <th>Order Id</th>
                                 <th colspan="2">Order details</th>
+                                <th>Rate</th>
                                 <th>Qty</th>
-                                <!--<th>Transport</th>-->
                                 <th>Amount</th>
                             </thead>
+
                             <tbody>
                                 <tr>
                                     <td>101_1</td>
-                                    <td>Seller</td>
-                                    <td>TBS002 - Raj Steel and Accessories</td>
-                                    <td>4m</td>
-                                    <!--<td>500</td>-->
+                                    <td>Product</td>
+                                    <td>Seamless Rounded Pipes</td>
+                                    <td><span>500 per meter</span><span class="hide">500 per kg</span></td>
+                                    <td><span>100 meter</span><span class="hide">100 kg</span></td>
                                     <td>50,000</td>
                                 </tr>
+
                                 <tr>
                                     <td></td>
-                                    <td>Product</td>
-                                    <td>Seamless Round Pipes</td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <!--<tr>
-                                    <td></td>
-                                    <td>Transporter
-                                        <br>XYZ transporter</td>
-                                    <td>Dispatched from bhivandi.
-                                        <br>Currently at check post.</td>
+                                    <td>Manufacturer</td>
+                                    <td>Tata Steel, India</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                </tr>-->
-                                <tr>
-                                    <td></td>
-                                    <td>MOC</td>
-                                    <td></td>
-                                    <td></td>
-                                    <!--<td></td>-->
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>Standard/Grade </td>
-                                    <td>ASTM A312</td>
+                                    <td>Material of Construction</td>
+                                    <td>Stainless Steel</td>
                                     <td></td>
-                                    <!--<td></td>-->
+                                    <td></td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Standard / Grades</td>
+                                    <td>ASTM A-312</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+
+
+                                <!--Pipes-->
                                 <tr>
                                     <td></td>
                                     <td>OD (inches)</td>
+                                    <td>1</td>
                                     <td></td>
                                     <td></td>
-                                    <!--<td></td>-->
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>OD (mm)</td>
-                                    <td>25.4mm</td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>OD/NB</td>
+                                    <td>25.4</td>
                                     <td></td>
                                     <td></td>
-                                    <!--<td></td>-->
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -208,99 +204,317 @@
                                     <td>SCH</td>
                                     <td>10</td>
                                     <td></td>
-                                    <!--<td></td>-->
+                                    <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>Thickness (mm)</td>
-                                    <td>3.02</td>
+                                    <td>12mm</td>
                                     <td></td>
-                                    <!--<td></td>-->
+                                    <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>Total length (m)</td>
-                                    <td>12mm</td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Total wt of Stock (kgs)</td>
-                                    <td></td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Mode of transport</td>
                                     <td>1000</td>
                                     <td></td>
-                                    <!--<td></td>-->
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="border-none">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="border-none">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="border-none">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="border-none">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>Rate per meter</td>
+                                    <td>Price Per Kg</td>
                                     <td></td>
                                     <td></td>
-                                    <!--<td></td>-->
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Per KG Excise Modvat (included in price per kg)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
 
-                                <tr>
-                                    <td></td>
-                                    <td>CST % extra</td>
-                                    <td>5%</td>
-                                    <td></td>
-                                    <!--<td>5%</td>-->
-                                    <td>2500</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>VAT % extra</td>
-                                    <td>12%</td>
-                                    <td></td>
-                                    <!--<td>12%</td>-->
-                                    <td>6000</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Per KG Excise Modvat (inclusive in price/kg)</td>
-                                    <td></td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Theoritical Wt/mtr</td>
-                                    <td></td>
-                                    <td></td>
-                                    <!--<td></td>-->
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Discount </td>
-                                    <td></td>
-                                    <td></td>
-                                    <!--<td>10%</td>-->
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Logistics Service Provider</td>
-                                    <td>pqrs</td>
-                                    <td></td>
-                                    <!--<td>10%</td>-->
-                                    <td>500</td>
-                                </tr>
+
+
+
+                                <!-- Plates / Sheets -->
+                                <!--
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Thickness (mm)</td>
+                                                    <td>12mm</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Width</td>
+                                                    <td>1</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Length</td>
+                                                    <td>25.4</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Theoretical Weight per plate/sheet</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Per KG Excise Modvat (included in price per kg)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Price per plate/sheet</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Excise Modvat per sheet (included in price per sheet)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>-->
+
+
+
+
+                                <!--Coil-->
+                                <!--
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Thickness (mm)</td>
+                                                    <td>12mm</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Width</td>
+                                                    <td>1</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Length</td>
+                                                    <td>25.4</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Per KG Excise Modvat (included in price per kg)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Price per coil</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Excise Modvat per coil (included in price per coil)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>-->
+
+
+
+
+                                <!--Roundbar-->
+                                <!--<tr>
+                                                    <td></td>
+                                                    <td>Diameter in MM</td>
+                                                    <td>1</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Length in MM</td>
+                                                    <td>25.4</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="border-none">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Per KG Excise Modvat (included in price per kg)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>-->
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -322,27 +536,39 @@
                         <table class="table table-bordered summary-data">
                             <tbody>
                                 <tr>
-                                    <td>CST(Central Service Tax)
+                                    <td>SUBTOTAL
                                     </td>
-                                    <td>RS. xxx
+                                    <td>RS. 47000.00
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                  <td>CST(Central Service Tax)
+                                  </td>
+                                  <td>RS. xxx
+                                  </td>
+                              </tr> -->
+                                <tr>
+                                    <td>VAT 5 %
+                                    </td>
+                                    <td>RS. 47000.00
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>VAT(Value Added Tax)
+                                    <td>DISCOUNT
                                     </td>
-                                    <td>RS. xxx
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>disount
-                                    </td>
-                                    <td>RS. xxx
+                                    <td>RS. 200.00
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>TOTAL AMOUNT
+                                    <td>TRANSPORT
                                     </td>
-                                    <td>RS. xxx
+                                    <td>RS. 500.00
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>GRAND TOTAL
+                                    </td>
+                                    <td>RS. 94300.00
                                     </td>
                                 </tr>
                             </tbody>
@@ -352,55 +578,143 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="details">
                         <div class="head">
                             <h2>PAYMENT STATUS</h2>
                         </div>
                         <div class="info1 vieworders1">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="">Change Status</label>
-                                    <div class="col-sm-4">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <form class="form-horizontal" role="form">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="">Payment Status</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6 no-padding">
+                                    <div class="">
                                         <select name="" id="" class="form-control">
                                             <option value="">Pending</option>
                                             <option value="">Paid</option>
                                         </select>
                                     </div>
+                                  </div>
+                                </div>
 
-                                </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary return">RETURN</button>
-                                </div>
-                            </form>
+                                  <div class="text-center">
+                                      <button type="button" class="btn btn-primary return mt5">SUBMIT</button>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+
                         </div>
 
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="details">
                         <div class="head">
                             <h2>DELIVERY STATUS</h2>
                         </div>
-                        <div class="info1 vieworders1">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="">Change Status</label>
-                                    <div class="col-sm-4">
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Pending</option>
-                                            <option value="">Dispatched</option>
-                                            <option value="">Delivered</option>
-                                            <option value="">Returned</option>
-                                        </select>
+                        <div class="info1 vieworders1 ha delivery-status">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form class="form-horizontal ng-pristine ng-valid" role="form">
+                                      <div class="row">
+                                        <div class="col-sm-6">
+                                          <div class="form-group">
+                                              <label class="control-label" for="">Delivery Status</label>
+
+                                          <!-- <div class="col-sm-6 text-center">
+                                              <button type="button" class="btn btn-primary return">RETURN</button>
+                                          </div> -->
+
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-6 no-padding">
+                                          <select name="" id="" class="form-control">
+                                              <option value="">Pending</option>
+                                              <option value="">Dispatched</option>
+                                              <option value="">Delivered</option>
+                                              <option value="">Returned</option>
+                                          </select>
+                                         </div>
+                                      </div>
+
+                                        <div class="form-group mbn">
+                                            <p class="text-uppercase">XYZ Transporter</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control font-karla-bold trans" name="name">Dispatched From Bhivan...</textarea>
+                                        </div>
+                                        <div class="text-center subbtn">
+
+                                            <div class="attach">
+                                                <button class="btn btn-danger file-upload" name="button">
+                                                    TRANSPORTER RECEIPT
+                                    <!-- <upload-image ng-model="formData.resume" ng-callback="changeit" no-view="" class="ng-pristine ng-untouched ng-valid ng-empty"></upload-image> -->
+                                 </button>
+                                            </div>
+                                            <button class="btn btn-primary font-gotham-medium mt5 text-uppercase">Submit</button>
+                                        </div>
+
+
+                                        <!-- <div class="form-group">
+                                            <label class="col-sm-6 control-label" for="">Change Status</label>
+                                    <div class="col-sm-6">
+                                      <select name="" id="" class="form-control">
+                                          <option value="">Pending</option>
+                                          <option value="">Dispatched</option>
+                                          <option value="">Delivered</option>
+                                          <option value="">Returned</option>
+                                      </select>
                                     </div>
 
+                                        </div> -->
+
+
+                                    </form>
                                 </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary return">RETURN</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="details">
+                        <div class="head">
+                            <h2>ORDER STATUS</h2>
+                        </div>
+                        <div class="info1 vieworders1">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <form class="form-horizontal" role="form">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="">Order Status</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6 no-padding">
+                                    <div class="">
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Active</option>
+                                            <option value="">Cancelled</option>
+                                        </select>
+                                    </div>
+                                  </div>
                                 </div>
 
-                            </form>
+                                  <div class="text-center">
+                                      <button type="button" class="btn btn-primary return mt5">SUBMIT</button>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
