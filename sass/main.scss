@@ -22,6 +22,7 @@ $panel-border: #043E77 !default;
 $box-background: #F2F2F2 !default;
 $magic-radio-size: 20px !default;
 $magic-checkbox-size: 20px !default;
+$button-info: #009cd9 !default;
 $magic-dot-size: 8px !default;
 $magic-border-color: #c0c0c0 !default;
 $magic-main-color: #51b1ac !default;
@@ -549,86 +550,94 @@ header,
   }
 }
 
-
-
-
 // end side menu css //
-
 .ordertable .table>tbody>.border-none>td,
-.ordertable .table>tbody>tr>td:nth-child(1){
-    border-top: none!important;
-    border-bottom: none!important;
+.ordertable .table>tbody>tr>td:nth-child(1) {
+  border-top: none!important;
+  border-bottom: none!important;
 }
 
-.no-padding{
+.no-padding {
   padding: 0 !important;
 }
-.no-margin{
+
+.no-margin {
   margin: 0 !important;
 }
-.delivery-status{
-  p{
+
+.delivery-status {
+  p {
     font-size: 18px;
   }
-
 }
-.vieworders1{
+
+.vieworders1 {
   padding: 40px 30px 0 30px !important;
 }
-.attach{
+
+.attach {
   margin-bottom: 10px;
 }
-.subbtn{
-  margin-bottom: 25px;;
+
+.subbtn {
+  margin-bottom: 25px;
+  ;
 }
-.mbn{
+
+.mbn {
   margin-top: 10px;
   margin-bottom: 0;
 }
-.mt5{
+
+.mt5 {
   margin-top: 5px;
 }
-.text-uppercase{
+
+.text-uppercase {
   text-transform: uppercase;
 }
-.ha{
+
+.ha {
   height: auto !important;
 }
 
-.inline-block{
+.inline-block {
   display: inline-block;
 }
-.relative{
+
+.relative {
   position: relative;
 }
-.border-none{
+
+.border-none {
   border: none !important;
 }
-.side-btn2{
+
+.side-btn2 {
   position: absolute;
   right: 2%;
   top: 16px;
 }
-.addproduct{
-  label{
+
+.addproduct {
+  label {
     font-size: 20px;
     float: right;
   }
-  select{
+  select {
     background: #fff;
     border: 1px solid #ccc;
     height: 30px;
     width: 100%;
   }
-  .sec-foot{
+  .sec-foot {
     position: relative;
-    .side-btn{
+    .side-btn {
       position: absolute;
       right: -40%;
       top: 0;
     }
   }
-
 }
 
 // start dashboard css //
@@ -744,18 +753,17 @@ table tr>td {
   }
 }
 
-
-.coupon-code{
-  h4{
+.coupon-code {
+  h4 {
     margin: 15px 0 0 10px;
   }
-  select{
+  select {
     background: #fff;
     border: 1px solid #ccc;
     height: 30px;
     width: 75%;
   }
-  label{
+  label {
     font-size: 18px;
     font-weight: 500;
     color: #2B2B41;
@@ -763,17 +771,17 @@ table tr>td {
     text-align: left;
     padding: 0 0 0 4em !important;
   }
-  span+span{padding-left: 5px;}
-  table tr > th{
+  span+span {
+    padding-left: 5px;
+  }
+  table tr>th {
     font-size: 16px;
   }
-
-  table tr > th,
-  td{
+  table tr>th,
+  td {
     width: auto !important;
   }
 }
-
 
 .categories,
 .material-construct,
@@ -1105,6 +1113,7 @@ table tr>td {
           }
         }
         .rounded-pipes {
+          margin: 0 0 16px;
           width: 50%;
           padding: 0 0 0 6em;
           float: left;
@@ -1928,6 +1937,13 @@ table tr>td {
 }
 
 .txt-area1 {
+  border: 1px solid #a9a9a9;
+  height: auto;
+  width: 368px;
+  padding: 5px 9px 0;
+}
+
+.txt-area1 {
   resize: none;
   &:focus {
     outline: none;
@@ -2019,6 +2035,211 @@ table tr>td {
 
 .btn-add {
   margin-top: 8px 0;
+}
+
+//Refund Buyer view
+.modal-body {
+  .reason-view {}
+  p {
+    padding: 10px 5px 0;
+    font-size: 15px;
+  }
+  p+p {
+    border-top: 1px solid #666666;
+  }
+}
+
+//Brand Manufacturer-Modal
+.filename {
+  p {
+    width: 84%;
+    border: 1px solid #b5b5b5;
+    font-size: 16px;
+    text-align: center;
+    height: 34px;
+    background-color: #efefef;
+    /* line-height: 14px; */
+    line-height: 32px;
+    padding: 0 8px;
+  }
+}
+
+// ------------------------------------------------------
+.custom-radiobtn {
+  padding: 0;
+}
+
+.stock .length-range {
+  position: relative;
+}
+
+.addproduct .stock input[type=number],
+.addproduct .stock input[type=text] {
+  width: 29px;
+  height: 29px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #b5b5b5;
+  font-weight: 700;
+  background-color: #efefef;
+  color: #2e2e2e;
+  font-family: karla;
+}
+
+.customers {
+  font-size: 10px;
+  display: inline-block;
+  margin: 0 0 8px 27px;
+  font-weight: 700;
+}
+
+.stock .length-range {
+  position: relative;
+  .table-bordered>tbody>tr>td+td {
+    border-left: 1px solid #fff;
+  }
+  .borb,
+  .borrb {
+    border-color: #fff !important;
+  }
+  .table-bordered>tbody>tr>td {
+    border-color: #fff;
+  }
+  .newpro {
+    .subbtn {
+      .btn {
+        background: transparent;
+        border-color: #fff;
+        color: #fff;
+        border-radius: 100%;
+        padding: 5px 7px;
+        line-height: 12px;
+      }
+    }
+  }
+  h3 {
+    font-size: 18px;
+    color: #fff;
+    background: $button-info;
+    padding: 5px 0 5px 10px;
+    margin: 0 -11px 0 0;
+    @include border-top-radius(10px);
+    @include border-bottom-radius(10px);
+    @include border-left-radius(10px);
+    @include border-right-radius(0);
+    @include border-style(solid);
+    @include border-width(1px);
+    @include border-color($button-info);
+    span {
+      // color: $brand-font-grey-color;
+      width: 54px;
+    }
+  }
+  .table-place {
+    color: #fff;
+    background: $button-info;
+    padding: 8px 10px;
+    position: absolute;
+    top: 0;
+    right: -284px;
+    @include border-top-radius(10px);
+    @include border-bottom-radius(10px);
+    @include border-left-radius(10px);
+    @include border-right-radius(10px);
+    border-top-left-radius: 0;
+    @include border-style(solid);
+    @include border-width(1px);
+    @include border-color($button-info);
+    .sizeqty {
+      margin: 0;
+    }
+    .betspace {
+      margin: 4px 0 0;
+    }
+  }
+}
+
+.addproduct .table {
+  margin-bottom: 15px;
+}
+
+.stock .length-range .table-place,
+.stock .length-range h3 {
+  background: #009cd9;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #009cd9;
+}
+
+.custom-radiobtn input[type=radio]+label {
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+  font-weight: 400;
+  float: left;
+}
+
+.customers {
+  font-size: 10px;
+  display: inline-block;
+  margin: 0 0 8px 27px;
+  font-weight: 700;
+}
+
+.custom-radiobtn input[type=radio] {
+  display: none;
+}
+
+.addproduct input {
+  position: relative;
+}
+
+.custom-radiobtn input[type=radio]+label:before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  display: block;
+  position: absolute;
+  top: 1px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.custom-radiobtn input[type=radio]+label span {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 10px 0 0 -18px;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 6px solid #acacac;
+  border-radius: 100%;
+  background: 0 0;
+  position: absolute;
+  top: 3px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.custspace {
+  margin: 0 27px -8px;
+}
+
+.custspaces {
+  margin: 0 27px 14px;
+}
+
+.addproduct .plsmtc {
+  color: #eb1c22;
+  padding: 0 8px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
 }
 
 //bootstrap forms

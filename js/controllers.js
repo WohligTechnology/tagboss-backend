@@ -222,11 +222,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
 
 })
 
-.controller('InspectionAgenciesCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('InspectionAgenciesCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("inspection-agencies");
     $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.openInspection = function () {
+        $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/inspection.html",
+            scope: $scope,
+        });
+    };
+
 })
 
 .controller('AddInspectionAgencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -237,23 +246,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
 })
 
 .controller('AddTransporterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("add-transporter");
-        $scope.menutitle = NavigationService.makeactive("Add Transporter");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
-    .controller('TransportorderCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("transport-order");
-        $scope.menutitle = NavigationService.makeactive("Transport Order");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+    $scope.template = TemplateService.changecontent("add-transporter");
+    $scope.menutitle = NavigationService.makeactive("Add Transporter");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-.controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('TransportorderCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("transport-order");
+    $scope.menutitle = NavigationService.makeactive("Transport Order");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
+.controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("brands");
     $scope.menutitle = NavigationService.makeactive("Brands");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.openBrand = function () {
+        $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/brandmanufacturer.html",
+            scope: $scope,
+        });
+    };
 
 })
 
@@ -1185,6 +1203,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
             $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/refundbuyer.html",
+                scope: $scope,
+
+                //                windowClass: "width80",
+            });
+        };
+        $scope.openView = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/refundbuyerview.html",
                 scope: $scope,
 
                 //                windowClass: "width80",

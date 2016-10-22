@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
+              <input type="text" class="form-control" placeholder="Search by Buyer ID or Name">
               <span class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
                 <!-- <button class="btn btn-default" type="button">Go!</button> -->
@@ -13,11 +13,14 @@
             </div>
           </div>
           <div class="col-md-6">
+            <div class="filter pull-left">
+              <p class="total">Total Buyers <span>250</span></p>
+            </div>
             <div class="more-opt pull-right">
               <div class="magic-form">
                 <div class="magic-resize">
                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                    <label class="detail-heading" for="add-one">
+                  <label class="detail-heading" for="add-one">
                       More
                     </label>
                 </div>
@@ -36,381 +39,474 @@
         <div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-              <label class="detail-heading" for="add-two">
+            <label class="detail-heading" for="add-two">
                 TBS001 MIRAGE STEEL LTD.
               </label>
           </div>
         </div>
-          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-           <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
       </div>
       <table class="table table-bordered buyer-table">
-            <thead>
-              <tr>
-                <th><strong>ADDRESS</strong></th>
-                <th><strong>ORDER ID</strong></th>
-                <th><strong>ORDER DETAILS</strong></th>
-                <th><strong>SALE TILL DATE</strong></th>
-               <th><strong>BUYER</strong></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                   15/18 Rhythm House,
-                    Kaala Ghoda, Fort,
-                    Mumbai - 400005
-                    India</td>
-                <td>
-                 <span>0987</span>
-                 <span>6251</span>
-                 <span>5589</span>
-                 </td>
-                <td>
-                  <span>200 - SS - ASTM 303H</span>
-                  <span>v500 - MS - ASTM 103L</span>
-                  <span>125 - AL - ASTM 98</span>
-                </td>
-                <td>
-                  <span>Rs. 7,85,587/-</span>
-                  <span> Rs. 8,58,756/-</span>
-                  <span>Rs. 3,55,898/-</span>
-                   <span class="result">Rs. 5,55,55,666/-</span>
-                  </td>
-                <td>
-                  <span>Raj SteelRaj Steel</span>
-                  <span>Dhanera Steel</span>
-                  <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="buyer-details ">
-            <div class="magic-form">
-              <div class="magic-resize">
-                <input class="magic-checkbox" type="checkbox" name="layout" id="add-three" value="option1">
-                  <label class="detail-heading" for="add-three">
+        <thead>
+          <tr>
+            <th><strong>SR. NO.</strong></th>
+            <th><strong>NAME</strong></th>
+            <th><strong>TOTAL NO. OF ORDER</strong></th>
+            <th><strong>TOTAL BUY</strong></th>
+            <th><strong>STATUS</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              <span>RAJ STEEL</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>250</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>Rs. 3000/-</span>
+              <span></span>
+              <span></span>
+              <span class="result"></span>
+            </td>
+            <td>
+              <span></span>
+              <span></span>
+              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
+            <label class="detail-heading" for="add-two">
+                TBS001 MIRAGE STEEL LTD.
+              </label>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>SR. NO.</strong></th>
+            <th><strong>NAME</strong></th>
+            <th><strong>TOTAL NO. OF ORDER</strong></th>
+            <th><strong>TOTAL BUY</strong></th>
+            <th><strong>STATUS</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              <span>RAJ STEEL</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>250</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>Rs. 3000/-</span>
+              <span></span>
+              <span></span>
+              <span class="result"></span>
+            </td>
+            <td>
+              <span></span>
+              <span></span>
+              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
+            <label class="detail-heading" for="add-two">
+                TBS001 MIRAGE STEEL LTD.
+              </label>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>SR. NO.</strong></th>
+            <th><strong>NAME</strong></th>
+            <th><strong>TOTAL NO. OF ORDER</strong></th>
+            <th><strong>TOTAL BUY</strong></th>
+            <th><strong>STATUS</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              <span>RAJ STEEL</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>250</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>Rs. 3000/-</span>
+              <span></span>
+              <span></span>
+              <span class="result"></span>
+            </td>
+            <td>
+              <span></span>
+              <span></span>
+              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!--<div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-three" value="option1">
+            <label class="detail-heading" for="add-three">
                     TBS001 MIRAGE STEEL LTD.
                   </label>
-              </div>
-            </div>
-              <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-               <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
           </div>
-          <table class="table table-bordered buyer-table">
-                <thead>
-                  <tr>
-                    <th><strong>ADDRESS</strong></th>
-                    <th><strong>ORDER ID</strong></th>
-                    <th><strong>ORDER DETAILS</strong></th>
-                    <th><strong>SALE TILL DATE</strong></th>
-                   <th><strong>BUYER</strong></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                       15/18 Rhythm House,
-                        Kaala Ghoda, Fort,
-                        Mumbai - 400005
-                        India</td>
-                    <td>
-                     <span>0987</span>
-                     <span>6251</span>
-                     <span>5589</span>
-                     </td>
-                    <td>
-                      <span>200 - SS - ASTM 303H</span>
-                      <span>v500 - MS - ASTM 103L</span>
-                      <span>125 - AL - ASTM 98</span>
-                    </td>
-                    <td>
-                      <span>Rs. 7,85,587/-</span>
-                      <span> Rs. 8,58,756/-</span>
-                      <span>Rs. 3,55,898/-</span>
-                       <span class="result">Rs. 5,55,55,666/-</span>
-                      </td>
-                    <td>
-                      <span>Raj SteelRaj Steel</span>
-                      <span>Dhanera Steel</span>
-                      <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="buyer-details ">
-                <div class="magic-form">
-                  <div class="magic-resize">
-                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-four" value="option1">
-                      <label class="detail-heading" for="add-four">
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-four" value="option1">
+            <label class="detail-heading" for="add-four">
                         TBS001 MIRAGE STEEL LTD.
                       </label>
-                  </div>
-                </div>
-                  <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                   <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
-              </div>
-              <table class="table table-bordered buyer-table">
-                    <thead>
-                      <tr>
-                        <th><strong>ADDRESS</strong></th>
-                        <th><strong>ORDER ID</strong></th>
-                        <th><strong>ORDER DETAILS</strong></th>
-                        <th><strong>SALE TILL DATE</strong></th>
-                       <th><strong>BUYER</strong></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                           15/18 Rhythm House,
-                            Kaala Ghoda, Fort,
-                            Mumbai - 400005
-                            India</td>
-                        <td>
-                         <span>0987</span>
-                         <span>6251</span>
-                         <span>5589</span>
-                         </td>
-                        <td>
-                          <span>200 - SS - ASTM 303H</span>
-                          <span>v500 - MS - ASTM 103L</span>
-                          <span>125 - AL - ASTM 98</span>
-                        </td>
-                        <td>
-                          <span>Rs. 7,85,587/-</span>
-                          <span> Rs. 8,58,756/-</span>
-                          <span>Rs. 3,55,898/-</span>
-                           <span class="result">Rs. 5,55,55,666/-</span>
-                          </td>
-                        <td>
-                          <span>Raj SteelRaj Steel</span>
-                          <span>Dhanera Steel</span>
-                          <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="buyer-details ">
-                    <div class="magic-form">
-                      <div class="magic-resize">
-                        <input class="magic-checkbox" type="checkbox" name="layout" id="add-five" value="option1">
-                          <label class="detail-heading" for="add-five">
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-five" value="option1">
+            <label class="detail-heading" for="add-five">
                             TBS001 MIRAGE STEEL LTD.
                           </label>
-                      </div>
-                    </div>
-                      <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                       <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
-                  </div>
-                  <table class="table table-bordered buyer-table">
-                        <thead>
-                          <tr>
-                            <th><strong>ADDRESS</strong></th>
-                            <th><strong>ORDER ID</strong></th>
-                            <th><strong>ORDER DETAILS</strong></th>
-                            <th><strong>SALE TILL DATE</strong></th>
-                           <th><strong>BUYER</strong></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                               15/18 Rhythm House,
-                                Kaala Ghoda, Fort,
-                                Mumbai - 400005
-                                India</td>
-                            <td>
-                             <span>0987</span>
-                             <span>6251</span>
-                             <span>5589</span>
-                             </td>
-                            <td>
-                              <span>200 - SS - ASTM 303H</span>
-                              <span>v500 - MS - ASTM 103L</span>
-                              <span>125 - AL - ASTM 98</span>
-                            </td>
-                            <td>
-                              <span>Rs. 7,85,587/-</span>
-                              <span> Rs. 8,58,756/-</span>
-                              <span>Rs. 3,55,898/-</span>
-                               <span class="result">Rs. 5,55,55,666/-</span>
-                              </td>
-                            <td>
-                              <span>Raj SteelRaj Steel</span>
-                              <span>Dhanera Steel</span>
-                              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="buyer-details ">
-                        <div class="magic-form">
-                          <div class="magic-resize">
-                            <input class="magic-checkbox" type="checkbox" name="layout" id="add-six" value="option1">
-                              <label class="detail-heading" for="add-six">
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-six" value="option1">
+            <label class="detail-heading" for="add-six">
                                 TBS001 MIRAGE STEEL LTD.
                               </label>
-                          </div>
-                        </div>
-                          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                           <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
-                      </div>
-                      <table class="table table-bordered buyer-table">
-                            <thead>
-                              <tr>
-                                <th><strong>ADDRESS</strong></th>
-                                <th><strong>ORDER ID</strong></th>
-                                <th><strong>ORDER DETAILS</strong></th>
-                                <th><strong>SALE TILL DATE</strong></th>
-                               <th><strong>BUYER</strong></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                   15/18 Rhythm House,
-                                    Kaala Ghoda, Fort,
-                                    Mumbai - 400005
-                                    India</td>
-                                <td>
-                                 <span>0987</span>
-                                 <span>6251</span>
-                                 <span>5589</span>
-                                 </td>
-                                <td>
-                                  <span>200 - SS - ASTM 303H</span>
-                                  <span>v500 - MS - ASTM 103L</span>
-                                  <span>125 - AL - ASTM 98</span>
-                                </td>
-                                <td>
-                                  <span>Rs. 7,85,587/-</span>
-                                  <span> Rs. 8,58,756/-</span>
-                                  <span>Rs. 3,55,898/-</span>
-                                   <span class="result">Rs. 5,55,55,666/-</span>
-                                  </td>
-                                <td>
-                                  <span>Raj SteelRaj Steel</span>
-                                  <span>Dhanera Steel</span>
-                                  <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <div class="buyer-details ">
-                            <div class="magic-form">
-                              <div class="magic-resize">
-                                <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                  <label class="detail-heading" for="add-one">
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+            <label class="detail-heading" for="add-one">
                                     TBS001 MIRAGE STEEL LTD.
                                   </label>
-                              </div>
-                            </div>
-                              <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                               <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
-                          </div>
-                          <table class="table table-bordered buyer-table">
-                                <thead>
-                                  <tr>
-                                    <th><strong>ADDRESS</strong></th>
-                                    <th><strong>ORDER ID</strong></th>
-                                    <th><strong>ORDER DETAILS</strong></th>
-                                    <th><strong>SALE TILL DATE</strong></th>
-                                   <th><strong>BUYER</strong></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                       15/18 Rhythm House,
-                                        Kaala Ghoda, Fort,
-                                        Mumbai - 400005
-                                        India</td>
-                                    <td>
-                                     <span>0987</span>
-                                     <span>6251</span>
-                                     <span>5589</span>
-                                     </td>
-                                    <td>
-                                      <span>200 - SS - ASTM 303H</span>
-                                      <span>v500 - MS - ASTM 103L</span>
-                                      <span>125 - AL - ASTM 98</span>
-                                    </td>
-                                    <td>
-                                      <span>Rs. 7,85,587/-</span>
-                                      <span> Rs. 8,58,756/-</span>
-                                      <span>Rs. 3,55,898/-</span>
-                                       <span class="result">Rs. 5,55,55,666/-</span>
-                                      </td>
-                                    <td>
-                                      <span>Raj SteelRaj Steel</span>
-                                      <span>Dhanera Steel</span>
-                                      <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div class="buyer-details ">
-                                <div class="magic-form">
-                                  <div class="magic-resize">
-                                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                      <label class="detail-heading" for="add-one">
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buyer-details ">
+        <div class="magic-form">
+          <div class="magic-resize">
+            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+            <label class="detail-heading" for="add-one">
                                         TBS001 MIRAGE STEEL LTD.
                                       </label>
-                                  </div>
-                                </div>
-                                  <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                   <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+          </div>
+        </div>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
 
-                              </div>
-                              <table class="table table-bordered buyer-table">
-                                    <thead>
-                                      <tr>
-                                        <th><strong>ADDRESS</strong></th>
-                                        <th><strong>ORDER ID</strong></th>
-                                        <th><strong>ORDER DETAILS</strong></th>
-                                        <th><strong>SALE TILL DATE</strong></th>
-                                       <th><strong>BUYER</strong></th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                           15/18 Rhythm House,
-                                            Kaala Ghoda, Fort,
-                                            Mumbai - 400005
-                                            India</td>
-                                        <td>
-                                         <span>0987</span>
-                                         <span>6251</span>
-                                         <span>5589</span>
-                                         </td>
-                                        <td>
-                                          <span>200 - SS - ASTM 303H</span>
-                                          <span>v500 - MS - ASTM 103L</span>
-                                          <span>125 - AL - ASTM 98</span>
-                                        </td>
-                                        <td>
-                                          <span>Rs. 7,85,587/-</span>
-                                          <span> Rs. 8,58,756/-</span>
-                                          <span>Rs. 3,55,898/-</span>
-                                           <span class="result">Rs. 5,55,55,666/-</span>
-                                          </td>
-                                        <td>
-                                          <span>Raj SteelRaj Steel</span>
-                                          <span>Dhanera Steel</span>
-                                          <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>ADDRESS</strong></th>
+            <th><strong>ORDER ID</strong></th>
+            <th><strong>ORDER DETAILS</strong></th>
+            <th><strong>SALE TILL DATE</strong></th>
+            <th><strong>BUYER</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            </td>
+            <td>
+              <span>0987</span>
+              <span>6251</span>
+              <span>5589</span>
+            </td>
+            <td>
+              <span>200 - SS - ASTM 303H</span>
+              <span>v500 - MS - ASTM 103L</span>
+              <span>125 - AL - ASTM 98</span>
+            </td>
+            <td>
+              <span>Rs. 7,85,587/-</span>
+              <span> Rs. 8,58,756/-</span>
+              <span>Rs. 3,55,898/-</span>
+              <span class="result">Rs. 5,55,55,666/-</span>
+            </td>
+            <td>
+              <span>Raj SteelRaj Steel</span>
+              <span>Dhanera Steel</span>
+              <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>-->
 
     </div>
   </div>
-</div>
+  </div>

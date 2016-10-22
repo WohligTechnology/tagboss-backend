@@ -84,6 +84,12 @@
     .filter {
         margin-top: 12px;
         font-size: 16px;
+        .total {
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            color: #515151;
+        }
         label {
             top: -3px;
             position: relative;
@@ -898,6 +904,10 @@
             }
             td {
                 width: 16%;
+                a {
+                    text-decoration: none;
+                    color: #666666;
+                }
             }
             .last-td {
                 width: 40%;
@@ -914,11 +924,15 @@
                     }
                 }
             }
+            a:focus {
+                outline: none;
+            }
             .view {
                 text-decoration: underline;
                 cursor: pointer;
                 color: $panel-border;
                 font-size: 18px;
+                outline: none;
             }
         }
     }
