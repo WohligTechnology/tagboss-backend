@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper'])
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper','toggle-switch'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
 
@@ -257,6 +257,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
     $scope.menutitle = NavigationService.makeactive("Transport Order");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
 })
 
 .controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {

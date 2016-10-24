@@ -40,7 +40,7 @@
         <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
       </div>
 
-      <table class="table table-bordered inspection-table">
+      <table class="table table-bordered1 inspection-table">
         <thead>
           <tr>
             <th><strong>NAME</strong></th>
@@ -445,7 +445,7 @@
                         <h3 class="font-karla-bold">Length range from <input type="text" name="name" value="5"> to <input type="text" name="name" value="7.0"></h3>
                         <div class="table-place">
                           <div class="sizeqty">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered1">
                               <thead>
                                 <tr>
                                   <th>
@@ -534,7 +534,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="sizeqty betspace">
-                              <table class="table table-bordered">
+                              <table class="table table-bordered1">
                                 <thead>
                                   <tr>
                                     <th>
@@ -739,8 +739,7 @@
                   <div class="col-md-6">
                     <div class="custom-radiobtn">
                       <input type="radio" name="optionsRadios" id="radio4" value="mtc" ng-model="allMTC">
-                      <label for="radio4" class="custspace"><span></span>I have original MTC
-                                      </label>
+                      <label for="radio4" class="custspace"><span></span>I have original MTC</label>
                       <span class="customers">Customers like to buy products with original MTC</span>
                       <input type="radio" name="optionsRadios" id="radio5" value="photography" ng-model="allMTC">
                       <label for="radio5" class="custspaces"><span></span>I have photocopy of MTC</label>
@@ -1392,10 +1391,11 @@
                       <div class="input-group attach">
                         <div class="filename">
                           <p>12.jpg</p>
+                          <span><i class="fa fa-upload" aria-hidden="true"></i></span>
                         </div>
-                        <div class="input-group-addon upload">
+                        <!--<div class="input-group-addon upload">
                           <upload-image ng-model="formData.resume" ng-callback="changeit" no-view></upload-image>
-                        </div>
+                        </div>-->
                       </div>
                       <p class="font-karla plsmtc">Please upload MTC</p>
                     </div>
@@ -1572,7 +1572,7 @@
                         <h3 class="font-karla-bold">Length range from <input type="text" name="name" value="5"> to <input type="text" name="name" value="7.0"></h3>
                         <div class="table-place">
                           <div class="sizeqty">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered1">
                               <thead>
                                 <tr>
                                   <th>
@@ -1661,7 +1661,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="sizeqty betspace">
-                              <table class="table table-bordered">
+                              <table class="table table-bordere1">
                                 <thead>
                                   <tr>
                                     <th>
@@ -1872,18 +1872,19 @@
             </div>
           </div>
           <div class="col-md-12 text-center">
-            <div class="subbtn inline-block pacebtn">
-              <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="openPop();">Save</button>
-            </div>
+           
             <div class="btn-submit inline-block pacebtn">
               <div class="subbtn">
                 <button class="btn btn-primary font-gotham-medium text-uppercase btn-save" ng-click="openPops();">Cancel</button>
               </div>
-              <div class="tip">
+              <!--<div class="tip">
 
               </div>
               <span class="font-karla complete">Please complete<br>
-                          your profile.</span>
+                          your profile.</span>-->
+            </div>
+             <div class="subbtn inline-block pacebtn">
+              <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="openPop();">Save</button>
             </div>
           </div>
         </form>

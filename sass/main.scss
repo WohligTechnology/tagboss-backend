@@ -8,6 +8,7 @@
 @import "../bower_components/smart-app-banner/smart-app-banner.css";
 @import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 @import "../bower_components/angular-ui-select/dist/select.css";
+@import "../bower_components/angular-toggle-switch/angular-toggle-switch.css";
 
 /* Bootstrap Variables Goes Here */
 
@@ -245,6 +246,76 @@ a,
     }
   }
 }
+
+.custom-radiobtn {
+                padding: 0;
+                // margin: 50px 0 0;
+                input[type="radio"] {
+                    display: none;
+                }
+                label+label {
+                    margin: 15px 0 0;
+                }
+                input[type="radio"]+label {
+                    font-size: 18px;
+                    position: relative;
+                    cursor: pointer;
+                    font-weight: 400;
+                    float: left;
+                    &:before {
+                        content: "";
+                        width: 26px;
+                        height: 26px;
+                        display: block;
+                        position: absolute;
+                        top: 1px;
+                        // left: 50%;
+                        @include transform(translate(-50%,
+                        -50%));
+                        // transform: rotate(90deg);
+                    }
+                }
+                input[type="radio"]+label span {
+                    display: inline-block;
+                    @include square(26px);
+                    margin: 10px 0 0 -18px;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    border: 6px solid #acacac;
+                    border-radius: 100%;
+                    background: transparent;
+                    @include transition(all 300ms linear);
+                    position: absolute;
+                    top: 3px;
+                    // left: 50%;
+                    @include transform(translate(-50%,
+                    -50%));
+                    &:after {
+                        content: "";
+                        @include square(12px);
+                        margin: 1px 0 0 1px;
+                        display: block;
+                        background-color: $button-info;
+                        border: 1px solid $button-info;
+                        border-radius: 50%;
+                        opacity: 0;
+                        @include transition(all 300ms linear);
+                    }
+                }
+                input[type="radio"]:checked+label span {
+                    @include transition(all 300ms linear);
+                    &:after {
+                        opacity: 1;
+                        @include transition(all 300ms linear);
+                    }
+                }
+                input[type="radio"]+label span,
+                input[type="radio"]:checked+label span {
+                    @include transition(all 0.4s linear);
+                    margin-right: 8px;
+                }
+            }
+
 
 #chart {}
 
@@ -1940,17 +2011,31 @@ table tr>td {
   border: 1px solid #a9a9a9;
   height: auto;
   width: 368px;
-  padding: 5px 9px 0;
+  padding: 0 5px;
 }
 
 .txt-area1 {
   resize: none;
-  &:focus {
+  &:focus { 
     outline: none;
   }
 }
 
-
+.inspec{
+  position: relative;
+  .close-img{ 
+        position: absolute;
+    right: -14px;
+    top: -14px;
+    cursor: pointer;
+    img{
+      width: 30px;
+    }
+}
+  }
+.chk-spac{
+  padding: 0 20px;
+}
 /*-------------------------------------------------------------------------------------*/
 
 .enable {
@@ -1993,7 +2078,21 @@ table tr>td {
     font-size: 16px;
   }
 }
-
+.search-content{
+  .head{
+    p{
+      margin: 0;
+      span{
+        padding: 0 15px;
+      }
+    }
+    padding: 4px 20px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #043E77;
+    text-transform: uppercase;
+  }
+}
 // -----------------------------------------------------------------------------------------
 .vieworders1 {
   .btn-primary {
@@ -2055,12 +2154,18 @@ table tr>td {
     width: 84%;
     border: 1px solid #b5b5b5;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
     height: 34px;
     background-color: #efefef;
     /* line-height: 14px; */
     line-height: 32px;
     padding: 0 8px;
+    display: inline-block;
+  }
+  span{
+    padding: 10px 14px;
+    background: #0081d9;
+    color: #fff;
   }
 }
 
@@ -2072,7 +2177,14 @@ table tr>td {
 .stock .length-range {
   position: relative;
 }
-
+.addproduct .form-control {
+    border-color: #b5b5b5;
+    background-color: #efefef;
+    font-size: 15px;
+}
+.addproduct input {
+    position: relative;
+}
 .addproduct .stock input[type=number],
 .addproduct .stock input[type=text] {
   width: 29px;
@@ -2085,6 +2197,13 @@ table tr>td {
   color: #2e2e2e;
   font-family: karla;
 }
+.addproduct .sizeqty input[type=number], .addproduct .sizeqty input[type=text] {
+    width: 110px;
+    height: 42px;
+}
+.table-bordered1{
+  border: 0;
+}
 
 .customers {
   font-size: 10px;
@@ -2092,18 +2211,28 @@ table tr>td {
   margin: 0 0 8px 27px;
   font-weight: 700;
 }
-
+.borb{
+  border-bottom: 1px solid #fff;
+}
 .stock .length-range {
   position: relative;
-  .table-bordered>tbody>tr>td+td {
+  .table-bordered1>tbody>tr>td+td {
     border-left: 1px solid #fff;
+
   }
   .borb,
   .borrb {
     border-color: #fff !important;
+
+    // border: 0;
   }
-  .table-bordered>tbody>tr>td {
+
+  .stock .borb, .stock .borrb {
+    border-bottom: 1px solid #fff;
+}
+  .table-bordered1>tbody>tr>td {
     border-color: #fff;
+     border: 0;
   }
   .newpro {
     .subbtn {
@@ -2135,6 +2264,7 @@ table tr>td {
       width: 54px;
     }
   }
+ 
   .table-place {
     color: #fff;
     background: $button-info;
@@ -2169,6 +2299,7 @@ table tr>td {
   border-style: solid;
   border-width: 1px;
   border-color: #009cd9;
+  text-transform: none;
 }
 
 .custom-radiobtn input[type=radio]+label {
@@ -2193,35 +2324,9 @@ table tr>td {
 .addproduct input {
   position: relative;
 }
-
-.custom-radiobtn input[type=radio]+label:before {
-  content: "";
-  width: 26px;
-  height: 26px;
-  display: block;
-  position: absolute;
-  top: 1px;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.custom-radiobtn input[type=radio]+label span {
-  display: inline-block;
-  width: 26px;
-  height: 26px;
-  margin: 10px 0 0 -18px;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 6px solid #acacac;
-  border-radius: 100%;
-  background: 0 0;
-  position: absolute;
-  top: 3px;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.unit-size {
+    padding: 0 14px;
+    font-size: 18px;
 }
 
 .custspace {
@@ -2236,10 +2341,98 @@ table tr>td {
   color: #eb1c22;
   padding: 0 8px;
 }
-
+ 
+  .addproduct .stock .table-bordered1>thead>tr>th {
+    padding: 0 26px;
+    font-size: 18px;
+    border: 0;
+    text-align: inherit;
+    color: #fff !important;
+  }
 label {
   display: inline-block;
   margin-bottom: 5px;
+}
+      
+.stock h3 span:hover {
+    color: #2e2e2e;
+    text-decoration: none;
+}
+.stock h3 span {
+    border: 1px solid #b5b5b5;
+    padding: 0 8px;
+}
+.stock .length-range h3 {
+    font-size: 18px;
+    color: #fff;
+    padding: 5px 0 5px 10px;
+    margin: 0 -11px 0 0;
+    span{
+ color: #2e2e2e;
+    width: 54px;
+    }
+  
+}
+.stock h3 span, .stock td span {
+    cursor: default;
+    background: #efefef;
+    width: 40px;
+    height: 33px;
+    display: inline-block;
+    line-height: 32px;
+    vertical-align: middle;
+    text-align: center;
+}
+.stock .length-range .borb, .stock .length-range .borrb {
+    border-color: #fff!important;
+        border-bottom: 1px solid white !important;
+}
+.addproduct .tick {
+    color: #009cd9;
+    position: absolute;
+    top: 7px;
+    right: -5px;
+    font-size: 16px;
+}
+.shape-img {
+    width: 50px;
+    height: 30px;
+    overflow: hidden;
+    margin: 0 0 10px;
+    background: rgba(0,0,0,.5);
+    position: relative;
+}
+.overlay {
+    background: rgba(128,128,128,.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+.shape-img .tick {
+    color: #fff;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+}
+.addproduct input {
+    position: relative;
+}
+.addproduct .range {
+    position: absolute;
+    top: 4px;
+    font-size: 20px;
+    right: -275px;
+    display: none;
+}
+.addproduct input:focus+.range {
+    display: block;
+}
+.toggle-switch {
+
+    width: 210px;
 }
 
 //bootstrap forms

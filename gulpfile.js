@@ -19,6 +19,7 @@ var jsArray = [
     './bower_components/angular-swiper/dist/angular-swiper.js',
     './bower_components/highcharts/highcharts.src.js',
     './bower_components/highcharts-ng/dist/highcharts-ng.min.js',
+    './bower_components/angular-toggle-switch/angular-toggle-switch.min.js',
 
     './js/app.js',
     './js/language.js',
