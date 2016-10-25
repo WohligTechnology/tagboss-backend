@@ -1,10 +1,10 @@
 <section>
     <div class="inspec">
-         <div class="close-img" ng-click="$close();">
+        <div class="close-img" ng-click="$close();">
             <img src="img/closebtn.png" alt="">
         </div>
         <div class="modal-header">
-            <h3 class="modal-title text-center txt-head">Under Renew</h3>
+            <h3 class="modal-title text-center txt-head">Refund Request Details</h3>
         </div>
         <div class="modal-body">
             <form class="form-horizontal" role="form">
@@ -12,14 +12,16 @@
                     <label class="col-sm-2 control-label" for="">Status</label>
                     <div class="col-sm-9">
                         <select name="" id="" class="form-control">
+                        <option value="">Attended</option>
+                        <option value="">Pending</option>
+                        <option value="">Resolved</option>
                         <option value="">Accepted</option>
                         <option value="">Rejected</option>
                     </select>
                     </div>
-
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="inputPassword3">Reply</label>
+                    <label class="col-sm-2 control-label" for="inputPassword3">Reason</label>
                     <div class="col-sm-10">
                         <div class="txt-area">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum molestias provident inventore
@@ -29,9 +31,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="inputPassword3">TagBoss Respond</label>
+                    <label class="col-sm-2 control-label" for="inputPassword3">TagBoss Reply</label>
                     <div class="col-sm-10">
-                        <textarea rows="4" cols="51" class="txt-area1">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+                        <textarea rows="4" cols="51" class="txt-area">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
                         </textarea>
                     </div>
                 </div>
@@ -41,7 +43,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
         <!--<div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>

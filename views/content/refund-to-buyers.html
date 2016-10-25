@@ -5,25 +5,27 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group search-top">
-                            <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
+                            <input type="text" class="form-control" placeholder="Search by Buyer ID or Name">
                             <span class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
-                <!-- <button class="btn btn-default" type="button">Go!</button> -->
               </span>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <div class="more-opt pull-right">
-                            <div class="magic-form">
-                                <div class="magic-resize">
-                                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">
-                                    <label class="detail-heading" for="add-more">
-                          More
-                        </label>
+                            <div class="magic-form dropdown">
+                                <div class="filter pull-right dropdown-toggle" data-toggle="dropdown">
+                                    <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">-->
+                                    <label class="">Filter by Status</label>
+                                    <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Pending Verification</a></li>
+                                        <li><a href="#">Verified</a></li>
+                                        <li><a href="#">Rejected</a></li>
+                                        <li><a href="#">Profile Incomplete</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -31,24 +33,16 @@
             <div class="bar">
                 <div class="row">
                     <div class="col-md-6">
-
-
-
                         <div class="col-md-offset-2 col-md-8">
                             <highchart id="chart1" style="width:100%;height:152px;" config="barChartConfig"></highchart>
                             <p>TOTAL REQUEST</p>
                         </div>
-
-
-
                     </div>
                     <div class="col-md-6">
-
                         <div class="col-md-offset-2 col-md-8">
                             <highchart id="chart1" style="width:100%;height:152px;" config="barChartConfig"></highchart>
                             <p>PENDING REQUEST</p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -83,10 +77,14 @@
                             <div class="reason">
                                 <div class="reason-data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Multoque hoc melius nos veriusque
                                     quam Stoici.</div>
-                                <div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>
+                                <!--<div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>-->
                             </div>
                         </td>
-                        <td></td>
+                        <td class="view-td">
+                            <label class="stat">PENDING</label><br>
+                            <!--<label class="stat">REJECTED</label>-->
+                            <a><label class="view" ng-click="openstandard();">EDIT</label></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -101,7 +99,6 @@
                 </div>
                 <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
                 <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
             </div>
             <table class="table table-bordered refund-to-buyer-table">
                 <thead>
@@ -122,10 +119,14 @@
                             <div class="reason">
                                 <div class="reason-data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Multoque hoc melius nos veriusque
                                     quam Stoici.</div>
-                                <div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>
+                                <!--<div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>-->
                             </div>
                         </td>
-                        <td></td>
+                        <td class="view-td">
+                            <label class="stat">PENDING</label><br>
+                            <!--<label class="stat">REJECTED</label>-->
+                            <a><label class="view" ng-click="openstandard();">EDIT</label></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -160,21 +161,17 @@
                             <div class="reason">
                                 <div class="reason-data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Multoque hoc melius nos veriusque
                                     quam Stoici.</div>
-                                <div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>
+                                <!--<div class="reason-view"> <a href="" ng-click="openView();"><label class="view pull-right">VIEW</label></a></div>-->
                             </div>
                         </td>
-
                         <td class="view-td">
                             <label class="stat">PENDING</label><br>
                             <!--<label class="stat">REJECTED</label>-->
                             <a><label class="view" ng-click="openstandard();">EDIT</label></a>
                         </td>
-
                     </tr>
                 </tbody>
             </table>
-
-
         </div>
     </div>
 </section>

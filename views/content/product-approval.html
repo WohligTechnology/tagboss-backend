@@ -1,6 +1,6 @@
-<section class="body-main view-products">
+<section class="body-main view-products assign-agency">
   <div class="container-fluid">
-    <div class="view-product">
+    <div class="view-product assign">
       <div class="search-content">
         <div class="row">
           <div class="col-md-6">
@@ -12,14 +12,11 @@
                 </span>
             </div>
           </div>
-
           <div class="col-md-6">
-
             <!-- <div class="excel-upload ">
                       <img src="img/excel-icon.png" >
                       <label>CONVERT TO EXCEL</label>
                   </div> -->
-
             <div class="select-prod pull-right">
               <select>
                       <option value="all">ALL</option>
@@ -28,26 +25,26 @@
                       <option value="audi">Pending</option>
                     </select>
             </div>
+            <div class="feed-col">
+              <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+            </div>
           </div>
         </div>
       </div>
-
-
-
-      <div class="view-products-details ">
-        <label class="detail-heading">REQUEST FOR INSPECTION</label>
+      <div class="assign-agency-details">
+        <label class="detail-heading">INSPECTION AND APPROVAL</label>
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
         <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
       </div>
-
-      <table class="table table-bordered1 inspection-table">
+      <table class="table table-bordered assign-agency-table">
         <thead>
           <tr>
             <th><strong>NAME</strong></th>
             <th><strong>PRODUCT</strong></th>
             <th><strong>QUANTITY</strong></th>
-            <th><strong>UPLOAD REPORT</strong></th>
-            <th><strong>REMARKS</strong></th>
+            <th><strong>INSPECTION AGENCY</strong></th>
+            <th><strong>STATUS</strong></th>
+          </tr>
         </thead>
         <tbody>
           <tr>
@@ -68,7 +65,7 @@
             </td>
             <td>
               <ul class="prod-details">
-
+                <!--<li class="list-head"> Tata Steel </li>-->
                 <li> Product + MOC </li>
                 <li> Grade/Standard </li>
                 <li> SCH </li>
@@ -79,32 +76,48 @@
               </ul>
             </td>
             <td>200</td>
-
-            <td>
+            <td class="feed-col">
               <select>
-                      <option value="#">Inspection Agency,City</option>
-                      <option value="1">Inspection Agency,City</option>
-                      <option value="2">Inspection Agency,City</option>
-                      <option value="3">Inspection Agency,City</option>
-                    </select>
+                  <option value="#">Inspection Agency,City</option>
+                  <option value="1">Inspection Agency,City</option>
+                  <option value="2">Inspection Agency,City</option>
+                  <option value="3">Inspection Agency,City</option>
+                </select>
               <p class="upload-date">
                 24 July,2016
               </p>
-
+              <button type="button" class="btn btn-primary assign-btn">EDIT</button>
             </td>
-            <td>
-              <div class="">
-                <span>Edit</span>
+            <td class="text-center feed-col">
+              <div>
+                <div>
+                  <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
+                  <p>PENDING</p>
+                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+                </div>
+                <!--<div>
+                  <p> The product is upto mark.</p>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <div class="">
+                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                    <button type="button" class="btn btn-primary reject">REJECT</button>
+                  </div>
+                </div>
+                <div>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <p> The product is upto mark.</p>
+                </div>-->
               </div>
             </td>
           </tr>
-          <tr>
+          <tr class="next-entry">
             <td>
-
             </td>
             <td>
               <ul class="prod-details">
-
+                <!--<li class="list-head"> Tata Steel </li>-->
                 <li> Product + MOC </li>
                 <li> Grade/Standard </li>
                 <li> SCH </li>
@@ -118,29 +131,51 @@
               850
             </td>
             <td>
-
             </td>
-            <td>
+            <td class="text-center feed-col">
+              <div>
+                <!--<div>
+                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
+                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
 
+                </div>-->
+                <div>
+                  <!--<p> The product is upto mark.</p>-->
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <div class="">
+                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                    <button type="button" class="btn btn-primary reject">REJECT</button>
+                  </div>
+                </div>
+                <!--<div>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <p> The product is upto mark.</p>
+                </div>-->
+              </div>
             </td>
+          </tr>
           </tr>
           <tr>
             <td>
               <div class="magic-form">
                 <div class="magic-resize">
                   <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-                  <label class="text" for="add-two">
-
-                            <p class="comp-name">    2.Simran steel  </p>
-
-
+                  <label class="text" for="add-one">
+                            <p class="comp-name">  1.Raj Steel  </p>
+                            <p>
+                              15/18 Rhythm House,
+                              Kaala Ghoda, Fort,
+                              Mumbai - 400005
+                              India</p>
                           </label>
                 </div>
               </div>
             </td>
             <td>
               <ul class="prod-details">
-
+                <!--<li class="list-head"> Tata Steel </li>-->
                 <li> Product + MOC </li>
                 <li> Grade/Standard </li>
                 <li> SCH </li>
@@ -151,45 +186,56 @@
               </ul>
             </td>
             <td>200</td>
-
             <td>
               <select>
-                      <option value="#">Inspection Agency,City</option>
-                      <option value="1">Inspection Agency,City</option>
-                      <option value="2">Inspection Agency,City</option>
-                      <option value="3">Inspection Agency,City</option>
-                    </select>
+                  <option value="#">Inspection Agency,City</option>
+                  <option value="1">Inspection Agency,City</option>
+                  <option value="2">Inspection Agency,City</option>
+                  <option value="3">Inspection Agency,City</option>
+                </select>
             </td>
-            <td>
+            <td class="text-center feed-col">
+              <div>
+                <!--<div>
+                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
+                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
 
+                </div>
+                <div>
+                  <p> The product is upto mark.</p>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <div class="">
+                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                    <button type="button" class="btn btn-primary reject">REJECT</button>
+                  </div>
+                </div>-->
+                <div>
+                  <img src="img/pdf-image.png">
+                  <p class="assign-space"> The product is upto mark.</p>
+                </div>
+              </div>
             </td>
-
-
-
           </tr>
         </tbody>
       </table>
-
-
     </div>
-
     <div class="addproduct">
       <div class="row">
         <div class="col-md-12 text-center relative">
           <h3 class="popularprdts font-gotham-medium text-uppercase">
             Add Product
           </h3>
-          <div class="side-btn2">
+          <!--<div class="side-btn2">
             <div class="form-group inline-block">
               <button class="btn btn-primary text-uppercase">Accept</button>
             </div>
             <div class="form-group inline-block">
               <button class="btn btn-primary text-uppercase">Reject</button>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
-
       <div class="row">
         <form>
           <div class="col-md-offset-3 col-md-6">
@@ -199,7 +245,6 @@
                   <label for="brand" class="font-karla-bold">Brand</label>
                 </div>
                 <div class="col-md-6">
-
                   <div class="sec-foot">
                     <ui-select ng-model="ctrl.country.selected" theme="bootstrap">
                       <ui-select-match placeholder="Select or Search a Brand">{{$select.selected.name}}</ui-select-match>
@@ -207,16 +252,12 @@
                         <span ng-bind-html="brand.name | highlight: $select.search"></span>
                       </ui-select-choices>
                     </ui-select>
-
                     <div class="side-btn">
                       <div class="form-group">
-                        <button class="btn btn-primary inline-block text-uppercase">Accept</button>
+                        <button class="btn btn-primary inline-block text-uppercase">Accept Brand</button>
                       </div>
                     </div>
                   </div>
-
-
-
                 </div>
               </div>
             </div>
@@ -307,25 +348,16 @@
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product2.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product3.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product4.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                     </div>
@@ -333,33 +365,21 @@
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product1.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product2.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product3.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="shape-img">
                           <img src="img/product4.jpg" alt="" class="img-responsive">
-                          <!--<div class="overlay">
-                            <i class="fa fa-check tick"></i>
-                          </div>-->
                         </div>
                       </div>
                     </div>
@@ -379,19 +399,6 @@
                   </div>
                 </div>
               </div>
-              <!--<div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="brand" class="font-karla-bold">Units to be used</label>
-                  </div>
-                  <div class="col-md-6">
-                    <select class="form-control" name="">
-                                  <option value="">millimeter</option>
-                                  <option value="">inches</option>
-                                </select>
-                  </div>
-                </div>
-              </div>-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -434,11 +441,9 @@
               </div>
               <div class="form-group">
                 <div class="row">
-
                   <div class="col-md-6">
                     <label for="brand" class="font-karla-bold">Stock in Mtrs</label>
                   </div>
-
                   <div class="col-md-6">
                     <div class="stock">
                       <div class="length-range">
@@ -466,8 +471,6 @@
                                     <!-- <span>8</span> -->
                                     <input type="number" name="name" value="8">
                                   </td>
-
-
                                   <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                   <!-- <input type="text" name="name" value="5.2">
@@ -486,8 +489,6 @@
                                     <!-- <span>8</span> -->
                                     <input type="number" name="name" value="8">
                                   </td>
-
-
                                   <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                   <!-- <input type="text" name="name" value="5.2">
@@ -506,8 +507,6 @@
                                     <!-- <span>4</span>-->
                                     <input type="number" name="name" value="4">
                                   </td>
-
-
                                   <!-- <td class="">
                                               <!-- <span>5.5</span> -->
                                   <!-- <input type="text" name="name" value="5.5"> -->
@@ -517,7 +516,6 @@
                                   <!-- <input type="text" name="name" value="3">
                                             </td> -->
                                 </tr>
-
                               </tbody>
                             </table>
                           </div>
@@ -555,8 +553,6 @@
                                       <!-- <span>8</span> -->
                                       <input type="number" name="name" value="8">
                                     </td>
-
-
                                     <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                     <!-- <input type="text" name="name" value="5.2">
@@ -575,8 +571,6 @@
                                       <!-- <span>4</span>-->
                                       <input type="number" name="name" value="4">
                                     </td>
-
-
                                     <!-- <td class="">
                                               <!-- <span>5.5</span> -->
                                     <!-- <input type="text" name="name" value="5.5"> -->
@@ -602,10 +596,8 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -775,11 +767,6 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
             <!-- plates/sheet -->
             <div class="div" ng-show="shape=='plates/sheets'">
               <div class="form-group">
@@ -1054,7 +1041,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -1100,11 +1086,6 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
             <!-- coil -->
             <div class="div" ng-show="shape=='coil'">
               <div class="form-group">
@@ -1416,11 +1397,6 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
             <!-- roundbar -->
             <div class="div" ng-show="shape=='roundbar'">
               <div class="form-group">
@@ -1561,11 +1537,9 @@
               </div>
               <div class="form-group">
                 <div class="row">
-
                   <div class="col-md-6">
                     <label for="brand" class="font-karla-bold">Stock in Mtrs</label>
                   </div>
-
                   <div class="col-md-6">
                     <div class="stock">
                       <div class="length-range">
@@ -1593,8 +1567,6 @@
                                     <!-- <span>8</span> -->
                                     <input type="number" name="name" value="8">
                                   </td>
-
-
                                   <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                   <!-- <input type="text" name="name" value="5.2">
@@ -1613,8 +1585,6 @@
                                     <!-- <span>8</span> -->
                                     <input type="number" name="name" value="8">
                                   </td>
-
-
                                   <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                   <!-- <input type="text" name="name" value="5.2">
@@ -1633,8 +1603,6 @@
                                     <!-- <span>4</span>-->
                                     <input type="number" name="name" value="4">
                                   </td>
-
-
                                   <!-- <td class="">
                                               <!-- <span>5.5</span> -->
                                   <!-- <input type="text" name="name" value="5.5"> -->
@@ -1644,7 +1612,6 @@
                                   <!-- <input type="text" name="name" value="3">
                                             </td> -->
                                 </tr>
-
                               </tbody>
                             </table>
                           </div>
@@ -1682,8 +1649,6 @@
                                       <!-- <span>8</span> -->
                                       <input type="number" name="name" value="8">
                                     </td>
-
-
                                     <!-- <td class="borb">
                                               <!-- <span>5.2</span> -->
                                     <!-- <input type="text" name="name" value="5.2">
@@ -1702,8 +1667,6 @@
                                       <!-- <span>4</span>-->
                                       <input type="number" name="name" value="4">
                                     </td>
-
-
                                     <!-- <td class="">
                                               <!-- <span>5.5</span> -->
                                     <!-- <input type="text" name="name" value="5.5"> -->
@@ -1729,7 +1692,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
               <div class="form-group">
@@ -1824,7 +1786,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -1872,7 +1833,6 @@
             </div>
           </div>
           <div class="col-md-12 text-center">
-           
             <div class="btn-submit inline-block pacebtn">
               <div class="subbtn">
                 <button class="btn btn-primary font-gotham-medium text-uppercase btn-save" ng-click="openPops();">Cancel</button>
@@ -1883,16 +1843,12 @@
               <span class="font-karla complete">Please complete<br>
                           your profile.</span>-->
             </div>
-             <div class="subbtn inline-block pacebtn">
+            <div class="subbtn inline-block pacebtn">
               <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="openPop();">Save</button>
             </div>
           </div>
         </form>
-
       </div>
-
     </div>
-
-
   </div>
 </section>
