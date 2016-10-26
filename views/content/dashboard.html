@@ -2,24 +2,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-
-
         <div class="details" ui-sref="orders">
           <div class="head">
             <h2>orders</h2>
           </div>
-
           <div class="info">
-
             <!-- <highchart id="chart1" config="chartConfig1"></highchart> -->
-
           </div>
         </div>
-
-
       </div>
       <div class="col-md-4">
-
         <div class="details">
           <div class="head">
             <h2>payments</h2>
@@ -82,15 +74,17 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-8">
         <div class="details" style="height:50%;">
           <div class="head">
             <h2>buyers and sellers</h2>
           </div>
-          <div class="info">
-
+          <div class="info buynsell">
+            <ul class="list-unstyled list-inline">
+              <li>8500<br> Buyers</li>
+              <li>2125<br> Sellers</li>
+            </ul>
           </div>
         </div>
         <div class="details" style="height:50%;">
@@ -98,9 +92,7 @@
             <h2>sales</h2>
           </div>
           <div class="info">
-
             <highchart id="chart" config="chartConfig"></highchart>
-
           </div>
         </div>
       </div>
@@ -110,14 +102,11 @@
             <h2>order status</h2>
           </div>
           <div class="info">
-
             <highchart id="chart1" config="chartConfig1"></highchart>
-
           </div>
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-4">
         <div class="details">
@@ -213,7 +202,6 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-8">
         <div class="details" style="height:50%;">
@@ -221,7 +209,6 @@
             <h2>subscription</h2>
           </div>
           <div class="info">
-
           </div>
         </div>
         <div class="details" style="height:50%;">
@@ -229,7 +216,6 @@
             <h2>top sellers</h2>
           </div>
           <div class="info">
-
           </div>
         </div>
       </div>
@@ -265,10 +251,57 @@
         </div>
       </div>
     </div>
-
     <div class="row">
-
-      <!-- <div class="col-md-8">
+      <div class="col-md-4">
+        <div class="details">
+          <div class="head">
+            <h2>category wise sales</h2>
+          </div>
+          <div class="info">
+            <ol>
+              <li>
+                <p>Pipes - <span>28000</span>
+                </p>
+              </li>
+              <li>
+                <p>Plates - <span>47000</span>
+                </p>
+              </li>
+              <li>
+                <p>Coil - <span>58900</span>
+                </p>
+              </li>
+              <li>
+                <p>Roundbar - <span>68000</span>
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="details">
+          <div class="head">
+            <h2>Average order delivery time</h2>
+          </div>
+          <div class="info text-center avg-time">
+            <p><span>5 </span1>Days</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="details">
+          <div class="head">
+            <h2>new customer</h2>
+          </div>
+           <div class="info text-center avg-time">
+            <p><span>38 / 80</span1></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  <div class="row">
+      <div class="col-md-8">
         <div class="details">
           <div class="head">
             <h2>coupon codes</h2>
@@ -278,71 +311,36 @@
             <div class="add-new">
               <label>+Add new</label>
               <label><span>Edit</span> | <span>Delete</span></label>
-            </div>
-            <div class="table-responsive">
-              <table>
-                <thead>
-                  <tr>
-                    <th>DISCOUNT COUPON CODE</th>
-                    <th>VALUE</th>
-                    <th>TYPE</th>
-                    <th>FOR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1. NBA 1234</td>
-                    <td>20</td>
-                    <td><i class="fa fa-percent" aria-hidden="true"></i></td>
-                    <td>All<i class="fa fa-check-circle-o" aria-hidden="true"></i></td>
-                  </tr>
-                  <tr>
-                    <td>2. Diwali 16</td>
-                    <td>3000</td>
-                    <td><i class="fa fa-inr" aria-hidden="true"></i></td>
-                    <td>Pipes<i class="fa fa-times-circle-o" aria-hidden="true"></i></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
-        </div>
-      </div> -->
-
-      <div class="col-md-4">
-        <div class="details">
-          <div class="head">
-            <h2>categories</h2>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>DISCOUNT COUPON CODE</th>
+                  <th>VALUE</th>
+                  <th>TYPE</th>
+                  <th>FOR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. NBA 1234</td>
+                  <td>20</td>
+                  <td><i class="fa fa-percent" aria-hidden="true"></i></td>
+                  <td>All<i class="fa fa-check-circle-o" aria-hidden="true"></i></td>
+                </tr>
+                <tr>
+                  <td>2. Diwali 16</td>
+                  <td>3000</td>
+                  <td><i class="fa fa-inr" aria-hidden="true"></i></td>
+                  <td>Pipes<i class="fa fa-times-circle-o" aria-hidden="true"></i></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <!--<div class="info">
-            <div class="stat-cols">
-              <div class="frequancy-content">
-                <highchart id="chart4" config="freqPie"></highchart>
-              </div>
-            </div>-->
-
-
-          <!--<ul>
-              <li>
-                <p></p>
-              </li>
-              <li>
-                <p></p>
-              </li>
-              <li>
-                <p></p>
-              </li>
-              <li>
-                <p></p>
-              </li>
-              <li>
-                <p></p>
-              </li>
-            </ul>-->
-          <!--</div>-->
         </div>
       </div>
     </div>
+  </div>-->
   </div>
 </section>

@@ -5,10 +5,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search by Buyer ID or Name">
+              <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
               <span class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
-                <!-- <button class="btn btn-default" type="button">Go!</button> -->
               </span>
             </div>
           </div>
@@ -17,26 +16,40 @@
               <p class="total">Total Buyers - <span>250</span></p>
             </div>
             <div class="more-opt pull-right">
-              <div class="magic-form">
-                <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                  <label class="detail-heading" for="add-one">
-                      More
-                    </label>
+              <div class="magic-form dropdown">
+                <div class="filter pull-right dropdown-toggle" data-toggle="dropdown">
+                  <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">-->
+                  <label class="">Filter by</label>
+                  <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Pending Verification</a></li>
+                    <li><a href="#">Verified</a></li>
+                    <li><a href="#">Rejected</a></li>
+                  </ul>
                 </div>
               </div>
-              <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
             </div>
-            <div class="filter pull-right">
-              <label>Filter by favourite</label>
-              <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+            <div class="more-opt1 sort-by">
+              <div class="magic-form dropdown">
+                <div class="filter pull-right dropdown-toggle" data-toggle="dropdown">
+                  <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">-->
+                  <label class="">Sort by</label>
+                  <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Amount</a></li>
+                    <li><a href="#">Total Purchase</a></li>
+                    <li><a href="#">No. of Orders</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
-      <div class="buyer-details ">
-        <div class="magic-form">
+    </div>
+    <div class="buyer-details ">
+      <!--<div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
             <label class="detail-heading" for="add-two">
@@ -45,156 +58,136 @@
           </div>
         </div>
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered buyer-table">
-        <thead>
-          <tr>
-            <th><strong>SR. NO.</strong></th>
-            <th><strong>NAME</strong></th>
-            <th><strong>TOTAL NO. OF ORDER</strong></th>
-            <th><strong>TOTAL BUY</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              <span>RAJ STEEL</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>250</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>Rs. 3000/-</span>
-              <span></span>
-              <span></span>
-              <span class="result"></span>
-            </td>
-            <td>
-              <span></span>
-              <span></span>
-              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-      <div class="buyer-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-            <label class="detail-heading" for="add-two">
-                TBS001 MIRAGE STEEL LTD.
-              </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered buyer-table">
-        <thead>
-          <tr>
-            <th><strong>SR. NO.</strong></th>
-            <th><strong>NAME</strong></th>
-            <th><strong>TOTAL NO. OF ORDER</strong></th>
-            <th><strong>TOTAL BUY</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              <span>RAJ STEEL</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>250</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>Rs. 3000/-</span>
-              <span></span>
-              <span></span>
-              <span class="result"></span>
-            </td>
-            <td>
-              <span></span>
-              <span></span>
-              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-      <div class="buyer-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-            <label class="detail-heading" for="add-two">
-                TBS001 MIRAGE STEEL LTD.
-              </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered buyer-table">
-        <thead>
-          <tr>
-            <th><strong>SR. NO.</strong></th>
-            <th><strong>NAME</strong></th>
-            <th><strong>TOTAL NO. OF ORDER</strong></th>
-            <th><strong>TOTAL BUY</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              <span>RAJ STEEL</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>250</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>Rs. 3000/-</span>
-              <span></span>
-              <span></span>
-              <span class="result"></span>
-            </td>
-            <td>
-              <span></span>
-              <span></span>
-              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-      <!--<div class="buyer-details ">
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>-->
+    </div>
+    <table class="table table-bordered buyer-table">
+      <thead>
+        <tr>
+          <th><strong>SR. NO.</strong></th>
+          <th><strong>SELLER NAME</strong></th>
+          <th><strong>TOTAL ORDERS</strong></th>
+          <th><strong>TOTAL SALES</strong></th>
+          <th><strong>PENDING PAYMENT</strong></th>
+          <th><strong>STATUS</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            <span>RAJ STEEL</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>250</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>Rs. 3000/-</span>
+            <span></span>
+            <span></span>
+            <span class="result"></span>
+          </td>
+          <td></td>
+          <td>
+            <span></span>
+            <span></span>
+            <span><br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="buyer-details ">
+    </div>
+    <table class="table table-bordered buyer-table">
+      <thead>
+        <tr>
+          <th><strong>SR. NO.</strong></th>
+          <th><strong>NAME</strong></th>
+          <th><strong>TOTAL NO. OF ORDER</strong></th>
+          <th><strong>TOTAL PURCHASE</strong></th>
+          <th>PENDING PAYMENT</th>
+          <th><strong>STATUS</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            <span>RAJ STEEL</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>250</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>Rs. 3000/-</span>
+            <span></span>
+            <span></span>
+            <span class="result"></span>
+          </td>
+          <td></td>
+          <td>
+            <span></span>
+            <span></span>
+            <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="buyer-details ">
+    </div>
+    <table class="table table-bordered buyer-table">
+      <thead>
+        <tr>
+          <th><strong>SR. NO.</strong></th>
+          <th><strong>NAME</strong></th>
+          <th><strong>TOTAL NO. OF ORDER</strong></th>
+          <th><strong>TOTAL PURCHASE</strong></th>
+          <th>PENDING PAYMENT</th>
+          <th><strong>STATUS</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            <span>RAJ STEEL</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>250</span>
+            <span></span>
+            <span></span>
+          </td>
+          <td>
+            <span>Rs. 3000/-</span>
+            <span></span>
+            <span></span>
+            <span class="result"></span>
+          </td>
+          <td></td>
+          <td>
+            <span></span>
+            <span></span>
+            <span>H. R Steel<br><a ui-sref="view-buyers" class="pull-right"><label class="view">VIEW</label></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<div class="buyer-details ">
         <div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-three" value="option1">
@@ -506,7 +499,5 @@
           </tr>
         </tbody>
       </table>-->
-
-    </div>
   </div>
-  </div>
+</section>

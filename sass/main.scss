@@ -2490,7 +2490,51 @@
           }
         }
         
-        //  ---------------------------------------------------------------------
+        //  -------------------Category Price Range---------------------
+        .price-range {
+          tbody {
+            tr {
+              td {
+                padding: 16px 0;
+                .inp-type {
+                  input {
+                    width: 90px;
+                    height: 31px;
+                    margin: 0 14px;
+                  }
+                  .btn-default {
+                    background: #043E77;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+        
+        .avg-time {
+          p {
+            font-size: 22px;
+          }
+        }
+        
+        .buynsell {
+          text-align: center;
+          ul li {
+            padding: 35px;
+            font-size: 22px !important;
+          }
+        }
+        
+        .back-insp {
+          font-weight: bold;
+          cursor: pointer;
+        }
+        
+        .backcursor {
+          cursor: pointer;
+        }
+        
         //bootstrap forms
         /* Start writing sass here */
         

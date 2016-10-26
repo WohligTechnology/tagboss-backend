@@ -220,6 +220,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
         name: 'Tata Steel'
     }];
 
+    $scope.showEdit = false;
+    $scope.hideEdit = true;
+    $scope.showEditProduct = function () {
+        $scope.showEdit = true;
+        $scope.hideEdit = false;
+
+    };
+
+    $scope.showInspection = function () {
+        $scope.hideEdit = true;
+        $scope.showEdit = false;
+    };
+
 })
 
 .controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -227,6 +240,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
     $scope.menutitle = NavigationService.makeactive("View Seller Products");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.showProd = false;
+    $scope.showSell = true;
+    $scope.showProduct = function () {
+        $scope.showProd = true;
+        $scope.showSell = false;
+    };
+
+    $scope.showSellerProduct = function () {
+        $scope.showSell = true;
+        $scope.showProd = false;
+    };
 
 })
 
@@ -777,6 +802,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'navig
 
     $scope.template = TemplateService.changecontent("categories");
     $scope.menutitle = NavigationService.makeactive("Categories");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.oneAtATime = true;
+})
+
+.controller('CategoryPriceRangeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+
+    $scope.template = TemplateService.changecontent("category-price-range");
+    $scope.menutitle = NavigationService.makeactive("category-price-range");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.oneAtATime = true;

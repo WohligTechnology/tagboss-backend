@@ -25,207 +25,215 @@
                       <option value="audi">Pending</option>
                     </select>
             </div>
-            <div class="feed-col">
+            <div class="feed-assign">
               <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="assign-agency-details">
-        <label class="detail-heading">INSPECTION AND APPROVAL</label>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+      <div ng-show="hideEdit">
+        <div class="assign-agency-details">
+          <label class="detail-heading">INSPECTION AND APPROVAL</label>
+          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+          <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+        </div>
+        <table class="table table-bordered assign-agency-table">
+          <thead>
+            <tr>
+              <th><strong>NAME</strong></th>
+              <th><strong>PRODUCT</strong></th>
+              <th><strong>QUANTITY</strong></th>
+              <th><strong>INSPECTION AGENCY</strong></th>
+              <th><strong>STATUS</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="magic-form">
+                  <div class="magic-resize">
+                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                    <label class="text" for="add-one">
+                            <p class="comp-name">  1.Raj Steel  </p>
+                            <p>Warehouse</p>
+                            <p>
+                              15/18 Rhythm House,
+                              Kaala Ghoda, Fort,
+                              Mumbai - 400005
+                              India</p>
+                          </label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <ul class="prod-details">
+                  <!--<li class="list-head"> Tata Steel </li>-->
+                  <li> Product + MOC </li>
+                  <li> Grade/Standard </li>
+                  <li> SCH </li>
+                  <li> OD in mm </li>
+                  <li> Thicknesss </li>
+                  <li> Length </li>
+                  <li> Weight </li>
+                </ul>
+              </td>
+              <td>200</td>
+              <td class="feed-col">
+                <select>
+                  <option value="#">Inspection Agency,City</option>
+                  <option value="1">Inspection Agency,City</option>
+                  <option value="2">Inspection Agency,City</option>
+                  <option value="3">Inspection Agency,City</option>
+                </select>
+                <p class="upload-date">
+                  24 July,2016
+                </p>
+                <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct()">EDIT</button>
+              </td>
+              <td class="text-center feed-col">
+                <div>
+                  <div>
+                    <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
+                    <p>PENDING</p>
+                    <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+                  </div>
+                  <!--<div>
+                  <p> The product is upto mark.</p>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <div class="">
+                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                    <button type="button" class="btn btn-primary reject">REJECT</button>
+                  </div>
+                </div>
+                <div>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <p> The product is upto mark.</p>
+                </div>-->
+                </div>
+              </td>
+            </tr>
+            <tr class="next-entry">
+              <td>
+              </td>
+              <td>
+                <ul class="prod-details">
+                  <!--<li class="list-head"> Tata Steel </li>-->
+                  <li> Product + MOC </li>
+                  <li> Grade/Standard </li>
+                  <li> SCH </li>
+                  <li> OD in mm </li>
+                  <li> Thicknesss </li>
+                  <li> Length </li>
+                  <li> Weight </li>
+                </ul>
+              </td>
+              <td>
+                850
+              </td>
+              <td>
+              </td>
+              <td class="text-center feed-col">
+                <div>
+                  <!--<div>
+                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
+                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+
+                </div>-->
+                  <div>
+                    <!--<p> The product is upto mark.</p>-->
+                    <img src="img/pdf-image.png">
+                    <input type="text">
+                    <div class="">
+                      <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                      <button type="button" class="btn btn-primary reject">REJECT</button>
+                    </div>
+                  </div>
+                  <!--<div>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <p> The product is upto mark.</p>
+                </div>-->
+                </div>
+              </td>
+            </tr>
+            </tr>
+            <tr>
+              <td>
+                <div class="magic-form">
+                  <div class="magic-resize">
+                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
+                    <label class="text" for="add-one">
+                            <p class="comp-name">  1.Raj Steel  </p>
+                            <p>Warehouse</p>
+                            <p>
+                              15/18 Rhythm House,
+                              Kaala Ghoda, Fort,
+                              Mumbai - 400005
+                              India</p>
+                          </label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <ul class="prod-details">
+                  <!--<li class="list-head"> Tata Steel </li>-->
+                  <li> Product + MOC </li>
+                  <li> Grade/Standard </li>
+                  <li> SCH </li>
+                  <li> OD in mm </li>
+                  <li> Thicknesss </li>
+                  <li> Length </li>
+                  <li> Weight </li>
+                </ul>
+              </td>
+              <td>200</td>
+              <td>
+                <select>
+                  <option value="#">Inspection Agency,City</option>
+                  <option value="1">Inspection Agency,City</option>
+                  <option value="2">Inspection Agency,City</option>
+                  <option value="3">Inspection Agency,City</option>
+                </select>
+              </td>
+              <td class="text-center feed-col">
+                <div>
+                  <!--<div>
+                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
+                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+
+                </div>
+                <div>
+                  <p> The product is upto mark.</p>
+                  <img src="img/pdf-image.png">
+                  <input type="text">
+                  <div class="">
+                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
+                    <button type="button" class="btn btn-primary reject">REJECT</button>
+                  </div>
+                </div>-->
+                  <div>
+                    <img src="img/pdf-image.png">
+                    <p class="assign-space"> The product is upto mark.</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <table class="table table-bordered assign-agency-table">
-        <thead>
-          <tr>
-            <th><strong>NAME</strong></th>
-            <th><strong>PRODUCT</strong></th>
-            <th><strong>QUANTITY</strong></th>
-            <th><strong>INSPECTION AGENCY</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="magic-form">
-                <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                  <label class="text" for="add-one">
-                            <p class="comp-name">  1.Raj Steel  </p>
-                            <p>
-                              15/18 Rhythm House,
-                              Kaala Ghoda, Fort,
-                              Mumbai - 400005
-                              India</p>
-                          </label>
-                </div>
-              </div>
-            </td>
-            <td>
-              <ul class="prod-details">
-                <!--<li class="list-head"> Tata Steel </li>-->
-                <li> Product + MOC </li>
-                <li> Grade/Standard </li>
-                <li> SCH </li>
-                <li> OD in mm </li>
-                <li> Thicknesss </li>
-                <li> Length </li>
-                <li> Weight </li>
-              </ul>
-            </td>
-            <td>200</td>
-            <td class="feed-col">
-              <select>
-                  <option value="#">Inspection Agency,City</option>
-                  <option value="1">Inspection Agency,City</option>
-                  <option value="2">Inspection Agency,City</option>
-                  <option value="3">Inspection Agency,City</option>
-                </select>
-              <p class="upload-date">
-                24 July,2016
-              </p>
-              <button type="button" class="btn btn-primary assign-btn">EDIT</button>
-            </td>
-            <td class="text-center feed-col">
-              <div>
-                <div>
-                  <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
-                  <p>PENDING</p>
-                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-                </div>
-                <!--<div>
-                  <p> The product is upto mark.</p>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <div class="">
-                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                    <button type="button" class="btn btn-primary reject">REJECT</button>
-                  </div>
-                </div>
-                <div>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <p> The product is upto mark.</p>
-                </div>-->
-              </div>
-            </td>
-          </tr>
-          <tr class="next-entry">
-            <td>
-            </td>
-            <td>
-              <ul class="prod-details">
-                <!--<li class="list-head"> Tata Steel </li>-->
-                <li> Product + MOC </li>
-                <li> Grade/Standard </li>
-                <li> SCH </li>
-                <li> OD in mm </li>
-                <li> Thicknesss </li>
-                <li> Length </li>
-                <li> Weight </li>
-              </ul>
-            </td>
-            <td>
-              850
-            </td>
-            <td>
-            </td>
-            <td class="text-center feed-col">
-              <div>
-                <!--<div>
-                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
-                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-
-                </div>-->
-                <div>
-                  <!--<p> The product is upto mark.</p>-->
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <div class="">
-                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                    <button type="button" class="btn btn-primary reject">REJECT</button>
-                  </div>
-                </div>
-                <!--<div>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <p> The product is upto mark.</p>
-                </div>-->
-              </div>
-            </td>
-          </tr>
-          </tr>
-          <tr>
-            <td>
-              <div class="magic-form">
-                <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-                  <label class="text" for="add-one">
-                            <p class="comp-name">  1.Raj Steel  </p>
-                            <p>
-                              15/18 Rhythm House,
-                              Kaala Ghoda, Fort,
-                              Mumbai - 400005
-                              India</p>
-                          </label>
-                </div>
-              </div>
-            </td>
-            <td>
-              <ul class="prod-details">
-                <!--<li class="list-head"> Tata Steel </li>-->
-                <li> Product + MOC </li>
-                <li> Grade/Standard </li>
-                <li> SCH </li>
-                <li> OD in mm </li>
-                <li> Thicknesss </li>
-                <li> Length </li>
-                <li> Weight </li>
-              </ul>
-            </td>
-            <td>200</td>
-            <td>
-              <select>
-                  <option value="#">Inspection Agency,City</option>
-                  <option value="1">Inspection Agency,City</option>
-                  <option value="2">Inspection Agency,City</option>
-                  <option value="3">Inspection Agency,City</option>
-                </select>
-            </td>
-            <td class="text-center feed-col">
-              <div>
-                <!--<div>
-                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
-                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-
-                </div>
-                <div>
-                  <p> The product is upto mark.</p>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <div class="">
-                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                    <button type="button" class="btn btn-primary reject">REJECT</button>
-                  </div>
-                </div>-->
-                <div>
-                  <img src="img/pdf-image.png">
-                  <p class="assign-space"> The product is upto mark.</p>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-    <div class="addproduct">
+    <div class="addproduct" ng-show="showEdit">
       <div class="row">
         <div class="col-md-12 text-center relative">
           <h3 class="popularprdts font-gotham-medium text-uppercase">
-            Add Product
+            EDIT Product
           </h3>
+          <div class="back-insp pull-right" ng-click="showInspection()">
+            <p>
+              < bact to inspection and approval</p>
+          </div>
           <!--<div class="side-btn2">
             <div class="form-group inline-block">
               <button class="btn btn-primary text-uppercase">Accept</button>

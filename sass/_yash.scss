@@ -8,6 +8,7 @@
         border: 2px solid #C1C1C7;
         border-radius: 20px;
         padding: 6px;
+        margin-top: 12px;
         input {
             border: none;
         }
@@ -89,6 +90,7 @@
             font-size: 14px;
             font-weight: 600;
             color: #515151;
+            margin-top: 12px;
         }
         label {
             top: -3px;
@@ -121,7 +123,8 @@
         float: right;
         padding: 12px;
         display: inline-flex;
-        margin-left: 50px;
+        margin-left: 25px;
+        // margin: 12px 25px 0 0;
         font-size: 16px;
         .magic-resize {
             margin-top: -5px;
@@ -136,6 +139,22 @@
         margin-top: -3px;
         font-size: 25px;
     }
+}
+
+.more-opt1 {
+    border: none;
+    float: right;
+    padding: 12px;
+    display: inline-flex;
+    margin-left: 25px;
+    font-size: 16px;
+    .open .dropdown-menu {
+        display: block;
+    }
+}
+
+.sort-by {
+    padding: 12px;
 }
 
 // ----------common css for table-----------------
@@ -217,6 +236,11 @@
             }
         }
     }
+}
+
+.seller-details,
+.buyer-details {
+    padding: 0;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -449,6 +473,40 @@
                     font-size: 16px;
                     color: #1E1E36;
                 }
+            }
+        }
+    }
+}
+
+.sellers,
+.buyers {
+    .seller-table,
+    .buyer-table {
+        thead,
+        {
+            background: #F2F2F2;
+        }
+        th,
+        td {
+            width: 18% !important;
+            color: #7a7a7a;
+            .result {
+                font-weight: bold;
+                font-size: 16px;
+                color: #1E1E36;
+            }
+        }
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 10% !important;
+        }
+        .view {
+            text-align: left;
+            cursor: pointer;
+            color: $panel-border;
+            font-size: 18px;
+            &:hover {
+                text-decoration: underline;
             }
         }
     }
@@ -1034,6 +1092,13 @@
         .text-center {
             vertical-align: top;
         }
+        .feed-assign {
+            padding: 18px 0 0;
+            .btn-primary {
+                background-color: $panel-border;
+                border-color: $panel-border;
+            }
+        }
         .feed-col {
             vertical-align: middle;
             .btn-primary {
@@ -1167,6 +1232,7 @@
                 padding-left: 30px;
                 border-left: 1px solid #ccc;
                 height: 45px;
+                margin-top: 12px;
                 display: inline-block;
                 select {
                     width: 125px;
