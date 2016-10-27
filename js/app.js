@@ -143,6 +143,26 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'GradesStandards1Ctrl'
     })
+    .state('homebanner', {
+      url: "/homebanner",
+      templateUrl: "views/template.html",
+      controller: 'HomebannerCtrl'
+    })
+    .state('testimonials', {
+      url: "/testimonials",
+      templateUrl: "views/template.html",
+      controller: 'TestimonialsCtrl'
+    })
+    .state('about', {
+      url: "/about",
+      templateUrl: "views/template.html",
+      controller: 'AboutCtrl'
+    })
+    .state('product-banner', {
+      url: "/product-banner",
+      templateUrl: "views/template.html",
+      controller: 'ProductbannerCtrl'
+    })
     .state('inspection-agencies', {
       url: "/inspection-agencies",
       templateUrl: "views/template.html",
