@@ -1288,6 +1288,48 @@
     }
 }
 
+//View Sellers, Buyers CSS ----- Seller/Buyer Details ------
+.buyer-details,
+.seller-details {
+    position: relative;
+    height: 43px;
+    .mid-btn {
+        position: absolute;
+        top: 0;
+        left: 44%;
+        .btn-o {
+            margin: 0 16px 0 0;
+        }
+        .btn {
+            background: #043e77;
+            color: #fff;
+            width: 120px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+// Company Details for Seller And Buyers
+.comp-details {
+    h4 {
+        font-size: 21px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .form-control {
+        border-color: #787575;
+        color: #2e2e2e;
+        font-size: 15px;
+    }
+    .spacing {
+        margin-top: 30px;
+        padding-left: 15px;
+    }
+    label {
+        font-size: 16px;
+    }
+}
+
 // .coupon {
 //     .coupon-pop {
 //         border: 5px solid $panel-border;

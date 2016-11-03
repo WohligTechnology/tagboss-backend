@@ -87,6 +87,231 @@
           </div>
         </div>
       </div>
+      <div class="comp-details">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div ng-hide="sellerHide" class="company view-profile">
+              <h4 class="font-karla-bold text-uppercase h-bottom ">Company Details</h4>
+              <!--<p class="font-karla f-size ">Fields marked <span class="strike">*</span> are mandatory</p>-->
+              <form>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="name ">Contact Person</label>
+                      <input class="form-control " type="text " id="name " placeholder="Enter Contact Person" ng-model="sellerProfile.contactPerson"
+                        readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="Registered ">Registered Name</label>
+                      <input class="form-control " type="text " id="Registered " placeholder="Enter Registered Name" ng-model="sellerProfile.firstName"
+                        readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="Email ">Email</label>
+                      <input class="form-control " type="email " id="Email " placeholder="Enter Email" ng-model="sellerProfile.email" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="AEmail ">Alternate Email</label>
+                      <input class="form-control " type="email " id="AEmail " placeholder="Enter Alternate Email" ng-model="sellerProfile.alternateEmail"
+                        readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="tele ">Telephone</label>
+                      <input class="form-control " type="tel " id="tele " placeholder="Enter Telephone Number" ng-model="sellerProfile.telephone"
+                        readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="mobile ">Mobile No.</label>
+                      <input class="form-control " type="tel " id="mobile " placeholder="Enter Mobile Number" ng-model="sellerProfile.mobile" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="Address ">Registered Address</label>
+                      <input class="form-control " type="text " id="Address " placeholder="Enter Company Address" ng-model="sellerProfile.companyAddress"
+                        readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="City ">City</label>
+                      <input class="form-control " type="text " id="City " placeholder="Enter City" ng-model="sellerProfile.city" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="Pincode ">Pincode</label>
+                      <input class="form-control " type="text " id="Pincode " placeholder="Enter Pincode" ng-model="sellerProfile.pincode" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="State ">State</label>
+                      <input class="form-control " type="text " id="State " placeholder="Enter State" ng-model="sellerProfile.state" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="Country ">Country</label>
+                      <select class="form-control " name=" " id="Country " placeholder="Enter Country" disabled>
+                                                        <option value="India ">India</option>
+                                                    </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="div ">Brief Profile(Optional)</label>
+                      <textarea class="form-control " name="name " rows="3 " placeholder="Enter Brief Profile" ng-model="sellerProfile.briefProfile"
+                        readonly></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="com ">Company PAN No.</label>
+                      <div class="input-group attach">
+                        <input class="form-control " type="text " id="com " placeholder="Enter PAN No. " ng-model="sellerProfile.panNo" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="vat ">VAT TIN No.</label>
+                      <div class="input-group attach">
+                        <input class="form-control " ng-model="sellerProfile.vatTinNo" type="text " id="vat " placeholder="Enter VAT TIN No. " readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="cst ">CST TIN No.</label>
+                      <div class="input-group attach">
+                        <input class="form-control " ng-model="sellerProfile.cstTinNo" type="text " id="cst " placeholder="Enter CST TIN No. " readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <h4 class="font-karla-bold text-uppercase spacing ">Excise Details</h4>
+                </div>
+                <div class="row excise-block">
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="reg ">Registration No. (ECC)</label>
+                      <div class="input-group attach">
+                        <input class="form-control " ng-model="sellerProfile.registrationNo" type="text " id="reg " placeholder="Enter Registration No. "
+                          readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="range ">Range</label>
+                      <input class="form-control " ng-model="sellerProfile.range" type="text " id="range " placeholder="Enter Range " readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="commissionerate ">Commissionerate</label>
+                      <input class="form-control " ng-model="sellerProfile.commissioneRate" type="text " id="commissionerate " placeholder="Enter Commissionerate "
+                        readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-4 ">
+                    <div class="form-group div ">
+                      <label class="font-karla-bold " for="div ">Division</label>
+                      <input class="form-control " ng-model="sellerProfile.division" type="text " id="div " placeholder="Enter Division" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-8 ">
+                    <div class="form-group div ">
+                      <label class="font-karla-bold " for="div ">Division Address</label>
+                      <textarea class="form-control " name="name " rows="3 " ng-model="sellerProfile.exciseAddress" placeholder="Enter Division Address "
+                        readonly></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <h4 class="font-karla-bold text-uppercase spacing ">Bank Details</h4>
+                </div>
+                <div class="row ">
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="acc ">Bank Account No.</label>
+                      <input class="form-control " type="text " id="acc " ng-model="sellerProfile.bankAccountNo" placeholder="Enter Bank Account No. "
+                        readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="bank ">Bank Name</label>
+                      <input class="form-control " type="text " id="bank " ng-model="sellerProfile.bankName" placeholder="Enter Bank Name " readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold " for="branch ">Branch</label>
+                      <input class="form-control " type="text " id="branch " ng-model="sellerProfile.branch" placeholder="Enter Branch" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-4 ">
+                    <div class="form-group div ">
+                      <label class="font-karla-bold " for="div ">IFSC Code</label>
+                      <input class="form-control " type="text " id="div " ng-model="sellerProfile.ifscCode" placeholder="Enter IFSC Code" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="form-group ">
+                      <label class="font-karla-bold "></label>
+                      <div class="input-group cheque attach">
+                        <input class="form-control " type="text " ng-model="sellerProfile.cancelledCheque" placeholder="Enter Cancelled Cheque No."
+                          readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <h4 class="font-karla-bold text-uppercase spacing">Import-export</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group export"><label class="font-karla-bold" for="code">Import-export code</label>
+                      <div class="input-group attach"><input class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="sellerProfile.importExportCode"
+                          type="text" id="code" placeholder="Enter Import-export code" readonly="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="certifications">
         <div class="certification-header">
           <p>CERTIFICATIONS</p>
