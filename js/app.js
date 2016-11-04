@@ -238,6 +238,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'EditAgencyDetailsCtrl'
     })
+   
     .state('inspection-login', {
       url: "/inspection-login",
       templateUrl: "views/template.html",

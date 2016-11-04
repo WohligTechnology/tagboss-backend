@@ -262,13 +262,41 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.openInspection = function () {
-        $uibModal.open({
+    $scope.openInspection = function (data) {
+        $scope.modaltitle = data;
+        $scope.agencypop = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/inspection.html",
             scope: $scope,
         });
     };
+    $scope.agency = {};
+    $scope.addAgency = function (agency) {
+        NavigationService.addAgency(agency, function (data) {
+            if (data.value == true) {
+                // console.log("done");
+                closeAgencyPopup();
+                $scope.agency = {};
+                $scope.getAgency();
+            }
+        });
+    }
+
+    $scope.getAgency = function () {
+        NavigationService.getAgency(function (data) {
+            if (data.value == true) {
+                $scope.allAgency = data.data.results;
+            } else {
+                $scope.allAgency = "";
+            }
+        });
+    }
+
+    $scope.getAgency();
+
+    closeAgencyPopup = function () {
+        $scope.agencypop.close();
+    }
 
 })
 
@@ -380,11 +408,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.navigation = NavigationService.getnav();
 })
 
-.controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
     $scope.template = TemplateService.changecontent("inspection-login");
     $scope.menutitle = NavigationService.makeactive("Inspection Login");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    TemplateService.header = 'views/header1.html';
+    TemplateService.sidemenu = '';
+
+
+    $scope.logindata = {};
+     $scope.error = false
+    $scope.Login = function (logindata) {
+        NavigationService.Login(logindata, function (data) {
+            if (data.value == true) {
+                console.log("done");
+                $state.go("dashboard");
+            }else{
+                $scope.error =true;
+                $scope.errmsg = data.data.message;
+            }
+        });
+    }
 
 })
 

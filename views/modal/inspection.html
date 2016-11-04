@@ -4,66 +4,74 @@
             <img src="img/closebtn.png" alt="">
         </div>
         <div class="modal-header">
-            <h3 class="modal-title text-center txt-head">Edit Inspection Agency</h3>
+            <h3 class="modal-title text-center txt-head">{{modaltitle}} Inspection Agency</h3>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" ng-submit="addAgency(agency)" role="form">
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Company Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" required ng-model="agency.agencyName" class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Contact Person</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.contactname" required class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Telephone</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.telephone" required class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Mobile</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.mobile" required class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.email" required class="form-control" id="text">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label class="col-sm-3 control-label" for="">Password</label>
+                    <div class="col-sm-8">
+                        <input type="password" ng-model="agency.password" required class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">Address</label>
                     <div class="col-sm-6">
-                        <div class="txt-area1">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum molestias provident inventore
+                        <!--<div class="txt-area1">-->
+
+                            <textarea cols="45" required ng-model="agency.address"></textarea>
+                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum molestias provident inventore
                                 omnis eligendi maxime nemo perferendis rerum, dolorum sapiente asperiores porro repellendus
-                                eius, amet quia doloremque voluptatibus reprehenderit repudiandae.</p>
-                        </div>
+                                eius, amet quia doloremque voluptatibus reprehenderit repudiandae.</p>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">City</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.city" required class="form-control" id="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="">State</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="text">
+                        <input type="text" ng-model="agency.state" required class="form-control" id="text">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-5 col-sm-7">
-                        <button class="btn btn-primary" ng-click="ok()">SUBMIT</button>
+                        <button type="submit" class="btn btn-primary" >SUBMIT</button>
                     </div>
                 </div>
             </form>
