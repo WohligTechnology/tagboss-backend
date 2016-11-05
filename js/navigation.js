@@ -63,6 +63,16 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     sendReport: function (rdata, callback) {
+      var data = rdata;
+      return $http({
+        url: adminURL + "inventory/sendReport",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
     Login: function (logindata, callback) {
       var data = logindata;
       return $http({

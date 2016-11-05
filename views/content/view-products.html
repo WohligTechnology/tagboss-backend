@@ -44,47 +44,48 @@
         </thead>
         <tbody>
           <tr ng-repeat="inventory in getAllInventory">
-             <form role="form" ng-submit="sendReport(inventory)">
-            <td>
-              <div class="magic-form">
-                <div class="magic-resize">
-                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                  <label class="text" for="add-one">
+            <form name="reportform{{$index}}">
+              <td>
+                <div class="magic-form">
+                  <div class="magic-resize">
+                    <input class="magic-checkbox" type="checkbox" name="layout{{$index}}" id="add-one{{$index}}" value="{{inventory._id}}">
+                    <label class="text" for="add-one{{$index}}">
                             <p class="comp-name">  {{inventory.seller.firmName}}  </p>
                             <p>
                              {{inventory.seller.companyAddress}}</p>
                           </label>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td>
-              <ul class="prod-details">
-                <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
-                <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
-                <!--<li>  SCH           </li>
+              </td>
+              <td>
+                <ul class="prod-details">
+                  <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
+                  <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
+                  <!--<li>  SCH           </li>
                         <li>  OD in mm   </li>-->
-                <li> {{inventory.thickness}} </li>
-                <li> {{inventory.length}} </li>
-                <li> {{inventory.width}} </li>
-              </ul>
-            </td>
-            <td>{{inventory.quantityInNos}}</td>
-            <td>
-              <div>
-                <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
-                <p>Status: {{inventory.status}}</p>
-                <!--<p ng-if="inventory.status==='Pending'">-->
+                  <li> {{inventory.thickness}} </li>
+                  <li> {{inventory.length}} </li>
+                  <li> {{inventory.width}} </li>
+                </ul>
+              </td>
+              <td>{{inventory.quantityInNos}}</td>
+              <td>
+                <div>
+                  <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
+                  <p>Status: {{inventory.status}}</p>
+                  <!--<p ng-if="inventory.status==='Pending'">-->
                   <!--<input class="btn btn-primary assign-btn" type="file" />-->
-                 <div ng-if="inventory.status==='Pending'" class="btn btn-primary assign-btn">
-                    <upload-image ng-model="inspection.report" ng-callback="uploadReport" no-view></upload-image>
-                   </div>
-                   <!--</p>-->
-               </div>
-            </td>
-            <td>
-              <textarea required ng-model="inspection.remark">{{inventory.remark}}</textarea>
-              <button ng-if="inventory.status==='Pending'" type="submit" class="btn btn-primary assign-btn">Submit Report</button>
-            </td>
+                  <div ng-if="inventory.status==='Pending'" class="btn btn-primary assign-btn">
+                    <upload-image ng-model="inventory.report" ng-callback="uploadReport" no-view></upload-image>
+                  </div>
+                  <!--</p>-->
+                </div>
+              </td>
+              <td>
+                <input type="hidden" ng-model="inventory._id"/>
+                <textarea name="inventoryremark{{$index}}" ng-model="inventory.remark" required>{{inventory.remark}}</textarea>
+                <button ng-if="inventory.status==='Pending'" ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
+              </td>
             </form>
           </tr>
           <!--<tr>

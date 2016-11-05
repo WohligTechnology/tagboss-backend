@@ -1,5 +1,5 @@
-Window.uploadurl="http://wohlig.biz/uploadfile/upload/";
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate','imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
+Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
 
@@ -1436,7 +1436,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         $scope.getInventory();
 
         $scope.uploadReport = function (err, data) {
-            console.log("oploaddd",err, data);
+            console.log("oploaddd", err, data);
             if (err) {
                 $scope.errorMsgpan = err;
             } else {
@@ -1444,8 +1444,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             }
         }
 
-        $scope.sendReport = function(reportdata){
+        $scope.sendReport = function (reportdata) {
             console.log("inn", reportdata);
+            var senddata = {};
+            senddata._id = reportdata._id;
+            senddata.report = reportdata.report;
+            senddata.remark = reportdata.remark;
+            NavigationService.sendReport(senddata, function (data) {
+                if (data.value == true) {
+                    $scope.getInventory();
+                }
+            });
         }
     })
 
