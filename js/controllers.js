@@ -1,4 +1,5 @@
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
+Window.uploadurl="http://wohlig.biz/uploadfile/upload/";
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate','imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
 
@@ -406,6 +407,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    TemplateService.header = 'views/headeragency.html';
+    TemplateService.sidemenu = 'views/sidemenuagency.html';
 })
 
 .controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -418,14 +421,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
 
 
     $scope.logindata = {};
-     $scope.error = false
+    $scope.error = false
     $scope.Login = function (logindata) {
         NavigationService.Login(logindata, function (data) {
             if (data.value == true) {
                 console.log("done");
                 $state.go("dashboard");
-            }else{
-                $scope.error =true;
+            } else {
+                $scope.error = true;
                 $scope.errmsg = data.data.message;
             }
         });
@@ -1420,6 +1423,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         $scope.menutitle = NavigationService.makeactive("View-products");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.header = 'views/headeragency.html';
+        TemplateService.sidemenu = 'views/sidemenuagency.html';
+        $scope.getInventory = function () {
+            NavigationService.getInventory(function (data) {
+                if (data.value == true) {
+                    $scope.getAllInventory = data.data.results;
+                    console.log("$scope.getAllInventory", $scope.getAllInventory);
+                }
+            });
+        }
+        $scope.getInventory();
+
+        $scope.uploadReport = function (err, data) {
+            console.log("oploaddd",err, data);
+            if (err) {
+                $scope.errorMsgpan = err;
+            } else {
+                $scope.errorMsgpan = "Successfully uploaded";
+            }
+        }
+
+        $scope.sendReport = function(reportdata){
+            console.log("inn", reportdata);
+        }
     })
 
 .controller('Coupon-codeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {

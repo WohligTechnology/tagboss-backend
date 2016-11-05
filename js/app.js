@@ -270,6 +270,134 @@ firstapp.directive('img', function ($compile, $parse) {
   };
 });
 
+// firstapp.directive('imageonload', function () {
+//  return {
+//    restrict: 'A',
+//    link: function (scope, element, attrs) {
+//      element.bind('load', function () {
+//     //  console.log(attrs.imageonload);
+//        scope.$apply(attrs.imageonload);
+//      });
+//    }
+//  };
+// });
+
+firstapp.filter('uploadpath', function () {
+ return function (input, width, height, style) {
+   var other = "";
+   if (width && width !== "") {
+     other += "&width=" + width;
+   }
+   if (height && height !== "") {
+     other += "&height=" + height;
+   }
+   if (style && style !== "") {
+     other += "&style=" + style;
+   }
+   if (input) {
+     return imgpath + "?file=" + input + other;
+
+   }
+ };
+});
+
+firstapp.directive('uploadImage', function ($http, $filter) {
+  console.log("innnnn");
+ return {
+   templateUrl: 'views/directive/uploadFile.html',
+   scope: {
+     model: '=ngModel',
+     callback: '=ngCallback',
+     // mymodel: '=ngModel'
+
+   },
+   link: function ($scope, element, attrs) {
+     $scope.isMultiple = false;
+     $scope.inObject = false;
+     if (attrs.multiple || attrs.multiple === "") {
+       $scope.isMultiple = true;
+       $("#inputImage").attr("multiple", "ADD");
+     }
+     if (attrs.noView || attrs.noView === "") {
+       $scope.noShow = true;
+     }
+     if ($scope.model) {
+       if (_.isArray($scope.model)) {
+         $scope.image = [];
+         _.each($scope.model, function (n) {
+           $scope.image.push({
+             url: $filter("uploadpath")(n)
+           });
+         });
+       } else {
+         $scope.image = {};
+         $scope.image.url = $filter("uploadpath")($scope.model);
+       }
+
+     }
+     $scope.$watch("image", function(newVal, oldVal) {
+                if (newVal && newVal.file) {
+                    $scope.upload(newVal);
+                }
+            });
+     if (attrs.inobj || attrs.inobj === "") {
+       $scope.inObject = true;
+     }
+     $scope.clearOld = function () {
+       $scope.model = [];
+     };
+     $scope.upload = function (image) {
+       console.log("aaa", image , "bbb",image.file.type);
+      //  if (image.file.type=="application/pdf") {
+      //  if (image.file.type == "image/png" || image.file.type == "image/jpeg" || image.file.type == "image/pdf" ) {
+         
+         var Template = this;
+         image.hide = true;
+         var formData = new FormData();
+         formData.append('file', image.file, image.name);
+         $http.post(uploadurl, formData, {
+           headers: {
+             'Content-Type': undefined
+           },
+           transformRequest: angular.identity
+         }).success(function (data) {
+           console.log("success");
+           //  console.log(data);
+           if ($scope.callback) {
+             $scope.model = data.data[0];
+             if (data.value) {
+               $scope.callback(null, data);
+             } else {
+               $scope.callback('Not Uploaded', data);
+             }
+           } else {
+             if ($scope.isMultiple) {
+               if ($scope.inObject) {
+                 $scope.model.push({
+                   "image": data.data[0]
+                 });
+               } else {
+                 $scope.model.push(data.data[0]);
+               }
+             } else {
+               $scope.model = data.data[0];
+             }
+           }
+         });
+
+      //  } else {
+      //    console.log("Unsccessfull");
+      //    //  $scope.mymodel="Please upload only png or jpg image.";
+      //    //  console.log($scope.mymodel);
+      //    $scope.callback('Please upload only png or jpg image.', null);
+
+      //  }
+
+     };
+   }
+ };
+});
+
 firstapp.directive('fancyboxBox', function ($document) {
   return {
     restrict: 'EA',

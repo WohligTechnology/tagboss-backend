@@ -1,106 +1,93 @@
 <section class="body-main view-products">
   <div class="container-fluid">
     <div class="view-product">
-        <div class="search-content">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="input-group search-top">
-                <input type="text" class="form-control" placeholder="Search by Inspector’s Name or ID">
-                <span class="input-group-btn">
+      <div class="search-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group search-top">
+              <input type="text" class="form-control" placeholder="Search by Inspector’s Name or ID">
+              <span class="input-group-btn">
                   <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
                   <!-- <button class="btn btn-default" type="button">Go!</button> -->
                 </span>
-              </div>
-              </div>
-
-                <div class="col-md-6">
-
-                  <div class="excel-upload ">
-                      <img src="img/excel-icon.png" >
-                      <label>CONVERT TO EXCEL</label>
-                  </div>
-
-                  <div class="select-prod pull-right">
-                    <select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="excel-upload ">
+              <img src="img/excel-icon.png">
+              <label>CONVERT TO EXCEL</label>
+            </div>
+            <div class="select-prod pull-right">
+              <select>
                       <option value="all">ALL</option>
                       <option value="saab">Approved</option>
                       <option value="opel">Rejected</option>
                       <option value="audi">Pending</option>
                     </select>
-
-
-
-
-                  </div>
-              </div>
             </div>
+          </div>
         </div>
-
-
-
-        <div class="view-products-details ">
-            <label class="detail-heading">REQUEST FOR INSPECTION</label>
-            <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-             <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-        </div>
-
-        <table class="table table-bordered inspection-table">
-              <thead>
-                <tr>
-                  <th><strong>NAME</strong></th>
-                  <th><strong>PRODUCT</strong></th>
-                  <th><strong>QUANTITY</strong></th>
-                  <th><strong>UPLOAD REPORT</strong></th>
-                  <th><strong>REMARKS</strong></th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="magic-form">
-                      <div class="magic-resize">
-                        <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                          <label class="text" for="add-one">
-                            <p class="comp-name">  1.Raj Steel  </p>
+      </div>
+      <div class="view-products-details ">
+        <label class="detail-heading">REQUEST FOR INSPECTION</label>
+        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+      </div>
+      <table class="table table-bordered inspection-table">
+        <thead>
+          <tr>
+            <th><strong>NAME</strong></th>
+            <th><strong>PRODUCT</strong></th>
+            <th><strong>QUANTITY</strong></th>
+            <th><strong>UPLOAD REPORT</strong></th>
+            <th><strong>REMARKS</strong></th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="inventory in getAllInventory">
+             <form role="form" ng-submit="sendReport(inventory)">
+            <td>
+              <div class="magic-form">
+                <div class="magic-resize">
+                  <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                  <label class="text" for="add-one">
+                            <p class="comp-name">  {{inventory.seller.firmName}}  </p>
                             <p>
-                              15/18 Rhythm House,
-                              Kaala Ghoda, Fort,
-                              Mumbai - 400005
-                              India</p>
+                             {{inventory.seller.companyAddress}}</p>
                           </label>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <ul class="prod-details">
-
-                        <li>  Product + MOC </li>
-                        <li>  Grade/Standard </li>
-                        <li>  SCH           </li>
-                        <li>  OD in mm   </li>
-                        <li>  Thicknesss </li>
-                        <li>  Length     </li>
-                        <li>  Weight    </li>
-                    </ul>
-                  </td>
-                  <td>200</td>
-
-                  <td>
-                    <select>
-                      <option value="#">Inspection Agency,City</option>
-                      <option value="1">Inspection Agency,City</option>
-                      <option value="2">Inspection Agency,City</option>
-                      <option value="3">Inspection Agency,City</option>
-                    </select>
-                    <p class="upload-date">
-                      24 July,2016
-                    </p>
-
-                  </td>
-                  <td>
-
-                  </td>
-                </tr>
-                <tr>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="prod-details">
+                <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
+                <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
+                <!--<li>  SCH           </li>
+                        <li>  OD in mm   </li>-->
+                <li> {{inventory.thickness}} </li>
+                <li> {{inventory.length}} </li>
+                <li> {{inventory.width}} </li>
+              </ul>
+            </td>
+            <td>{{inventory.quantityInNos}}</td>
+            <td>
+              <div>
+                <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
+                <p>Status: {{inventory.status}}</p>
+                <!--<p ng-if="inventory.status==='Pending'">-->
+                  <!--<input class="btn btn-primary assign-btn" type="file" />-->
+                 <div ng-if="inventory.status==='Pending'" class="btn btn-primary assign-btn">
+                    <upload-image ng-model="inspection.report" ng-callback="uploadReport" no-view></upload-image>
+                   </div>
+                   <!--</p>-->
+               </div>
+            </td>
+            <td>
+              <textarea required ng-model="inspection.remark">{{inventory.remark}}</textarea>
+              <button ng-if="inventory.status==='Pending'" type="submit" class="btn btn-primary assign-btn">Submit Report</button>
+            </td>
+            </form>
+          </tr>
+          <!--<tr>
                   <td>
 
                   </td>
@@ -168,11 +155,9 @@
 
 
 
-                </tr>
-              </tbody>
-            </table>
-
-
+                </tr>-->
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

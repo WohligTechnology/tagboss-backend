@@ -1,4 +1,9 @@
 var adminURL = "http://localhost:1337/";
+// var adminURL = "https://104.155.129.33:1337/";
+var imgurl = adminURL+"upload/";
+var imgpath = adminURL+"upload/readFile";
+var uploadurl = adminURL+"upload/";
+
 // if(isproduction)
 // {
 //   adminURL =  "http://www.wohlig.co.in/demo/index.php";
@@ -43,6 +48,12 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+ getInventory: function (callback) {
+      return $http({
+        url: adminURL + "inventory/search",
+        method: "POST"
+      }).success(callback);
+    },
     addAgency: function (agencydata, callback) {
       var data = agencydata;
       return $http({
