@@ -72,10 +72,10 @@
               <td>
                 <div>
                   <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
-                  <p>Status: {{inventory.status}}</p>
-                  <!--<p ng-if="inventory.status==='Pending'">-->
+                  <p ng-if="inventory.status!=='Assigned'">Status: {{inventory.status}}</p>
+                  <p ng-if="inventory.status==='Assigned'">Status: Pending</p>
                   <!--<input class="btn btn-primary assign-btn" type="file" />-->
-                  <div ng-if="inventory.status==='Pending'" class="btn btn-primary assign-btn">
+                  <div ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn">
                     <upload-image ng-model="inventory.report" ng-callback="uploadReport" no-view></upload-image>
                   </div>
                   <!--</p>-->
@@ -84,7 +84,7 @@
               <td>
                 <input type="hidden" ng-model="inventory._id"/>
                 <textarea name="inventoryremark{{$index}}" ng-model="inventory.remark" required>{{inventory.remark}}</textarea>
-                <button ng-if="inventory.status==='Pending'" ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
+                <button ng-if="inventory.status==='Assigned'" ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
               </td>
             </form>
           </tr>
