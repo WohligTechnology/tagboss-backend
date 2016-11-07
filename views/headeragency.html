@@ -1,10 +1,10 @@
-<header>
+<header ng-controller="headeragencyctrl">
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
         <div class="user-name">
-          <i class="fa fa-user" aria-hidden="true"></i>Hi, 
+          <i class="fa fa-user" aria-hidden="true"></i>Hi, {{userData.contactname}}
         </div>
       </div>
       <div class="col-md-6">
@@ -37,11 +37,11 @@
         <div class="col-md-4">
 
           <div class="icons">
-               <div class="h-icon" ui-sref="dashboard">
+               <div class="h-icon">
                <i class="fa fa-home" aria-hidden="true"></i>
             </div>
             <div class="h-icon">
-               <label ng-click="Logoutagency();">Logout</label>
+               <label ng-click="Logout();">Logout</label>
             </div>
           </div>
 

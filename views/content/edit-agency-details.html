@@ -5,7 +5,7 @@
       <div class="info">
         <div class="row">
           <div class="col-md-offset-1 col-md-10">
-            <form>
+            <form ng-submit="editAgency(agencyDetails)">
 
               <div class="row">
                 <div class="col-md-6">
@@ -17,7 +17,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Name of Agency</label>
-                    <p>ABC Agency</p>
+                    <p>{{agencyDetails.agencyName}}</p>
                   </div>
                 </div>
               </div>
@@ -26,13 +26,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>contact person</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.contactname" class="form-control" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>email id</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.email" class="form-control" >
                   </div>
                 </div>
               </div>
@@ -41,13 +41,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>mobile no.</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.mobile" class="form-control" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>telephone no.</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.telephone" class="form-control" >
                   </div>
                 </div>
               </div>
@@ -56,13 +56,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="comment">address</label>
-                    <textarea class="form-control" rows="3" id="comment"></textarea>
+                    <textarea class="form-control" required ng-model="agencyDetails.address" rows="3" id="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>fax no.</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.faxno" class="form-control" >
                   </div>
                 </div>
               </div>
@@ -91,14 +91,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>state</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" required ng-model="agencyDetails.state" class="form-control" >
                   </div>
                 </div>
                 <div class="col-md-6">
 
                 </div>
               </div>
-              <button type="button" class="btn btn-lg btn-block">update</button>
+              <button type="submit" class="btn btn-lg btn-block">update</button>
 
             </form>
 

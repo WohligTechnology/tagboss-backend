@@ -48,178 +48,76 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="inventory in getAllInventory">
+               <form name="reportform{{$index}}">
               <td>
                 <div class="magic-form">
                   <div class="magic-resize">
                     <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                     <label class="text" for="add-one">
-                            <p class="comp-name">  1.Raj Steel  </p>
-                            <p>Warehouse</p>
+                            <p class="comp-name"> {{inventory.seller.firmName}}   </p>
+                            <!--<p>Warehouse</p>
                             <p>
                               15/18 Rhythm House,
                               Kaala Ghoda, Fort,
                               Mumbai - 400005
-                              India</p>
+                              India</p>-->
+                              <p>
+                             {{inventory.seller.companyAddress}}</p>
                           </label>
                   </div>
                 </div>
               </td>
               <td>
                 <ul class="prod-details">
-                  <!--<li class="list-head"> Tata Steel </li>-->
-                  <li> Product + MOC </li>
-                  <li> Grade/Standard </li>
-                  <li> SCH </li>
-                  <li> OD in mm </li>
-                  <li> Thicknesss </li>
-                  <li> Length </li>
-                  <li> Weight </li>
+                  <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
+                  <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
+                  <!--<li>  SCH           </li>
+                        <li>  OD in mm   </li>-->
+                  <li> {{inventory.thickness}} </li>
+                  <li> {{inventory.length}} </li>
+                  <li> {{inventory.width}} </li>
                 </ul>
               </td>
-              <td>200</td>
+              <td>{{inventory.quantityInNos}}</td>
               <td class="feed-col">
-                <select>
-                  <option value="#">Inspection Agency,City</option>
+                <select ng-model="myid">
+                   <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
+                  <!--<option value="#">Inspection Agency,City</option>
                   <option value="1">Inspection Agency,City</option>
                   <option value="2">Inspection Agency,City</option>
-                  <option value="3">Inspection Agency,City</option>
+                  <option value="3">Inspection Agency,City</option>-->
                 </select>
                 <p class="upload-date">
-                  24 July,2016
+                  <!--24 July,2016-->
                 </p>
-                <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct()">EDIT</button>
+                <!--<button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct()">EDIT</button>-->
               </td>
               <td class="text-center feed-col">
                 <div>
                   <div>
                     <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
-                    <p>PENDING</p>
-                    <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+                    <p>Status: {{inventory.status}}</p>
+                 
+                    <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(myid, inventory._id)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
                   </div>
-                  <!--<div>
-                  <p> The product is upto mark.</p>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <div class="">
-                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                    <button type="button" class="btn btn-primary reject">REJECT</button>
-                  </div>
-                </div>
-                <div>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <p> The product is upto mark.</p>
-                </div>-->
-                </div>
-              </td>
-            </tr>
-            <tr class="next-entry">
-              <td>
-              </td>
-              <td>
-                <ul class="prod-details">
-                  <!--<li class="list-head"> Tata Steel </li>-->
-                  <li> Product + MOC </li>
-                  <li> Grade/Standard </li>
-                  <li> SCH </li>
-                  <li> OD in mm </li>
-                  <li> Thicknesss </li>
-                  <li> Length </li>
-                  <li> Weight </li>
-                </ul>
-              </td>
-              <td>
-                850
-              </td>
-              <td>
-              </td>
-              <td class="text-center feed-col">
-                <div>
-                  <!--<div>
-                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
-                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-
-                </div>-->
-                  <div>
-                    <!--<p> The product is upto mark.</p>-->
-                    <img src="img/pdf-image.png">
-                    <input type="text">
+                 
+                  <div ng-if="inventory.status==='Report Sent'">
+                    <a href=""><img src="img/pdf-image.png"></a>
                     <div class="">
                       <button type="button" class="btn btn-primary accept">ACCEPT</button>
                       <button type="button" class="btn btn-primary reject">REJECT</button>
                     </div>
                   </div>
-                  <!--<div>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <p> The product is upto mark.</p>
-                </div>-->
-                </div>
-              </td>
-            </tr>
-            </tr>
-            <tr>
-              <td>
-                <div class="magic-form">
-                  <div class="magic-resize">
-                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-                    <label class="text" for="add-one">
-                            <p class="comp-name">  1.Raj Steel  </p>
-                            <p>Warehouse</p>
-                            <p>
-                              15/18 Rhythm House,
-                              Kaala Ghoda, Fort,
-                              Mumbai - 400005
-                              India</p>
-                          </label>
+                  <div ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
+                    <a href=""><img src="img/pdf-image.png"></a>
+                    <p> The product is upto mark.</p>
                   </div>
                 </div>
               </td>
-              <td>
-                <ul class="prod-details">
-                  <!--<li class="list-head"> Tata Steel </li>-->
-                  <li> Product + MOC </li>
-                  <li> Grade/Standard </li>
-                  <li> SCH </li>
-                  <li> OD in mm </li>
-                  <li> Thicknesss </li>
-                  <li> Length </li>
-                  <li> Weight </li>
-                </ul>
-              </td>
-              <td>200</td>
-              <td>
-                <select>
-                  <option value="#">Inspection Agency,City</option>
-                  <option value="1">Inspection Agency,City</option>
-                  <option value="2">Inspection Agency,City</option>
-                  <option value="3">Inspection Agency,City</option>
-                </select>
-              </td>
-              <td class="text-center feed-col">
-                <div>
-                  <!--<div>
-                  <button type="button" class="btn btn-primary assign-btn">PENDING</button>
-                  <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-
-                </div>
-                <div>
-                  <p> The product is upto mark.</p>
-                  <img src="img/pdf-image.png">
-                  <input type="text">
-                  <div class="">
-                    <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                    <button type="button" class="btn btn-primary reject">REJECT</button>
-                  </div>
-                </div>-->
-                  <div>
-                    <img src="img/pdf-image.png">
-                    <p class="assign-space"> The product is upto mark.</p>
-                  </div>
-                </div>
-              </td>
+              </form>
             </tr>
+           
           </tbody>
         </table>
       </div>

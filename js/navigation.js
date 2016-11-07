@@ -54,6 +54,15 @@ var navigationservice = angular.module('navigationservice', [])
         method: "POST"
       }).success(callback);
     },
+
+ getInventoryByAgency: function (callback) {
+      return $http({
+        url: adminURL + "inventory/getAllInventory",
+        method: "POST"
+      }).success(callback);
+    },
+
+
     addAgency: function (agencydata, callback) {
       var data = agencydata;
       return $http({
@@ -72,6 +81,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+      assignInspection: function (rdata, callback) {
+      var data = rdata;
+      return $http({
+        url: adminURL + "inventory/assignInspection",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
 
     Login: function (logindata, callback) {
       var data = logindata;
@@ -79,6 +97,27 @@ var navigationservice = angular.module('navigationservice', [])
         url: adminURL + "inspection/Login",
         method: "POST",
         data: data
+      }).success(callback);
+    },
+
+     Logout: function (callback) {
+      return $http({
+        url: adminURL + "inspection/logout",
+        method: "POST"
+      }).success(callback);
+    },
+
+        getInspectionUser: function (callback) {
+      return $http({
+        url: adminURL + "inspection/getInspectionUser",
+        method: "POST"
+      }).success(callback);
+    },
+
+      getAgencyByID: function (callback) {
+      return $http({
+        url: adminURL + "inspection/getAgency",
+        method: "POST"
       }).success(callback);
     },
 

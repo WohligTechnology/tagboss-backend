@@ -234,6 +234,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         $scope.showEdit = false;
     };
 
+
+    $scope.getAgency = function () {
+        NavigationService.getAgency(function (data) {
+            if (data.value == true) {
+                $scope.getAllAgency = data.data.results;
+                console.log("$scope.getAllAgency", $scope.getAllAgency);
+            }
+        });
+    }
+    $scope.getAgency();
+
+    $scope.getInventory = function () {
+        NavigationService.getInventory(function (data) {
+            if (data.value == true) {
+                $scope.getAllInventory = data.data.results;
+                console.log("$scope.getAllInventory", $scope.getAllInventory);
+            }
+        });
+    }
+    $scope.getInventory();
+
+    $scope.assignInspection = function (agencyid, inid) {
+        console.log("aaa", agencyid, inid);
+        var senddata = {};
+        senddata._id = inid;
+        senddata.agencyid = agencyid;
+        NavigationService.assignInspection(senddata, function (data) {
+            if (data.value == true) {
+                $scope.getInventory();
+            }
+        });
+    }
+
 })
 
 .controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -409,6 +442,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.navigation = NavigationService.getnav();
     TemplateService.header = 'views/headeragency.html';
     TemplateService.sidemenu = 'views/sidemenuagency.html';
+
+    $scope.getAgencyDetails = function () {
+        NavigationService.getAgencyByID(function (data) {
+            if (data.value == true) {
+                $scope.agencyDetails = data.data;
+                console.log(" $scope.agencyDetails", $scope.agencyDetails);
+            }
+        });
+    }
+
+$scope.getAgencyDetails();
 })
 
 .controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -426,7 +470,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         NavigationService.Login(logindata, function (data) {
             if (data.value == true) {
                 console.log("done");
-                $state.go("dashboard");
+                $state.go("view-products");
             } else {
                 $scope.error = true;
                 $scope.errmsg = data.data.message;
@@ -1426,9 +1470,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         TemplateService.header = 'views/headeragency.html';
         TemplateService.sidemenu = 'views/sidemenuagency.html';
         $scope.getInventory = function () {
-            NavigationService.getInventory(function (data) {
+            NavigationService.getInventoryByAgency(function (data) {
                 if (data.value == true) {
-                    $scope.getAllInventory = data.data.results;
+                    $scope.getAllInventory = data.data;
                     console.log("$scope.getAllInventory", $scope.getAllInventory);
                 }
             });
@@ -1481,6 +1525,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         $(window).scrollTop(0);
     });
     $.fancybox.close(true);
+})
+
+.controller('headeragencyctrl', function ($scope, TemplateService, NavigationService, $state) {
+    $scope.template = TemplateService;
+    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $(window).scrollTop(0);
+    });
+    $.fancybox.close(true);
+
+
+    $scope.getInspectionUser = function () {
+        NavigationService.getInspectionUser(function (data) {
+            if (data.value == true) {
+                $scope.userData = data.data;
+                console.log("getInspectionUser", $scope.userData);
+            }
+        });
+    }
+
+    $scope.getInspectionUser();
+
+
+    $scope.Logout = function () {
+        console.log("logout");
+        NavigationService.Logout(function (data) {
+            if (data.value == true) {
+                $state.go("inspection-login");
+            }
+        });
+    }
 })
 
 .controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
