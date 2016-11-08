@@ -208,7 +208,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
 
 })
 
-.controller('ProdApprovalCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('ProdApprovalCtrl', function ($scope, TemplateService, NavigationService, $timeout, $filter) {
     $scope.template = TemplateService.changecontent("product-approval");
     $scope.menutitle = NavigationService.makeactive("Product Approval");
     TemplateService.title = $scope.menutitle;
@@ -289,6 +289,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         senddata.email = inventorydata.seller.email;
         senddata.firstName = inventorydata.seller.firstName;
         senddata.quantity = inventorydata.quantityInNos;
+        senddata.date = $filter('date')(new Date(inventorydata.updatedAt), 'MMM dd yyyy');
+        senddata.report =  inventorydata.report;
         
         if (inventorydata.ratePerKgMtr) {
             senddata.price = inventorydata.ratePerKgMtr;
