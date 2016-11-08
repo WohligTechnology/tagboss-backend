@@ -89,8 +89,11 @@
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                  
                 </select></p>
-                  <p ng-if="inventory.status==='Assigned'" class="upload-date">
+                  <p ng-if="inventory.status!=='Pending'" class="upload-date">
                     {{inventory.agencyid.agencyName}}
+                  </p>
+                  <p ng-if="inventory.status!=='Pending'">
+                    Due On : {{inventory.updatedAt | date:'mediumDate'}}
                   </p>
                 </td>
                 <td class="text-center feed-col">
@@ -101,16 +104,16 @@
                       <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory.agentIDTemp, inventory._id)" type="button"
                         class="btn btn-primary assign-btn">ASSIGN</button>
                     </div>
-                    <div ng-if="inventory.status==='Report Sent'">
-                      <a href=""><img src="img/pdf-image.png"></a>
+                    <div ng-if="inventory.status==='Inspected'">
+                      <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a>
                       <div class="">
-                        <button type="button" class="btn btn-primary accept">ACCEPT</button>
-                        <button type="button" class="btn btn-primary reject">REJECT</button>
+                        <button type="button" ng-click="acceptReport(inventory);" class="btn btn-primary accept">ACCEPT</button>
+                        <button type="button" ng-click="rejectReport(inventory);" class="btn btn-primary reject">REJECT</button>
                       </div>
                     </div>
                     <div ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
-                      <a href=""><img src="img/pdf-image.png"></a>
-                      <p> The product is upto mark.</p>
+                       <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a>
+                      <p  ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
                     </div>
                   </div>
                 </td>

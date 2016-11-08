@@ -81,6 +81,25 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+      rejectReport: function (rdata, callback) {
+      var data = rdata;
+      return $http({
+        url: adminURL + "inventory/rejectReport",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+     acceptReport: function (rdata, callback) {
+      var data = rdata;
+      return $http({
+        url: adminURL + "inventory/acceptReport",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
       assignInspection: function (rdata, callback) {
       var data = rdata;
       return $http({

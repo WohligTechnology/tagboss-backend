@@ -221,6 +221,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         name: 'Tata Steel'
     }];
 
+    $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+
     $scope.showEdit = false;
     $scope.hideEdit = true;
     $scope.showEditProduct = function () {
@@ -261,6 +263,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         senddata._id = inid;
         senddata.agencyid = agencyid;
         NavigationService.assignInspection(senddata, function (data) {
+            if (data.value == true) {
+                $scope.getInventory();
+            }
+        });
+    }
+
+    $scope.rejectReport = function (inventorydata) {
+        console.log("aaa", inventorydata);
+        var senddata = {};
+        senddata._id = inventorydata._id;
+        senddata.email = inventorydata.seller.email;
+        senddata.firstName = inventorydata.seller.firstName;
+        NavigationService.rejectReport(senddata, function (data) {
+            if (data.value == true) {
+                $scope.getInventory();
+            }
+        });
+    }
+
+    $scope.acceptReport = function (inventorydata) {
+        console.log("acceptReport", inventorydata);
+        var senddata = {};
+        senddata._id = inventorydata._id;
+        senddata.email = inventorydata.seller.email;
+        senddata.firstName = inventorydata.seller.firstName;
+        senddata.quantity = inventorydata.quantityInNos;
+        
+        if (inventorydata.ratePerKgMtr) {
+            senddata.price = inventorydata.ratePerKgMtr;
+        }
+        if (inventorydata.pricePerKg) {
+            senddata.price = inventorydata.pricePerKg;
+        }
+        senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+        console.log("senddata", senddata);
+        NavigationService.acceptReport(senddata, function (data) {
             if (data.value == true) {
                 $scope.getInventory();
             }
@@ -452,7 +490,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         });
     }
 
-$scope.getAgencyDetails();
+    $scope.getAgencyDetails();
 })
 
 .controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -1525,6 +1563,8 @@ $scope.getAgencyDetails();
         $(window).scrollTop(0);
     });
     $.fancybox.close(true);
+
+
 })
 
 .controller('headeragencyctrl', function ($scope, TemplateService, NavigationService, $state) {
@@ -1534,7 +1574,7 @@ $scope.getAgencyDetails();
     });
     $.fancybox.close(true);
 
-
+    // $scope.pdfURL = "http://localhost:1337/upload/readFile";
     $scope.getInspectionUser = function () {
         NavigationService.getInspectionUser(function (data) {
             if (data.value == true) {
