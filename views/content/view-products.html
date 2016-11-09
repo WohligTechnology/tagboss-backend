@@ -73,7 +73,9 @@
                 <div>
                   <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
                   <p ng-if="inventory.status!=='Assigned'">Status: {{inventory.status}}</p>
-                  <p ng-if="inventory.status==='Assigned'">Status: Pending</p>
+                  <p ng-if="inventory.status==='Assigned'">Status: Pending<br/>
+                 <b ng-if="inventory.duedate"> Due On : {{inventory.duedate | date:'mediumDate'}}</b></p>
+                   
                   <!--<input class="btn btn-primary assign-btn" type="file" />-->
                   <div ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn">
                     <upload-image ng-model="inventory.report" ng-callback="uploadReport" no-view></upload-image>
@@ -88,76 +90,7 @@
               </td>
             </form>
           </tr>
-          <!--<tr>
-                  <td>
-
-                  </td>
-                  <td>
-                    <ul class="prod-details">
-
-                          <li>  Product + MOC </li>
-                          <li>  Grade/Standard </li>
-                          <li>  SCH           </li>
-                          <li>  OD in mm   </li>
-                          <li>  Thicknesss </li>
-                          <li>  Length     </li>
-                          <li>  Weight    </li>
-                      </ul>
-                  </td>
-                  <td>
-                        850
-                  </td>
-                  <td>
-
-                  </td>
-                  <td>
-
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="magic-form">
-                      <div class="magic-resize">
-                        <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-                          <label class="text" for="add-two">
-
-                            <p class="comp-name">    2.Simran steel  </p>
-
-
-                          </label>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <ul class="prod-details">
-
-                          <li>  Product + MOC </li>
-                          <li>  Grade/Standard </li>
-                          <li>  SCH           </li>
-                          <li>  OD in mm   </li>
-                          <li>  Thicknesss </li>
-                          <li>  Length     </li>
-                          <li>  Weight    </li>
-                      </ul>
-                    </td>
-                  <td>200</td>
-
-                  <td>
-                    <select>
-                      <option value="#">Inspection Agency,City</option>
-                      <option value="1">Inspection Agency,City</option>
-                      <option value="2">Inspection Agency,City</option>
-                      <option value="3">Inspection Agency,City</option>
-                    </select>
-                  </td>
-                  <td>
-
-                  </td>
-
-
-
-                </tr>-->
-        </tbody>
+              </tbody>
       </table>
     </div>
   </div>

@@ -1,7 +1,7 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
 
-.controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout,$state) {
 
     $scope.template = TemplateService.changecontent("loginpage");
     $scope.menutitle = NavigationService.makeactive("Login Page");
@@ -9,6 +9,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.navigation = NavigationService.getnav();
     TemplateService.header = 'views/header1.html';
     TemplateService.sidemenu = '';
+
+    $scope.logindata = {};
+    $scope.error = false
+    $scope.Login = function (logindata) {
+        NavigationService.Login(logindata, function (data) {
+            if (data.value == true) {
+                console.log("done");
+                $state.go("dashboard");
+            } else {
+                $scope.error = true;
+                $scope.errmsg = "User not Found";
+            }
+        });
+    }
 })
 
 .controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -257,11 +271,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     }
     $scope.getInventory();
 
-    $scope.assignInspection = function (agencyid, inid) {
-        console.log("aaa", agencyid, inid);
+    $scope.assignInspection = function (inventorydata) {
+        console.log("aaa", inventorydata);
         var senddata = {};
-        senddata._id = inid;
-        senddata.agencyid = agencyid;
+        senddata._id = inventorydata._id;
+        senddata.agencyid = inventorydata.agentIDTemp;
+        senddata.firstName = inventorydata.seller.firstName;
+        senddata.quantity = inventorydata.quantityInNos;
+        senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+        $scope.mydate = new Date();
+        $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
+        senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
+        senddata.report = inventorydata.report;
+        if (inventorydata.ratePerKgMtr) {
+            senddata.price = inventorydata.ratePerKgMtr;
+        }
+        if (inventorydata.pricePerKg) {
+            senddata.price = inventorydata.pricePerKg;
+        }
+        senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+        console.log("senddata", senddata);
         NavigationService.assignInspection(senddata, function (data) {
             if (data.value == true) {
                 $scope.getInventory();
@@ -289,9 +318,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         senddata.email = inventorydata.seller.email;
         senddata.firstName = inventorydata.seller.firstName;
         senddata.quantity = inventorydata.quantityInNos;
-        senddata.date = $filter('date')(new Date(inventorydata.updatedAt), 'MMM dd yyyy');
-        senddata.report =  inventorydata.report;
-        
+        senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+        senddata.report = inventorydata.report;
+
         if (inventorydata.ratePerKgMtr) {
             senddata.price = inventorydata.ratePerKgMtr;
         }
@@ -507,7 +536,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.logindata = {};
     $scope.error = false
     $scope.Login = function (logindata) {
-        NavigationService.Login(logindata, function (data) {
+        NavigationService.InspectionLogin(logindata, function (data) {
             if (data.value == true) {
                 console.log("done");
                 $state.go("view-products");
@@ -1582,6 +1611,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             if (data.value == true) {
                 $scope.userData = data.data;
                 console.log("getInspectionUser", $scope.userData);
+            } else {
+                 if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                    $state.go("inspection-login");
+                }
             }
         });
     }
@@ -1591,7 +1624,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
 
     $scope.Logout = function () {
         console.log("logout");
-        NavigationService.Logout(function (data) {
+        NavigationService.InspectionLogout(function (data) {
             if (data.value == true) {
                 $state.go("inspection-login");
             }

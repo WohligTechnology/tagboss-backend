@@ -1,8 +1,8 @@
 var adminURL = "http://localhost:1337/";
 // var adminURL = "https://104.155.129.33:1337/";
-var imgurl = adminURL+"upload/";
-var imgpath = adminURL+"upload/readFile";
-var uploadurl = adminURL+"upload/";
+var imgurl = adminURL + "upload/";
+var imgpath = adminURL + "upload/readFile";
+var uploadurl = adminURL + "upload/";
 
 // if(isproduction)
 // {
@@ -48,14 +48,14 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
- getInventory: function (callback) {
+    getInventory: function (callback) {
       return $http({
         url: adminURL + "inventory/search",
         method: "POST"
       }).success(callback);
     },
 
- getInventoryByAgency: function (callback) {
+    getInventoryByAgency: function (callback) {
       return $http({
         url: adminURL + "inventory/getAllInventory",
         method: "POST"
@@ -72,7 +72,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     sendReport: function (rdata, callback) {
+    sendReport: function (rdata, callback) {
       var data = rdata;
       return $http({
         url: adminURL + "inventory/sendReport",
@@ -81,7 +81,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-      rejectReport: function (rdata, callback) {
+    rejectReport: function (rdata, callback) {
       var data = rdata;
       return $http({
         url: adminURL + "inventory/rejectReport",
@@ -90,7 +90,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     acceptReport: function (rdata, callback) {
+    acceptReport: function (rdata, callback) {
       var data = rdata;
       return $http({
         url: adminURL + "inventory/acceptReport",
@@ -100,7 +100,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-      assignInspection: function (rdata, callback) {
+    assignInspection: function (rdata, callback) {
       var data = rdata;
       return $http({
         url: adminURL + "inventory/assignInspection",
@@ -109,8 +109,16 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-
     Login: function (logindata, callback) {
+      var data = logindata;
+      return $http({
+        url: adminURL + "register/login",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    InspectionLogin: function (logindata, callback) {
       var data = logindata;
       return $http({
         url: adminURL + "inspection/Login",
@@ -119,21 +127,21 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     Logout: function (callback) {
+    InspectionLogout: function (callback) {
       return $http({
         url: adminURL + "inspection/logout",
         method: "POST"
       }).success(callback);
     },
 
-        getInspectionUser: function (callback) {
+    getInspectionUser: function (callback) {
       return $http({
         url: adminURL + "inspection/getInspectionUser",
         method: "POST"
       }).success(callback);
     },
 
-      getAgencyByID: function (callback) {
+    getAgencyByID: function (callback) {
       return $http({
         url: adminURL + "inspection/getAgency",
         method: "POST"
