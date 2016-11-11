@@ -1,5 +1,6 @@
 var adminURL = "http://localhost:1337/";
-// var adminURL = "https://104.155.129.33:1337/";
+var adminURL = "http://104.155.129.33:1337/";
+
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
 var uploadurl = adminURL + "upload/";
@@ -113,6 +114,39 @@ var navigationservice = angular.module('navigationservice', [])
       var data = logindata;
       return $http({
         url: adminURL + "register/login",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    Logout: function (callback) {
+      return $http({
+        url: adminURL + "register/logout",
+        method: "POST"
+      }).success(callback);
+    },
+
+    getUser: function (callback) {
+      return $http({
+        url: adminURL + "register/getUser",
+        method: "POST"
+      }).success(callback);
+    },
+
+
+    getAllSeller: function (callback) {
+      return $http({
+        url: adminURL + "user/getAllSeller",
+        method: "POST"
+      }).success(callback);
+    },
+
+    getOneSeller: function (id, callback) {
+      var data = {
+        '_id': id
+      };
+      return $http({
+        url: adminURL + "user/getOne",
         method: "POST",
         data: data
       }).success(callback);

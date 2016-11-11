@@ -18,7 +18,7 @@
         <div class="magic-form">
           <div class="magic-resize">
             <label class="detail-heading" for="add-more">
-                     TBS001 MIRAGE STEEL LTD.
+                     TBS{{sellerData.userId}} {{sellerData.firmName}}.
                    </label>
           </div>
         </div>
@@ -35,9 +35,11 @@
         </thead>
         <tbody>
           <tr>
-            <td>15/18 Rhythm House,<br> Kaala Ghoda, Fort,<br> Mumbai - 400005<br> India
+            <td>{{sellerData.companyAddress}}
             </td>
-            <td>15/18 Rhythm House,<br> Kaala Ghoda, Fort,<br> Mumbai - 400005<br> India
+            <td><div ng-if="sellerData.warehouse.length>0">{{sellerData.warehouse[0].warehouseFirmName}},<br> {{sellerData.warehouse[0].warehouseName}},<br> {{sellerData.warehouse[0].warehouseAddress}},<br> {{sellerData.warehouse[0].warehouseCity}}, {{sellerData.warehouse[0].warehousePincode}}<br/>{{sellerData.warehouse[0].warehouseState}},
+            {{sellerData.warehouse[0].warehouseCountry}}
+            </div>
             </td>
             <td>TBS005<br> Dhanera Steel Ltd<br> TBB045
               <br> Raj Steel and Accessories</td>
@@ -55,7 +57,7 @@
                 </div>
                 <div class="bar-color lgcolor"></div>
                 <div class="circle">
-                  <span>25%</span>
+                  <span>25%</span>sellerData
                 </div>
               </div>
               <div class="progress-bar">
@@ -98,14 +100,14 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="name ">Contact Person</label>
-                      <input class="form-control " type="text " id="name " placeholder="Enter Contact Person" ng-model="sellerProfile.contactPerson"
+                      <input class="form-control " type="text " id="name " placeholder="Enter Contact Person" ng-model="sellerData.contactPerson"
                         readonly>
                     </div>
                   </div>
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="Registered ">Registered Name</label>
-                      <input class="form-control " type="text " id="Registered " placeholder="Enter Registered Name" ng-model="sellerProfile.firstName"
+                      <input class="form-control " type="text " id="Registered " placeholder="Enter Registered Name" ng-model="sellerData.registerdName"
                         readonly>
                     </div>
                   </div>
@@ -114,13 +116,13 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="Email ">Email</label>
-                      <input class="form-control " type="email " id="Email " placeholder="Enter Email" ng-model="sellerProfile.email" readonly>
+                      <input class="form-control " type="email " id="Email " placeholder="Enter Email" ng-model="sellerData.email" readonly>
                     </div>
                   </div>
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="AEmail ">Alternate Email</label>
-                      <input class="form-control " type="email " id="AEmail " placeholder="Enter Alternate Email" ng-model="sellerProfile.alternateEmail"
+                      <input class="form-control " type="email " id="AEmail " placeholder="Enter Alternate Email" ng-model="sellerData.alternateEmail"
                         readonly>
                     </div>
                   </div>
@@ -129,14 +131,14 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="tele ">Telephone</label>
-                      <input class="form-control " type="tel " id="tele " placeholder="Enter Telephone Number" ng-model="sellerProfile.telephone"
+                      <input class="form-control " type="tel " id="tele " placeholder="Enter Telephone Number" ng-model="sellerData.telephone"
                         readonly>
                     </div>
                   </div>
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="mobile ">Mobile No.</label>
-                      <input class="form-control " type="tel " id="mobile " placeholder="Enter Mobile Number" ng-model="sellerProfile.mobile" readonly>
+                      <input class="form-control " type="tel " id="mobile " placeholder="Enter Mobile Number" ng-model="sellerData.mobile" readonly>
                     </div>
                   </div>
                 </div>
@@ -144,14 +146,14 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="Address ">Registered Address</label>
-                      <input class="form-control " type="text " id="Address " placeholder="Enter Company Address" ng-model="sellerProfile.companyAddress"
+                      <input class="form-control " type="text " id="Address " placeholder="Enter Company Address" ng-model="sellerData.companyAddress"
                         readonly>
                     </div>
                   </div>
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="City ">City</label>
-                      <input class="form-control " type="text " id="City " placeholder="Enter City" ng-model="sellerProfile.city" readonly>
+                      <input class="form-control " type="text " id="City " placeholder="Enter City" ng-model="sellerData.city" readonly>
                     </div>
                   </div>
                 </div>
@@ -159,13 +161,13 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="Pincode ">Pincode</label>
-                      <input class="form-control " type="text " id="Pincode " placeholder="Enter Pincode" ng-model="sellerProfile.pincode" readonly>
+                      <input class="form-control " type="text " id="Pincode " placeholder="Enter Pincode" ng-model="sellerData.pincode" readonly>
                     </div>
                   </div>
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="State ">State</label>
-                      <input class="form-control " type="text " id="State " placeholder="Enter State" ng-model="sellerProfile.state" readonly>
+                      <input class="form-control " type="text " id="State " placeholder="Enter State" ng-model="sellerData.state" readonly>
                     </div>
                   </div>
                 </div>
@@ -181,7 +183,7 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="div ">Brief Profile(Optional)</label>
-                      <textarea class="form-control " name="name " rows="3 " placeholder="Enter Brief Profile" ng-model="sellerProfile.briefProfile"
+                      <textarea class="form-control " name="name " rows="3 " placeholder="Enter Brief Profile" ng-model="sellerData.briefProfile"
                         readonly></textarea>
                     </div>
                   </div>
@@ -191,7 +193,7 @@
                     <div class="form-group ">
                       <label class="font-karla-bold " for="com ">Company PAN No.</label>
                       <div class="input-group attach">
-                        <input class="form-control " type="text " id="com " placeholder="Enter PAN No. " ng-model="sellerProfile.panNo" readonly>
+                        <input class="form-control " type="text " id="com " placeholder="Enter PAN No. " ng-model="sellerData.panNo" readonly>
                       </div>
                     </div>
                   </div>
@@ -199,7 +201,7 @@
                     <div class="form-group ">
                       <label class="font-karla-bold " for="vat ">VAT TIN No.</label>
                       <div class="input-group attach">
-                        <input class="form-control " ng-model="sellerProfile.vatTinNo" type="text " id="vat " placeholder="Enter VAT TIN No. " readonly>
+                        <input class="form-control " ng-model="sellerData.vatTinNo" type="text " id="vat " placeholder="Enter VAT TIN No. " readonly>
                       </div>
                     </div>
                   </div>
@@ -207,7 +209,7 @@
                     <div class="form-group ">
                       <label class="font-karla-bold " for="cst ">CST TIN No.</label>
                       <div class="input-group attach">
-                        <input class="form-control " ng-model="sellerProfile.cstTinNo" type="text " id="cst " placeholder="Enter CST TIN No. " readonly>
+                        <input class="form-control " ng-model="sellerData.cstTinNo" type="text " id="cst " placeholder="Enter CST TIN No. " readonly>
                       </div>
                     </div>
                   </div>
@@ -220,7 +222,7 @@
                     <div class="form-group ">
                       <label class="font-karla-bold " for="reg ">Registration No. (ECC)</label>
                       <div class="input-group attach">
-                        <input class="form-control " ng-model="sellerProfile.registrationNo" type="text " id="reg " placeholder="Enter Registration No. "
+                        <input class="form-control " ng-model="sellerData.registrationNo" type="text " id="reg " placeholder="Enter Registration No. "
                           readonly>
                       </div>
                     </div>
@@ -228,13 +230,13 @@
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="range ">Range</label>
-                      <input class="form-control " ng-model="sellerProfile.range" type="text " id="range " placeholder="Enter Range " readonly>
+                      <input class="form-control " ng-model="sellerData.range" type="text " id="range " placeholder="Enter Range " readonly>
                     </div>
                   </div>
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="commissionerate ">Commissionerate</label>
-                      <input class="form-control " ng-model="sellerProfile.commissioneRate" type="text " id="commissionerate " placeholder="Enter Commissionerate "
+                      <input class="form-control " ng-model="sellerData.commissioneRate" type="text " id="commissionerate " placeholder="Enter Commissionerate "
                         readonly>
                     </div>
                   </div>
@@ -243,13 +245,13 @@
                   <div class="col-md-4 ">
                     <div class="form-group div ">
                       <label class="font-karla-bold " for="div ">Division</label>
-                      <input class="form-control " ng-model="sellerProfile.division" type="text " id="div " placeholder="Enter Division" readonly>
+                      <input class="form-control " ng-model="sellerData.division" type="text " id="div " placeholder="Enter Division" readonly>
                     </div>
                   </div>
                   <div class="col-md-8 ">
                     <div class="form-group div ">
                       <label class="font-karla-bold " for="div ">Division Address</label>
-                      <textarea class="form-control " name="name " rows="3 " ng-model="sellerProfile.exciseAddress" placeholder="Enter Division Address "
+                      <textarea class="form-control " name="name " rows="3 " ng-model="sellerData.exciseAddress" placeholder="Enter Division Address "
                         readonly></textarea>
                     </div>
                   </div>
@@ -261,20 +263,20 @@
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="acc ">Bank Account No.</label>
-                      <input class="form-control " type="text " id="acc " ng-model="sellerProfile.bankAccountNo" placeholder="Enter Bank Account No. "
+                      <input class="form-control " type="text " id="acc " ng-model="sellerData.bankAccountNo" placeholder="Enter Bank Account No. "
                         readonly>
                     </div>
                   </div>
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="bank ">Bank Name</label>
-                      <input class="form-control " type="text " id="bank " ng-model="sellerProfile.bankName" placeholder="Enter Bank Name " readonly>
+                      <input class="form-control " type="text " id="bank " ng-model="sellerData.bankName" placeholder="Enter Bank Name " readonly>
                     </div>
                   </div>
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="branch ">Branch</label>
-                      <input class="form-control " type="text " id="branch " ng-model="sellerProfile.branch" placeholder="Enter Branch" readonly>
+                      <input class="form-control " type="text " id="branch " ng-model="sellerData.branch" placeholder="Enter Branch" readonly>
                     </div>
                   </div>
                 </div>
@@ -282,14 +284,14 @@
                   <div class="col-md-4 ">
                     <div class="form-group div ">
                       <label class="font-karla-bold " for="div ">IFSC Code</label>
-                      <input class="form-control " type="text " id="div " ng-model="sellerProfile.ifscCode" placeholder="Enter IFSC Code" readonly>
+                      <input class="form-control " type="text " id="div " ng-model="sellerData.ifscCode" placeholder="Enter IFSC Code" readonly>
                     </div>
                   </div>
                   <div class="col-md-4 ">
                     <div class="form-group ">
                       <label class="font-karla-bold "></label>
                       <div class="input-group cheque attach">
-                        <input class="form-control " type="text " ng-model="sellerProfile.cancelledCheque" placeholder="Enter Cancelled Cheque No."
+                        <input class="form-control " type="text " ng-model="sellerData.cancelledCheque" placeholder="Enter Cancelled Cheque No."
                           readonly>
                       </div>
                     </div>
@@ -301,7 +303,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group export"><label class="font-karla-bold" for="code">Import-export code</label>
-                      <div class="input-group attach"><input class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="sellerProfile.importExportCode"
+                      <div class="input-group attach"><input class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="sellerData.importExportCode"
                           type="text" id="code" placeholder="Enter Import-export code" readonly="">
                       </div>
                     </div>
@@ -320,10 +322,12 @@
           <div class="col-md-4 col-1">
             <div class="abc">
               <div>
-                <p class="img-head">VAT NO. XXXXXX</p>
+                <p class="img-head">VAT NO. {{sellerData.vatTinNo}}</p>
               </div>
               <div class="cert-image">
+                  <img ng-src="{{sellerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
+             
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
@@ -336,9 +340,10 @@
           <div class="col-md-4 col-2">
             <div class="abc">
               <div>
-                <p class="img-head">CST NO. XXXXXX</p>
+                <p class="img-head">CST NO. {{sellerData.cstTinNo}}</p>
               </div>
               <div class="cert-image">
+                 <img ng-src="{{sellerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
@@ -352,9 +357,10 @@
           <div class="col-md-4 col-3">
             <div class="abc">
               <div>
-                <p class="img-head">PAN NO. XXXXXX</p>
+                <p class="img-head">PAN NO. {{sellerData.panNo}}</p>
               </div>
               <div class="cert-image">
+                 <img ng-src="{{sellerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
               <!--<div class="hide verified"><p>VERIFIED</p></div>
                         <div class="pending"><p>VERIFICATION PENDING</p></div>-->

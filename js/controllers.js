@@ -1,7 +1,7 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
 
-.controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout,$state) {
+.controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
 
     $scope.template = TemplateService.changecontent("loginpage");
     $scope.menutitle = NavigationService.makeactive("Login Page");
@@ -15,11 +15,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.Login = function (logindata) {
         NavigationService.Login(logindata, function (data) {
             if (data.value == true) {
-                console.log("done");
-                $state.go("dashboard");
+                var successmsg = toastr.success("Login Successfully", "Information");
+                setTimeout(function () {
+                    toastr.clear(successmsg);
+                    $state.go("dashboard");
+                }, 1000);
+
             } else {
                 $scope.error = true;
-                $scope.errmsg = "User not Found";
+                toastr.error("User not Found", "Error");
+                // $scope.errmsg = "User not Found";
             }
         });
     }
@@ -255,7 +260,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         NavigationService.getAgency(function (data) {
             if (data.value == true) {
                 $scope.getAllAgency = data.data.results;
-                console.log("$scope.getAllAgency", $scope.getAllAgency);
             }
         });
     }
@@ -265,14 +269,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         NavigationService.getInventory(function (data) {
             if (data.value == true) {
                 $scope.getAllInventory = data.data.results;
-                console.log("$scope.getAllInventory", $scope.getAllInventory);
             }
         });
     }
     $scope.getInventory();
 
     $scope.assignInspection = function (inventorydata) {
-        console.log("aaa", inventorydata);
         var senddata = {};
         senddata._id = inventorydata._id;
         senddata.agencyid = inventorydata.agentIDTemp;
@@ -290,7 +292,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             senddata.price = inventorydata.pricePerKg;
         }
         senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-        console.log("senddata", senddata);
         NavigationService.assignInspection(senddata, function (data) {
             if (data.value == true) {
                 $scope.getInventory();
@@ -299,7 +300,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     }
 
     $scope.rejectReport = function (inventorydata) {
-        console.log("aaa", inventorydata);
         var senddata = {};
         senddata._id = inventorydata._id;
         senddata.email = inventorydata.seller.email;
@@ -312,7 +312,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     }
 
     $scope.acceptReport = function (inventorydata) {
-        console.log("acceptReport", inventorydata);
         var senddata = {};
         senddata._id = inventorydata._id;
         senddata.email = inventorydata.seller.email;
@@ -328,7 +327,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             senddata.price = inventorydata.pricePerKg;
         }
         senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-        console.log("senddata", senddata);
         NavigationService.acceptReport(senddata, function (data) {
             if (data.value == true) {
                 $scope.getInventory();
@@ -516,7 +514,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         NavigationService.getAgencyByID(function (data) {
             if (data.value == true) {
                 $scope.agencyDetails = data.data;
-                console.log(" $scope.agencyDetails", $scope.agencyDetails);
             }
         });
     }
@@ -538,7 +535,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     $scope.Login = function (logindata) {
         NavigationService.InspectionLogin(logindata, function (data) {
             if (data.value == true) {
-                console.log("done");
                 $state.go("view-products");
             } else {
                 $scope.error = true;
@@ -1381,9 +1377,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
                 type: 'pie',
                 name: 'Browser share',
                 data: [
-                    ['Firefox', 65.0],
-
-                    {
+                    ['Firefox', 65.0], {
                         name: 'Chrome',
                         y: 35.0,
                         sliced: true,
@@ -1398,11 +1392,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
                 height: 139
             }
         };
-
-
-
-
-
 
         $scope.hoveringOver = function (value) {
             $scope.overStar = value;
@@ -1427,11 +1416,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             $scope.percent = 100 * (value / $scope.max);
         };
     })
-    .controller('Request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('Request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("request-sellers");
         $scope.menutitle = NavigationService.makeactive("Request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.getAllSeller = function (logindata) {
+            NavigationService.getAllSeller(function (data) {
+                if (data.value == true) {
+                    $scope.AllSeller = data.data;
+                }
+            });
+        }
+        $scope.getAllSeller();
     })
     .controller('Request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("request-buyers");
@@ -1439,11 +1436,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    .controller('View-request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('View-request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-request-sellers");
         $scope.menutitle = NavigationService.makeactive("View-request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        NavigationService.getOneSeller($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.sellerData = data.data;
+                // console.log("aaaaa",$scope.sellerData);
+            }
+        });
     })
     .controller('View-request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("view-request-buyers");
@@ -1542,14 +1545,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
             NavigationService.getInventoryByAgency(function (data) {
                 if (data.value == true) {
                     $scope.getAllInventory = data.data;
-                    console.log("$scope.getAllInventory", $scope.getAllInventory);
                 }
             });
         }
         $scope.getInventory();
 
         $scope.uploadReport = function (err, data) {
-            console.log("oploaddd", err, data);
             if (err) {
                 $scope.errorMsgpan = err;
             } else {
@@ -1558,7 +1559,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         }
 
         $scope.sendReport = function (reportdata) {
-            console.log("inn", reportdata);
             var senddata = {};
             senddata._id = reportdata._id;
             senddata.report = reportdata.report;
@@ -1588,12 +1588,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
     };
 })
 
-.controller('headerctrl', function ($scope, TemplateService) {
+.controller('headerctrl', function ($scope, TemplateService, NavigationService, $state) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
     });
     $.fancybox.close(true);
+
+    $scope.getUser = function () {
+        NavigationService.getUser(function (data) {
+            if (data.value == true) {
+                $scope.userData = data.data;
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                    $state.go("dashboard");
+                }
+            } else {
+                $state.go("loginpage");
+            }
+        });
+    }
+
+    $scope.getUser();
+
+
+    $scope.Logout = function () {
+        NavigationService.Logout(function (data) {
+            if (data.value == true) {
+                $state.go("loginpage");
+            }
+        });
+    }
 
 
 })
@@ -1610,9 +1634,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
         NavigationService.getInspectionUser(function (data) {
             if (data.value == true) {
                 $scope.userData = data.data;
-                console.log("getInspectionUser", $scope.userData);
             } else {
-                 if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
                     $state.go("inspection-login");
                 }
             }
@@ -1623,7 +1646,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
 
 
     $scope.Logout = function () {
-        console.log("logout");
         NavigationService.InspectionLogout(function (data) {
             if (data.value == true) {
                 $state.go("inspection-login");
@@ -1635,7 +1657,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'ui.ti
 .controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
 
     $scope.changeLanguage = function () {
-        console.log("Language CLicked");
 
         if (!$.jStorage.get("language")) {
             $translate.use("hi");

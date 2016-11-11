@@ -30,12 +30,14 @@
           </div>
         </div>
       </div>
+
+      <div ng-repeat="seller in AllSeller">
       <div class="request-seller-details ">
         <div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
             <label class="detail-heading" for="add-one">
-              TBS001 MIRAGE STEEL LTD.
+              TBS{{seller.userId}} {{seller.firmName}}.
             </label>
           </div>
         </div>
@@ -54,21 +56,24 @@
         </thead>
         <tbody>
           <tr>
-            <td>15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            <td>{{seller.companyAddress}}
             </td>
-            <td>TBS005</td>
-            <td>15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
+            <td>TBS{{seller.userId}}</td>
+            <td>{{seller.warehouse[0]}}
             </td>
-            <td>CST NO. XXXXXX<br> VAT NO. XXXXXX</td>
+            <td>CST NO. {{seller.cstTinNo}}<br> VAT NO. {{seller.vatTinNo}}</td>
             <td class="view-td">
               <!--<label class="stat">VERIFIED</label>-->
-              <label class="stat">REJECTED</label>
-              <a ui-sref="view-request-sellers"><label class="view">VIEW</label></a>
+              <label class="stat">{{seller.status}}</label>
+              <a ui-sref="view-request-sellers({'id':seller._id})"><label class="view">VIEW</label></a>
             </td>
           </tr>
         </tbody>
       </table>
-      <div class="request-seller-details ">
+</div>
+
+
+      <!--<div class="request-seller-details ">
         <div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
@@ -96,16 +101,19 @@
             </td>
             <td>TBS005</td>
             <td>15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
+            </td>{{seller.vatTinNo}}
             <td>CST NO. XXXXXX<br> VAT NO. XXXXXX</td>
             <td class="view-td">
               <label class="stat">VERIFIED</label>
-              <!--<label class="stat">REJECTED</label>-->
+              <!--<label class="stat">REJECTED</label>
               <a ui-sref="view-request-sellers"><label class="view">VIEW</label></a>
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>-->
+
+
+
     </div>
   </div>
 </section>
