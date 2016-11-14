@@ -240,7 +240,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         name: 'Tata Steel'
     }];
 
-    $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+    $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+    // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
 
     $scope.showEdit = false;
     $scope.hideEdit = true;
