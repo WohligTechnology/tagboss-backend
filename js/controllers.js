@@ -1127,6 +1127,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         return '';
     }
+
+
+    $scope.getAllVerifiedSeller = function () {
+        NavigationService.getAllVerifiedSeller(function (data) {
+            if (data.value == true) {
+                $scope.AllSeller = data.data;
+                console.log("aaaa", $scope.AllSeller);
+            }
+        });
+    }
+    $scope.getAllVerifiedSeller();
 })
 
 .controller('BuyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -1140,6 +1151,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("View-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+
         $scope.rate = 3;
         $scope.max = 5;
         $scope.isReadonly = false;
@@ -1421,22 +1434,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.getAllSeller = function (logindata) {
-            NavigationService.getAllSeller(function (data) {
+        $scope.getAllSeller = function (searchdata) {
+                NavigationService.getAllSeller(searchdata,function (data) {
                 if (data.value == true) {
                     $scope.AllSeller = data.data;
+                }else{
+                   $scope.AllSeller =[]; 
                 }
             });
         }
-        $scope.getAllSeller();
+        var status = "All";
+        $scope.getAllSeller(status);
     })
     .controller('Request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("request-buyers");
         $scope.menutitle = NavigationService.makeactive("Request-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+        $scope.getAllBuyer = function (searchdata) {
+            NavigationService.getAllBuyer(searchdata,function (data) {
+                if (data.value == true) {
+                    $scope.AllBuyer = data.data;
+                    console.log("Buyer", $scope.AllBuyer);
+                }
+                else{
+                   $scope.AllBuyer =[]; 
+                }
+            });
+        }
+         var status = "All";
+        $scope.getAllBuyer(status);
     })
-    .controller('View-request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('View-request-sellersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-request-sellers");
         $scope.menutitle = NavigationService.makeactive("View-request-sellers");
         TemplateService.title = $scope.menutitle;
@@ -1447,12 +1477,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("aaaaa",$scope.sellerData);
             }
         });
+
+        $scope.acceptSeller = function (sellerdata) {
+            console.log("sdata", sellerdata);
+            var senddata = {}
+            senddata._id = sellerdata._id;
+            senddata.email = sellerdata.email;
+            senddata.firstName = sellerdata.firstName;
+            senddata.comment = sellerdata.comment;
+            senddata.status = "verified";
+            // if()
+            NavigationService.updateSeller(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Seller Status Updated!", "Information");
+                    $state.go("request-sellers");
+                }
+            });
+        }
+
+        $scope.rejectSeller = function (sellerdata) {
+            console.log("sdata", sellerdata);
+            var senddata = {}
+            senddata._id = sellerdata._id;
+            senddata.email = sellerdata.email;
+            senddata.firstName = sellerdata.firstName;
+            senddata.comment = sellerdata.comment;
+            senddata.status = "rejected";
+            NavigationService.updateSeller(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Seller Status Updated!", "Information");
+                    $state.go("request-sellers");
+                }
+            });
+        }
     })
-    .controller('View-request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('View-request-buyersCtrl', function ($scope,$state,toastr, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("view-request-buyers");
         $scope.menutitle = NavigationService.makeactive("View-request-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+               NavigationService.getOneBuyer($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.buyerData = data.data;
+                // console.log("aaaaa",$scope.sellerData);
+            }
+        });
+
+          $scope.acceptBuyer = function (buyerdata) {
+            console.log("sdata", buyerdata);
+            var senddata = {}
+            senddata._id = buyerdata._id;
+            senddata.email = buyerdata.email;
+            senddata.firstName = buyerdata.firstName;
+            senddata.comment = buyerdata.comment;
+            senddata.status = "verified";
+            // if()
+            NavigationService.updateBuyer(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Buyer Status Updated!", "Information");
+                    $state.go("request-buyers");
+                }
+            });
+        }
+
+        $scope.rejectBuyer = function (buyerdata) {
+            console.log("sdata", buyerdata);
+            var senddata = {}
+            senddata._id = buyerdata._id;
+            senddata.email = buyerdata.email;
+            senddata.firstName = buyerdata.firstName;
+            senddata.comment = buyerdata.comment;
+            senddata.status = "rejected";
+            NavigationService.updateBuyer(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Buyer Status Updated!", "Information");
+                    $state.go("request-buyers");
+                }
+            });
+        }
     })
     .controller('Payment-to-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("payment-to-sellers");

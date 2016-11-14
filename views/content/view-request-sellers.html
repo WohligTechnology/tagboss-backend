@@ -332,7 +332,7 @@
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="switchStatus" required on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -349,7 +349,7 @@
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus1" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="switchStatus1" required on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -366,7 +366,7 @@
                         <div class="pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus2" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="switchStatus2" required on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -376,12 +376,12 @@
       <div class="row comment-area">
         <div class="col-md-offset-3 col-md-6 form-group form-inline">
           <label class="comment pull-left" for="comment">Comment</label>
-          <textarea class="form-control" rows="5" id="comment"></textarea>
+          <textarea class="form-control" ng-model="sellerData.comment" rows="5" id="comment"></textarea>
         </div>
       </div>
       <div class="accept-reject">
-        <button type="button" class="btn btn-primary">ACCEPT</button>
-        <button type="button" class="btn btn-primary">REJECT</button>
+        <button type="button" ng-click="acceptSeller(sellerData);" class="btn btn-primary">ACCEPT</button>
+        <button type="button" ng-click="rejectSeller(sellerData);" class="btn btn-primary">REJECT</button>
       </div>
     </div>
   </div>

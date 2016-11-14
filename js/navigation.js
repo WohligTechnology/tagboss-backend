@@ -1,4 +1,4 @@
-var adminURL = "http://localhost:1337/";
+// var adminURL = "http://localhost:1337/";
 var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
@@ -101,6 +101,26 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
+    updateSeller: function (sdata, callback) {
+      var data = sdata;
+      return $http({
+        url: adminURL + "user/updateSeller",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    updateBuyer: function (sdata, callback) {
+      var data = sdata;
+      return $http({
+        url: adminURL + "user/updateBuyer",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
+
     assignInspection: function (rdata, callback) {
       var data = rdata;
       return $http({
@@ -134,14 +154,47 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-    getAllSeller: function (callback) {
+    getAllSeller: function (sdata, callback) {
+      var data = {
+        "status": sdata
+      };
       return $http({
         url: adminURL + "user/getAllSeller",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    getAllBuyer: function (sdata, callback) {
+      var data = {
+        "status": sdata
+      };
+      return $http({
+        url: adminURL + "user/getAllBuyer",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    getAllVerifiedSeller: function (callback) {
+      return $http({
+        url: adminURL + "user/getAllVerifiedSeller",
         method: "POST"
       }).success(callback);
     },
 
     getOneSeller: function (id, callback) {
+      var data = {
+        '_id': id
+      };
+      return $http({
+        url: adminURL + "user/getOne",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    getOneBuyer: function (id, callback) {
       var data = {
         '_id': id
       };

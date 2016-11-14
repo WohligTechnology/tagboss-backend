@@ -94,7 +94,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'View-request-sellersCtrl'
     })
     .state('view-request-buyers', {
-      url: "/view-request-buyers",
+      url: "/view-request-buyers/:id",
       templateUrl: "views/template.html",
       controller: 'View-request-buyersCtrl'
     })
