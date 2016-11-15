@@ -85,10 +85,17 @@
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                        </select>-->
                   <p ng-if="inventory.status==='Pending'">
-                    <select name="status{{$index}}" ng-model="inventory.agentIDTemp">
+                 <div class="form-group">
+                              <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
+                      <option  value="">Select Agency</option>
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                  
-                </select></p>
+                </select>
+                  <div class="error-msg" ng-if="errmsg==true && myindex==$index && inventory.status==='Pending'">Please Select Agency Name.</div>
+         
+          </div>
+         
+                </p>
                   <p ng-if="inventory.status!=='Pending'" class="upload-date">
                     {{inventory.agencyid.agencyName}}
                   </p>
@@ -101,7 +108,7 @@
                     <div>
                       <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
                       <p>Status: {{inventory.status}}</p>
-                      <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory)" type="button"
+                      <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button"
                         class="btn btn-primary assign-btn">ASSIGN</button>
                     </div>
                     <div ng-if="inventory.status==='Inspected'">

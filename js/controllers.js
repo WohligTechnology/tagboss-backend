@@ -275,7 +275,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
     $scope.getInventory();
 
-    $scope.assignInspection = function (inventorydata) {
+$scope.errmsg =false;
+    $scope.assignInspection = function (inventorydata, indexid) {
+        console.log("asssign",inventorydata.agentIDTemp, indexid);
+        if(inventorydata.agentIDTemp!=undefined){
+            
         var senddata = {};
         senddata._id = inventorydata._id;
         senddata.agencyid = inventorydata.agentIDTemp;
@@ -293,11 +297,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.price = inventorydata.pricePerKg;
         }
         senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-        NavigationService.assignInspection(senddata, function (data) {
-            if (data.value == true) {
-                $scope.getInventory();
-            }
-        });
+        // NavigationService.assignInspection(senddata, function (data) {
+        //     if (data.value == true) {
+            $scope.errmsg = false
+        //         $scope.getInventory();
+        //     }
+        // });
+
+        }else{
+            $scope.errmsg = true
+            $scope.myindex = indexid;
+        }
     }
 
     $scope.rejectReport = function (inventorydata) {

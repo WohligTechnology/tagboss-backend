@@ -4,7 +4,6 @@ var jsArray = [
     './bower_components/flexslider/jquery.flexslider-min.js',
     './bower_components/fancyBox/source/jquery.fancybox.js',
     './bower_components/swiper/dist/js/swiper.js',
-
     './bower_components/angular/angular.js',
     './bower_components/angular-animate/angular-animate.min.js',
     './bower_components/angular-flexslider/angular-flexslider.js',
@@ -23,10 +22,9 @@ var jsArray = [
     './bower_components/angular-toggle-switch/angular-toggle-switch.min.js',
     './bower_components/tinymce/tinymce.js',
     './bower_components/angular-ui-tinymce/src/tinymce.js',
-    './bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>',
+    './bower_components/angular-toastr/dist/angular-toastr.tpls.js',
     './bower_components/smart-app-banner/smart-app-banner.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
-
     './js/app.js',
     './js/language.js',
     './js/controllers.js',
