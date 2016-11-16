@@ -236,18 +236,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getMaterial();
     $scope.errmsg = false;
     $scope.addMoc = function (mocdata, cat, indexid) {
-
         if (mocdata != undefined) {
             var senddata = {};
             senddata.category = cat;
             senddata.name = mocdata.mocname;
 
             console.log("searchdata", senddata);
-            
+
             NavigationService.addMoc(senddata, function (data) {
                 if (data.value == true) {
-            // $scope.formdata ={};
-            document.getElementById(indexid).value ="";
+                    // $scope.formdata ={};
+                    document.getElementById(indexid).value = "";
                     console.log("done");
                     $scope.errmsg = false;
                     $scope.getMaterial();
@@ -257,7 +256,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.errmsg = true;
             $scope.myindex = indexid;
         }
+    }
 
+    $scope.hidetext = false;
+    $scope.showtext = true;
+    $scope.showEditData = function (indexid) {
+        $scope.hidetext = true;
+        $scope.showtext = false;
+        $scope.indexid = indexid;
     }
 
 })

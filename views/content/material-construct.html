@@ -58,11 +58,14 @@
       <div class="info info-edit">
         <div class="row"  ng-repeat="moc in value">
           <div style="" class="col-md-12 rounded-mid">
-            <div class="rounded-pipes" style="">
+            <div class="rounded-pipes" ng-if="indexid!=$index" ng-hide="hidetext">
               <h3>{{moc.name}}</h3>
             </div>
+            <div class="rounded-pipes" ng-if="indexid==$index" ng-hide="showtext">
+             <input name="edit{{$index}}" type="text" ng-model="moc.name"/>
+            </div>
             <div class="pull-right edit-type" style="">
-              <p><span ui-sref="grades-standards">Edit</span> <span>|</span> <span>x</span> <span>|</span> <span ui-sref="grades-standards">Grade</span></p>
+              <p><span ng-click="showEditData($index);">Edit</span> <span>|</span> <span>x</span> <span>|</span> <span ui-sref="grades-standards">Grade</span></p>
             </div>
           </div>
         </div>
