@@ -1,5 +1,5 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch'])
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
 
@@ -225,9 +225,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
+    $scope.getMaterial = function () {
+        NavigationService.getMaterial(function (data) {
+            if (data.value == true) {
+                $scope.allData = data.data;
+                console.log("aaa", $scope.allData);
+            }
+        });
+    }
+    $scope.getMaterial();
+    $scope.errmsg = false;
+    $scope.addMoc = function (mocdata, cat, indexid) {
+
+        if (mocdata != undefined) {
+            var senddata = {};
+            senddata.category = cat;
+            senddata.name = mocdata.mocname;
+
+            console.log("searchdata", senddata);
+            
+            NavigationService.addMoc(senddata, function (data) {
+                if (data.value == true) {
+            // $scope.formdata ={};
+            document.getElementById(indexid).value ="";
+                    console.log("done");
+                    $scope.errmsg = false;
+                    $scope.getMaterial();
+                }
+            });
+        } else {
+            $scope.errmsg = true;
+            $scope.myindex = indexid;
+        }
+
+    }
+
 })
 
-.controller('ProdApprovalCtrl', function ($scope, TemplateService, NavigationService, $timeout, $filter) {
+.controller('ProdApprovalCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $filter) {
     $scope.template = TemplateService.changecontent("product-approval");
     $scope.menutitle = NavigationService.makeactive("Product Approval");
     TemplateService.title = $scope.menutitle;
@@ -275,37 +310,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
     $scope.getInventory();
 
-$scope.errmsg =false;
+    $scope.errmsg = false;
     $scope.assignInspection = function (inventorydata, indexid) {
-        console.log("asssign",inventorydata.agentIDTemp, indexid);
-        if(inventorydata.agentIDTemp!=undefined){
-            
-        var senddata = {};
-        senddata._id = inventorydata._id;
-        senddata.agencyid = inventorydata.agentIDTemp;
-        senddata.firstName = inventorydata.seller.firstName;
-        senddata.quantity = inventorydata.quantityInNos;
-        senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
-        $scope.mydate = new Date();
-        $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
-        senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
-        senddata.report = inventorydata.report;
-        if (inventorydata.ratePerKgMtr) {
-            senddata.price = inventorydata.ratePerKgMtr;
-        }
-        if (inventorydata.pricePerKg) {
-            senddata.price = inventorydata.pricePerKg;
-        }
-        senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-        // NavigationService.assignInspection(senddata, function (data) {
-        //     if (data.value == true) {
-            $scope.errmsg = false
-        //         $scope.getInventory();
-        //     }
-        // });
+        console.log("asssign", inventorydata.agentIDTemp, indexid);
+        if (inventorydata.agentIDTemp != undefined) {
 
-        }else{
-            $scope.errmsg = true
+            var senddata = {};
+            senddata._id = inventorydata._id;
+            senddata.agencyid = inventorydata.agentIDTemp;
+            senddata.firstName = inventorydata.seller.firstName;
+            senddata.quantity = inventorydata.quantityInNos;
+            senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+            $scope.mydate = new Date();
+            $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
+            senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
+            senddata.report = inventorydata.report;
+            if (inventorydata.ratePerKgMtr) {
+                senddata.price = inventorydata.ratePerKgMtr;
+            }
+            if (inventorydata.pricePerKg) {
+                senddata.price = inventorydata.pricePerKg;
+            }
+            senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+            NavigationService.assignInspection(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Assign Successfully", "Information");
+                    $scope.errmsg = false;
+                    $scope.getInventory();
+                }
+            });
+        } else {
+            $scope.errmsg = true;
             $scope.myindex = indexid;
         }
     }
@@ -317,6 +352,7 @@ $scope.errmsg =false;
         senddata.firstName = inventorydata.seller.firstName;
         NavigationService.rejectReport(senddata, function (data) {
             if (data.value == true) {
+                // toastr.success("Assign Successfully", "Information");
                 $scope.getInventory();
             }
         });
@@ -340,6 +376,7 @@ $scope.errmsg =false;
         senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
         NavigationService.acceptReport(senddata, function (data) {
             if (data.value == true) {
+                // toastr.success("Assign Successfully", "Information");
                 $scope.getInventory();
             }
         });
@@ -924,6 +961,8 @@ $scope.errmsg =false;
 
         return '';
     }
+
+
 })
 
 
@@ -1023,6 +1062,17 @@ $scope.errmsg =false;
 
         return '';
     }
+
+    console.log("in orders");
+
+    NavigationService.getAllOrders(function (data) {
+        if (data.value == true) {
+            $scope.allOrders = data.data;
+            console.log("$scope.allOrders", $scope.allOrders);
+        }
+    });
+
+
 })
 
 .controller('CategogiesCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -1446,11 +1496,11 @@ $scope.errmsg =false;
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.getAllSeller = function (searchdata) {
-                NavigationService.getAllSeller(searchdata,function (data) {
+            NavigationService.getAllSeller(searchdata, function (data) {
                 if (data.value == true) {
                     $scope.AllSeller = data.data;
-                }else{
-                   $scope.AllSeller =[]; 
+                } else {
+                    $scope.AllSeller = [];
                 }
             });
         }
@@ -1464,17 +1514,16 @@ $scope.errmsg =false;
         $scope.navigation = NavigationService.getnav();
 
         $scope.getAllBuyer = function (searchdata) {
-            NavigationService.getAllBuyer(searchdata,function (data) {
+            NavigationService.getAllBuyer(searchdata, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data;
                     console.log("Buyer", $scope.AllBuyer);
-                }
-                else{
-                   $scope.AllBuyer =[]; 
+                } else {
+                    $scope.AllBuyer = [];
                 }
             });
         }
-         var status = "All";
+        var status = "All";
         $scope.getAllBuyer(status);
     })
     .controller('View-request-sellersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state) {
@@ -1522,19 +1571,19 @@ $scope.errmsg =false;
             });
         }
     })
-    .controller('View-request-buyersCtrl', function ($scope,$state,toastr, TemplateService, NavigationService, $timeout) {
+    .controller('View-request-buyersCtrl', function ($scope, $state, toastr, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("view-request-buyers");
         $scope.menutitle = NavigationService.makeactive("View-request-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-               NavigationService.getOneBuyer($state.params.id, function (data) {
+        NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
                 // console.log("aaaaa",$scope.sellerData);
             }
         });
 
-          $scope.acceptBuyer = function (buyerdata) {
+        $scope.acceptBuyer = function (buyerdata) {
             console.log("sdata", buyerdata);
             var senddata = {}
             senddata._id = buyerdata._id;

@@ -40,7 +40,8 @@
     "angular-ui-select": "^0.19.5",
     "angular-toggle-switch": "^1.3.0",
     "angularjs-imageupload-directive": "*",
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "angular-filter": "^0.5.11"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"

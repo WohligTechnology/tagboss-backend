@@ -1,5 +1,5 @@
 var adminURL = "http://localhost:1337/";
-// var adminURL = "http://104.155.129.33:1337/";
+var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -63,6 +63,28 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+      getAllOrders: function (callback) {
+      return $http({
+        url: adminURL + "order/getbuyerorderandbill",
+        method: "POST"
+      }).success(callback);
+    },
+
+     getMaterial: function (callback) {
+      return $http({
+        url: adminURL + "moc/getall",
+        method: "POST"
+      }).success(callback);
+    },
+
+ addMoc: function (mocdata, callback) {
+      var data = mocdata;
+      return $http({
+        url: adminURL + "moc/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
 
     addAgency: function (agencydata, callback) {
       var data = agencydata;

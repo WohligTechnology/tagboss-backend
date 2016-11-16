@@ -24,6 +24,7 @@ var jsArray = [
     './bower_components/angular-ui-tinymce/src/tinymce.js',
     './bower_components/angular-toastr/dist/angular-toastr.tpls.js',
     './bower_components/smart-app-banner/smart-app-banner.js',
+    './bower_components/angular-filter/dist/angular-filter.min.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
     './js/app.js',
     './js/language.js',

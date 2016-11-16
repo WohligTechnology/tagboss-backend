@@ -84,8 +84,8 @@
                   <!--<select ng-model="myid">
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                        </select>-->
-                  <p ng-if="inventory.status==='Pending'">
-                 <div class="form-group">
+                  <p >
+                 <div class="form-group" ng-if="inventory.status==='Pending'">
                               <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
                       <option  value="">Select Agency</option>
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
