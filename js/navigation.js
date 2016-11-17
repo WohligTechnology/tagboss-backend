@@ -86,6 +86,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     deleteMoc: function (id, callback) {
+      var data = { _id: id};
+      return $http({
+        url: adminURL + "moc/delete",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     addAgency: function (agencydata, callback) {
       var data = agencydata;
       return $http({

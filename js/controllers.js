@@ -219,7 +219,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     };
 })
 
-.controller('MaterialConstructCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("material-construct");
     $scope.menutitle = NavigationService.makeactive("Material Construct");
     TemplateService.title = $scope.menutitle;
@@ -229,7 +229,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getMaterial(function (data) {
             if (data.value == true) {
                 $scope.allData = data.data;
-                console.log("aaa", $scope.allData);
+            } else {
+                $scope.allData = [];
             }
         });
     }
@@ -246,8 +247,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.addMoc(senddata, function (data) {
                 if (data.value == true) {
                     // $scope.formdata ={};
+                    toastr.success("MOC added Successfully", "Information");
                     document.getElementById(indexid).value = "";
-                    console.log("done");
                     $scope.errmsg = false;
                     $scope.getMaterial();
                 }
@@ -264,6 +265,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.hidetext = true;
         $scope.showtext = false;
         $scope.indexid = indexid;
+    }
+
+
+    $scope.deleteMoc = function (mocid) {
+        NavigationService.deleteMoc(mocid, function (data) {
+            if (data.value == true) {
+                toastr.success("MOC deleted Successfully", "Information");
+                $scope.getMaterial();
+            }
+        });
     }
 
 })
@@ -325,17 +336,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata._id = inventorydata._id;
             senddata.agencyid = inventorydata.agentIDTemp;
             senddata.firstName = inventorydata.seller.firstName;
-            senddata.quantity = inventorydata.quantityInNos;
             senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
             $scope.mydate = new Date();
             $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
             senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
             senddata.report = inventorydata.report;
-            if (inventorydata.ratePerKgMtr) {
+            if (inventorydata.category.name === "Pipes") {
                 senddata.price = inventorydata.ratePerKgMtr;
-            }
-            if (inventorydata.pricePerKg) {
+                senddata.quantity = inventorydata.totalQty;
+
+            } else {
                 senddata.price = inventorydata.pricePerKg;
+                 senddata.quantity = inventorydata.quantityInNos;
             }
             senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
             NavigationService.assignInspection(senddata, function (data) {
