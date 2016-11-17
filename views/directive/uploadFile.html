@@ -16,8 +16,8 @@
 </div>
 <!--<div class="attach">-->
 <div class="btn-upload btn btn-outline btn-small create-btn">
-<input id="inputImage" ng-show="!isMultiple" type="file" image="image" title="Upload File">
-<input id="inputImage" ng-show="isMultiple" type="file" image="image" title="Upload Multiple Files" onchange="angular.element(this).scope().clearOld()"
+<input id="inputImage" ng-show="!isMultiple" type="file" image="image" title="Upload File" required>
+<input id="inputImage" ng-show="isMultiple" type="file" image="image" required title="Upload Multiple Files" onchange="angular.element(this).scope().clearOld()"
 multiple>
 <span ng-show="!isMultiple"></span>
 <span ng-show="isMultiple">Upload Files</span>

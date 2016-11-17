@@ -1725,6 +1725,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.getInventoryByAgency(function (data) {
                 if (data.value == true) {
                     $scope.getAllInventory = data.data;
+                }else{
+                    $scope.getAllInventory =[];
                 }
             });
         }
@@ -1737,7 +1739,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 $scope.errorMsgpan = "Successfully uploaded";
             }
         }
-
         $scope.sendReport = function (reportdata) {
             var senddata = {};
             senddata._id = reportdata._id;
@@ -1779,9 +1780,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getUser(function (data) {
             if (data.value == true) {
                 $scope.userData = data.data;
-                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
-                    $state.go("dashboard");
-                }
+                // if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                //     $state.go("dashboard");
+                // }
             } else {
                 $state.go("loginpage");
             }

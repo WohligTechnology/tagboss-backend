@@ -33,7 +33,15 @@
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
         <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
       </div>
-      <table class="table table-bordered inspection-table">
+
+
+            <div ng-if="getAllInventory.length==0">
+            <h3 class="text-center">No data Found</h3>
+          </div>
+          <div ng-if="getAllInventory==undefined">
+            <h3 class="text-center">Loading...</h3>
+          </div>
+      <table ng-if="getAllInventory.length>0" class="table table-bordered inspection-table">
         <thead>
           <tr>
             <th><strong>NAME</strong></th>
@@ -43,7 +51,8 @@
             <th><strong>REMARKS</strong></th>
         </thead>
         <tbody>
-          <tr ng-repeat="inventory in getAllInventory">
+    
+          <tr  ng-repeat="inventory in getAllInventory">
             <form name="reportform{{$index}}">
               <td>
                 <div class="magic-form">
@@ -74,8 +83,7 @@
                   <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
                   <p ng-if="inventory.status!=='Assigned'">Status: {{inventory.status}}</p>
                   <p ng-if="inventory.status==='Assigned'">Status: Pending<br/>
-                 <b ng-if="inventory.duedate"> Due On : {{inventory.duedate | date:'mediumDate'}}</b></p>
-                   
+                    <b ng-if="inventory.duedate"> Due On : {{inventory.duedate | date:'mediumDate'}}</b></p>
                   <!--<input class="btn btn-primary assign-btn" type="file" />-->
                   <div ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn">
                     <upload-image ng-model="inventory.report" ng-callback="uploadReport" no-view></upload-image>
@@ -84,13 +92,14 @@
                 </div>
               </td>
               <td>
-                <input type="hidden" ng-model="inventory._id"/>
+                <input type="hidden" ng-model="inventory._id" />
                 <textarea name="inventoryremark{{$index}}" ng-model="inventory.remark" required>{{inventory.remark}}</textarea>
-                <button ng-if="inventory.status==='Assigned'" ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
+                <!--<input ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn" value="Submit"/>-->
+                <button type="submit" ng-if="inventory.status==='Assigned'" ng-disabled="inventory.report==null || inventory.remark==null" ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
               </td>
             </form>
           </tr>
-              </tbody>
+        </tbody>
       </table>
     </div>
   </div>
