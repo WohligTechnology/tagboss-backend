@@ -777,6 +777,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
     })
+    .controller('ViewcontactCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+        $scope.template = TemplateService.changecontent("view-contact");
+        $scope.menutitle = NavigationService.makeactive("View Contact");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.openCotact = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/opencontact.html",
+                scope: $scope,
+            });
+        };
+
+    })
     .controller('GradesStandards1Ctrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("grades-standards1");
         $scope.menutitle = NavigationService.makeactive("Grades Standards1");
@@ -1619,8 +1634,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
             senddata.panNoVerified = buyerdata.panNoVerified;
             senddata.status = "verified";
-             console.log("new data", senddata);
-         
+            console.log("new data", senddata);
+
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
                 toastr.error("Please verified all Documents!", "Error");
             } else {

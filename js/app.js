@@ -163,6 +163,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'ProductbannerCtrl'
     })
+    .state('view-contact', {
+      url: "/view-contact",
+      templateUrl: "views/template.html",
+      controller: 'ViewcontactCtrl'
+    })
     .state('inspection-agencies', {
       url: "/inspection-agencies",
       templateUrl: "views/template.html",
@@ -238,12 +243,12 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'EditAgencyDetailsCtrl'
     })
-   
-    .state('inspection-login', {
-      url: "/inspection-login",
-      templateUrl: "views/template.html",
-      controller: 'InspectionLoginCtrl'
-    });
+
+  .state('inspection-login', {
+    url: "/inspection-login",
+    templateUrl: "views/template.html",
+    controller: 'InspectionLoginCtrl'
+  });
 
   $urlRouterProvider.otherwise("/dashboard");
   $locationProvider.html5Mode(isproduction);
@@ -283,144 +288,144 @@ firstapp.directive('img', function ($compile, $parse) {
 // });
 
 firstapp.filter('uploadpath', function () {
- return function (input, width, height, style) {
-   var other = "";
-   if (width && width !== "") {
-     other += "&width=" + width;
-   }
-   if (height && height !== "") {
-     other += "&height=" + height;
-   }
-   if (style && style !== "") {
-     other += "&style=" + style;
-   }
-   if (input) {
-     return imgpath + "?file=" + input + other;
+  return function (input, width, height, style) {
+    var other = "";
+    if (width && width !== "") {
+      other += "&width=" + width;
+    }
+    if (height && height !== "") {
+      other += "&height=" + height;
+    }
+    if (style && style !== "") {
+      other += "&style=" + style;
+    }
+    if (input) {
+      return imgpath + "?file=" + input + other;
 
-   }
- };
+    }
+  };
 });
 
 firstapp.directive('uploadImage', function ($http, $filter) {
   console.log("innnnn");
- return {
-   templateUrl: 'views/directive/uploadFile.html',
-   scope: {
-     model: '=ngModel',
-     callback: '=ngCallback',
-     // mymodel: '=ngModel'
+  return {
+    templateUrl: 'views/directive/uploadFile.html',
+    scope: {
+      model: '=ngModel',
+      callback: '=ngCallback',
+      // mymodel: '=ngModel'
 
-   },
-   link: function ($scope, element, attrs) {
-     $scope.isMultiple = false;
-     $scope.inObject = false;
-     if (attrs.multiple || attrs.multiple === "") {
-       $scope.isMultiple = true;
-       $("#inputImage").attr("multiple", "ADD");
-     }
-     if (attrs.noView || attrs.noView === "") {
-       $scope.noShow = true;
-     }
-     if ($scope.model) {
-       if (_.isArray($scope.model)) {
-         $scope.image = [];
-         _.each($scope.model, function (n) {
-           $scope.image.push({
-             url: $filter("uploadpath")(n)
-           });
-         });
-       } else {
-         $scope.image = {};
-         $scope.image.url = $filter("uploadpath")($scope.model);
-       }
-
-     }
-     $scope.$watch("image", function(newVal, oldVal) {
-                if (newVal && newVal.file) {
-                    $scope.upload(newVal);
-                }
+    },
+    link: function ($scope, element, attrs) {
+      $scope.isMultiple = false;
+      $scope.inObject = false;
+      if (attrs.multiple || attrs.multiple === "") {
+        $scope.isMultiple = true;
+        $("#inputImage").attr("multiple", "ADD");
+      }
+      if (attrs.noView || attrs.noView === "") {
+        $scope.noShow = true;
+      }
+      if ($scope.model) {
+        if (_.isArray($scope.model)) {
+          $scope.image = [];
+          _.each($scope.model, function (n) {
+            $scope.image.push({
+              url: $filter("uploadpath")(n)
             });
-     if (attrs.inobj || attrs.inobj === "") {
-       $scope.inObject = true;
-     }
-     $scope.clearOld = function () {
-       $scope.model = [];
-     };
-     $scope.upload = function (image) {
-             var Template = this;
-         image.hide = true;
-         var formData = new FormData();
-         formData.append('file', image.file, image.name);
-         $http.post(uploadurl, formData, {
-           headers: {
-             'Content-Type': undefined
-           },
-           transformRequest: angular.identity
-         }).success(function (data) {
-           console.log("success");
-           //  console.log(data);
-           if ($scope.callback) {
-             $scope.model = data.data[0];
-             if (data.value) {
-               $scope.callback(null, data);
-             } else {
-               $scope.callback('Not Uploaded', data);
-             }
-           } else {
-             if ($scope.isMultiple) {
-               if ($scope.inObject) {
-                 $scope.model.push({
-                   "image": data.data[0]
-                 });
-               } else {
-                 $scope.model.push(data.data[0]);
-               }
-             } else {
-               $scope.model = data.data[0];
-             }
-           }
-         });
+          });
+        } else {
+          $scope.image = {};
+          $scope.image.url = $filter("uploadpath")($scope.model);
+        }
 
-      //  } else {
-      //    console.log("Unsccessfull");
-      //    //  $scope.mymodel="Please upload only png or jpg image.";
-      //    //  console.log($scope.mymodel);
-      //    $scope.callback('Please upload only png or jpg image.', null);
+      }
+      $scope.$watch("image", function (newVal, oldVal) {
+        if (newVal && newVal.file) {
+          $scope.upload(newVal);
+        }
+      });
+      if (attrs.inobj || attrs.inobj === "") {
+        $scope.inObject = true;
+      }
+      $scope.clearOld = function () {
+        $scope.model = [];
+      };
+      $scope.upload = function (image) {
+        var Template = this;
+        image.hide = true;
+        var formData = new FormData();
+        formData.append('file', image.file, image.name);
+        $http.post(uploadurl, formData, {
+          headers: {
+            'Content-Type': undefined
+          },
+          transformRequest: angular.identity
+        }).success(function (data) {
+          console.log("success");
+          //  console.log(data);
+          if ($scope.callback) {
+            $scope.model = data.data[0];
+            if (data.value) {
+              $scope.callback(null, data);
+            } else {
+              $scope.callback('Not Uploaded', data);
+            }
+          } else {
+            if ($scope.isMultiple) {
+              if ($scope.inObject) {
+                $scope.model.push({
+                  "image": data.data[0]
+                });
+              } else {
+                $scope.model.push(data.data[0]);
+              }
+            } else {
+              $scope.model = data.data[0];
+            }
+          }
+        });
 
-      //  }
+        //  } else {
+        //    console.log("Unsccessfull");
+        //    //  $scope.mymodel="Please upload only png or jpg image.";
+        //    //  console.log($scope.mymodel);
+        //    $scope.callback('Please upload only png or jpg image.', null);
 
-     };
-   }
- };
+        //  }
+
+      };
+    }
+  };
 });
 
 firstapp.directive('onlyDigits', function () {
-    return {
-        require: 'ngModel',
-        restrict: 'A',
-        link: function (scope, element, attr, ctrl) {
-            var digits;
+  return {
+    require: 'ngModel',
+    restrict: 'A',
+    link: function (scope, element, attr, ctrl) {
+      var digits;
 
-            function inputValue(val) {
-                if (val) {
-                    if (attr.type == "tel") {
-                        digits = val.replace(/[^0-9\+\\]/g, '');
-                    } else {
-                        digits = val.replace(/[^0-9\-\\]/g, '');
-                    }
+      function inputValue(val) {
+        if (val) {
+          if (attr.type == "tel") {
+            digits = val.replace(/[^0-9\+\\]/g, '');
+          } else {
+            digits = val.replace(/[^0-9\-\\]/g, '');
+          }
 
 
-                    if (digits !== val) {
-                        ctrl.$setViewValue(digits);
-                        ctrl.$render();
-                    }
-                    return parseInt(digits, 10);
-                }
-                return undefined;
-            }
-            ctrl.$parsers.push(inputValue);
+          if (digits !== val) {
+            ctrl.$setViewValue(digits);
+            ctrl.$render();
+          }
+          return parseInt(digits, 10);
         }
-    };
+        return undefined;
+      }
+      ctrl.$parsers.push(inputValue);
+    }
+  };
 });
 
 firstapp.directive('fancyboxBox', function ($document) {
