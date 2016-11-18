@@ -534,6 +534,26 @@
         }
       }
       
+      .assign-btn1 {
+        position: relative;
+        background: #60bdfd;
+        width: 200px;
+        &::before {
+          content: 'Upload File';
+          position: absolute;
+          font-size: 18px;
+          left: 50%;
+          top: 50%;
+          color: #fff;
+          transform: translate(-50%, -50%);
+        }
+        .create-btn {
+          input {
+            opacity: 0;
+          }
+        }
+      }
+      
       .edi-agen-details,
       .inspection-login {
         padding-top: 162px;
@@ -552,6 +572,11 @@
                   margin-top: 10px;
                   margin-bottom: 10px;
                   background: #fff;
+                }
+              }
+              .btn-inspect {
+                button {
+                  width: 75%;
                 }
               }
             }
@@ -588,7 +613,7 @@
             }
             button {
               border: none;
-              width: 75%;
+              width: 20%;
               margin: 0 auto;
               margin-top: 10px;
               margin-bottom: 10px;
