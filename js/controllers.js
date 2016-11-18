@@ -592,7 +592,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.menutitle = NavigationService.makeactive("Inspection Login");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    TemplateService.header = 'views/header1.html';
+    TemplateService.header = 'views/headeragencylogin.html';
     TemplateService.sidemenu = '';
 
 
@@ -1212,7 +1212,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getAllVerifiedSeller(function (data) {
             if (data.value == true) {
                 $scope.AllSeller = data.data;
-                console.log("aaaa", $scope.AllSeller);
+                console.log("sellers", $scope.AllSeller);
             }
         });
     }
@@ -1225,12 +1225,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    .controller('View-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('View-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-sellers");
         $scope.menutitle = NavigationService.makeactive("View-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
+     NavigationService.getOneSeller($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.sellerData = data.data;
+                console.log("sellerdata",$scope.sellerData);
+            }
+        });
 
         $scope.rate = 3;
         $scope.max = 5;
@@ -1560,6 +1566,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var senddata = {}
             senddata._id = sellerdata._id;
             senddata.email = sellerdata.email;
+            senddata.mobile = sellerdata.mobile;
             senddata.firstName = sellerdata.firstName;
             senddata.comment = sellerdata.comment;
             senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
@@ -1582,6 +1589,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var senddata = {}
             senddata._id = sellerdata._id;
             senddata.email = sellerdata.email;
+            senddata.mobile = sellerdata.mobile;
             senddata.firstName = sellerdata.firstName;
             senddata.comment = sellerdata.comment;
             senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
@@ -1613,6 +1621,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var senddata = {}
             senddata._id = buyerdata._id;
             senddata.email = buyerdata.email;
+            senddata.mobile = buyerdata.mobile;
             senddata.firstName = buyerdata.firstName;
             senddata.comment = buyerdata.comment;
             senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
@@ -1638,6 +1647,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var senddata = {}
             senddata._id = buyerdata._id;
             senddata.email = buyerdata.email;
+            senddata.mobile = buyerdata.mobile;
             senddata.firstName = buyerdata.firstName;
             senddata.comment = buyerdata.comment;
             senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
@@ -1802,7 +1812,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 //     $state.go("dashboard");
                 // }
             } else {
-                $state.go("loginpage");
+                 if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                  
+                }else{
+                     $state.go("loginpage");
+                }
+                
             }
         });
     }
