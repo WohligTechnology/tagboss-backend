@@ -1615,14 +1615,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.email = buyerdata.email;
             senddata.firstName = buyerdata.firstName;
             senddata.comment = buyerdata.comment;
+            senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
+            senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
+            senddata.panNoVerified = buyerdata.panNoVerified;
             senddata.status = "verified";
-            // if()
-            NavigationService.updateBuyer(senddata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Buyer Status Updated!", "Information");
-                    $state.go("request-buyers");
-                }
-            });
+             console.log("new data", senddata);
+         
+            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
+                toastr.error("Please verified all Documents!", "Error");
+            } else {
+                NavigationService.updateBuyer(senddata, function (data) {
+                    if (data.value == true) {
+                        toastr.success("Buyer Status Updated!", "Information");
+                        $state.go("request-buyers");
+                    }
+                });
+            }
         }
 
         $scope.rejectBuyer = function (buyerdata) {
@@ -1632,6 +1640,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.email = buyerdata.email;
             senddata.firstName = buyerdata.firstName;
             senddata.comment = buyerdata.comment;
+            senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
+            senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
+            senddata.panNoVerified = buyerdata.panNoVerified;
             senddata.status = "rejected";
             NavigationService.updateBuyer(senddata, function (data) {
                 if (data.value == true) {

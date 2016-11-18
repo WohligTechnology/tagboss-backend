@@ -1,6 +1,9 @@
 <section class="body-main view-request-buyers">
   <div class="container-fluid">
-    <div class="view-request-buyer">
+        <div ng-if="buyerData==undefined">
+    <h3 class="text-center">Loading</h3>
+      </div>
+    <div ng-if="buyerData" class="view-request-buyer">
       <div class="search-content">
         <div class="row">
           <div class="col-md-6">
@@ -18,7 +21,7 @@
         <div class="magic-form">
           <div class="magic-resize">
             <label class="detail-heading" for="add-more">
-                     TBS{{sellerData.userId}} {{sellerData.firmName}}.
+                     TBS{{buyerData.userId}} {{buyerData.firmName}}.
                    </label>
           </div>
         </div>
@@ -37,7 +40,7 @@
                <tr>
             <td>{{buyerData.companyAddress}}
             </td>
-            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState}},
+            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState}},
             {{buyerData.warehouse[0].warehouseCountry}}
             </div>
             </td>
@@ -272,15 +275,16 @@
           <div class="col-md-4 col-1">
             <div class="abc">
               <div>
-                <p class="img-head">VAT NO. XXXXXX</p>
+                <p class="img-head">VAT NO. {{buyerData.vatTinNo}}</p>
               </div>
               <div class="cert-image">
+                 <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="buyerData.vatTinNoVerified" on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -288,15 +292,16 @@
           <div class="col-md-4 col-2">
             <div class="abc">
               <div>
-                <p class="img-head">CST NO. XXXXXX</p>
+                <p class="img-head">CST NO. {{buyerData.cstTinNo}}</p>
               </div>
               <div class="cert-image">
+                 <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus1" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="buyerData.cstTinNoVerified" on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -304,15 +309,16 @@
           <div class="col-md-4 col-3">
             <div class="abc">
               <div>
-                <p class="img-head">PAN NO. XXXXXX</p>
+                <p class="img-head">PAN NO. {{buyerData.panNo}}</p>
               </div>
               <div class="cert-image">
+                <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
               <!--<div class="hide verified"><p>VERIFIED</p></div>
                         <div class="pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="switchStatus2" on-label="Verified" off-label="Non-Verified">
+                <toggle-switch ng-model="buyerData.panNoVerified" on-label="Verified" off-label="Non-Verified">
                 </toggle-switch>
               </div>
             </div>
@@ -328,8 +334,9 @@
         <!-- </div> -->
       </div>
       <div class="accept-reject">
-        <button type="button" ng-click="acceptBuyer(buyerData);" class="btn btn-primary">ACCEPT</button>
-        <button type="button" ng-click="rejectBuyer(buyerData);" class="btn btn-primary">REJECT</button>
+                <button type="button" ng-if="buyerData.status==='incomplete'"  ng-disabled="buyerData.status==='incomplete'" ng-click="acceptBuyer(buyerData);" class="btn btn-primary"> Profile Incomplete</button>
+        <button type="button" ng-if="buyerData.status!=='incomplete'"  ng-click="acceptBuyer(buyerData);" class="btn btn-primary">ACCEPT</button>
+        <button type="button" ng-disabled="buyerData.status==='incomplete'" ng-click="rejectBuyer(buyerData);" class="btn btn-primary">REJECT</button>
       </div>
     </div>
   </div>
