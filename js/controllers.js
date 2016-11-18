@@ -347,7 +347,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
             } else {
                 senddata.price = inventorydata.pricePerKg;
-                 senddata.quantity = inventorydata.quantityInNos;
+                senddata.quantity = inventorydata.quantityInNos;
             }
             senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
             NavigationService.assignInspection(senddata, function (data) {
@@ -1557,29 +1557,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
 
         $scope.acceptSeller = function (sellerdata) {
-            console.log("sdata", sellerdata);
             var senddata = {}
             senddata._id = sellerdata._id;
             senddata.email = sellerdata.email;
             senddata.firstName = sellerdata.firstName;
             senddata.comment = sellerdata.comment;
+            senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
+            senddata.vatTinNoVerified = sellerdata.vatTinNoVerified;
+            senddata.panNoVerified = sellerdata.panNoVerified;
             senddata.status = "verified";
-            // if()
-            NavigationService.updateSeller(senddata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Seller Status Updated!", "Information");
-                    $state.go("request-sellers");
-                }
-            });
+            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
+                toastr.error("Please verified all Documents!", "Error");
+            } else {
+                NavigationService.updateSeller(senddata, function (data) {
+                    if (data.value == true) {
+                        toastr.success("Seller Status Updated!", "Information");
+                        $state.go("request-sellers");
+                    }
+                });
+            }
         }
 
         $scope.rejectSeller = function (sellerdata) {
-            console.log("sdata", sellerdata);
             var senddata = {}
             senddata._id = sellerdata._id;
             senddata.email = sellerdata.email;
             senddata.firstName = sellerdata.firstName;
             senddata.comment = sellerdata.comment;
+            senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
+            senddata.vatTinNoVerified = sellerdata.vatTinNoVerified;
+            senddata.panNoVerified = sellerdata.panNoVerified;
             senddata.status = "rejected";
             NavigationService.updateSeller(senddata, function (data) {
                 if (data.value == true) {
@@ -1725,8 +1732,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.getInventoryByAgency(function (data) {
                 if (data.value == true) {
                     $scope.getAllInventory = data.data;
-                }else{
-                    $scope.getAllInventory =[];
+                } else {
+                    $scope.getAllInventory = [];
                 }
             });
         }
