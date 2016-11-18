@@ -168,6 +168,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'ViewcontactCtrl'
     })
+    .state('view-career', {
+      url: "/view-career",
+      templateUrl: "views/template.html",
+      controller: 'ViewcareerCtrl'
+    })
     .state('inspection-agencies', {
       url: "/inspection-agencies",
       templateUrl: "views/template.html",
