@@ -267,7 +267,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.indexid = indexid;
     }
 
-
+ $scope.editMoc = function (mocdata, cat, indexid) {
+        if (mocdata.name !== "") {
+            var senddata = {};
+            senddata.category = cat;
+            senddata.name = mocdata.name;
+           console.log("searchdata", senddata);
+          $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.indexid = "a";
+    //   NavigationService.editMoc(senddata, function (data) {
+    //             if (data.value == true) {
+    //                 // $scope.formdata ={};
+    //                 toastr.success("MOC edited Successfully", "Information");
+    //                 $scope.errmsg = false;
+    //                 $scope.getMaterial();
+    //             }
+    //         });
+        } else {
+            $scope.errmsg = true;
+            $scope.myindex = indexid;
+        }
+    }
     $scope.deleteMoc = function (mocid) {
         NavigationService.deleteMoc(mocid, function (data) {
             if (data.value == true) {
