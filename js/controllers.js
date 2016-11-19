@@ -777,6 +777,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
     })
+    .controller('ViewcontactCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+        $scope.template = TemplateService.changecontent("view-contact");
+        $scope.menutitle = NavigationService.makeactive("View Contact");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.openCotact = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/opencontact.html",
+                scope: $scope,
+            });
+        };
+
+    })
+    .controller('ViewcareerCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+        $scope.template = TemplateService.changecontent("view-career");
+        $scope.menutitle = NavigationService.makeactive("View Career");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.openCareer = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/opencareer.html",
+                scope: $scope,
+            });
+        };
+    })
     .controller('GradesStandards1Ctrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("grades-standards1");
         $scope.menutitle = NavigationService.makeactive("Grades Standards1");
@@ -1231,10 +1260,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-     NavigationService.getOneSeller($state.params.id, function (data) {
+        NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;
-                console.log("sellerdata",$scope.sellerData);
+                console.log("sellerdata", $scope.sellerData);
             }
         });
 
@@ -1628,8 +1657,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
             senddata.panNoVerified = buyerdata.panNoVerified;
             senddata.status = "verified";
-             console.log("new data", senddata);
-         
+            console.log("new data", senddata);
+
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
                 toastr.error("Please verified all Documents!", "Error");
             } else {
@@ -1812,12 +1841,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 //     $state.go("dashboard");
                 // }
             } else {
-                 if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
-                  
-                }else{
-                     $state.go("loginpage");
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+
+                } else {
+                    $state.go("loginpage");
                 }
-                
+
             }
         });
     }

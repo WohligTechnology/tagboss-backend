@@ -560,6 +560,11 @@
         margin-bottom: 30px;
         .details {
           .info {
+            .txt-remark {
+              textarea {
+                resize: none;
+              }
+            }
             .form-login {
               padding: 22px;
               background-color: #f2f2f2;
@@ -2061,6 +2066,12 @@
         height: auto;
         width: 418px;
         padding: 5px 9px 0;
+      }
+      
+      .txt-contact {
+        border: 1px solid #a9a9a9;
+        height: auto;
+        width: 368px;
       }
       
       .txt-area1 {

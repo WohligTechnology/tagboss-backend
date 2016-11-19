@@ -1284,6 +1284,11 @@
                     padding-left: 8px;
                 }
             }
+            .txt-remark {
+                textarea {
+                    resize: none;
+                }
+            }
         }
     }
 }

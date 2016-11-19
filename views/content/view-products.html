@@ -89,11 +89,13 @@
                 </div>
               </td>
               <td>
-                <input type="hidden" ng-model="inventory._id" />
-                <textarea name="inventoryremark{{$index}}" ng-model="inventory.remark" required>{{inventory.remark}}</textarea>
-                <!--<input ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn" value="Submit"/>-->
-                <button type="submit" ng-if="inventory.status==='Assigned'" ng-disabled="inventory.report==null || inventory.remark==null"
-                  ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
+                <div class="txt-remark">
+                  <input type="hidden" ng-model="inventory._id" />
+                  <textarea name="inventoryremark{{$index}}" ng-model="inventory.remark" rows="4" cols="25" required>{{inventory.remark}}</textarea>
+                  <!--<input ng-if="inventory.status==='Assigned'" class="btn btn-primary assign-btn" value="Submit"/>-->
+                  <button type="submit" ng-if="inventory.status==='Assigned'" ng-disabled="inventory.report==null || inventory.remark==null"
+                    ng-click="sendReport(inventory)" class="btn btn-primary assign-btn">Submit Report</button>
+                </div>
               </td>
             </form>
           </tr>
