@@ -164,14 +164,19 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'ProductbannerCtrl'
     })
     .state('view-contact', {
-      url: "/view-contact",
+      url: "/contact",
       templateUrl: "views/template.html",
-      controller: 'ViewcontactCtrl'
+      controller: 'ViewContactCtrl'
     })
     .state('view-career', {
-      url: "/view-career",
+      url: "/career",
       templateUrl: "views/template.html",
-      controller: 'ViewcareerCtrl'
+      controller: 'ViewCareerCtrl'
+    })
+    .state('view-press', {
+      url: "/press",
+      templateUrl: "views/template.html",
+      controller: 'ViewPressCtrl'
     })
     .state('inspection-agencies', {
       url: "/inspection-agencies",

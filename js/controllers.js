@@ -777,7 +777,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
     })
-    .controller('ViewcontactCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('ViewContactCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("view-contact");
         $scope.menutitle = NavigationService.makeactive("View Contact");
         TemplateService.title = $scope.menutitle;
@@ -792,7 +792,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
     })
-    .controller('ViewcareerCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('ViewCareerCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("view-career");
         $scope.menutitle = NavigationService.makeactive("View Career");
         TemplateService.title = $scope.menutitle;
@@ -802,6 +802,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/opencareer.html",
+                scope: $scope,
+            });
+        };
+    })
+    .controller('ViewPressCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+        $scope.template = TemplateService.changecontent("view-press");
+        $scope.menutitle = NavigationService.makeactive("View Press");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.openPress = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/openpress.html",
                 scope: $scope,
             });
         };
