@@ -267,23 +267,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.indexid = indexid;
     }
 
- $scope.editMoc = function (mocdata, cat, indexid) {
+    $scope.editMoc = function (mocdata, cat, indexid) {
         if (mocdata.name !== "") {
             var senddata = {};
             senddata.category = cat;
             senddata.name = mocdata.name;
-           console.log("searchdata", senddata);
-          $scope.hidetext = false;
-        $scope.showtext = true;
-        $scope.indexid = "a";
-    //   NavigationService.editMoc(senddata, function (data) {
-    //             if (data.value == true) {
-    //                 // $scope.formdata ={};
-    //                 toastr.success("MOC edited Successfully", "Information");
-    //                 $scope.errmsg = false;
-    //                 $scope.getMaterial();
-    //             }
-    //         });
+            senddata._id = mocdata._id;
+            $scope.hidetext = false;
+            $scope.showtext = true;
+            $scope.indexid = "a";
+            NavigationService.editMoc(senddata, function (data) {
+                if (data.value == true) {
+                    // $scope.formdata ={};
+                    toastr.success("MOC updated Successfully", "Information");
+                    $scope.errmsg = false;
+                    $scope.getMaterial();
+                }
+            });
         } else {
             $scope.errmsg = true;
             $scope.myindex = indexid;
@@ -1173,6 +1173,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.oneAtATime = true;
+    $scope.getMaterial = function () {
+        NavigationService.getMaterial(function (data) {
+            if (data.value == true) {
+                $scope.allData = data.data;
+                console.log("$scope.allData ", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
+    }
+    $scope.getMaterial();
+
+    $scope.updatePercentage = function (moc) {
+        console.log("in percentage", moc);
+        var senddata = {};
+        senddata._id = moc._id;
+        senddata.pricePercentage = moc.pricePercentage;
+        NavigationService.editPercentage(senddata, function (data) {
+            if (data.value == true) {
+                $scope.getMaterial();
+            }
+        });
+    }
+
 })
 
 .controller('SellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {

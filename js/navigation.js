@@ -86,6 +86,16 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+
+ editMoc: function (mocdata, callback) {
+      var data = mocdata;
+      return $http({
+        url: adminURL + "moc/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
      deleteMoc: function (id, callback) {
       var data = { _id: id};
       return $http({
@@ -95,6 +105,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+
+ editPercentage: function (percentagedata, callback) {
+      var data = percentagedata;
+      return $http({
+        url: adminURL + "moc/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
     addAgency: function (agencydata, callback) {
       var data = agencydata;
       return $http({
