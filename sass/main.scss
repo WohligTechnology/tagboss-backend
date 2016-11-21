@@ -2616,7 +2616,7 @@
         .error-msg {
           position: absolute;
           left: 50%;
-          transform: translateX(-50%);
+          @include transform(translateX(-50%));
           background-color: #ee425c;
           color: #fff;
           padding: 4px 10px;
@@ -2637,6 +2637,24 @@
           bottom: -5px;
           content: '';
         }
+        .error-msg1 {
+          @extend .error-msg;
+          left: 25%;
+          top: -50%;
+          transform: translate(-50%, -50%);
+        }
+        // .error-msg1:after {
+        //   position: absolute;
+        //   left: 50%;
+        //   @include transform(translateX(-50%));
+        //   width: 0;
+        //   height: 0;
+        //   border-left: 5px solid transparent;
+        //   border-right: 5px solid transparent;
+        //   border-top: 5px solid #ee425c;
+        //   bottom: -5px;
+        //   content: '';
+        // }
       }
       
       //bootstrap forms
