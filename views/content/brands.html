@@ -31,55 +31,7 @@
         <div class="view-seller-product">
         </div>
         <div class="details">
-            <!--<div class="head">
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="magic-form">
-                            <div class="magic-resize">
-                                <input class="magic-checkbox" type="checkbox" name="layout" id="2" value="option1">
-                                <label class="text" for="2">
-                <h2>TBT001 EMILY TRAVELS</h2>
-              </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-category">
-                            <ul>
-                                <li>
-                                    <div class="input-group edit-btn">
-                                        <a href="#" class="pull-right">
-                                            <label class="view">Edit</label>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="input-group trash-icon">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>-->
             <div class="info info-edit">
-                <!--<div class="row">
-                    <div class="col-md-12">
-                        <div class="rounded-pipes">
-                            <h4>City : Mumbai</h4>
-                        </div>
-                        <div class="edit-type-2" style="">
-                            <p><span ui-sref="add-transporter">Edit</span> <span>|</span> <span>x</span> <span>|</span>
-                                <span ui-sref="add-transporter">View</span> <span>|</span> <span ui-sref="add-transporter">Assign</span></p>
-                        </div>
-                    </div>
-                </div>-->
                 <div class="row">
                     <div class="col-md-12 rounded-mid perfo-tot">
                         <div class="table-responsive">
@@ -88,33 +40,38 @@
                                     <tr>
                                         <th>Order Id</th>
                                         <th>Brand/Manufacturer Name</th>
-                                        <th>Country</th>
-                                        <th>Logo</th>
+                                         <th>Logo</th>
                                         <th>Show on Homepage</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tata Steel</td>
-                                        <td>India</td>
+                                    <div ng-if="allBrands.length==0">
+                                        <h3 class="text-center">No data Found</h3>
+                                    </div>
+                                    <div ng-if="allBrands==undefined">
+                                        <h3 class="text-center">Loading...</h3>
+                                    </div>
+                                    <tr ng-repeat="brand in allBrands">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{brand.name}}</td>
                                         <td>
                                             <div class="logo">
-                                                <img src="img/partner-tata-steel-logo.png" alt="">
+                                                <img src="{{brand.image | uploadpath}}" alt="">
                                             </div>
                                         </td>
-                                        <td class="">
-                                            <!--<i class="fa fa-check-square" aria-hidden="true"></i>-->
-                                            Yes
+                                        <td>
+                                            <p ng-if="brand.flag==true">
+                                            Yes</p>
+                                            <p ng-if="brand.flag==false">
+                                            No</p>
                                         </td>
                                         <td>
-                                            <!--<div class="text-center tog-switch">
-                                                <toggle-switch ng-model="switchStatus" on-label="Enable" off-label="Disable" class="enb-switch">
-                                                </toggle-switch>
-                                            </div>-->
-                                            Enable
+                                              <p ng-if="brand.status==true">
+                                            Yes</p>
+                                            <p ng-if="brand.status==false">
+                                            No</p>
                                         </td>
                                         <td>
                                             <p>
@@ -122,62 +79,11 @@
                                                 <span>|</span>
                                                 <span>x</span>
                                                 <span>|</span>
-                                                <span>Delete</span>
+                                                <span ng-click="deleteBrand(brand._id);">Delete</span>
                                             </p>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jindal Steel</td>
-                                        <td>China</td>
-                                        <td>
-                                            <div class="logo">
-                                                <img src="img/partner-tata-steel-logo.png" alt="">
-                                            </div>
-                                        </td>
-                                        <td class="">
-                                            <!--<i class="fa fa-check-square" aria-hidden="true"></i>-->
-                                            No
-                                        </td>
-                                        <td>
-                                            Disable
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <span ng-click="openBrand();">Edit</span>
-                                                <span>|</span>
-                                                <span>x</span>
-                                                <span>|</span>
-                                                <span>Delete</span>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Tata Steel</td>
-                                        <td>India</td>
-                                        <td>
-                                            <div class="logo">
-                                                <img src="img/partner-tata-steel-logo.png" alt="">
-                                            </div>
-                                        </td>
-                                        <td class="">
-                                            <!--<i class="fa fa-check-square" aria-hidden="true"></i>-->
-                                            Yes
-                                        </td>
-                                        <td>
-                                            Enable
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <span ng-click="openBrand();">Edit</span>
-                                                <span>|</span>
-                                                <span>x</span>
-                                                <span>|</span>
-                                                <span>Delete</span>
-                                            </p>
-                                        </td>
-                                    </tr>
+                                   
                                 </tbody>
                             </table>
                         </div>

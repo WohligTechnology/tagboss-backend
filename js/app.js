@@ -134,7 +134,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'MaterialConstructCtrl'
     })
     .state('grades-standards', {
-      url: "/grades-standards",
+      url: "/grades-standards/:id",
       templateUrl: "views/template.html",
       controller: 'GradesStandardsCtrl'
     })

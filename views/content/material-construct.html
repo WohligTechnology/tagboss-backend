@@ -78,7 +78,7 @@
                 <span ng-if="indexid==$index" ng-click="editMoc(moc,value[0].category._id,$index);">Save</span>
                    <span>|</span> <span ng-click="deleteMoc(moc._id);"><i class="fa fa-trash" aria-hidden="true"></i></span>   
                   <span>|</span>   
-                          <span ui-sref="grades-standards">Grade</span></p>
+                          <span ui-sref="grades-standards({id:moc._id})">Grade</span></p>
             </div>
           </div>
         </div>

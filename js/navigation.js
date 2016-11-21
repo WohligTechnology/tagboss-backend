@@ -63,21 +63,41 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-      getAllOrders: function (callback) {
+    getAllOrders: function (callback) {
       return $http({
         url: adminURL + "order/getbuyerorderandbill",
         method: "POST"
       }).success(callback);
     },
 
-     getMaterial: function (callback) {
+    getMaterial: function (callback) {
       return $http({
         url: adminURL + "moc/getall",
         method: "POST"
       }).success(callback);
     },
 
- addMoc: function (mocdata, callback) {
+    getBrands: function (callback) {
+      return $http({
+        url: adminURL + "brand/search",
+        method: "POST"
+      }).success(callback);
+    },
+
+    getGradesStandards: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "GradesStandards/getGradesStandardsByMoc",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
+
+    addMoc: function (mocdata, callback) {
       var data = mocdata;
       return $http({
         url: adminURL + "moc/save",
@@ -86,8 +106,18 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+       addGrade: function (mocdata, callback) {
+      var data = mocdata;
+      return $http({
+        url: adminURL + "GradesStandards/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+    
 
- editMoc: function (mocdata, callback) {
+
+    editMoc: function (mocdata, callback) {
       var data = mocdata;
       return $http({
         url: adminURL + "moc/save",
@@ -96,8 +126,10 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     deleteMoc: function (id, callback) {
-      var data = { _id: id};
+    deleteMoc: function (id, callback) {
+      var data = {
+        _id: id
+      };
       return $http({
         url: adminURL + "moc/delete",
         method: "POST",
@@ -106,7 +138,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
- editPercentage: function (percentagedata, callback) {
+    editPercentage: function (percentagedata, callback) {
       var data = percentagedata;
       return $http({
         url: adminURL + "moc/save",
