@@ -53,8 +53,8 @@
                 <td>
                   <div class="magic-form">
                     <div class="magic-resize">
-                      <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                      <label class="text" for="add-one">
+                      <input class="magic-checkbox" type="checkbox" name="layout" id="add-one{{$index}}" value="option1">
+                      <label class="text" for="add-one{{$index}}">
                             <p class="comp-name"> {{inventory.seller.firmName}}   </p>
                             <!--<p>Warehouse</p>
                             <p>
@@ -84,18 +84,16 @@
                   <!--<select ng-model="myid">
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                        </select>-->
-                  <p >
-                 <div class="form-group" ng-if="inventory.status==='Pending'">
-                              <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
+                  <p>
+                    <div class="form-group" ng-if="inventory.status==='Pending'">
+                      <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
                       <option  value="">Select Agency</option>
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                  
                 </select>
-                  <div class="error-msg" ng-if="errmsg==true && myindex==$index && inventory.status==='Pending'">Please Select Agency Name.</div>
-         
-          </div>
-         
-                </p>
+                      <div class="error-msg1" ng-if="errmsg==true && myindex==$index && inventory.status==='Pending'">Please Select Agency Name.</div>
+                    </div>
+                  </p>
                   <p ng-if="inventory.status!=='Pending'" class="upload-date">
                     {{inventory.agencyid.agencyName}}
                   </p>
@@ -108,8 +106,7 @@
                     <div>
                       <!--<button type="button" class="btn btn-primary assign-btn">PENDING</button>-->
                       <p>Status: {{inventory.status}}</p>
-                      <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button"
-                        class="btn btn-primary assign-btn">ASSIGN</button>
+                      <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
                     </div>
                     <div ng-if="inventory.status==='Inspected'">
                       <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a>
@@ -119,8 +116,8 @@
                       </div>
                     </div>
                     <div ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
-                       <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a>
-                      <p  ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
+                      <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a>
+                      <p ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
                     </div>
                   </div>
                 </td>
