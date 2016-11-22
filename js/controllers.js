@@ -705,7 +705,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.indexid = indexid;
     }
 
-    $scope.editMoc = function (mocdata, cat, indexid) {
+    $scope.editGrade = function (mocdata, cat, indexid) {
         if (mocdata.name !== "") {
             var senddata = {};
             senddata.category = cat;
@@ -714,24 +714,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.hidetext = false;
             $scope.showtext = true;
             $scope.indexid = "a";
-            NavigationService.editMoc(senddata, function (data) {
-                if (data.value == true) {
-                    // $scope.formdata ={};
-                    toastr.success("MOC updated Successfully", "Information");
-                    $scope.errmsg = false;
-                    $scope.getMaterial();
-                }
-            });
+            // NavigationService.editMoc(senddata, function (data) {
+            //     if (data.value == true) {
+            //         // $scope.formdata ={};
+            //         toastr.success("MOC updated Successfully", "Information");
+            //         $scope.errmsg = false;
+            //         $scope.getMaterial();
+            //     }
+            // });
         } else {
             $scope.errmsg = true;
             $scope.myindex = indexid;
         }
     }
-    $scope.deleteMoc = function (mocid) {
-        NavigationService.deleteMoc(mocid, function (data) {
+    $scope.deleteGrade = function (mocid) {
+        NavigationService.deleteGrade(mocid, function (data) {
             if (data.value == true) {
-                toastr.success("MOC deleted Successfully", "Information");
-                $scope.getMaterial();
+                toastr.success("Grade deleted Successfully", "Information");
+                 $scope.getGradesStandards();
             }
         });
     }

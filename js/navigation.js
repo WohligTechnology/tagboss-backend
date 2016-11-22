@@ -138,6 +138,17 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
+ deleteGrade: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "GradesStandards/delete",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     editPercentage: function (percentagedata, callback) {
       var data = percentagedata;
       return $http({
