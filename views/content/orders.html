@@ -89,23 +89,29 @@
       </div>
       <div>
 
-
+ <div ng-if="allData.length==0">
+      <h3 class="text-center">No data Found</h3>
+    </div>
+    <div ng-if="allData==undefined">
+      <h3 class="text-center">Loading...</h3>
+    </div>
+    <div ng-repeat="(cat, value) in allData | groupBy: '-order.orderId'">
         <div class="buy-head">
-          <h2 class="order-head">TBOO1</h2>
-          <h2 class="order-head subhead">BUYER NAME: <span>MIRAGE STEEL LTD.</span></h2>
+          <h2 class="order-head">{{cat  | ltrim: '-' }}</h2>
+          <h2 class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
         </div>
-        <div>
+        <div ng-repeat="order in value | orderBy: 'orderBillId'">
           <div class="order-details ">
             <div class="magic-form">
               <div class="magic-resize">
                 <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                 <label class="detail-heading" for="add-one">
-                    ORDER ID TB00_1
+                    ORDER ID TB{{order.order.orderId}}_{{order.orderBillId}}
                   </label>
               </div>
             </div>
             <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-            <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+            <div class="date pull-right">Date: {{order.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
           </div>
           <table class="table table-bordered order-table">
             <thead>
@@ -118,16 +124,23 @@
             </thead>
             <tbody>
               <tr>
-                <td>Sheets: 500 pcs</td>
+                <td>{{order.inventory.category.name}}: {{order.qty}}</td>
                 <td>
-                  Mirage Steel Ltd<br> Address:
-                  <br> Contact:
+                 <p ng-if="order.inventory.seller.firmName" style="margin:0;"> {{order.inventory.seller.firmName}}</p>
+                 <p style="margin:0;" ng-if="order.warehouse"> Address:
+                  {{order.warehouse.warehouseFirmName}},<br/>
+                  {{order.warehouse.warehouseAddress}},<br/>
+                  {{order.warehouse.warehouseCity}}-{{order.warehouse.warehousePincode}},<br/>
+                  {{order.warehouse.warehouseState}},
+                  {{order.warehouse.warehouseCountry}}
+                   </p>
+                  <p style="margin:0;" ng-if="order.inventory.seller.mobile">Contact:  {{order.inventory.seller.mobile}}</p>
                 </td>
                 <td>
-                  Rs. 5,55,000/-
+                  Rs. {{order.subTotal}}/-
                 </td>
                 <td>
-                  Payment pending<br>
+                 {{order.paymentStatus}}<br>
                   <div class="font-karla inline-block time">
                     <form class="form-inline ng-pristine ng-valid">
                       <div class="form-group">
@@ -146,12 +159,13 @@
                       </div>
                     </form>
                   </div>
-                  <a ui-sref="view-orders"><label class="view pull-right">VIEW</label></a>
+                  <a ui-sref="view-orders({id:order._id})"><label class="view pull-right">VIEW</label></a>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+          </div>
         <!--<div>
           <div class="order-details ">
             <div class="magic-form">

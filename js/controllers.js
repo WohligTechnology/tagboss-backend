@@ -516,7 +516,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-     $scope.getBrands = function () {
+    $scope.getBrands = function () {
         NavigationService.getBrands(function (data) {
             if (data.value == true) {
                 $scope.allBrands = data.data.results;
@@ -653,14 +653,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.max = 5;
 })
 
-.controller('GradesStandardsCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+.controller('GradesStandardsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         $scope.template = TemplateService.changecontent("grades-standards");
         $scope.menutitle = NavigationService.makeactive("Grades Standards");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
         $scope.getGradesStandards = function () {
-            NavigationService.getGradesStandards($state.params.id,function (data) {
+            NavigationService.getGradesStandards($state.params.id, function (data) {
                 if (data.value == true) {
                     $scope.allGrades = data.data;
                     console.log("$scope.allGrades", $scope.allGrades);
@@ -670,71 +670,71 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.getGradesStandards();
 
-    $scope.errmsg = false;
-    $scope.addGrade = function (id, grade, indexid) {
-        console.log("aa", indexid);
-        if (grade != undefined) {
-            var senddata = {};
-            senddata.moc = id;
-            senddata.name = grade;
+        $scope.errmsg = false;
+        $scope.addGrade = function (id, grade, indexid) {
+            console.log("aa", indexid, grade, id);
+            if (grade != undefined) {
+                var senddata = {};
+                senddata.moc = id;
+                senddata.name = grade;
 
-            console.log("searchdata", senddata);
+                console.log("searchdata", senddata);
 
-            NavigationService.addGrade(senddata, function (data) {
+                NavigationService.addGrade(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("Grade added Successfully", "Information");
+                        $scope.getGradesStandards();
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
+
+        $scope.editGrade = function (mocdata, cat, indexid) {
+            console.log("Aa", mocdata, cat, indexid);
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.moc = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editGrade(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("Grade updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getGradesStandards();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+        $scope.deleteGrade = function (mocid) {
+            NavigationService.deleteGrade(mocid, function (data) {
                 if (data.value == true) {
-                    // $scope.formdata ={};
-                
-                    toastr.success("Grade added Successfully", "Information");
-                     $scope.getGradesStandards();
-                    document.getElementById(indexid).value = "";
-                    $scope.errmsg = false;
-                   
+                    toastr.success("Grade deleted Successfully", "Information");
+                    $scope.getGradesStandards();
                 }
             });
-        } else {
-            $scope.errmsg = true;
-            $scope.myindex = indexid;
         }
-    }
-
-       $scope.hidetext = false;
-    $scope.showtext = true;
-    $scope.showEditData = function (indexid) {
-        $scope.hidetext = true;
-        $scope.showtext = false;
-        $scope.indexid = indexid;
-    }
-
-    $scope.editGrade = function (mocdata, cat, indexid) {
-        if (mocdata.name !== "") {
-            var senddata = {};
-            senddata.category = cat;
-            senddata.name = mocdata.name;
-            senddata._id = mocdata._id;
-            $scope.hidetext = false;
-            $scope.showtext = true;
-            $scope.indexid = "a";
-            // NavigationService.editMoc(senddata, function (data) {
-            //     if (data.value == true) {
-            //         // $scope.formdata ={};
-            //         toastr.success("MOC updated Successfully", "Information");
-            //         $scope.errmsg = false;
-            //         $scope.getMaterial();
-            //     }
-            // });
-        } else {
-            $scope.errmsg = true;
-            $scope.myindex = indexid;
-        }
-    }
-    $scope.deleteGrade = function (mocid) {
-        NavigationService.deleteGrade(mocid, function (data) {
-            if (data.value == true) {
-                toastr.success("Grade deleted Successfully", "Information");
-                 $scope.getGradesStandards();
-            }
-        });
-    }
 
 
         $scope.today = function () {
@@ -1038,7 +1038,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
     })
 
-.controller('ViewOrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('ViewOrdersCtrl', function ($scope, $state, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("view-orders");
     $scope.menutitle = NavigationService.makeactive("View orders");
     TemplateService.title = $scope.menutitle;
@@ -1133,6 +1133,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         return '';
     }
+
+    $scope.getOneOrder = function () {
+        NavigationService.getOneOrder($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.detailBill = data.data;
+                console.log("$scope.detailBill", $scope.detailBill);
+            }
+        });
+    }
+    $scope.getOneOrder();
 
 
 })
@@ -1235,12 +1245,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         return '';
     }
 
-    console.log("in orders");
-
-    NavigationService.getAllOrders(function (data) {
+  var senddata ={};
+       
+        senddata.status="All"
+    NavigationService.getAllOrders(senddata,function (data) {
         if (data.value == true) {
-            $scope.allOrders = data.data;
-            console.log("$scope.allOrders", $scope.allOrders);
+            $scope.allData = data.data;
+            console.log("$scope.allData", $scope.allData);
+        } else {
+            $scope.allData = [];
         }
     });
 

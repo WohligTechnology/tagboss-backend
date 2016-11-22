@@ -63,10 +63,12 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllOrders: function (callback) {
+    getAllOrders: function (senddata,callback) {
+      var data = senddata
       return $http({
-        url: adminURL + "order/getbuyerorderandbill",
-        method: "POST"
+        url: adminURL + "bill/getAllOrders",
+        method: "POST",
+         data: data
       }).success(callback);
     },
 
@@ -95,6 +97,18 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getOneOrder: function (id, callback) {
+      var data = {
+       billid: id
+      };
+      return $http({
+        url: adminURL + "bill/getonebill",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
 
 
     addMoc: function (mocdata, callback) {
@@ -106,7 +120,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-       addGrade: function (mocdata, callback) {
+    addGrade: function (mocdata, callback) {
       var data = mocdata;
       return $http({
         url: adminURL + "GradesStandards/save",
@@ -114,13 +128,22 @@ var navigationservice = angular.module('navigationservice', [])
         data: data
       }).success(callback);
     },
-    
+
 
 
     editMoc: function (mocdata, callback) {
       var data = mocdata;
       return $http({
         url: adminURL + "moc/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+      editGrade: function (mocdata, callback) {
+      var data = mocdata;
+      return $http({
+        url: adminURL + "GradesStandards/save",
         method: "POST",
         data: data
       }).success(callback);
@@ -138,7 +161,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
- deleteGrade: function (id, callback) {
+    deleteGrade: function (id, callback) {
       var data = {
         _id: id
       };

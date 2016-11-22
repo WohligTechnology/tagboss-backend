@@ -44,7 +44,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'CategoryPriceRangeCtrl'
     })
     .state('view-orders', {
-      url: "/view-orders",
+      url: "/view-orders/:id",
       templateUrl: "views/template.html",
       controller: 'ViewOrdersCtrl'
     })
