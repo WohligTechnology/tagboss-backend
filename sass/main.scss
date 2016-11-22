@@ -2624,6 +2624,7 @@
           top: -25px;
           font-family: 'karla';
           font-size: 12px;
+          z-index: 99;
         }
         .error-msg:after {
           position: absolute;
@@ -2641,6 +2642,8 @@
           @extend .error-msg;
           left: 25%;
           top: -50%;
+          width: 180px;
+          text-align: center;
           transform: translate(-50%, -50%);
         }
         // .error-msg1:after {
@@ -2655,6 +2658,16 @@
         //   bottom: -5px;
         //   content: '';
         // }
+        .cpr {
+          .error-msg1 {
+            @extend .error-msg;
+            left: 35%;
+            top: -50%;
+            width: 160px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+          }
+        }
       }
       
       //bootstrap forms
