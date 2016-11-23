@@ -1135,20 +1135,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getOneOrder = function () {
+        $scope.calcst = 0.00;
+        $scope.calvat = 0.00;
         NavigationService.getOneOrder($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.detailBill = data.data;
+                $scope.sizeQty = $scope.detailBill.sizeQty;
+                if ($scope.detailBill.order.delivery[0].deliveryState == $scope.detailBill.warehouse.warehouseState) {
+                    $scope.calvat = ($scope.detailBill.price * ($scope.detailBill.inventory.vat / 100));
+                    $scope.vat = ($scope.calvat).toFixed(2);
+                    $scope.cst = 0.00;
+                } else {
+                    $scope.calcst = ($scope.detailBill.price * ($scope.detailBill.inventory.cst / 100));
+                    $scope.cst = ($scope.calcst).toFixed(2);
+                    $scope.vat = 0.00;
+                }
+
+                // $scope.discount = ($scope.detailBill.inventory.finalPrice * ($scope.detailBill.inventory.discount / 100)).toFixed(2);
+                // $scope.granTotal = ($scope.detailBill.price + $scope.calvat + $scope.detailBill.transporterCharges) - $scope.discount;
+                $scope.granTotal = ($scope.detailBill.price + $scope.calcst + $scope.calvat + $scope.detailBill.transporterCharges);
+                console.log($scope.vat, $scope.granTotal, $scope.calcst);
                 console.log("$scope.detailBill", $scope.detailBill);
+            } else {
+                $scope.detailBill = "";
             }
         });
     }
     $scope.getOneOrder();
-
-
 })
 
 
-.controller('OrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('OrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
 
     $scope.template = TemplateService.changecontent("orders");
     $scope.menutitle = NavigationService.makeactive("Orders");
@@ -1245,17 +1262,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         return '';
     }
 
-  var senddata ={};
-       
-        senddata.status="All"
-    NavigationService.getAllOrders(senddata,function (data) {
-        if (data.value == true) {
-            $scope.allData = data.data;
-            console.log("$scope.allData", $scope.allData);
-        } else {
-            $scope.allData = [];
-        }
-    });
+    var senddata = {};
+    if ($state.params.id) {
+        senddata.sellerid = $state.params.id;
+        senddata.status = "All"
+        senddata.createdAt = ""
+        // NavigationService.getAllOrders(senddata, function (data) {
+        //     if (data.value == true) {
+        //         $scope.allData = data.data;
+        //         console.log("$scope.allData", $scope.allData);
+        //     } else {
+        //         $scope.allData = [];
+        //     }
+        // });
+    } else {
+        senddata.sellerid = "";
+        senddata.status = "All"
+        senddata.createdAt = ""
+        NavigationService.getAllOrders(senddata, function (data) {
+            if (data.value == true) {
+                $scope.allData = data.data;
+                console.log("$scope.allData", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
+    }
+
 
 
 })
@@ -1280,7 +1313,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getMaterial(function (data) {
             if (data.value == true) {
                 $scope.allData = data.data;
-                console.log("$scope.allData ", $scope.allData);
+                // console.log("$scope.allData ", $scope.allData);
             } else {
                 $scope.allData = [];
             }
@@ -1400,9 +1433,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
     $scope.getAllVerifiedSeller = function () {
+
         NavigationService.getAllVerifiedSeller(function (data) {
             if (data.value == true) {
-                $scope.AllSeller = data.data;
+                $scope.AllSeller = data.data.results;
                 console.log("sellers", $scope.AllSeller);
             }
         });

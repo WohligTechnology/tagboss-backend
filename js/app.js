@@ -29,7 +29,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'SellerDashboardCtrl'
     })
     .state('orders', {
-      url: "/orders",
+      url: "/orders/:id",
       templateUrl: "views/template.html",
       controller: 'OrdersCtrl'
     })
