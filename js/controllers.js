@@ -1264,23 +1264,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     var senddata = {};
     if ($state.params.id) {
+        console.log($state.params.id);
         senddata.sellerid = $state.params.id;
         senddata.status = "All"
         senddata.createdAt = ""
-        // NavigationService.getAllOrders(senddata, function (data) {
-        //     if (data.value == true) {
-        //         $scope.allData = data.data;
-        //         console.log("$scope.allData", $scope.allData);
-        //     } else {
-        //         $scope.allData = [];
-        //     }
-        // });
+        NavigationService.getAllOrdersBySeller(senddata, function (data) {
+            if (data.value == true) {
+                $scope.selleris = true;
+                $scope.allData = data.data;
+                console.log("$scope.aaaaallData", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
     } else {
         senddata.sellerid = "";
         senddata.status = "All"
         senddata.createdAt = ""
         NavigationService.getAllOrders(senddata, function (data) {
             if (data.value == true) {
+                $scope.selleris = false;
                 $scope.allData = data.data;
                 console.log("$scope.allData", $scope.allData);
             } else {

@@ -97,8 +97,8 @@
     </div>
     <div ng-repeat="(cat, value) in allData | groupBy: '-order.orderId'">
         <div class="buy-head">
-          <h2 class="order-head">{{cat  | ltrim: '-' }}</h2>
-          <h2 class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
+          <h2 ng-if="selleris==false" class="order-head">{{cat  | ltrim: '-' }}</h2>
+          <h2 ng-if="selleris==false" class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
         </div>
         <div ng-repeat="order in value | orderBy: 'orderBillId'">
           <div class="order-details ">

@@ -72,6 +72,16 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+
+
+   getAllOrdersBySeller: function (senddata,callback) {
+      var data = senddata
+      return $http({
+        url: adminURL + "bill/getbillbyseller",
+        method: "POST",
+         data: data
+      }).success(callback);
+    },
     getMaterial: function (callback) {
       return $http({
         url: adminURL + "moc/getall",
