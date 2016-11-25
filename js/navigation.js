@@ -309,6 +309,13 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getAllVerifiedBuyer: function (callback) {
+      return $http({
+        url: adminURL + "user/getAllVerifiedBuyer",
+        method: "POST"
+      }).success(callback);
+    },
+
     getOneSeller: function (id, callback) {
       var data = {
         '_id': id

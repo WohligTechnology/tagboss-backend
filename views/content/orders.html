@@ -126,7 +126,9 @@
               <tr>
                 <td>{{order.inventory.category.name}}: {{order.qty}}</td>
                 <td>
-                 <p ng-if="order.inventory.seller.firmName" style="margin:0;"> {{order.inventory.seller.firmName}}</p>
+                   <p ng-if="selleris==false" style="margin:0;"> {{order.inventory.seller.firmName}}</p>
+                
+                 <p ng-if="selleris==true" style="margin:0;"> {{order.inventories.sellers.firmName}}</p>
                  <p style="margin:0;" ng-if="order.warehouse"> Address:
                   {{order.warehouse.warehouseFirmName}},<br/>
                   {{order.warehouse.warehouseAddress}},<br/>
@@ -134,7 +136,9 @@
                   {{order.warehouse.warehouseState}},
                   {{order.warehouse.warehouseCountry}}
                    </p>
-                  <p style="margin:0;" ng-if="order.inventory.seller.mobile">Contact:  {{order.inventory.seller.mobile}}</p>
+                  <p style="margin:0;" ng-if="selleris==true">Contact:  {{order.inventories.sellers.mobile}}</p>
+                <p style="margin:0;" ng-if="selleris==false">Contact:  {{order.inventors.seller.mobile}}</p>
+             
                 </td>
                 <td>
                   Rs. {{order.subTotal}}/-

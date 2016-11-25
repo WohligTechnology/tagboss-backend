@@ -1452,6 +1452,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Buyer");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+        $scope.getAllVerifiedBuyer = function () {
+            NavigationService.getAllVerifiedBuyer(function (data) {
+                if (data.value == true) {
+                    $scope.AllBuyer = data.data.results;
+                    console.log("Buyer", $scope.AllBuyer);
+                }
+            });
+        }
+        $scope.getAllVerifiedBuyer();
     })
     .controller('View-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-sellers");
@@ -1728,7 +1738,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     })
 
 
-.controller('View-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('View-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-buyers");
         $scope.menutitle = NavigationService.makeactive("View-buyers");
         TemplateService.title = $scope.menutitle;
@@ -1741,6 +1751,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.overStar = value;
             $scope.percent = 100 * (value / $scope.max);
         };
+
+         NavigationService.getOneBuyer($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.buyerData = data.data;
+                console.log("buyerdata", $scope.buyerData);
+            }
+        });
     })
     .controller('Request-sellersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("request-sellers");
