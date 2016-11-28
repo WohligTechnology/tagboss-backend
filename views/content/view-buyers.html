@@ -66,7 +66,7 @@
             <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
               titles="['one','two','three']" aria-labelledby="default-rating"></span>
             <div class="mid-btn">
-              <button ui-sref="orders({id:buyerData._id})" type="button" class="btn btn-default btn-o">Order</button>
+              <button ui-sref="orders({type:'buyer',id:buyerData._id})" type="button" class="btn btn-default btn-o">Order</button>
               <button ui-sref="dashboard" type="button" class="btn btn-default">Dashboard</button>
             </div>
           </div>

@@ -1264,8 +1264,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     var senddata = {};
     if ($state.params.id) {
-        console.log($state.params.id);
-        senddata.sellerid = $state.params.id;
+        if ($state.params.type === "seller") {
+            senddata.sellerid = $state.params.id;
+        } else if ($state.params.type === "buyer") {
+            senddata.buyerid = $state.params.id;
+        }
         senddata.status = "All"
         senddata.createdAt = ""
         NavigationService.getAllOrdersBySeller(senddata, function (data) {
@@ -1752,7 +1755,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.percent = 100 * (value / $scope.max);
         };
 
-         NavigationService.getOneBuyer($state.params.id, function (data) {
+        NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
                 console.log("buyerdata", $scope.buyerData);
