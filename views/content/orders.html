@@ -99,6 +99,23 @@
         <div class="buy-head">
           <h2 ng-if="selleris==false" class="order-head">{{cat  | ltrim: '-' }}</h2>
           <h2 ng-if="selleris==false" class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
+       <p class="pull-right">      <div class="row pull-right">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="">Payment Status</label>
+                                                        <!-- <div class="col-sm-6 text-center">
+                                              <button type="button" class="btn btn-primary return">RETURN</button>
+                                          </div> -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 no-padding">
+                                                    <select name="" id="" class="form-control">
+                                              <option value="">Pending</option>
+                                             
+                                              <option value="">Paid</option>
+                                          </select>
+                                                </div>
+                                            </div></P>
         </div>
         <div ng-repeat="order in value | orderBy: 'orderBillId'">
           <div class="order-details ">
@@ -145,22 +162,28 @@
                 </td>
                 <td>
                  {{order.paymentStatus}}<br>
-                  <div class="font-karla inline-block time">
+                  <div data-ng-init="getCountDown('2016-06-06T20:04:56','2016-06-06T20:03:55', $index)" class="font-karla inline-block time" id="countercomplete0">
                     <form class="form-inline ng-pristine ng-valid">
+                      <div class="form-group ">
+                        <input type="text" class="countdays" id="countdays{{$index}}" >
+                        <label for="countdays">Days</label>
+                      </div> <span>:</span>
                       <div class="form-group">
-                        <input type="text" id="exampleInputEmail2" value="05">
-                        <label for="exampleInputEmail2">Hours</label>
+                        <input type="text" class="counthours" id="counthours{{$index}}">
+                        <label for="counthours">Hours</label>
                       </div>
                       <span>:</span>
                       <div class="form-group">
-                        <input type="text" id="exampleInputEmail3" value="23">
-                        <label for="exampleInputEmail3">Mintues</label>
+                        <input type="text" id="countmin{{$index}}" >
+                        <label for="countmin">Mintues</label>
                       </div>
                       <span>:</span>
                       <div class="form-group">
-                        <input type="text" id="exampleInputEmail4" value="15">
-                        <label for="exampleInputEmail4">Seconds</label>
+                        <input type="text" id="countseconds{{$index}}" class="countseconds">
+                        <label for="countseconds">Seconds</label>
                       </div>
+
+                      <!--<div class="countdown1"></div>-->
                     </form>
                   </div>
                   <a ui-sref="view-orders({id:order._id})"><label class="view pull-right">VIEW</label></a>

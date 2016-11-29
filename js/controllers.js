@@ -1171,6 +1171,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.menutitle = NavigationService.makeactive("Orders");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+
+
+
+
+    $scope.getCountDown = function (adate, bdate, myindex) {
+        //   var a = moment('2016-06-06T20:04:56'); //now
+        // var b = moment('2016-06-06T20:03:55');
+        var a = moment(adate);
+        var b = moment(bdate);
+        console.log("+ myindex", myindex);
+        var duration = moment.duration(a.diff(b));
+
+
+        var interval = 1;
+        var timer = setInterval(function () {
+            console.log("duration1", duration);
+            duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+            console.log("duration2", duration);
+            if (duration > 0) {
+                document.getElementById("countdays" + myindex).value = duration.days();
+                document.getElementById("counthours" + myindex).value = duration.hours();
+                document.getElementById("countmin" + myindex).value = duration.minutes();
+                document.getElementById("countseconds" + myindex).value = duration.seconds();
+            } else {
+                document.getElementById("countercomplete" + myindex).innerHTML = moment().format('MMMM Do YYY');
+                clearInterval(timer);
+            }
+
+        }, 1000);
+    }
+
+    // $scope.getCountDown();
     $scope.today = function () {
         $scope.dt = new Date();
     };
