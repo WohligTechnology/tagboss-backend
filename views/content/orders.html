@@ -96,8 +96,8 @@
       <h3 class="text-center">Loading...</h3>
     </div>
     <div ng-repeat="(cat, value) in allData | groupBy: '-order.orderId'">
-        <div class="buy-head">
-          <h2 ng-if="selleris==false" class="order-head">{{cat  | ltrim: '-' }}</h2>
+        <div class="buy-head">asfsfsdf{{cat}}
+          <h2 ng-if="selleris==false" class="order-head">TBO{{cat  | ltrim: '-' }}</h2>
           <h2 ng-if="selleris==false" class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
        <p class="pull-right">      <div class="row pull-right">
                                                 <div class="col-sm-6">
@@ -109,10 +109,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
-                                                    <select name="" id="" class="form-control">
-                                              <option value="">Pending</option>
+                                                    <select ng-change="updateOrder(paymentstatus,cat)" ng-model="paymentstatus" id="" class="form-control">
+                                              <option value="Pending">Pending</option>
                                              
-                                              <option value="">Paid</option>
+                                              <option value="Paid">Paid</option>
                                           </select>
                                                 </div>
                                             </div></P>
@@ -123,7 +123,7 @@
               <div class="magic-resize">
                 <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                 <label class="detail-heading" for="add-one">
-                    ORDER ID TB{{order.order.orderId}}_{{order.orderBillId}}
+                    ORDER ID TBO{{order.order.orderId}}_{{order.orderBillId}}
                   </label>
               </div>
             </div>

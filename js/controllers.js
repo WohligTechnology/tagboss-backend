@@ -1172,7 +1172,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-
+    $scope.updateOrder = function (paymentstatus, id) {
+        console.log("paymentstatus", paymentstatus, id);
+    };
 
 
 
@@ -1181,15 +1183,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         // var b = moment('2016-06-06T20:03:55');
         var a = moment(adate);
         var b = moment(bdate);
-        console.log("+ myindex", myindex);
+        // console.log("+ myindex", myindex);
         var duration = moment.duration(a.diff(b));
 
 
         var interval = 1;
         var timer = setInterval(function () {
-            console.log("duration1", duration);
+            // console.log("duration1", duration);
             duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-            console.log("duration2", duration);
+            // console.log("duration2", duration);
             if (duration > 0) {
                 document.getElementById("countdays" + myindex).value = duration.days();
                 document.getElementById("counthours" + myindex).value = duration.hours();
