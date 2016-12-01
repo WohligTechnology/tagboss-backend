@@ -1165,7 +1165,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 })
 
 
-.controller('OrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('OrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
 
     $scope.template = TemplateService.changecontent("orders");
     $scope.menutitle = NavigationService.makeactive("Orders");
@@ -1176,7 +1176,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         console.log("paymentstatus", paymentstatus, id);
     };
 
-
+    $scope.editOrder = function (id) {
+        $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/openpress.html",
+            scope: $scope,
+        });
+    }
 
     $scope.getCountDown = function (adate, bdate, myindex) {
         //   var a = moment('2016-06-06T20:04:56'); //now
@@ -1185,23 +1191,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var b = moment(bdate);
         // console.log("+ myindex", myindex);
         var duration = moment.duration(a.diff(b));
-
-
         var interval = 1;
         var timer = setInterval(function () {
             // console.log("duration1", duration);
             duration = moment.duration(duration.asSeconds() - interval, 'seconds');
             // console.log("duration2", duration);
             if (duration > 0) {
-                document.getElementById("countdays" + myindex).value = duration.days();
-                document.getElementById("counthours" + myindex).value = duration.hours();
-                document.getElementById("countmin" + myindex).value = duration.minutes();
-                document.getElementById("countseconds" + myindex).value = duration.seconds();
+                // document.getElementById("countdays" + myindex).value = duration.days();
+                // document.getElementById("counthours" + myindex).value = duration.hours();
+                // document.getElementById("countmin" + myindex).value = duration.minutes();
+                // document.getElementById("countseconds" + myindex).value = duration.seconds();
             } else {
-                document.getElementById("countercomplete" + myindex).innerHTML = moment().format('MMMM Do YYY');
-                clearInterval(timer);
+                // document.getElementById("countercomplete" + myindex).innerHTML = moment().format('MMMM Do YYY');
+                // clearInterval(timer);
             }
-
         }, 1000);
     }
 

@@ -96,25 +96,25 @@
       <h3 class="text-center">Loading...</h3>
     </div>
     <div ng-repeat="(cat, value) in allData | groupBy: '-order.orderId'">
-        <div class="buy-head">asfsfsdf{{cat}}
+        <div class="buy-head">
           <h2 ng-if="selleris==false" class="order-head">TBO{{cat  | ltrim: '-' }}</h2>
           <h2 ng-if="selleris==false" class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
        <p class="pull-right">      <div class="row pull-right">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <div ng-click="editOrder(cat);" class="form-group">
                                                         <label class="control-label" for="">Payment Status</label>
                                                         <!-- <div class="col-sm-6 text-center">
                                               <button type="button" class="btn btn-primary return">RETURN</button>
                                           </div> -->
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6 no-padding">
+                                                <!--<div class="col-sm-6 no-padding">
                                                     <select ng-change="updateOrder(paymentstatus,cat)" ng-model="paymentstatus" id="" class="form-control">
                                               <option value="Pending">Pending</option>
                                              
                                               <option value="Paid">Paid</option>
                                           </select>
-                                                </div>
+                                                </div>-->
                                             </div></P>
         </div>
         <div ng-repeat="order in value | orderBy: 'orderBillId'">
