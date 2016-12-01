@@ -1177,11 +1177,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     };
 
     $scope.editOrder = function (id) {
-        $uibModal.open({
-            animation: true,
-            templateUrl: "views/modal/openpress.html",
-            scope: $scope,
+        $scope.order = {};
+        var subid = id.slice(1);
+        $scope.order.orderid = subid;
+        NavigationService.getOrder($scope.order.orderid, function (data) {
+            if (data.value == true) {
+                $scope.orderData = data.data;
+                console.log("aa", $scope.orderData);
+                ordermod = $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/editorder.html",
+                    scope: $scope,
+                });
+            }
         });
+
+
+    }
+
+    $scope.updateOrder = function (orderdata) {
+        console.log("Aaa", orderdata);
+        var senddata = {};
+        senddata._id = orderdata._id;
+        senddata.paymentStatus = orderdata.paymentStatus;
+        senddata.paymentMethod = "NEFT/RTGS";
+        senddata.comment = orderdata.comment;
+        NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
+            if (data.value == true) {
+                console.log("done");
+            }
+        });
+        ordermod.close();
     }
 
     $scope.getCountDown = function (adate, bdate, myindex) {

@@ -119,6 +119,26 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
+    getOrder: function (id, callback) {
+      var data = {
+       orderid: id
+      };
+      return $http({
+        url: adminURL + "order/getoneorder",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
+updateOrderStatusByAdmin: function (odata, callback) {
+      var data = odata;
+      return $http({
+        url: adminURL + "order/updateOrderStatusByAdmin",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
 
 
     addMoc: function (mocdata, callback) {
