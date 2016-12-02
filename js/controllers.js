@@ -1133,7 +1133,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         return '';
     }
+    
 
+    $scope.updateBill = function(orderdata){
+        console.log("eee", orderdata);
+        var senddata = {};
+    senddata.id = orderdata._id;
+    senddata.deliveryStatus = orderdata.deliveryStatus;
+    senddata.transporterComment = orderdata.transporterComment;
+    senddata.transporterReceiept = orderdata.transporterReceiept;
+    // senddata.id = orderdata.id;
+    console.log("aaa", senddata);
+    //   NavigationService.updateBill(senddata,function(data){
+
+    //   });
+    };
     $scope.getOneOrder = function () {
         $scope.calcst = 0.00;
         $scope.calvat = 0.00;
@@ -1165,7 +1179,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 })
 
 
-.controller('OrdersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
+.controller('OrdersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state, $uibModal) {
 
     $scope.template = TemplateService.changecontent("orders");
     $scope.menutitle = NavigationService.makeactive("Orders");
@@ -1204,10 +1218,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         senddata.comment = orderdata.comment;
         NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
             if (data.value == true) {
-                console.log("done");
+              toastr.success("Order Payment Status Updated!", "Information");
+                 ordermod.close();
             }
         });
-        ordermod.close();
+       
     }
 
     $scope.getCountDown = function (adate, bdate, myindex) {

@@ -519,7 +519,7 @@
                             <div class="info1 vieworders1 ha delivery-status">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form class="form-horizontal ng-pristine ng-valid" role="form">
+                                        <form name="deliveryStatusForm" class="form-horizontal ng-pristine ng-valid" role="form" novalidate>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -530,11 +530,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
-                                                    <select name="" id="" class="form-control">
-                                              <option value="">Pending</option>
-                                              <option value="">Dispatched</option>
-                                              <option value="">Delivered</option>
-                                              <option value="">Returned</option>
+                                                    <select required ng-model="detailBill.deliveryStatus" name="status"  id="" class="form-control">
+                                              <option value="Pending">Pending</option>
+                                              <option value="Dispatched">Dispatched</option>
+                                              <option value="Delivered">Delivered</option>
+                                              <option value="Returned">Returned</option>
                                           </select>
                                                 </div>
                                             </div>
@@ -542,16 +542,17 @@
                                                 <p class="text-uppercase">XYZ Transporter</p>
                                             </div>
                                             <div class="form-group">
-                                                <textarea class="form-control font-karla-bold trans" name="name">Dispatched From Bhivan...</textarea>
+                                                <textarea name="Textstatus" ng-model="detailBill.transporterComment" class="form-control font-karla-bold trans" >Dispatched From Bhivan...</textarea>
                                             </div>
                                             <div class="text-center subbtn">
                                                 <div class="attach">
-                                                    <button class="btn btn-danger file-upload" name="button">
+                                                    <!--<button class="btn btn-danger file-upload" name="button">-->
                                                     TRANSPORTER RECEIPT
+                                                                                    <upload-image ng-model="detailBill.transporterReceiept" no-view></upload-image>
                                     <!-- <upload-image ng-model="formData.resume" ng-callback="changeit" no-view="" class="ng-pristine ng-untouched ng-valid ng-empty"></upload-image> -->
                                  </button>
                                                 </div>
-                                                <button class="btn btn-primary font-gotham-medium mt5 text-uppercase">Submit</button>
+                                                <button type="submit" ng-click="updateBill(detailBill)" class="btn btn-primary font-gotham-medium mt5 text-uppercase">Submit</button>
                                             </div>
                                             <!-- <div class="form-group">
                                             <label class="col-sm-6 control-label" for="">Change Status</label>
