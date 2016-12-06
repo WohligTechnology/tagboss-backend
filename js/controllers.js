@@ -1038,7 +1038,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
     })
 
-.controller('ViewOrdersCtrl', function ($scope, $state, TemplateService, NavigationService, $timeout) {
+.controller('ViewOrdersCtrl', function ($scope, toastr, $state, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("view-orders");
     $scope.menutitle = NavigationService.makeactive("View orders");
     TemplateService.title = $scope.menutitle;
@@ -1133,20 +1133,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         return '';
     }
-    
 
-    $scope.updateBill = function(orderdata){
-        console.log("eee", orderdata);
-        var senddata = {};
-    senddata.id = orderdata._id;
-    senddata.deliveryStatus = orderdata.deliveryStatus;
-    senddata.transporterComment = orderdata.transporterComment;
-    senddata.transporterReceiept = orderdata.transporterReceiept;
-    // senddata.id = orderdata.id;
-    console.log("aaa", senddata);
-    //   NavigationService.updateBill(senddata,function(data){
 
-    //   });
+    $scope.updateBill = function (orderdata) {
+        NavigationService.updateBill(orderdata, function (data) {
+            if (data.value == true) {
+                toastr.success("Order Status Updated!", "Information");
+            }
+        });
     };
     $scope.getOneOrder = function () {
         $scope.calcst = 0.00;
@@ -1218,11 +1212,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         senddata.comment = orderdata.comment;
         NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
             if (data.value == true) {
-              toastr.success("Order Payment Status Updated!", "Information");
-                 ordermod.close();
+                toastr.success("Order Payment Status Updated!", "Information");
+                ordermod.close();
             }
         });
-       
+
     }
 
     $scope.getCountDown = function (adate, bdate, myindex) {
@@ -2122,6 +2116,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             windowClass: "width60",
         });
     };
+
+    NavigationService.getAllCoupon(function (data) {
+        if (data.value == true) {
+            $scope.allCoupon = data.data.results;
+        }
+    });
 })
 
 .controller('headerctrl', function ($scope, TemplateService, NavigationService, $state) {

@@ -140,6 +140,15 @@ updateOrderStatusByAdmin: function (odata, callback) {
       }).success(callback);
     },
 
+    updateBill: function (bdata, callback) {
+      var data = bdata;
+      return $http({
+        url: adminURL + "bill/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
 
     addMoc: function (mocdata, callback) {
       var data = mocdata;
