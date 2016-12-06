@@ -108,10 +108,15 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'Refund-to-buyersCtrl'
     })
+    .state('paymentseller', {
+      url: "/paymentseller",
+      templateUrl: "views/template.html",
+      controller: 'PaymentCtrl'
+    })
     .state('assign-agency', {
       url: "/assign-agency",
       templateUrl: "views/template.html",
-      controller: 'Assign-agencyCtrl'
+      controller: 'PaymentCtrl'
     })
     .state('inspection-panel', {
       url: "/inspection-panel",
