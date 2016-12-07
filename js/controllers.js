@@ -2107,27 +2107,55 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
     })
 
-.controller('Coupon-codeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('Coupon-codeCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("coupon-code");
     $scope.menutitle = NavigationService.makeactive("Coupon-code");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.openedit = function () {
-        $uibModal.open({
+    $scope.openedit = function (data, id) {
+        $scope.title = data;
+        if (id) {
+            NavigationService.getOneCoupon(id, function (data) {
+                if (data.value == true) {
+                    $scope.coupon = data.data;
+                }
+            });
+        }
+        openmodc = $uibModal.open({
             animation: true,
-            controller: 'Coupon-codeCtrl',
             templateUrl: "views/modal/openedit.html",
             scope: $scope,
             windowClass: "width60",
         });
     };
 
-    NavigationService.getAllCoupon(function (data) {
-        if (data.value == true) {
-            $scope.allCoupon = data.data.results;
-        }
-    });
+    $scope.getAllCoupon = function () {
+        NavigationService.getAllCoupon(function (data) {
+            if (data.value == true) {
+                $scope.allCoupon = data.data.results;
+                console.log("coupon", $scope.allCoupon);
+            }
+        });
+    }
+
+    $scope.getAllCoupon();
+
+    $scope.addCoupon = function (coupondata) {
+        console.log("aa", coupondata);
+        NavigationService.addCoupon(coupondata, function (data) {
+            if (data.value == true) {
+                openmodc.close();
+                toastr.success("Coupon Added!", "Information");
+                $scope.getAllCoupon();
+            }
+        });
+    }
+
+    $scope.editCoupon = function () {
+
+    }
+
 })
 
 .controller('headerctrl', function ($scope, TemplateService, NavigationService, $state) {

@@ -63,23 +63,23 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllOrders: function (senddata,callback) {
+    getAllOrders: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "bill/getAllOrders",
         method: "POST",
-         data: data
+        data: data
       }).success(callback);
     },
 
 
 
-   getAllOrdersBySeller: function (senddata,callback) {
+    getAllOrdersBySeller: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "bill/getbillbyseller",
         method: "POST",
-         data: data
+        data: data
       }).success(callback);
     },
     getMaterial: function (callback) {
@@ -107,9 +107,9 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getOneOrder: function (id, callback) {
+    getOneOrder: function (id, callback) {
       var data = {
-       billid: id
+        billid: id
       };
       return $http({
         url: adminURL + "bill/getonebill",
@@ -121,7 +121,7 @@ var navigationservice = angular.module('navigationservice', [])
 
     getOrder: function (id, callback) {
       var data = {
-       orderid: id
+        orderid: id
       };
       return $http({
         url: adminURL + "order/getoneorder",
@@ -131,7 +131,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-updateOrderStatusByAdmin: function (odata, callback) {
+    updateOrderStatusByAdmin: function (odata, callback) {
       var data = odata;
       return $http({
         url: adminURL + "order/updateOrderStatusByAdmin",
@@ -179,7 +179,7 @@ updateOrderStatusByAdmin: function (odata, callback) {
       }).success(callback);
     },
 
-      editGrade: function (mocdata, callback) {
+    editGrade: function (mocdata, callback) {
       var data = mocdata;
       return $http({
         url: adminURL + "GradesStandards/save",
@@ -308,6 +308,33 @@ updateOrderStatusByAdmin: function (odata, callback) {
       }).success(callback);
     },
 
+    getAllCoupon: function (callback) {
+      return $http({
+        url: adminURL + "coupon/search",
+        method: "POST"
+      }).success(callback);
+    },
+
+    addCoupon: function (cdata, callback) {
+      var data = cdata;
+      return $http({
+        url: adminURL + "coupon/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
+    getOneCoupon: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "coupon/getone",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
 
     getAllSeller: function (sdata, callback) {
       var data = {
@@ -338,7 +365,7 @@ updateOrderStatusByAdmin: function (odata, callback) {
       }).success(callback);
     },
 
-     getAllVerifiedBuyer: function (callback) {
+    getAllVerifiedBuyer: function (callback) {
       return $http({
         url: adminURL + "user/getAllVerifiedBuyer",
         method: "POST"
