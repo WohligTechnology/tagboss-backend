@@ -797,6 +797,13 @@
 
 // ---------------this css is for payment-to-sellers  ---------------------
 .payment-to-sellers {
+    .nav-tabs > li.active > a{
+        background: #043e77;
+        color: #fff;
+    }
+    .nav-tabs > li > a{
+        color: #043e77;
+    }
     .payment-to-seller {
         .received-sent {
             height: 100px;
@@ -837,6 +844,60 @@
                 }
                 .table>thead>tr>th {
                     color: $lightblue;
+                }
+            }
+        }
+        .notify-head{
+            margin: 18px 0;
+            label{
+                text-transform: uppercase;
+                color: #043e77;
+                font-size: 18px;
+            }
+            .convert{
+                background: #043e77;
+                color: #fff;
+            }
+            .label-head{
+                margin: 0;
+                .lbl-head{
+                    label{
+                        margin: 0;
+                    }
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+        .over-table{
+               overflow-x: auto;
+            .payment-to-sellers-table{
+             
+                .sell-pay{
+                    .lbl-btn{
+                        label,button{
+                            text-align: center;
+                            margin: 0 10px;
+                        }
+                    }
+                    th{
+                        text-align: center;
+                        padding-left: 0;
+                        min-width: 150px;
+                    }
+                    td{
+                        text-align: left;
+                        padding-left: 12px;
+                    }
+                    // .uib-daypicker{
+                    //     table{
+                    //     th,td{
+                    //         padding-left: 0 !important;
+                    //     }
+                    //     }
+
+                    // }
+
                 }
             }
         }
