@@ -2051,11 +2051,54 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         };
     })
-    .controller('PaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+ .controller('PaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("paymentseller");
         $scope.menutitle = NavigationService.makeactive("Payment Seller");
         TemplateService.title = $scope.menutitle;
+        $scope.open
         $scope.navigation = NavigationService.getnav();
+            $scope.open1 = function () {
+                $scope.popup1.opened = true;
+            };
+                $scope.popup1 = {
+                    opened: false
+                };
+
+       $scope.openDate = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/datemodal.html",
+                scope: $scope,
+            });
+        };
+
+        $scope.convertedPay=[{
+            paymentid:"P003",
+            sellerid:"SB009",
+            amount:"7100",
+            transactionref:"ABC001A, ABC003X",
+            status:"Paid"
+        },{
+            paymentid:"P004",
+            sellerid:"SB009",
+            amount:"7100",
+            transactionref:"ABC001A, ABC003X",
+            status:"Paid"
+        },{
+            paymentid:"P005",
+            sellerid:"SB009",
+            amount:"7100",
+            transactionref:"ABC001A, ABC003X",
+            status:"Paid"
+        }];
+
+        $scope.showData = false;
+        $scope.showText = true;
+        $scope.showConverted = function(indexid){
+            $scope.showData = true;
+            $scope.myindex = indexid;
+        };
+
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("assign-agency");
@@ -2119,8 +2162,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.getOneCoupon(id, function (data) {
                 if (data.value == true) {
                     $scope.coupon = data.data;
+                    $scope.coupon.startDate = new Date($scope.coupon.startDate);
+                    $scope.coupon.endDate = new Date($scope.coupon.endDate);
                 }
             });
+        }else{
+            $scope.coupon ={};
         }
         openmodc = $uibModal.open({
             animation: true,
