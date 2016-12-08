@@ -125,6 +125,7 @@
             </tr>
           </tbody>
         </table>
+         <ul uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getInventory()"></ul>
       </div>
     </div>
     <div class="addproduct" ng-show="showEdit">

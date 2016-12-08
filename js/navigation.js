@@ -49,10 +49,12 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getInventory: function (callback) {
+    getInventory: function (idata, callback) {
+      var data = idata;
       return $http({
         url: adminURL + "inventory/search",
-        method: "POST"
+        method: "POST",
+        data: data
       }).success(callback);
     },
 
@@ -308,10 +310,23 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllCoupon: function (callback) {
+    getAllCoupon: function (cdata, callback) {
+      var data = cdata;
       return $http({
         url: adminURL + "coupon/search",
-        method: "POST"
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    deleteCoupon: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "coupon/delete",
+        method: "POST",
+        data: data
       }).success(callback);
     },
 
