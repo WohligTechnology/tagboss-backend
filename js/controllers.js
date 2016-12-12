@@ -2059,6 +2059,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         };
     })
+    .controller('SettingCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("setting");
+        $scope.menutitle = NavigationService.makeactive("Setting");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+    })
     .controller('PaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("paymentseller");
         $scope.menutitle = NavigationService.makeactive("Payment Seller");

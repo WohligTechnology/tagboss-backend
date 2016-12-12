@@ -108,6 +108,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'Refund-to-buyersCtrl'
     })
+    .state('setting', {
+      url: "/setting",
+      templateUrl: "views/template.html",
+      controller: 'SettingCtrl'
+    })
     .state('paymentseller', {
       url: "/paymentseller",
       templateUrl: "views/template.html",
@@ -259,11 +264,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'EditAgencyDetailsCtrl'
     })
 
-  .state('inspection-login', {
-    url: "/inspection-login",
-    templateUrl: "views/template.html",
-    controller: 'InspectionLoginCtrl'
-  });
+    .state('inspection-login', {
+      url: "/inspection-login",
+      templateUrl: "views/template.html",
+      controller: 'InspectionLoginCtrl'
+    });
 
   $urlRouterProvider.otherwise("/dashboard");
   $locationProvider.html5Mode(isproduction);
@@ -414,51 +419,51 @@ firstapp.directive('uploadImage', function ($http, $filter) {
   };
 });
 
-firstapp.directive('onlyDecimal', function() {
-      return {
-        require: '?ngModel',
-        link: function(scope, element, attrs, ngModelCtrl) {
-          if(!ngModelCtrl) {
-            return; 
+firstapp.directive('onlyDecimal', function () {
+  return {
+    require: '?ngModel',
+    link: function (scope, element, attrs, ngModelCtrl) {
+      if (!ngModelCtrl) {
+        return;
+      }
+
+      ngModelCtrl.$parsers.push(function (val) {
+        if (angular.isUndefined(val)) {
+          var val = '';
+        }
+
+        var clean = val.replace(/[^-0-9\.]/g, '');
+        var negativeCheck = clean.split('-');
+        var decimalCheck = clean.split('.');
+        if (!angular.isUndefined(negativeCheck[1])) {
+          negativeCheck[1] = negativeCheck[1].slice(0, negativeCheck[1].length);
+          clean = negativeCheck[0] + '-' + negativeCheck[1];
+          if (negativeCheck[0].length > 0) {
+            clean = negativeCheck[0];
           }
 
-          ngModelCtrl.$parsers.push(function(val) {
-            if (angular.isUndefined(val)) {
-                var val = '';
-            }
-            
-            var clean = val.replace(/[^-0-9\.]/g, '');
-            var negativeCheck = clean.split('-');
-			var decimalCheck = clean.split('.');
-            if(!angular.isUndefined(negativeCheck[1])) {
-                negativeCheck[1] = negativeCheck[1].slice(0, negativeCheck[1].length);
-                clean =negativeCheck[0] + '-' + negativeCheck[1];
-                if(negativeCheck[0].length > 0) {
-                	clean =negativeCheck[0];
-                }
-                
-            }
-              
-            if(!angular.isUndefined(decimalCheck[1])) {
-                decimalCheck[1] = decimalCheck[1].slice(0,2);
-                clean =decimalCheck[0] + '.' + decimalCheck[1];
-            }
-
-            if (val !== clean) {
-              ngModelCtrl.$setViewValue(clean);
-              ngModelCtrl.$render();
-            }
-            return clean;
-          });
-
-          element.bind('keypress', function(event) {
-            if(event.keyCode === 32) {
-              event.preventDefault();
-            }
-          });
         }
-      };
-    });
+
+        if (!angular.isUndefined(decimalCheck[1])) {
+          decimalCheck[1] = decimalCheck[1].slice(0, 2);
+          clean = decimalCheck[0] + '.' + decimalCheck[1];
+        }
+
+        if (val !== clean) {
+          ngModelCtrl.$setViewValue(clean);
+          ngModelCtrl.$render();
+        }
+        return clean;
+      });
+
+      element.bind('keypress', function (event) {
+        if (event.keyCode === 32) {
+          event.preventDefault();
+        }
+      });
+    }
+  };
+});
 
 firstapp.directive('onlyDigits', function () {
   return {
