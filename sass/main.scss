@@ -1355,6 +1355,10 @@
                 padding: 0;
               }
             }
+            .or {
+              padding: 0 0 12px;
+              text-align: center;
+            }
             p {
               font-size: 18px;
               color: #2B2B41;
@@ -1365,7 +1369,7 @@
             }
             input {
               height: 30px;
-              width: 75%;
+              // width: 75%;
             }
             .add-textbox {
               height: 75px;
