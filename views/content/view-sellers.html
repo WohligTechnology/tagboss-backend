@@ -269,7 +269,7 @@
           <tr>
             <td>{{sellerData.companyAddress}}
             </td>
-            <td><div ng-if="sellerData.warehouse.length>0">{{sellerData.warehouse[0].warehouseFirmName}},<br> {{sellerData.warehouse[0].warehouseAddress}},<br> {{sellerData.warehouse[0].warehouseCity}}, {{sellerData.warehouse[0].warehousePincode}}<br/>{{sellerData.warehouse[0].warehouseState}},
+            <td><div ng-if="sellerData.warehouse.length>0">{{sellerData.warehouse[0].warehouseFirmName}},<br> {{sellerData.warehouse[0].warehouseAddress}},<br> {{sellerData.warehouse[0].warehouseCity}}, {{sellerData.warehouse[0].warehousePincode}}<br/>{{sellerData.warehouse[0].warehouseState.name}},
             {{sellerData.warehouse[0].warehouseCountry}}
             </div>
             </td>
@@ -399,7 +399,7 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="State ">State</label>
-                      <input class="form-control " type="text " id="State " placeholder="Enter State" ng-model="sellerData.state" readonly>
+                      <input class="form-control " type="text " id="State " placeholder="Enter State" ng-model="sellerData.state.name" readonly>
                     </div>
                   </div>
                 </div>

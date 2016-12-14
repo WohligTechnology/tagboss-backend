@@ -60,7 +60,7 @@
                                 <p>{{detailBill.buyer.firstName}} {{detailBill.buyer.lastName}}</p>
                                 <p>{{detailBill.order.delivery[0].deliveryFirmName}}<br/> {{detailBill.order.delivery[0].deliveryAddress}}
                                     <br/> {{detailBill.order.delivery[0].deliveryCity}}- {{detailBill.order.delivery[0].deliveryPincode}}
-                                    <br/> {{detailBill.order.delivery[0].deliveryState}} {{detailBill.order.delivery[0].deliveryCountry}}
+                                    <br/> {{detailBill.order.delivery[0].deliveryState.name}} {{detailBill.order.delivery[0].deliveryCountry}}
                                 </p>
                                 <p> Contact: {{detailBill.buyer.mobile}}</p>
                             </div>
@@ -75,7 +75,7 @@
                                 <p>{{detailBill.inventory.seller.firmName}}</p>
                                 <p> {{detailBill.warehouse.warehouseFirmName}},<br/> {{detailBill.warehouse.warehouseAddress}},
                                     <br/> {{detailBill.warehouse.warehouseCity}}-{{detailBill.warehouse.warehousePincode}},
-                                    <br/> {{detailBill.warehouse.warehouseState}}, {{detailBill.warehouse.warehouseCountry}}
+                                    <br/> {{detailBill.warehouse.warehouseState.name}}, {{detailBill.warehouse.warehouseCountry}}
                                 </p>
                                 <p> Contact:{{detailBill.inventory.seller.mobile}}</p>
                             </div>
