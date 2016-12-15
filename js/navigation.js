@@ -76,7 +76,16 @@ var navigationservice = angular.module('navigationservice', [])
 
 
 
-    getAllOrdersBySeller: function (senddata, callback) {
+    getAllOrdersByCoupon: function (senddata, callback) {
+      var data = senddata
+      return $http({
+        url: adminURL + "coupon/getordersbycoupon",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+        getAllOrdersBySeller: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "bill/getbillbyseller",
@@ -145,7 +154,7 @@ var navigationservice = angular.module('navigationservice', [])
     updateBill: function (bdata, callback) {
       var data = bdata;
       return $http({
-        url: adminURL + "bill/save",
+        url: adminURL + "bill/updateDeliveryStatus",
         method: "POST",
         data: data
       }).success(callback);

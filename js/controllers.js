@@ -1144,7 +1144,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
     $scope.updateBill = function (orderdata) {
-        NavigationService.updateBill(orderdata, function (data) {
+    var senddata ={};
+    senddata._id = orderdata._id;
+    senddata.deliveryStatus = orderdata.deliveryStatus;
+    senddata.transporterComment =  orderdata.transporterComment;
+    senddata.transporterReceiept = orderdata.transporterReceiept;
+        NavigationService.updateBill(senddata, function (data) {
             if (data.value == true) {
                 toastr.success("Order Status Updated!", "Information");
             }
@@ -1227,21 +1232,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     }
 
-    $scope.getCountDown = function (adate,orderid, myindex) {
-         var a = moment(adate);
+    $scope.getCountDown = function (adate, orderid, myindex) {
+        var a = moment(adate);
         // var b = moment(bdate);
-        var orderid= orderid.substring(1, orderid.length);
+        var orderid = orderid.substring(1, orderid.length);
         var b = moment(a).add(2, 'days');
-        var cdate =new Date();
-        var currentTime= moment(cdate);
+        var cdate = new Date();
+        var currentTime = moment(cdate);
         var duration = moment.duration(currentTime.diff(b));
         //  console.log("aa", a);
         //  console.log("bb", b);
         //  console.log("cc", currentTime);
-        if(currentTime < b){
+        if (currentTime < b) {
             console.log("cccc", currentTime, b);
-        }
-        else{
+        } else {
             console.log("stop");
         }
         // console.log("duration", duration);
@@ -1362,15 +1366,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
         senddata.status = "All"
         senddata.createdAt = ""
-        NavigationService.getAllOrdersBySeller(senddata, function (data) {
-            if (data.value == true) {
-                $scope.selleris = true;
-                $scope.allData = data.data;
-                console.log("$scope.aaaaallData", $scope.allData);
-            } else {
-                $scope.allData = [];
-            }
-        });
+
+        if ($state.params.type === "coupon") {
+             senddata.code = $state.params.id;
+            NavigationService.getAllOrdersByCoupon(senddata, function (data) {
+                if (data.value == true) {
+                    $scope.allData = data.data.results;
+                    console.log("$scope.aaaaallData", $scope.allData);
+                } else {
+                    $scope.allData = [];
+                }
+            });
+        }
+        if ($state.params.type !== "coupon") {
+            NavigationService.getAllOrdersBySeller(senddata, function (data) {
+                if (data.value == true) {
+                    $scope.selleris = true;
+                    $scope.allData = data.data;
+                    console.log("$scope.aaaaallData", $scope.allData);
+                } else {
+                    $scope.allData = [];
+                }
+            });
+        }
     } else {
         senddata.sellerid = "";
         senddata.status = "All"
