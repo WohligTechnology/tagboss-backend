@@ -162,24 +162,24 @@
                 </td>
                 <td>
                  {{order.paymentStatus}}<br>
-                  <div data-ng-init="getCountDown('2016-06-06T20:04:56','2016-06-06T20:03:55', $index)" class="font-karla inline-block time" id="countercomplete0">
+                  <div data-ng-init="getCountDown(order.createdAt, cat,$index)" class="font-karla inline-block time" id="countercomplete{{cat  | ltrim: '-' }}{{$index}}">
                     <form class="form-inline ng-pristine ng-valid">
                       <div class="form-group ">
-                        <input type="text" class="countdays" id="countdays{{$index}}" >
+                        <input type="text" class="countdays" id="countdays{{cat  | ltrim: '-' }}{{$index}}" >
                         <label for="countdays">Days</label>
                       </div> <span>:</span>
                       <div class="form-group">
-                        <input type="text" class="counthours" id="counthours{{$index}}">
+                        <input type="text" class="counthours" id="counthours{{cat  | ltrim: '-' }}{{$index}}">
                         <label for="counthours">Hours</label>
                       </div>
                       <span>:</span>
                       <div class="form-group">
-                        <input type="text" id="countmin{{$index}}" >
+                        <input type="text" id="countmin{{cat  | ltrim: '-' }}{{$index}}" >
                         <label for="countmin">Mintues</label>
                       </div>
                       <span>:</span>
                       <div class="form-group">
-                        <input type="text" id="countseconds{{$index}}" class="countseconds">
+                        <input type="text" id="countseconds{{cat  | ltrim: '-' }}{{$index}}" class="countseconds">
                         <label for="countseconds">Seconds</label>
                       </div>
 

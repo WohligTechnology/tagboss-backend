@@ -1227,28 +1227,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     }
 
-    $scope.getCountDown = function (adate, bdate, myindex) {
-        //   var a = moment('2016-06-06T20:04:56'); //now
-        // var b = moment('2016-06-06T20:03:55');
-        var a = moment(adate);
-        var b = moment(bdate);
-        // console.log("+ myindex", myindex);
-        var duration = moment.duration(a.diff(b));
-        var interval = 1;
-        var timer = setInterval(function () {
-            // console.log("duration1", duration);
-            duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-            // console.log("duration2", duration);
-            if (duration > 0) {
-                // document.getElementById("countdays" + myindex).value = duration.days();
-                // document.getElementById("counthours" + myindex).value = duration.hours();
-                // document.getElementById("countmin" + myindex).value = duration.minutes();
-                // document.getElementById("countseconds" + myindex).value = duration.seconds();
-            } else {
-                // document.getElementById("countercomplete" + myindex).innerHTML = moment().format('MMMM Do YYY');
-                // clearInterval(timer);
-            }
-        }, 1000);
+    $scope.getCountDown = function (adate,orderid, myindex) {
+         var a = moment(adate);
+        // var b = moment(bdate);
+        var orderid= orderid.substring(1, orderid.length);
+        var b = moment(a).add(2, 'days');
+        var cdate =new Date();
+        var currentTime= moment(cdate);
+        var duration = moment.duration(currentTime.diff(b));
+        //  console.log("aa", a);
+        //  console.log("bb", b);
+        //  console.log("cc", currentTime);
+        if(currentTime < b){
+            console.log("cccc", currentTime, b);
+        }
+        else{
+            console.log("stop");
+        }
+        // console.log("duration", duration);
+        // var interval = 1;
+        // var timer = setInterval(function () {
+        //     // console.log("duration1", duration);
+        //     duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+        //      if (duration > 0) {
+        //         document.getElementById("countdays" + orderid + myindex).value = duration.days();
+        //         document.getElementById("counthours" +orderid + myindex).value = duration.hours();
+        //         document.getElementById("countmin"+ orderid + myindex).value = duration.minutes();
+        //         document.getElementById("countseconds"+ orderid + myindex).value = duration.seconds();
+        //     } else {
+        //         document.getElementById("countercomplete"+ orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
+        //         clearInterval(timer);
+        //     }
+        // }, 1000);
     }
 
     // $scope.getCountDown();
