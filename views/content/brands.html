@@ -86,6 +86,7 @@
                                    
                                 </tbody>
                             </table>
+                             <ul ng-if="totalItems>10" uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getAllCoupon()"></ul>
                         </div>
                     </div>
                 </div>

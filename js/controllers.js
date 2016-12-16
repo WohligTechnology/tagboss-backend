@@ -1258,9 +1258,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
+        console.log("duration.days()", duration.days(), "duration.hours()", duration.hours(), "duration.minutes()", duration.minutes(), "duration.seconds()", duration.seconds());
+
         if (new Date(currentTime) < new Date(b)) {
-            console.log("innnnnnn");
-            console.log("duration", duration);
+            // console.log("innnnnnn");
             var interval = 1;
             var timer = setInterval(function () {
                 // console.log("duration1", duration);
@@ -1277,10 +1278,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }, 1000);
         } else {
             console.log("stop", "countercomplete" + orderid + myindex);
-            document.getElementById("countdays" + orderid + myindex).innerHTML = new Date();
-
-            //  document.getElementById("countercomplete"+orderid+myindex).innerHTML =moment(b).format('MMMM Do YYYY, h:mm:ss a');
-            // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
+         // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
         }
     }
 
