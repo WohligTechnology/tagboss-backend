@@ -85,7 +85,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-        getAllOrdersBySeller: function (senddata, callback) {
+    getAllOrdersBySeller: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "bill/getbillbyseller",
@@ -239,10 +239,23 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getOneAgency: function (id, callback) {
-      var data = {_id:id};
+    getOneAgency: function (id, callback) {
+      var data = {
+        _id: id
+      };
       return $http({
         url: adminURL + "inspection/getOne",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    deleteAgency: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "inspection/delete",
         method: "POST",
         data: data
       }).success(callback);

@@ -452,7 +452,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 })
 
 
-.controller('InspectionAgenciesCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('InspectionAgenciesCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("inspection-agencies");
     $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
     TemplateService.title = $scope.menutitle;
@@ -466,8 +466,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                     $scope.agency = data.data;
                 }
             });
-        }
-        else{
+        } else {
             $scope.agency = {};
         }
         $scope.agencypop = $uibModal.open({
@@ -485,6 +484,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 closeAgencyPopup();
                 $scope.agency = {};
                 $scope.getAgency();
+            }
+        });
+    }
+
+    $scope.deleteAgency = function (id) {
+        NavigationService.deleteAgency(id, function (data) {
+            if (data.value == true) {
+                $scope.getAgency();
+                toastr.success("Agency Deleted Successfully", "Information");
             }
         });
     }
