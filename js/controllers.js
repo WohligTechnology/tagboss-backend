@@ -1258,7 +1258,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
-        console.log("duration.days()", duration.days(), "duration.hours()", duration.hours(), "duration.minutes()", duration.minutes(), "duration.seconds()", duration.seconds());
+        // console.log("duration.days()", duration.days(), "duration.hours()", duration.hours(), "duration.minutes()", duration.minutes(), "duration.seconds()", duration.seconds());
 
         if (new Date(currentTime) < new Date(b)) {
             // console.log("innnnnnn");
