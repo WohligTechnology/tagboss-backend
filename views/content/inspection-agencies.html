@@ -42,8 +42,8 @@
           <div class="col-md-6">
             <div class="magic-form">
               <div class="magic-resize">
-                <input class="magic-checkbox" type="checkbox" name="layout" id="2" value="option1">
-                <label class="text" for="2">
+                <input class="magic-checkbox" type="checkbox" name="layout" id="{{$index}}" value="option1">
+                <label class="text" for="{{$index}}">
                 <h2>{{agency.agencyName}}</h2>
               </label>
               </div>
@@ -64,7 +64,7 @@
               </div>
             </li> -->
                 <li>
-                  <div class="input-group edit-btn" ng-click="openInspection('Edit');">
+                  <div class="input-group edit-btn" ng-click="openInspection('Edit', agency._id);">
                     <a href="" class="pull-right">
                       <label class="view">Edit</label>
                     </a>
@@ -171,7 +171,7 @@
                   </div>
                 </li>
               </ul>
-            </div>
+            </div>openInspection
           </div>
         </div>
       </div>

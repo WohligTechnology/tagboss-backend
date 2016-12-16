@@ -452,14 +452,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 })
 
 
-.controller('InspectionAgenciesCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('InspectionAgenciesCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.changecontent("inspection-agencies");
     $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.openInspection = function (data) {
+    $scope.openInspection = function (data, id) {
         $scope.modaltitle = data;
+        if (id != undefined) {
+            NavigationService.getOneAgency(id, function (data) {
+                if (data.value == true) {
+                    $scope.agency = data.data;
+                }
+            });
+        }
+        else{
+            $scope.agency = {};
+        }
         $scope.agencypop = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/inspection.html",
@@ -471,6 +481,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.addAgency(agency, function (data) {
             if (data.value == true) {
                 // console.log("done");
+                toastr.success("Agency Added Successfully", "Information");
                 closeAgencyPopup();
                 $scope.agency = {};
                 $scope.getAgency();
@@ -1239,31 +1250,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
-        //  console.log("aa", a);
-        //  console.log("bb", b);
-        //  console.log("cc", currentTime);
-          console.log("cccc",new Date(currentTime), new Date(b), new Date(currentTime)> new Date(b),new Date(currentTime)< new Date(b));
         if (new Date(currentTime) < new Date(b)) {
             console.log("innnnnnn");
             console.log("duration", duration);
-        var interval = 1;
-        var timer = setInterval(function () {
-            // console.log("duration1", duration);
-            duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-             if (duration > 0) {
-                document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                document.getElementById("counthours" +orderid + myindex).value = duration.hours();
-                document.getElementById("countmin"+ orderid + myindex).value = duration.minutes();
-                document.getElementById("countseconds"+ orderid + myindex).value = duration.seconds();
-            } else {
-                document.getElementById("countercomplete"+ orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
-                clearInterval(timer);
-            }
-        }, 1000);
+            var interval = 1;
+            var timer = setInterval(function () {
+                // console.log("duration1", duration);
+                duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+                if (duration > 0) {
+                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                    document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                } else {
+                    // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
+                    clearInterval(timer);
+                }
+            }, 1000);
         } else {
-            console.log("stop");
+            console.log("stop", "countercomplete" + orderid + myindex);
+            document.getElementById("countdays" + orderid + myindex).innerHTML = new Date();
+
+            //  document.getElementById("countercomplete"+orderid+myindex).innerHTML =moment(b).format('MMMM Do YYYY, h:mm:ss a');
+            // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
         }
-        
     }
 
     // $scope.getCountDown();

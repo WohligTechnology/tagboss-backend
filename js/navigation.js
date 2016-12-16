@@ -239,6 +239,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getOneAgency: function (id, callback) {
+      var data = {_id:id};
+      return $http({
+        url: adminURL + "inspection/getOne",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     sendReport: function (rdata, callback) {
       var data = rdata;
       return $http({
