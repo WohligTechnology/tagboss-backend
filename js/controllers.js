@@ -1144,11 +1144,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
     $scope.updateBill = function (orderdata) {
-    var senddata ={};
-    senddata._id = orderdata._id;
-    senddata.deliveryStatus = orderdata.deliveryStatus;
-    senddata.transporterComment =  orderdata.transporterComment;
-    senddata.transporterReceiept = orderdata.transporterReceiept;
+        var senddata = {};
+        senddata._id = orderdata._id;
+        senddata.deliveryStatus = orderdata.deliveryStatus;
+        senddata.transporterComment = orderdata.transporterComment;
+        senddata.transporterReceiept = orderdata.transporterReceiept;
         NavigationService.updateBill(senddata, function (data) {
             if (data.value == true) {
                 toastr.success("Order Status Updated!", "Information");
@@ -1229,7 +1229,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 ordermod.close();
             }
         });
-
     }
 
     $scope.getCountDown = function (adate, orderid, myindex) {
@@ -1239,30 +1238,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
-        var duration = moment.duration(currentTime.diff(b));
+        var duration = moment.duration(b.diff(currentTime));
         //  console.log("aa", a);
         //  console.log("bb", b);
         //  console.log("cc", currentTime);
-        if (currentTime < b) {
-            console.log("cccc", currentTime, b);
+          console.log("cccc",new Date(currentTime), new Date(b), new Date(currentTime)> new Date(b),new Date(currentTime)< new Date(b));
+        if (new Date(currentTime) < new Date(b)) {
+            console.log("innnnnnn");
+            console.log("duration", duration);
+        var interval = 1;
+        var timer = setInterval(function () {
+            // console.log("duration1", duration);
+            duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+             if (duration > 0) {
+                document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                document.getElementById("counthours" +orderid + myindex).value = duration.hours();
+                document.getElementById("countmin"+ orderid + myindex).value = duration.minutes();
+                document.getElementById("countseconds"+ orderid + myindex).value = duration.seconds();
+            } else {
+                document.getElementById("countercomplete"+ orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
+                clearInterval(timer);
+            }
+        }, 1000);
         } else {
             console.log("stop");
         }
-        // console.log("duration", duration);
-        // var interval = 1;
-        // var timer = setInterval(function () {
-        //     // console.log("duration1", duration);
-        //     duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-        //      if (duration > 0) {
-        //         document.getElementById("countdays" + orderid + myindex).value = duration.days();
-        //         document.getElementById("counthours" +orderid + myindex).value = duration.hours();
-        //         document.getElementById("countmin"+ orderid + myindex).value = duration.minutes();
-        //         document.getElementById("countseconds"+ orderid + myindex).value = duration.seconds();
-        //     } else {
-        //         document.getElementById("countercomplete"+ orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
-        //         clearInterval(timer);
-        //     }
-        // }, 1000);
+        
     }
 
     // $scope.getCountDown();
@@ -1368,7 +1369,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         senddata.createdAt = ""
 
         if ($state.params.type === "coupon") {
-             senddata.code = $state.params.id;
+            senddata.code = $state.params.id;
             NavigationService.getAllOrdersByCoupon(senddata, function (data) {
                 if (data.value == true) {
                     $scope.allData = data.data.results;
