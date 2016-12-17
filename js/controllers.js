@@ -2159,6 +2159,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.myindex = indexid;
         };
 
+        $scope.getAllPayments = function(){
+            NavigationService.getAllPayments(function(data){
+                $scope.allData = data.data.results;
+                console.log("$scope.allData",$scope.allData);
+            });
+        }
+
+        $scope.getAllPayments();
+
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("assign-agency");
