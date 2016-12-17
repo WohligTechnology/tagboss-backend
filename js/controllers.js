@@ -1251,7 +1251,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getCountDown = function (adate, orderid, myindex) {
-        var a = moment(adate);
+         var a = moment(adate);
         // var b = moment(bdate);
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(a).add(2, 'days');
@@ -1267,10 +1267,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("duration1", duration);
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
-                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                    document.getElementById("counthours" + orderid + myindex).value = duration.hours();
-                    document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
-                    document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                    // document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                    // document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    // document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    // document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
                 } else {
                     // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
                     clearInterval(timer);
