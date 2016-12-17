@@ -12,6 +12,11 @@
       @import "../bower_components/angular-toastr/dist/angular-toastr.css";
       /* Bootstrap Variables Goes Here */
       
+      @font-face {
+        font-family: 'font-awesome';
+        src: url("../fonts/fontawesome-webfont.ttf") format("truetype");
+      }
+      
       $brand-primary: #0d9dff !default;
       $brand-success: #84ce3c !default;
       $brand-warning: #ffec39 !default;
@@ -27,8 +32,10 @@
       $magic-dot-size: 8px !default;
       $magic-border-color: #c0c0c0 !default;
       $magic-main-color: #51b1ac !default;
-      $magic-disabled-color: lighten($magic-border-color, 14%) !default;
-      $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
+      $magic-disabled-color: lighten($magic-border-color,
+      14%) !default;
+      $magic-disabled-checked-color: lighten($magic-main-color,
+      30%) !default;
       @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
       body {
         // padding-top: 18px;
@@ -2224,26 +2231,77 @@
       }
       
       //Brand Manufacturer-Modal
-      .filename {
-        p {
-          width: 84%;
+      .input-group {
+        .filename p {
+          position: absolute;
+          top: 0 !important;
+          left: 0;
+          width: 91%;
           border: 1px solid #b5b5b5;
           font-size: 16px;
-          text-align: left;
+          text-align: centetr;
           height: 34px;
           background-color: #efefef;
-          /* line-height: 14px; */
-          line-height: 32px;
+          line-height: 30px;
           padding: 0 8px;
-          display: inline-block;
         }
-        span {
-          padding: 10px 14px;
-          background: #0081d9;
-          color: #fff;
+        .input-group-addon {
+          .form-group {
+            margin: 0;
+            height: 32px;
+            width: 10px;
+          }
+          padding: 0 11px 0 14px;
+          height: 32px;
+          background-color: #009cd9;
+          border: 1px solid #009cd9;
+          border-radius: 0;
         }
       }
       
+      .attach .btn-upload input {
+        right: 0;
+        left: auto;
+        // width: 37px;
+        cursor: default;
+        opacity: 0;
+      }
+      
+      .attach {
+        .btn-upload {
+          padding: 0;
+        }
+        &::before {
+          content: '\f093';
+          font-family: 'font-awesome';
+          color: #fff;
+          font-size: 20px;
+          padding: 4px 8px;
+          position: absolute;
+          right: 1px;
+          top: -1px;
+        }
+      }
+      
+      // .filename {
+      //   p {
+      //     width: 84%;
+      //     border: 1px solid #b5b5b5;
+      //     font-size: 16px;
+      //     text-align: left;
+      //     height: 34px;
+      //     background-color: #efefef;
+      //     /* line-height: 14px; */
+      //     line-height: 32px;
+      //     padding: 0 8px;
+      //     display: inline-block;
+      //   }
+      //   span {
+      //     padding: 10px 14px;
+      //     background: #0081d9;
+      //     color: #fff;
+      //   }
+      // }
       // ------------------------------------------------------
       .custom-radiobtn {
         padding: 0;
