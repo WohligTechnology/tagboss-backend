@@ -477,6 +477,13 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+       getAllPendingPayments: function (callback) {
+      return $http({
+        url: adminURL + "transaction/getallpendingtransaction",
+        method: "POST"
+      }).success(callback);
+    },
+
   };
 
 

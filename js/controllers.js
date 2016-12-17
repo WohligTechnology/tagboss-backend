@@ -2160,14 +2160,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
         $scope.getAllPayments = function () {
             NavigationService.getAllPayments(function (respo) {
-                console.log("respo", respo);
-                if (respo) {
+           if (respo.value==true) {
                     $scope.all = respo.data.results;
                 }
             });
         }
-
         $scope.getAllPayments();
+
+         $scope.getAllPendingPayments = function () {
+            NavigationService.getAllPendingPayments(function (respo) {
+                 if (respo.value==true) {
+                    $scope.allPending = respo.data.results;
+                    console.log("daaaa", $scope.allPending);
+                }
+            });
+        }
+
+        $scope.getAllPendingPayments();
 
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {

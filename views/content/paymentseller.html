@@ -165,8 +165,8 @@
               </thead>
               <tbody class="sell-pay">
                 <tr ng-repeat="data in all">
-                  <td>{{data.transacId}}</td>
-                  <td>{{data.order.orderId}}</td>
+                  <td>TBT{{data.transacId}}</td>
+                  <td>TBO{{data.order.orderId}}</td>
                   <td>{{data.orderDate | date:'mediumDate'}}</td>
                   <td>{{data.seller.userId}}</td>
                   <td>{{data.orderValue}}</td>
@@ -310,54 +310,19 @@
                 </tr>
               </thead>
               <tbody class="sell-pay">
-                <tr>
-                  <td>ABC001A</td>
-                  <td>ABC001</td>
-                  <td>2-Jul</td>
-                  <td>SB009</td>
-                  <td>10526</td>
-                  <td>10000</td>
-                  <td>7300</td>
-                  <td>11-Jul</td>
-                  <td>75% payment on completion</td>
-                  <td>Not Due Yet</td>
+                <tr ng-repeat="data in allPending">
+                  <td>TBT{{data.transacId}}</td>
+                  <td>TBO{{data.order.orderId}}</td>
+                  <td>{{data.orderDate | date:'mediumDate'}}</td>
+                  <td>{{data.seller.userId}}</td>
+                  <td>{{data.orderValue}}</td>
+                  <td>{{data.netPayable}}</td>
+                  <td>{{data.paymentAmount}}</td>
+                  <td>{{data.paymentDueDate| date:'mediumDate'}}</td>
+                  <td>{{data.paymentRemarks}}</td>
+                  <td>{{data.status}}</td>
                 </tr>
-                <tr>
-                  <td>ABC00CX</td>
-                  <td>ABC003</td>
-                  <td>30-Jun</td>
-                  <td>SB009</td>
-                  <td>7000</td>
-                  <td>0</td>
-                  <td>-200</td>
-                  <td>8-Jul</td>
-                  <td>Order Cancellation Fee</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>XYZ001A</td>
-                  <td>XYZ001</td>
-                  <td>20-Jun</td>
-                  <td>SB002</td>
-                  <td>21053</td>
-                  <td>20000</td>
-                  <td>15000</td>
-                  <td>30-Jun</td>
-                  <td>75% payment on dispatch</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>XYZ001B</td>
-                  <td>XYZ001</td>
-                  <td>20-Jul</td>
-                  <td>SB002</td>
-                  <td>21053</td>
-                  <td>20000</td>
-                  <td>5000</td>
-                  <td>1-Jul</td>
-                  <td>25% payment on completion</td>
-                  <td>Pending</td>
-                </tr>
+              
               </tbody>
             </table>
           </div>
