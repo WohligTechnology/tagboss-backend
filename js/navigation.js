@@ -472,7 +472,7 @@ var navigationservice = angular.module('navigationservice', [])
 
     getAllPayments: function (callback) {
       return $http({
-        url: adminURL + "transaction/search",
+        url: adminURL + "transaction/getalltransaction",
         method: "POST"
       }).success(callback);
     },

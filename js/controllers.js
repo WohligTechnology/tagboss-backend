@@ -1251,7 +1251,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getCountDown = function (adate, orderid, myindex) {
-         var a = moment(adate);
+        var a = moment(adate);
         // var b = moment(bdate);
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(a).add(2, 'days');
@@ -1278,7 +1278,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }, 1000);
         } else {
             console.log("stop", "countercomplete" + orderid + myindex);
-         // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
+            // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
         }
     }
 
@@ -2115,7 +2115,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.template = TemplateService.changecontent("paymentseller");
         $scope.menutitle = NavigationService.makeactive("Payment Seller");
         TemplateService.title = $scope.menutitle;
-        $scope.open
+        $scope.all = {};
         $scope.navigation = NavigationService.getnav();
         $scope.open1 = function () {
             $scope.popup1.opened = true;
@@ -2158,11 +2158,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.showData = true;
             $scope.myindex = indexid;
         };
-
-        $scope.getAllPayments = function(){
-            NavigationService.getAllPayments(function(data){
-                $scope.allData = data.data.results;
-                console.log("$scope.allData",$scope.allData);
+        $scope.getAllPayments = function () {
+            NavigationService.getAllPayments(function (respo) {
+                console.log("respo", respo);
+                if (respo) {
+                    $scope.all = respo.data.results;
+                }
             });
         }
 

@@ -41,7 +41,7 @@
           <tr>
             <td>{{sellerData.companyAddress}}
             </td>
-            <td><div ng-if="sellerData.warehouse.length>0">{{sellerData.warehouse[0].warehouseFirmName}},<br> {{sellerData.warehouse[0].warehouseAddress}},<br> {{sellerData.warehouse[0].warehouseCity}}, {{sellerData.warehouse[0].warehousePincode}}<br/>{{sellerData.warehouse[0].warehouseState}},
+            <td><div ng-if="sellerData.warehouse.length>0">{{sellerData.warehouse[0].warehouseFirmName}},<br> {{sellerData.warehouse[0].warehouseAddress}},<br> {{sellerData.warehouse[0].warehouseCity}}, {{sellerData.warehouse[0].warehousePincode}}<br/>{{sellerData.warehouse[0].warehouseState.name}},
             {{sellerData.warehouse[0].warehouseCountry}}
             </div>
             </td>

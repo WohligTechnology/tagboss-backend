@@ -152,8 +152,8 @@
                 <tr>
                   <th>Transaction ID</th>
                   <th>Order ID</th>
-                  <th>Date</th>
-                  <th>Seller Date</th>
+                  <th>Order Date</th>
+                  <th>Seller ID</th>
                   <th>Order Value</th>
                   <th>Net Payable</th>
                   <th>Payment Amount</th>
@@ -164,20 +164,20 @@
                 </tr>
               </thead>
               <tbody class="sell-pay">
-                <tr>
-                  <td>ABC001B</td>
-                  <td>ABC001</td>
-                  <td>2-Jul</td>
-                  <td>SB009</td>
-                  <td>10526</td>
-                  <td>10000</td>
-                  <td>2500</td>
-                  <td></td>
-                  <td>25% payment on completion</td>
-                  <td>Not Due Yet</td>
+                <tr ng-repeat="data in all">
+                  <td>{{data.transacId}}</td>
+                  <td>{{data.order.orderId}}</td>
+                  <td>{{data.orderDate | date:'mediumDate'}}</td>
+                  <td>{{data.seller.userId}}</td>
+                  <td>{{data.orderValue}}</td>
+                  <td>{{data.netPayable}}</td>
+                  <td>{{data.paymentAmount}}</td>
+                  <td> {{data.paymentDueDate| date:'mediumDate'}}</td>
+                  <td>{{data.paymentRemarks}}</td>
+                  <td>{{data.status}}</td>
                   <td></td>
                 </tr>
-                <tr>
+                <!--<tr>
                   <td>ABC001A</td>
                   <td>ABC001</td>
                   <td>2-Jul</td>
@@ -254,7 +254,7 @@
                   <td>25% payment on completion</td>
                   <td>Pending</td>
                   <td></td>
-                </tr>
+                </tr>-->
               </tbody>
             </table>
           </div>
