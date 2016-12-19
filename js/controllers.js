@@ -1171,6 +1171,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.updateBill(senddata, function (data) {
             if (data.value == true) {
                 toastr.success("Order Status Updated!", "Information");
+                window.history.back();
             }
         });
     };
