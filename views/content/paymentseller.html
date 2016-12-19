@@ -257,6 +257,7 @@
                 </tr>-->
               </tbody>
             </table>
+            <ul ng-if="totalItems>10" uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getAllPayments()"></ul>
           </div>
         </uib-tab>
         <uib-tab index="1" heading="Pending Transaction">
@@ -272,7 +273,7 @@
               </div>
               <div class="col-md-6">
                 <form>
-                  <div class="form-group">
+                  <div ng-click="convertToPayments()" class="form-group">
                     <button class="btn btn-default convert">Convert to Payments</button>
                   </div>
                 </form>
@@ -283,7 +284,7 @@
                 <form>
                   <div class="form-group label-head">
                     <label for="text">Total Pending:</label>
-                    <label for="text">27100</label>
+                    <label for="text">{{totalpendingItems}}</label>
                   </div>
                   <div class="form-group label-head">
                     <label for="text">Total Payments Being Processed:</label>
@@ -322,115 +323,12 @@
                   <td>{{data.paymentRemarks}}</td>
                   <td>{{data.status}}</td>
                 </tr>
-              
               </tbody>
             </table>
+            <ul ng-if="totalpendingItems>10" uib-pagination total-items="totalpendingItems" ng-model="filterpending.page" ng-change="getAllPendingPayments()"></ul>
           </div>
         </uib-tab>
-        <uib-tab index="2" heading="Payment Processing">
-          <div class="notify-head">
-            <div class="row">
-              <div class="col-md-6">
-                <form>
-                  <div class="form-group">
-                    <label for="text">Payment Processing:</label>
-                    <label for="text"></label>
-                  </div>
-                </form>
-              </div>
-              <div class="col-md-6">
-                <form>
-                  <div class="form-group">
-                    <button class="btn btn-default convert">Payment Processing</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <form>
-                  <div class="form-group label-head">
-                    <label for="text">Total Pending:</label>
-                    <label for="text"></label>
-                  </div>
-                  <div class="form-group label-head">
-                    <label for="text">Total Payments Being Processed:</label>
-                    <label for="text">27100</label>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="over-table">
-            <table class="table payment-to-sellers-table table-bordered">
-              <thead class="sell-pay">
-                <tr>
-                  <th>Transaction ID</th>
-                  <th>Order ID</th>
-                  <th>Date</th>
-                  <th>Seller Date</th>
-                  <th>Order Value</th>
-                  <th>Net Payable</th>
-                  <th>Payment Amount</th>
-                  <th>Payment Due Date</th>
-                  <th>Payment Remarks</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody class="sell-pay">
-                <tr>
-                  <td>ABC001A</td>
-                  <td>ABC001</td>
-                  <td>2-Jul</td>
-                  <td>SB009</td>
-                  <td>10526</td>
-                  <td>10000</td>
-                  <td>7300</td>
-                  <td>11-Jul</td>
-                  <td>75% payment on completion</td>
-                  <td>Not Due Yet</td>
-                </tr>
-                <tr>
-                  <td>ABC00CX</td>
-                  <td>ABC003</td>
-                  <td>30-Jun</td>
-                  <td>SB009</td>
-                  <td>7000</td>
-                  <td>0</td>
-                  <td>-200</td>
-                  <td>8-Jul</td>
-                  <td>Order Cancellation Fee</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>XYZ001A</td>
-                  <td>XYZ001</td>
-                  <td>20-Jun</td>
-                  <td>SB002</td>
-                  <td>21053</td>
-                  <td>20000</td>
-                  <td>15000</td>
-                  <td>30-Jun</td>
-                  <td>75% payment on dispatch</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>XYZ001B</td>
-                  <td>XYZ001</td>
-                  <td>20-Jul</td>
-                  <td>SB002</td>
-                  <td>21053</td>
-                  <td>20000</td>
-                  <td>5000</td>
-                  <td>1-Jul</td>
-                  <td>25% payment on completion</td>
-                  <td>Pending</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </uib-tab>
-        <uib-tab index="3" heading="Converted Payments">
+        <uib-tab index="2" heading="Payments Processing">
           <div class="notify-head">
             <div class="row">
               <div class="col-md-6">
@@ -473,10 +371,13 @@
             </div>
           </div>
           <div class="over-table">
+            <!--<div class="row" ng-if="allTransaction.length==0">
+              <h4>Data Not Found</h4>
+            </div>-->
             <table class="table payment-to-sellers-table table-bordered">
               <thead class="sell-pay">
                 <tr>
-                  <th></th>
+                  <th>Sr. No.</th>
                   <th>Payment ID</th>
                   <th>Seller ID</th>
                   <th>Amount</th>
@@ -488,24 +389,10 @@
                 </tr>
               </thead>
               <tbody class="sell-pay">
-                <!--<tr>
-                    <td> <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1"></td>
-                    <td>P003</td>
-                    <td>SB009</td>
-                    <td>7100</td>
-                    <td>ABC001A, ABC003X</td>
-                    <td>To Be Paid</td>
-                    <td>
-                      <div class="lbl-btn">
-
-                        <label for="">Date</label>
-                        <button class="btn btn-default" ng-click="openDate();">Select Date</button>
-                      </div>
-                    </td>
-                    <td></td>
-                  </tr>-->
-                <tr ng-repeat="data in convertedPay">
-                  <td> <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">{{$index +1}}</td>
+                <tr ng-repeat="data in allTransaction">
+                  <td>
+                    <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">-->
+                    {{$index +1}}</td>
                   <td>{{data.paymentid}}</td>
                   <td>SB002</td>
                   <td>20000</td>
@@ -523,6 +410,56 @@
                   </td>
                   <td>
                     <label for="" ng-click="showConverted($index);">Edit</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ul ng-if="totalallItems>10" uib-pagination total-items="totalallItems" ng-model="filterall.page" ng-change="getAllTransactionPayment()"></ul>
+          </div>
+        </uib-tab>
+        <uib-tab index="3" heading="Converted Payments">
+          <div class="notify-head">
+            <div class="row">
+              <div class="col-md-6">
+                <form>
+                  <div class="form-group label-head">
+                    <label for="text">Total Amount Paid:</label>
+                    <label for="text">27100</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="over-table">
+            <table class="table payment-to-sellers-table table-bordered">
+              <thead class="sell-pay">
+                <tr>
+                  <th></th>
+                  <th>Payment ID</th>
+                  <th>Seller ID</th>
+                  <th>Amount</th>
+                  <th>Transaction Reference</th>
+                  <th>Status</th>
+                  <th>Payment Date</th>
+                  <th>NEFT Reference</th>
+                </tr>
+              </thead>
+              <tbody class="sell-pay">
+                <tr ng-repeat="data in convertedPay">
+                  <td> <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">{{$index +1}}</td>
+                  <td>{{data.paymentid}}</td>
+                  <td>SB002</td>
+                  <td>20000</td>
+                  <td>XYZ001A, XYZ001B</td>
+                  <td>To Be Paid</td>
+                  <td>
+                    <div class="lbl-btn">
+                      <label for="">Date</label>
+                      <button class="btn btn-default" ng-click="openDate();">Select Date</button>
+                    </div>
+                  </td>
+                  <td>
+                    <label>text</label>
                   </td>
                 </tr>
               </tbody>

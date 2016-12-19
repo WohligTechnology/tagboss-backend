@@ -2112,7 +2112,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
     })
-    .controller('PaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('PaymentCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("paymentseller");
         $scope.menutitle = NavigationService.makeactive("Payment Seller");
         TemplateService.title = $scope.menutitle;
@@ -2159,25 +2159,57 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             $scope.showData = true;
             $scope.myindex = indexid;
         };
+
+
+        $scope.filter = {};
+        $scope.filter.page = 1;
         $scope.getAllPayments = function () {
-            NavigationService.getAllPayments(function (respo) {
-           if (respo.value==true) {
-                    $scope.all = respo.data.results;
+            NavigationService.getAllPayments($scope.filter, function (data) {
+                if (data.value == true) {
+                    $scope.all = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    console.log("coupon", $scope.all);
                 }
             });
         }
         $scope.getAllPayments();
 
-         $scope.getAllPendingPayments = function () {
-            NavigationService.getAllPendingPayments(function (respo) {
-                 if (respo.value==true) {
+
+        $scope.filterpending = {};
+        $scope.filterpending.page = 1;
+        $scope.getAllPendingPayments = function () {
+            NavigationService.getAllPendingPayments($scope.filterpending, function (respo) {
+                if (respo.value == true) {
                     $scope.allPending = respo.data.results;
-                    console.log("daaaa", $scope.allPending);
+                    $scope.totalpendingItems = respo.data.total;
                 }
             });
         }
 
         $scope.getAllPendingPayments();
+
+        $scope.convertToPayments = function () {
+            NavigationService.convertToPayments(function (data) {
+                if (data.value == true) {
+                    toastr.success("Payment Status Updated!", "Information");
+                }
+            });
+        }
+
+
+        $scope.filterall = {};
+        $scope.filterall.page = 1;
+        $scope.getAllTransactionPayment = function () {
+            NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
+                if (respo.value == true) {
+                    $scope.allTransaction = respo.data.results;
+                    console.log("aaaa", $scope.allTransaction);
+                    $scope.totalallItems = respo.data.total;
+                }
+            });
+        }
+
+        $scope.getAllTransactionPayment();
 
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {

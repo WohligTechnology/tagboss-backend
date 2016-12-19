@@ -470,19 +470,40 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllPayments: function (callback) {
+    getAllPayments: function (senddata, callback) {
+      var data = senddata;
       return $http({
         url: adminURL + "transaction/getalltransaction",
-        method: "POST"
+        method: "POST",
+        data: data
       }).success(callback);
     },
 
-       getAllPendingPayments: function (callback) {
+    getAllPendingPayments: function (senddata, callback) {
+      var data = senddata;
       return $http({
         url: adminURL + "transaction/getallpendingtransaction",
-        method: "POST"
+        method: "POST",
+        data: data
       }).success(callback);
     },
+
+    convertToPayments: function (callback) {
+      return $http({
+        url: adminURL + "transaction/converttopayments",
+        method: "POST",
+      }).success(callback);
+    },
+
+    getAllTransactionPayment: function (senddata, callback) {
+      var data = senddata;
+      return $http({
+        url: adminURL + "transaction/getalltransactionpayment",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
 
   };
 
