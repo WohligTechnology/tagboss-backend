@@ -2125,6 +2125,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             opened: false
         };
 
+        $scope.dateSelection = function(date){
+            console.log("aaa", date);
+        }
+
         $scope.openDate = function () {
             $uibModal.open({
                 animation: true,

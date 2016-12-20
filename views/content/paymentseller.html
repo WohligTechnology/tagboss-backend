@@ -168,7 +168,7 @@
                   <td>TBT{{data.transacId}}</td>
                   <td>TBO{{data.order.orderId}}</td>
                   <td>{{data.orderDate | date:'mediumDate'}}</td>
-                  <td>{{data.seller.userId}}</td>
+                  <td>TBS{{data.seller.userId}}</td>
                   <td>{{data.orderValue}}</td>
                   <td>{{data.netPayable}}</td>
                   <td>{{data.paymentAmount}}</td>
@@ -315,7 +315,7 @@
                   <td>TBT{{data.transacId}}</td>
                   <td>TBO{{data.order.orderId}}</td>
                   <td>{{data.orderDate | date:'mediumDate'}}</td>
-                  <td>{{data.seller.userId}}</td>
+                  <td>TBS{{data.seller.userId}}</td>
                   <td>{{data.orderValue}}</td>
                   <td>{{data.netPayable}}</td>
                   <td>{{data.paymentAmount}}</td>
@@ -375,7 +375,7 @@
               <h4>Data Not Found</h4>
             </div>-->
             <table class="table payment-to-sellers-table table-bordered">
-              <thead class="sell-pay">
+              <thead  >
                 <tr>
                   <th>Sr. No.</th>
                   <th>Payment ID</th>
@@ -388,21 +388,32 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody class="sell-pay">
+              <tbody  >
                 <tr ng-repeat="data in allTransaction">
                   <td>
                     <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">-->
                     {{$index +1}}</td>
-                  <td>{{data.paymentid}}</td>
-                  <td>SB002</td>
-                  <td>20000</td>
-                  <td>XYZ001A, XYZ001B</td>
-                  <td>To Be Paid</td>
+                  <td>{{data.paymentId}}</td>
+                  <td>TBS{{data.seller.userId}}</td>
+                  <td>{{data.amount}}</td>
+                  <td>{{data.transactionNumberReference.toString()}}</td>
+                  <td>{{data.status}}</td>
                   <td>
-                    <div class="lbl-btn">
-                      <label for="">Date</label>
+                    <!--<div class="lbl-btn">
+                      <label for="{{$index}}">{{data.createdAt| date:'mediumDate'}}</label>
                       <button class="btn btn-default" ng-click="openDate();">Select Date</button>
-                    </div>
+                    </div>-->
+                     <div class="input-group date date1">
+                <input type="text" class="form-control cal-input ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date ng-touched"
+                  uib-datepicker-popup="dd-MMMM-yyyy" ng-change="dateSelection(dt)" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
+                  ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required">
+                <!--<div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html"
+                  class="ng-not-empty ng-invalid ng-invalid-date-disabled" style="">
+                 </div>-->
+                <span class="input-group-btn">
+                                <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                              </span>
+              </div>
                   </td>
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">text</span></label>
