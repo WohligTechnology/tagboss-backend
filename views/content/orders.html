@@ -161,7 +161,7 @@
                   Rs. {{order.subTotal}}/-
                 </td>
                 <td>
-                 {{order.paymentStatus}}<br>
+                 {{order.deliveryStatus}}<br>
                  <div>
                   <div name="countercomplete{{cat  | ltrim: '-' }}{{$index}}" data-ng-init="getCountDown(order.createdAt, cat,$index)" class="font-karla inline-block time" id="countercomplete{{$index}}">
                     <form class="form-inline ng-pristine ng-valid">
