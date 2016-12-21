@@ -764,7 +764,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
 
 
-    
+
 
     })
     .controller('HomebannerCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
@@ -2032,66 +2032,66 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.navigation = NavigationService.getnav();
 
 
-$scope.today = function() {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+        $scope.today = function () {
+            $scope.dt = new Date();
+        };
+        $scope.today();
 
-  $scope.clear = function() {
-    $scope.dt = null;
-  };
+        $scope.clear = function () {
+            $scope.dt = null;
+        };
 
-  $scope.dateOptions = {
-    dateDisabled: disabled,
-     showWeeks: false,
-    formatYear: 'yy',
-    maxDate: new Date(2020, 5, 22),
-    minDate: new Date(),
-    startingDay: 1
-  };
+        $scope.dateOptions = {
+            dateDisabled: disabled,
+            showWeeks: false,
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
 
-  // Disable weekend selection
-  function disabled(data) {
-    var date = data.date,
-      mode = data.mode;
-    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-  }
-
- 
-
-  $scope.open1 = function(indexid) {
-    $scope.popup1.opened = true;
-  };
-
-  
-  
-  $scope.popup1 = {
-    opened: false
-  };
-
-
- 
-
-  function getDayClass(data) {
-    var date = data.date,
-      mode = data.mode;
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0,0,0,0);
-
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
-
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
+        // Disable weekend selection
+        function disabled(data) {
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
         }
-      }
-    }
-
-    return '';
-  }
 
 
-      $scope.openDate = function () {
+
+        $scope.open1 = function (indexid) {
+            $scope.popup1.opened = true;
+        };
+
+
+
+        $scope.popup1 = {
+            opened: false
+        };
+
+
+
+
+        function getDayClass(data) {
+            var date = data.date,
+                mode = data.mode;
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        }
+
+
+        $scope.openDate = function () {
             $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/datemodal.html",
@@ -2099,7 +2099,7 @@ $scope.today = function() {
             });
         };
 
-       
+
         $scope.showData = false;
         $scope.showText = true;
         $scope.showConverted = function (indexid) {
@@ -2138,7 +2138,8 @@ $scope.today = function() {
         $scope.convertToPayments = function () {
             NavigationService.convertToPayments(function (data) {
                 if (data.value == true) {
-                    toastr.success("Payment Status Updated!", "Information");
+                    $scope.getAllPendingPayments();
+                    toastr.success("Payment Status Updated to Payment Processing!", "Information");
                 }
             });
         }
@@ -2158,7 +2159,27 @@ $scope.today = function() {
 
         $scope.getAllTransactionPayment();
 
-        
+        $scope.editPaymentStatus = function (data, myindex) {
+             var senddata={};
+            senddata._id = data._id;
+            senddata.status = data.status;
+            senddata.neftReference = data.neftReference;
+            senddata.paymentDate = data.paymentDate;
+            console.log("data", data, myindex);
+            NavigationService.editPaymentStatus(senddata, function (data) {
+                if (data.value == true) {
+                     $scope.getAllTransactionPayment();
+                    toastr.success("Payment status Updated", "Information");
+                    $scope.showText = true;
+                    $scope.showData = false;
+                    $scope.myindex = myindex;
+                }
+            });
+
+
+        }
+
+
 
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {

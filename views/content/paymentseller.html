@@ -360,9 +360,9 @@
                     </div>
                     <div class="lbl-head">
                       <select name="" id="" class="form-control">
-                                <option>To Be Paid</option>
-                                <option>Send To Bank</option>
-                                <option>Paid</option>
+                              <option value="To be paid">To Be Paid</option>
+                                <option value="Send to bank" >Send To Bank</option>
+                                <option value="Paid">Paid</option>
                               </select>
                     </div>
                   </div>
@@ -397,7 +397,16 @@
                   <td>TBS{{data.seller.userId}}</td>
                   <td>{{data.amount}}</td>
                   <td>{{data.transactionNumberReference.toString()}}</td>
-                  <td>{{data.status}}</td>
+                  <td>
+                    <span ng-if="showText==true && myindex!=$index">{{data.status}}</span>
+                     <div ng-if="showData==true && myindex==$index" class="lbl-head">
+                      <select ng-model="data.status" name="" id="{{$index}}" class="form-control">
+                                <option value="To be paid">To Be Paid</option>
+                                <option value="Sent to bank" >Sent To Bank</option>
+                                <option value="Paid">Paid</option>
+                              </select>
+                    </div>
+                    </td>
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">{{data.createdAt | date:'mediumDate'}}</span></label>
                     <p ng-if="showData==true && myindex==$index" class="input-group">
@@ -409,12 +418,12 @@
                     </p>
                   </td>
                   <td>
-                    <label><span ng-if="showText==true && myindex!=$index">text</span></label>
+                    <label><span ng-if="showText==true && myindex!=$index">{{data.neftReference}}</span></label>
                     <span ng-if="showData==true && myindex==$index"><input type="text"/></span>
                   </td>
                   <td>
                     <label ng-if="myindex!=$index" for="" ng-click="showConverted($index);">Edit</label>
-                      <label ng-if="myindex==$index" ng-click="editMoc(moc,value[0].category._id,$index);">Save</label>
+                      <label ng-if="myindex==$index" ng-click="editPaymentStatus(data,$index);">Save</label>
                   </td>
                 </tr>
               </tbody>
