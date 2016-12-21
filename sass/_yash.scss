@@ -797,11 +797,11 @@
 
 // ---------------this css is for payment-to-sellers  ---------------------
 .payment-to-sellers {
-    .nav-tabs > li.active > a{
+    .nav-tabs>li.active>a {
         background: #043e77;
         color: #fff;
     }
-    .nav-tabs > li > a{
+    .nav-tabs>li>a {
         color: #043e77;
     }
     .payment-to-seller {
@@ -847,21 +847,21 @@
                 }
             }
         }
-        .notify-head{
+        .notify-head {
             margin: 18px 0;
-            label{
+            label {
                 text-transform: uppercase;
                 color: #043e77;
                 font-size: 18px;
             }
-            .convert{
+            .convert {
                 background: #043e77;
                 color: #fff;
             }
-            .label-head{
+            .label-head {
                 margin: 0;
-                .lbl-head{
-                    label{
+                .lbl-head {
+                    label {
                         margin: 0;
                     }
                     display: inline-block;
@@ -869,23 +869,23 @@
                 }
             }
         }
-        .over-table{
-               overflow-x: auto;
-            .payment-to-sellers-table{
-             
-                .sell-pay{
-                    .lbl-btn{
-                        label,button{
+        .over-table {
+            //    overflow-x: auto;
+            .payment-to-sellers-table {
+                .sell-pay {
+                    .lbl-btn {
+                        label,
+                        button {
                             text-align: center;
                             margin: 0 10px;
                         }
                     }
-                    th{
+                    th {
                         text-align: center;
                         padding-left: 0;
                         min-width: 150px;
                     }
-                    td{
+                    td {
                         text-align: left;
                         padding-left: 12px;
                     }
@@ -895,20 +895,26 @@
                     //         padding-left: 0 !important;
                     //     }
                     //     }
-
                     // }
-
                 }
             }
         }
         .payment-to-sellers-table {
+            // .uib-datepicker-popup.dropdown-menu {
+            //     display: block;
+            //     float: none;
+            //     margin: 0;
+            // }
+            // ul.uib-datepicker-popup.dropdown-menu.ng-scope {
+            //     display: none;
+            // }
             background-color: #F8F8F8;
             th {
                 color: $lightblue !important;
-                padding-left: 30px;
+                // padding-left: 30px;
             }
             td {
-                padding-left: 30px;
+                // padding-left: 30px;
             }
             td:last-child {
                 font-weight: bold;
