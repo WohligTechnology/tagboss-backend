@@ -431,7 +431,7 @@
             <ul ng-if="totalallItems>10" uib-pagination total-items="totalallItems" ng-model="filterall.page" ng-change="getAllTransactionPayment()"></ul>
           </div>
         </uib-tab>
-        <uib-tab index="3" heading="Converted Payments">
+        <uib-tab index="3" data-ng-init="getAllTransactionPayment('Paid')" heading="Converted Payments">
           <div class="notify-head">
             <div class="row">
               <div class="col-md-6">
@@ -460,7 +460,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="data in allTransaction">
+                  <tr ng-repeat="data in allPaidTransaction">
                     <td>
                       <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">-->
                       {{$index +1}}</td>

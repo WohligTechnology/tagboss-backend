@@ -2139,6 +2139,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.convertToPayments(function (data) {
                 if (data.value == true) {
                     $scope.getAllPendingPayments();
+                     $scope.getAllTransactionPayment();
                     toastr.success("Payment Status Updated to Payment Processing!", "Information");
                 }
             });
@@ -2147,14 +2148,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filterall = {};
         $scope.filterall.page = 1;
-        $scope.getAllTransactionPayment = function () {
-            NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
+        $scope.getAllTransactionPayment = function (data) {
+            console.log("daatttt", data);
+            if (data == "Paid") {
+                $scope.filterall.status = "Paid";
+                 NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
+                if (respo.value == true) {
+                    $scope.allPaidTransaction = respo.data.results;
+                    console.log("aaaa", $scope.allTransaction);
+                    $scope.totalallItems = respo.data.total;
+                }
+            });
+            }else{
+                 NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
                 if (respo.value == true) {
                     $scope.allTransaction = respo.data.results;
                     console.log("aaaa", $scope.allTransaction);
                     $scope.totalallItems = respo.data.total;
                 }
             });
+            }
+           
         }
 
         $scope.getAllTransactionPayment();
@@ -2169,6 +2183,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.editPaymentStatus(senddata, function (data) {
                 if (data.value == true) {
                     $scope.getAllTransactionPayment();
+                    $scope.getAllTransactionPayment('Paid');
+                     $scope.getAllPayments();
                     toastr.success("Payment status Updated", "Information");
                     $scope.showText = true;
                     $scope.showData = false;
@@ -2177,7 +2193,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
 
-      
+
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("assign-agency");
