@@ -2160,7 +2160,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.getAllTransactionPayment();
 
         $scope.editPaymentStatus = function (data, myindex) {
-             var senddata={};
+            var senddata = {};
             senddata._id = data._id;
             senddata.status = data.status;
             senddata.neftReference = data.neftReference;
@@ -2168,19 +2168,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             console.log("data", data, myindex);
             NavigationService.editPaymentStatus(senddata, function (data) {
                 if (data.value == true) {
-                     $scope.getAllTransactionPayment();
+                    $scope.getAllTransactionPayment();
                     toastr.success("Payment status Updated", "Information");
                     $scope.showText = true;
                     $scope.showData = false;
                     $scope.myindex = myindex;
                 }
             });
-
-
         }
 
-
-
+      
     })
     .controller('Assign-agencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("assign-agency");

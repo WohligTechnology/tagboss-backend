@@ -399,14 +399,14 @@
                   <td>{{data.transactionNumberReference.toString()}}</td>
                   <td>
                     <span ng-if="showText==true && myindex!=$index">{{data.status}}</span>
-                     <div ng-if="showData==true && myindex==$index" class="lbl-head">
+                    <div ng-if="showData==true && myindex==$index" class="lbl-head">
                       <select ng-model="data.status" name="" id="{{$index}}" class="form-control">
                                 <option value="To be paid">To Be Paid</option>
                                 <option value="Sent to bank" >Sent To Bank</option>
                                 <option value="Paid">Paid</option>
                               </select>
                     </div>
-                    </td>
+                  </td>
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">{{data.createdAt | date:'mediumDate'}}</span></label>
                     <p ng-if="showData==true && myindex==$index" class="input-group">
@@ -423,7 +423,7 @@
                   </td>
                   <td>
                     <label ng-if="myindex!=$index" for="" ng-click="showConverted($index);">Edit</label>
-                      <label ng-if="myindex==$index" ng-click="editPaymentStatus(data,$index);">Save</label>
+                    <label ng-if="myindex==$index" ng-click="editPaymentStatus(data,$index);">Save</label>
                   </td>
                 </tr>
               </tbody>
@@ -447,36 +447,38 @@
           <div class="over-table">
             <table class="table payment-to-sellers-table table-bordered">
               <thead class="sell-pay">
-                <tr>
-                  <th></th>
-                  <th>Payment ID</th>
-                  <th>Seller ID</th>
-                  <th>Amount</th>
-                  <th>Transaction Reference</th>
-                  <th>Status</th>
-                  <th>Payment Date</th>
-                  <th>NEFT Reference</th>
-                </tr>
-              </thead>
-              <tbody class="sell-pay">
-                <tr ng-repeat="data in convertedPay">
-                  <td> <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">{{$index +1}}</td>
-                  <td>{{data.paymentid}}</td>
-                  <td>SB002</td>
-                  <td>20000</td>
-                  <td>XYZ001A, XYZ001B</td>
-                  <td>To Be Paid</td>
-                  <td>
-                    <div class="lbl-btn">
-                      <label for="">Date</label>
-                      <button class="btn btn-default" ng-click="openDate();">Select Date</button>
-                    </div>
-                  </td>
-                  <td>
-                    <label>text</label>
-                  </td>
-                </tr>
-              </tbody>
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Payment ID</th>
+                    <th>Seller ID</th>
+                    <th>Amount</th>
+                    <th>Transaction Reference</th>
+                    <th>Status</th>
+                    <th>Payment Date</th>
+                    <th>NEFT Reference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in allTransaction">
+                    <td>
+                      <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">-->
+                      {{$index +1}}</td>
+                    <td>{{data.paymentId}}</td>
+                    <td>TBS{{data.seller.userId}}</td>
+                    <td>{{data.amount}}</td>
+                    <td>{{data.transactionNumberReference.toString()}}</td>
+                    <td>
+                      {{data.status}}
+                    </td>
+                    <td>
+                      {{data.paymentDate | date:'mediumDate'}}
+                    </td>
+                    <td>
+                      {{data.neftReference}}
+                    </td>
+                  </tr>
+                </tbody>
             </table>
           </div>
         </uib-tab>
