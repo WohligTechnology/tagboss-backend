@@ -868,6 +868,9 @@
                     vertical-align: middle;
                 }
             }
+            .lbl-head{
+                width: 150px !important;
+            }
         }
         .over-table {
                overflow-x: auto;
@@ -961,7 +964,9 @@
         }
     }
 }
-
+    .lbl-heads{
+                width: 150px !important;
+            }
 // --------------this css for refund-to-buyer ---------------
 .refund-to-buyers {
     .refund-to-buyer {

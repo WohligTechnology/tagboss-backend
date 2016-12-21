@@ -399,7 +399,7 @@
                   <td>{{data.transactionNumberReference.toString()}}</td>
                   <td>
                     <span ng-if="showText==true && myindex!=$index">{{data.status}}</span>
-                    <div ng-if="showData==true && myindex==$index" class="lbl-head">
+                    <div ng-if="showData==true && myindex==$index" class="lbl-heads">
                       <select ng-model="data.status" name="" id="{{$index}}" class="form-control">
                                 <option value="To be paid">To Be Paid</option>
                                 <option value="Sent to bank" >Sent To Bank</option>
@@ -408,7 +408,7 @@
                     </div>
                   </td>
                   <td>
-                    <label><span ng-if="showText==true && myindex!=$index">{{data.createdAt | date:'mediumDate'}}</span></label>
+                    <label ng-if="showText==true && myindex!=$index"><span >{{data.createdAt | date:'mediumDate'}}</span></label>
                     <p ng-if="showData==true && myindex==$index" class="input-group">
                       <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.paymentDate" is-open="popup1.opened" datepicker-options="dateOptions"
                         ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
@@ -418,7 +418,7 @@
                     </p>
                   </td>
                   <td>
-                    <label><span ng-if="showText==true && myindex!=$index">{{data.neftReference}}</span></label>
+                    <label  ng-if="showText==true && myindex!=$index"><span>{{data.neftReference}}</span></label>
                     <span ng-if="showData==true && myindex==$index"><input ng-model="data.neftReference" type="text"/></span>
                   </td>
                   <td>
