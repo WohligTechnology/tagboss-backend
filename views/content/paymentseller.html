@@ -375,7 +375,7 @@
               <h4>Data Not Found</h4>
             </div>-->
             <table class="table payment-to-sellers-table table-bordered">
-              <thead  >
+              <thead>
                 <tr>
                   <th>Sr. No.</th>
                   <th>Payment ID</th>
@@ -399,21 +399,22 @@
                   <td>{{data.transactionNumberReference.toString()}}</td>
                   <td>{{data.status}}</td>
                   <td>
-                     <div class="input-group date date1">
-                <input type="text" class="form-control cal-input ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date ng-touched"
-                  uib-datepicker-popup="dd-MMMM-yyyy" ng-change="dateSelection(dt)" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
-                  ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required">
-                  <span class="input-group-btn">
-                                <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
-                              </span>
-              </div>
+                    <label><span ng-if="showText==true && myindex!=$index">{{data.createdAt | date:'mediumDate'}}</span></label>
+                    <p ng-if="showData==true && myindex==$index" class="input-group">
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
+                        ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                      <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1($index)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
                   </td>
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">text</span></label>
                     <span ng-if="showData==true && myindex==$index"><input type="text"/></span>
                   </td>
                   <td>
-                    <label for="" ng-click="showConverted($index);">Edit</label>
+                    <label ng-if="myindex!=$index" for="" ng-click="showConverted($index);">Edit</label>
+                      <label ng-if="myindex==$index" ng-click="editMoc(moc,value[0].category._id,$index);">Save</label>
                   </td>
                 </tr>
               </tbody>
