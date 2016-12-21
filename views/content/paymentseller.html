@@ -410,7 +410,7 @@
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">{{data.createdAt | date:'mediumDate'}}</span></label>
                     <p ng-if="showData==true && myindex==$index" class="input-group">
-                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.paymentDate" is-open="popup1.opened" datepicker-options="dateOptions"
                         ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                       <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1($index)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -419,7 +419,7 @@
                   </td>
                   <td>
                     <label><span ng-if="showText==true && myindex!=$index">{{data.neftReference}}</span></label>
-                    <span ng-if="showData==true && myindex==$index"><input type="text"/></span>
+                    <span ng-if="showData==true && myindex==$index"><input ng-model="data.neftReference" type="text"/></span>
                   </td>
                   <td>
                     <label ng-if="myindex!=$index" for="" ng-click="showConverted($index);">Edit</label>

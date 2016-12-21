@@ -2182,7 +2182,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             console.log("data", data, myindex);
             NavigationService.editPaymentStatus(senddata, function (data) {
                 if (data.value == true) {
-                    $scope.getAllTransactionPayment();
+                    $scope.getAllTransactionPayment('To be paid');
                     $scope.getAllTransactionPayment('Paid');
                      $scope.getAllPayments();
                     toastr.success("Payment status Updated", "Information");
