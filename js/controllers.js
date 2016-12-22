@@ -452,7 +452,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getMoc = function () {
         NavigationService.getMaterial(function (data) {
             if (data.value == true) {
-                $scope.allMoc = data.data;
+                $scope.allMoc = _.uniq(data.data);
                 console.log("aaa", $scope.allMoc);
             }
         });
