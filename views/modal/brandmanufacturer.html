@@ -19,10 +19,10 @@
                     <div class="col-sm-9">
                         <div class="input-group attach">
                             <div class="filename">
-                                <p ng-callback="changeit">12.jpg</p>
+                                <p ng-callback="changeit">{{formData.image}}</p>
                             </div>
                             <div class="input-group-addon upload">
-                                <upload-image ng-model="formData.resume" ng-callback="changeit" no-view></upload-image>
+                                <upload-image ng-model="formData.image" ng-callback="changeit" no-view></upload-image>
                             </div>
                         </div>
                         <!--<div class="filename">
@@ -44,9 +44,7 @@
                     <label class="col-sm-2 control-label" for="inputPassword3">Description</label>
                     <div class="col-sm-10">
                         <div class="txt-area">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum molestias provident inventore
-                                omnis eligendi maxime nemo perferendis rerum, dolorum sapiente asperiores porro repellendus
-                                eius, amet quia doloremque voluptatibus reprehenderit repudiandae.</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>

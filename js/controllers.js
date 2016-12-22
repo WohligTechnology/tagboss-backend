@@ -2070,9 +2070,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
 
-
-
-        function getDayClass(data) {
+     function getDayClass(data) {
             var date = data.date,
                 mode = data.mode;
             if (mode === 'day') {
