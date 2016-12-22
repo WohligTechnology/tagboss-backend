@@ -449,6 +449,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.showProd = false;
     };
 
+    $scope.getMoc = function () {
+        NavigationService.getMaterial(function (data) {
+            if (data.value == true) {
+                $scope.allMoc = data.data;
+                console.log("aaa", $scope.allMoc);
+            }
+        });
+    }
+
+    $scope.getMoc();
+
 })
 
 
@@ -2070,7 +2081,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         };
 
 
-     function getDayClass(data) {
+        function getDayClass(data) {
             var date = data.date,
                 mode = data.mode;
             if (mode === 'day') {
@@ -2137,7 +2148,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.convertToPayments(function (data) {
                 if (data.value == true) {
                     $scope.getAllPendingPayments();
-                     $scope.getAllTransactionPayment();
+                    $scope.getAllTransactionPayment();
                     toastr.success("Payment Status Updated to Payment Processing!", "Information");
                 }
             });
@@ -2150,23 +2161,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             console.log("daatttt", data);
             if (data == "Paid") {
                 $scope.filterall.status = "Paid";
-                 NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
-                if (respo.value == true) {
-                    $scope.allPaidTransaction = respo.data.results;
-                    console.log("aaaa", $scope.allTransaction);
-                    $scope.totalallItems = respo.data.total;
-                }
-            });
-            }else{
-                 NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
-                if (respo.value == true) {
-                    $scope.allTransaction = respo.data.results;
-                    console.log("aaaa", $scope.allTransaction);
-                    $scope.totalallItems = respo.data.total;
-                }
-            });
+                NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
+                    if (respo.value == true) {
+                        $scope.allPaidTransaction = respo.data.results;
+                        console.log("aaaa", $scope.allTransaction);
+                        $scope.totalallItems = respo.data.total;
+                    }
+                });
+            } else {
+                NavigationService.getAllTransactionPayment($scope.filterall, function (respo) {
+                    if (respo.value == true) {
+                        $scope.allTransaction = respo.data.results;
+                        console.log("aaaa", $scope.allTransaction);
+                        $scope.totalallItems = respo.data.total;
+                    }
+                });
             }
-           
+
         }
 
         $scope.getAllTransactionPayment();
@@ -2182,7 +2193,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 if (data.value == true) {
                     $scope.getAllTransactionPayment('To be paid');
                     $scope.getAllTransactionPayment('Paid');
-                     $scope.getAllPayments();
+                    $scope.getAllPayments();
                     toastr.success("Payment status Updated", "Information");
                     $scope.showText = true;
                     $scope.showData = false;
