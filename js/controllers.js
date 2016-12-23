@@ -453,7 +453,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getMoc = function () {
         NavigationService.getMaterial(function (data) {
             if (data.value == true) {
-                $scope.allMoc = _.uniq(data.data);  
+                $scope.allMoc = _.uniq(data.data);
                 console.log("aaa", $scope.allMoc);
             }
         });
@@ -2035,6 +2035,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
+
+        $scope.getAllSetting = function () {
+            NavigationService.getAllSetting(function (data) {
+                $scope.setting = data.data.results[0];
+            });
+        }
+        $scope.getAllSetting();
+
+        $scope.updateSetting = function (settingdata) {
+            console.log("aaaa", settingdata);
+            // NavigationService.updateSetting(senddata, function (data) {
+
+            // });
+        }
     })
     .controller('PaymentCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("paymentseller");

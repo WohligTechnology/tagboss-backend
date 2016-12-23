@@ -38,9 +38,9 @@
 								<div class="text-center inp-type">
 									<div class="form-group">
 										<form name="updateprice" class="cpr">
-											<input type="text" only-Decimal maxlength="5" name="Discount" required>
+											<input  ng-model="setting.discountByTagboss" type="text" only-Decimal maxlength="5" name="Discount" required>
 											<!--<div class="error-msg1">Please Enter Percentage.</div>-->
-											<button type="submit" class="btn btn-default">Update</button>
+											<button ng-click="updateSetting(setting.discountByTagboss)" type="submit" class="btn btn-default">Update</button>
 										</form>
 									</div>
 								</div>
@@ -54,9 +54,9 @@
 								<div class="text-center inp-type">
 									<div class="form-group">
 										<form name="updateprice" class="cpr">
-											<input type="text" only-Decimal maxlength="5" name="commissionCharges" required>
+											<input type="text" ng-model="setting.commissionCharges" only-Decimal maxlength="5" name="commissionCharges" required>
 											<!--<div class="error-msg1">Please Enter Percentage.</div>-->
-											<button type="submit" class="btn btn-default">Update</button>
+											<button ng-click="updateSetting(setting.commissionCharges)" type="submit" class="btn btn-default">Update</button>
 										</form>
 									</div>
 								</div>
@@ -70,9 +70,9 @@
 								<div class="text-center inp-type">
 									<div class="form-group">
 										<form name="updateprice" class="cpr">
-											<input type="text" only-Decimal maxlength="5" name="serviceTax" required>
+											<input type="text" ng-model="setting.serviceTax" only-Decimal maxlength="5" name="serviceTax" required>
 											<!--<div class="error-msg1">Please Enter Percentage.</div>-->
-											<button type="submit" class="btn btn-default">Update</button>
+											<button ng-click="updateSetting(setting.serviceTax)" type="submit" class="btn btn-default">Update</button>
 										</form>
 									</div>
 								</div>
@@ -86,9 +86,9 @@
 								<div class="text-center inp-type">
 									<div class="form-group">
 										<form name="updateprice" class="cpr">
-											<input type="text" only-Decimal maxlength="5" name="swachhBharatCess" required>
+											<input type="text"  ng-model="setting.swachhBharatCess" only-Decimal maxlength="5" name="swachhBharatCess" required>
 											<!--<div class="error-msg1">Please Enter Percentage.</div>-->
-											<button type="submit" class="btn btn-default">Update</button>
+											<button ng-click="updateSetting(setting.swachhBharatCess)" type="submit" class="btn btn-default">Update</button>
 										</form>
 									</div>
 								</div>
@@ -103,9 +103,9 @@
 								<div class="text-center inp-type">
 									<div class="form-group">
 										<form name="updateprice" class="cpr">
-											<input type="text" only-Decimal maxlength="5" name="krishiKalyanCess" required>
+											<input type="text" ng-model="setting.krishiKalyanCess" only-Decimal maxlength="5" name="krishiKalyanCess" required>
 											<!--<div class="error-msg1">Please Enter Percentage.</div>-->
-											<button type="submit" class="btn btn-default">Update</button>
+											<button ng-click="updateSetting(setting.krishiKalyanCess)" type="submit" class="btn btn-default">Update</button>
 										</form>
 									</div>
 								</div>

@@ -504,7 +504,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-       editPaymentStatus: function (senddata, callback) {
+    editPaymentStatus: function (senddata, callback) {
       var data = senddata;
       return $http({
         url: adminURL + "payment/editpayment",
@@ -512,6 +512,16 @@ var navigationservice = angular.module('navigationservice', [])
         data: data
       }).success(callback);
     },
+
+
+     getAllSetting: function (callback) {
+       return $http({
+        url: adminURL + "settings/search",
+        method: "POST"
+      }).success(callback);
+    },
+
+
 
 
   };
