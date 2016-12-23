@@ -364,6 +364,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var senddata = {};
             senddata._id = inventorydata._id;
             senddata.agencyid = inventorydata.agentIDTemp;
+            senddata.productId = inventorydata.product.productId;
             senddata.firstName = inventorydata.seller.firstName;
             senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
             $scope.mydate = new Date();
@@ -452,7 +453,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getMoc = function () {
         NavigationService.getMaterial(function (data) {
             if (data.value == true) {
-                $scope.allMoc = _.uniq(data.data);
+                $scope.allMoc = _.uniq(data.data);  
                 console.log("aaa", $scope.allMoc);
             }
         });
