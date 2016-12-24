@@ -1,5 +1,5 @@
-// var adminURL = "http://localhost:1337/";
-var adminURL = "http://104.155.129.33:1337/";
+var adminURL = "http://localhost:1337/";
+// var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -514,13 +514,22 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-     getAllSetting: function (callback) {
-       return $http({
+    getAllSetting: function (callback) {
+      return $http({
         url: adminURL + "settings/search",
         method: "POST"
       }).success(callback);
     },
 
+
+    updateSetting: function (senddata, callback) {
+      var data = senddata;
+      return $http({
+        url: adminURL + "settings/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
 
 
 

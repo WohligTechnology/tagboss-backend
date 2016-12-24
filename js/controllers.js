@@ -2029,7 +2029,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         };
     })
-    .controller('SettingCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('SettingCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("setting");
         $scope.menutitle = NavigationService.makeactive("Setting");
         TemplateService.title = $scope.menutitle;
@@ -2043,11 +2043,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
         $scope.getAllSetting();
 
-        $scope.updateSetting = function (settingdata) {
-            console.log("aaaa", settingdata);
-            // NavigationService.updateSetting(senddata, function (data) {
-
-            // });
+        $scope.updateSetting = function (settingdata, id, field) {
+            var senddata = {};
+            senddata._id = id;
+            senddata[field] = settingdata;
+            NavigationService.updateSetting(senddata, function (data) {
+                console.log("done");
+                // $scope.getAllSetting();
+                toastr.success("Record Successfully Updated","Information");
+            });
         }
     })
     .controller('PaymentCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
