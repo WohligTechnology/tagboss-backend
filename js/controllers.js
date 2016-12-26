@@ -440,8 +440,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     $scope.showProd = false;
     $scope.showSell = true;
-    $scope.showProduct = function () {
+    $scope.showProduct = function (id) {
         $scope.showProd = true;
+        NavigationService.getInventoryByProduct(id, function (data) {
+            if (data.value == true) {
+                $scope.allStock = data.data;
+                console.log(" $scope.getStock", $scope.allStock);
+            }
+        });
         $scope.showSell = false;
     };
 
@@ -451,26 +457,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     };
 
     $scope.getMocByCat = function (id) {
-        NavigationService.getMocByCat(id,function (data) {
+        NavigationService.getMocByCat(id, function (data) {
             if (data.value == true) {
                 $scope.allMoc = data.data;
                 console.log("aaa", $scope.allMoc);
             }
         });
     }
-  
+
 
 
     $scope.getAllCategory = function () {
         NavigationService.getAllCategory(function (data) {
             if (data.value == true) {
                 $scope.allCategory = data.data.results;
-                console.log("cat",$scope.allCategory);
+                console.log("cat", $scope.allCategory);
             }
         });
     }
 
     $scope.getAllCategory();
+
+
+    $scope.getAllSellerProducts = function () {
+        NavigationService.getAllSellerProducts(function (data) {
+            if (data.value == true) {
+                $scope.allSellerProducts = data.data;
+                console.log("$scope.allSellerProducts", $scope.allSellerProducts);
+            }
+        });
+    }
+
+    $scope.getAllSellerProducts();
 
 })
 

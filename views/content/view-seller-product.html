@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <div class="col-md-3">
                                         <select name="" id="" class="form-control">
-                                        <option ng-repeat="cat in allCategory" ng-change="getMocByCat(cat._id)" value="cat._id">{{cat.name}}</option>
+                                        <option ng-repeat="cat in allCategory" value="cat._id">{{cat.name}}</option>
                                         <!--<option value="Plates/Sheets">Plates/Sheets</option>
                                         <option value="Coil">Coil</option>
                                         <option value="Roundbar">Roundbar  </option>-->
@@ -50,135 +50,70 @@
                         </div>
                     </div>
                 </div>
-                <div class="view-seller-product">
-                    <!--<div class="magic-form">
+                <div ng-repeat="(sel,product) in allSellerProducts | groupBy:'seller.firmName'">
+                    <div class="buy-head">
+                        <h2 class="order-head subhead ng-scope">{{sel}}</h2>
+                    </div>
+                    <div class="view-seller-product">
+                        <!--<div class="magic-form">
                     <div class="magic-resize">
                         <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                         <label class="detail-heading" for="add-one">ORDER ID TB00_1</label>
                     </div>
                 </div>-->
-                    <!--<div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <!--<div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
                     <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>-->
-                </div>
-                <table class="table table-bordered request-buyer-table">
-                    <thead>
-                        <tr>
-                            <th><strong>NAME</strong></th>
-                            <th><strong>GRADE</strong></th>
-                            <th><strong>SIZE</strong></th>
+                    </div>
+                    <table class="table table-bordered request-buyer-table">
+                        <thead>
+                            <tr>
+                                <th><strong>Product NAME</strong></th>
+                                <!--<th><strong>GRADE</strong></th>-->
+                                <!--<th><strong>SIZE</strong></th>
                             <th><strong>SCH</strong></th>
-                            <th><strong>THICKNESS (MM)</strong></th>
-                            <th>STOCK</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Stainless Seamless Pipes</td>
-                            <td>ASTM A-312</td>
-                            <td>25.4 mm</td>
-                            <td>10</td>
-                            <td>12mm</td>
-                            <td>2000</td>
-                            <td class="view-td">
-                                <!--<label class="stat">VERIFIED</label>-->
-                                <label class="stat">APPROVED</label>
-                                <!--<a ui-sref="view-request-buyers"><label class="view">VIEW</label></a>-->
-                                <a ng-click="showProduct()"><label class="view">VIEW</label></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="view-seller-product">
+                            <th><strong>THICKNESS (MM)</strong></th>-->
+                                <th>STOCK</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="products in product">
+                                <td>
+                                    <div class="item-info-detail pro-name" ng-if="products.category.name == 'Pipes'">
+                                        {{products.moc.name}} {{products.type.name}} {{products.category.name}}<br/>
+                                        {{products.gradesstandards.name}} {{products.odInches}} NB (Inches) x {{products.sch}}
+                                    </div>
+                                    <div class="item-info-detail pro-name" ng-if="products.category.name == 'Plates/Sheets'">
+                                        {{products.moc.name}} {{products.category.name}} <br/>
+                                        {{products.gradesstandards.name}} {{products.thickness}} MM Thick x {{products.width}} MM Width x {{products.length}} MM Length 
+                                    </div>
+                                    <div class="item-info-detail pro-name" ng-if="products.category.name == 'Roundbar'">
+                                       {{products.moc.name}} {{products.category.name}}<br/>
+                                        {{products.gradesstandards.name}} Dia {{products.diameter}} MM
+                                    </div>
+                                    <div class="item-info-detail pro-name" ng-if="products.category.name == 'Coil'">
+                                        {{products.moc.name}} {{products.category.name}}<br/>
+                                       {{products.gradesstandards.name}} {{products.thickness}} MM Thick x {{products.width}} MM Width Length Coil
+                                    </div>
+                                </td>
+                                <!--<td>{{pro.gradesstandards.name}}</td>-->
+                                <!--<td>25.4 mm</td>
+                            <td>{{pro.sch}}</td>
+                            <td>{{pro.thickness}}</td>-->
+                                <td><span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.totalQty}}</span>
+                                    <span
+                                        ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.quantityInNos}}</span>
+                                </td>
+                                <td class="view-td">
+                                    <!--<label class="stat">VERIFIED</label>-->
+                                    <label class="stat">{{products.status}}</label>
+                                    <!--<a ui-sref="view-request-buyers"><label class="view">VIEW</label></a>-->
+                                    <a ng-click="showProduct(products.product)"><label class="view">VIEW</label></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table table-bordered request-buyer-table">
-                    <thead>
-                        <tr>
-                            <th><strong>NAME</strong></th>
-                            <th><strong>GRADE</strong></th>
-                            <th><strong>THICKNESS (MM)</strong></th>
-                            <th><strong>WIDTH (MM)</strong></th>
-                            <th><strong>LENGTH (MM)</strong></th>
-                            <th>STOCK</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Stainless SteelPlates / Sheets</td>
-                            <td>ASTM A-312</td>
-                            <td>25.4 mm</td>
-                            <td>10mm</td>
-                            <td>10mm</td>
-                            <td>2000</td>
-                            <td class="view-td">
-                                <label class="stat">PENDING</label>
-                                <!--<label class="stat">APPROVED</label>-->
-                                <a ng-click="showProduct()"><label class="view">VIEW</label></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="view-seller-product">
-                </div>
-                <table class="table table-bordered request-buyer-table">
-                    <thead>
-                        <tr>
-                            <th><strong>NAME</strong></th>
-                            <th><strong>GRADE</strong></th>
-                            <th><strong>THICKNESS (MM)</strong></th>
-                            <th><strong>WIDTH (MM)</strong></th>
-                            <th><strong>LENGTH (MM)</strong></th>
-                            <th>STOCK</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Stainless Steel Coil</td>
-                            <td>ASTM A-312</td>
-                            <td>25.4 mm</td>
-                            <td>10mm</td>
-                            <td>10mm</td>
-                            <td>2000</td>
-                            <td class="view-td">
-                                <!--<label class="stat">VERIFIED</label>-->
-                                <label class="stat">APPROVED</label>
-                                <a ng-click="showProduct()"><label class="view">VIEW</label></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="view-seller-product">
-                </div>
-                <table class="table table-bordered request-buyer-table">
-                    <thead>
-                        <tr>
-                            <th><strong>NAME</strong></th>
-                            <th><strong>GRADE</strong></th>
-                            <th><strong>DIAMETER (MM)</strong></th>
-                            <!--<th><strong></strong></th>
-                        <th><strong></strong></th>-->
-                            <th>STOCK</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Roundbar</td>
-                            <td>ASTM A-312</td>
-                            <td>10 mm</td>
-                            <!--<td></td>
-                        <td></td>-->
-                            <td>2000</td>
-                            <td class="view-td">
-                                <!--<label class="stat">VERIFIED</label>-->
-                                <label class="stat">APPROVED</label>
-                                <a ng-click="showProduct()"><label class="view">VIEW</label></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
             <!--<div class="view-sell-stock">
                 <div class="checkin favour orders sellorders myproduct">
@@ -308,8 +243,8 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="pull-left">
-                        <h3 class="font-karla-bold pop-up"><span>Stainless Steel</span><span>Seamless</span><span>Pipes</span></h3>
-                        <h3 class="font-karla-bold pop-up"><span>ASTM A-312</span><span>1/4 NB (Inches)</span><span>x</span><span>SCH 10</span></h3>
+                        <h3 class="font-karla-bold pop-up"><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].type.name}}</span><span>{{allStock[0].category.name}}</span></h3>
+                        <h3 class="font-karla-bold pop-up"><span>{{allStock[0].odMm}}</span><span>{{allStock[0].odInches}} (Inches)</span><span>x</span><span>{{allStock[0].sch}}</span></h3>
                     </div>
                 </div>
                 <table class="table table-bordered request-buyer-table view-prod text-center">
@@ -325,7 +260,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr ng-repeat="stock in allStock">
                             <td>ABC_01</td>
                             <td>26 June 2016</td>
                             <td>200</td>

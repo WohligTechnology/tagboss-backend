@@ -547,6 +547,23 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getInventoryByProduct: function (senddata, callback) {
+      var data = {"product":senddata};
+      return $http({
+        url: adminURL + "inventory/getInventorybyProduct",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    getAllSellerProducts: function (callback) {
+      // var data = senddata;
+      return $http({
+        url: adminURL + "inventory/getAllSellerProducts",
+        method: "POST"
+      }).success(callback);
+    },
+
 
 
   };
