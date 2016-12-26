@@ -521,6 +521,22 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+    getAllCategory: function (callback) {
+      return $http({
+        url: adminURL + "category/search",
+        method: "POST"
+      }).success(callback);
+    },
+
+ getMocByCat: function (id, callback) {
+      var data = {_id:id};
+      return $http({
+        url: adminURL + "moc/getMocByCategory",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
 
     updateSetting: function (senddata, callback) {
       var data = senddata;

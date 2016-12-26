@@ -450,16 +450,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.showProd = false;
     };
 
-    $scope.getMoc = function () {
-        NavigationService.getMaterial(function (data) {
+    $scope.getMocByCat = function (id) {
+        NavigationService.getMocByCat(id,function (data) {
             if (data.value == true) {
-                $scope.allMoc = _.uniq(data.data);
+                $scope.allMoc = data.data;
                 console.log("aaa", $scope.allMoc);
             }
         });
     }
+  
 
-    $scope.getMoc();
+
+    $scope.getAllCategory = function () {
+        NavigationService.getAllCategory(function (data) {
+            if (data.value == true) {
+                $scope.allCategory = data.data.results;
+                console.log("cat",$scope.allCategory);
+            }
+        });
+    }
+
+    $scope.getAllCategory();
 
 })
 
@@ -2029,7 +2040,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         };
     })
-    .controller('SettingCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout) {
+    .controller('SettingCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("setting");
         $scope.menutitle = NavigationService.makeactive("Setting");
         TemplateService.title = $scope.menutitle;
@@ -2050,7 +2061,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.updateSetting(senddata, function (data) {
                 console.log("done");
                 // $scope.getAllSetting();
-                toastr.success("Record Successfully Updated","Information");
+                toastr.success("Record Successfully Updated", "Information");
             });
         }
     })

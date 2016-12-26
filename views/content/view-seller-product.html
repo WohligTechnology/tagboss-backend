@@ -34,17 +34,16 @@
                                 <div class="form-group">
                                     <div class="col-md-3">
                                         <select name="" id="" class="form-control">
-                                        <option value="Pipes">Pipes</option>
-                                        <option value="Plates/Sheets">Plates/Sheets</option>
+                                        <option ng-repeat="cat in allCategory" ng-change="getMocByCat(cat._id)" value="cat._id">{{cat.name}}</option>
+                                        <!--<option value="Plates/Sheets">Plates/Sheets</option>
                                         <option value="Coil">Coil</option>
-                                        <option value="Roundbar">Roundbar  </option>
+                                        <option value="Roundbar">Roundbar  </option>-->
                                     </select>
                                     </div>
                                     <div class="col-md-3">
                                         <select name="" id="" class="form-control">
-                                        <option ng-repeat="moc in allMoc" value="{{moc._id}}">{{moc.name}} - {{moc.category.name}}</option>
-                                       
-                                    </select>
+                                        <option ng-repeat="moc in allMoc" value="{{moc.name}}">{{moc.name}}</option>
+                                         </select>
                                     </div>
                                 </div>
                             </form>
