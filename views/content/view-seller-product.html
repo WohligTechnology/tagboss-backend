@@ -72,7 +72,7 @@
                                 <!--<th><strong>SIZE</strong></th>
                             <th><strong>SCH</strong></th>
                             <th><strong>THICKNESS (MM)</strong></th>-->
-                                <th>STOCK</th>
+                                <th>PRICE</th>
                                 <th>STATUS</th>
                             </tr>
                         </thead>
@@ -80,29 +80,35 @@
                             <tr ng-repeat="products in product">
                                 <td>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Pipes'">
-                                        {{products.moc.name}} {{products.type.name}} {{products.category.name}}<br/>
-                                        {{products.gradesstandards.name}} {{products.odInches}} NB (Inches) x {{products.sch}}
+                                        {{products.moc.name}} {{products.type.name}} {{products.category.name}}<br/> {{products.gradesstandards.name}}
+                                        {{products.odInches}} NB (Inches) x {{products.sch}}
                                     </div>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Plates/Sheets'">
-                                        {{products.moc.name}} {{products.category.name}} <br/>
-                                        {{products.gradesstandards.name}} {{products.thickness}} MM Thick x {{products.width}} MM Width x {{products.length}} MM Length 
+                                        {{products.moc.name}} {{products.category.name}} <br/> {{products.gradesstandards.name}}
+                                        {{products.thickness}} MM Thick x {{products.width}} MM Width x {{products.length}}
+                                        MM Length
                                     </div>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Roundbar'">
-                                       {{products.moc.name}} {{products.category.name}}<br/>
-                                        {{products.gradesstandards.name}} Dia {{products.diameter}} MM
+                                        {{products.moc.name}} {{products.category.name}}<br/> {{products.gradesstandards.name}}
+                                        Dia {{products.diameter}} MM
                                     </div>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Coil'">
-                                        {{products.moc.name}} {{products.category.name}}<br/>
-                                       {{products.gradesstandards.name}} {{products.thickness}} MM Thick x {{products.width}} MM Width Length Coil
+                                        {{products.moc.name}} {{products.category.name}}<br/> {{products.gradesstandards.name}}
+                                        {{products.thickness}} MM Thick x {{products.width}} MM Width Length Coil
                                     </div>
                                 </td>
                                 <!--<td>{{pro.gradesstandards.name}}</td>-->
                                 <!--<td>25.4 mm</td>
                             <td>{{pro.sch}}</td>
                             <td>{{pro.thickness}}</td>-->
-                                <td><span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.totalQty}}</span>
-                                    <span
-                                        ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.quantityInNos}}</span>
+                                <!--<td><span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.totalQty}}</span>
+                                    <span ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.quantityInNos}}</span>
+                                </td>-->
+                                <td>
+   <span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.finalPrice}} per meter</span>
+                        
+                                    <span ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.finalPrice}} per kg</span>
+                        
                                 </td>
                                 <td class="view-td">
                                     <!--<label class="stat">VERIFIED</label>-->
@@ -242,24 +248,23 @@
                         <p class="font-karla-bold"><span class="arrow font-karla">&lt;</span> Back to Seller Products</p>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="pull-left"  ng-if="allStock[0].category.name == 'Pipes'">
+                    <div class="pull-left" ng-if="allStock[0].category.name == 'Pipes'">
                         <!--<h3 class="font-karla-bold pop-up"><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].type.name}}</span><span>{{allStock[0].category.name}}</span></h3>
                         <h3 class="font-karla-bold pop-up"><span>{{allStock[0].odMm}}</span><span>{{allStock[0].odInches}} (Inches)</span><span>x</span><span>{{allStock[0].sch}}</span></h3>-->
-             <h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].type.name}}</span><span>{{allStock[0].category.name}}</span></h3>
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span>{{allStock[0].odInches}} NB (Inches)</span><span>x</span><span>SCH {{allStock[0].sch}}</span></h3>
-</div>
-<div class="pull-left " ng-if="allStock[0].category.name == 'Plates/Sheets'">
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span> </span><span>{{allStock[0].thickness}} MM Thick</span><span>x</span><span>{{allStock[0].width}} MM Width</span><span>x</span><span>{{allStock[0].length}} MM Length</span></h3>
-</div>
-<div class="pull-left " ng-if="allStock[0].category.name == 'Coil'">
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span> </span><span>{{allStock[0].thickness}} MM Thick</span><span>x</span><span>{{allStock[0].width}} MM Width</span><span> </span><span>Length Coil</span></h3>
-</div>
-<div class="pull-left " ng-if="allStock[0].category.name == 'Roundbar'">
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
-<h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span></span><span>Dia {{allStock[0].diameter}} MM</span></h3>
-                
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].type.name}}</span><span>{{allStock[0].category.name}}</span></h3>
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span>{{allStock[0].odInches}} NB (Inches)</span><span>x</span><span>SCH {{allStock[0].sch}}</span></h3>
+                    </div>
+                    <div class="pull-left " ng-if="allStock[0].category.name == 'Plates/Sheets'">
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span> </span><span>{{allStock[0].thickness}} MM Thick</span><span>x</span><span>{{allStock[0].width}} MM Width</span><span>x</span><span>{{allStock[0].length}} MM Length</span></h3>
+                    </div>
+                    <div class="pull-left " ng-if="allStock[0].category.name == 'Coil'">
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span> </span><span>{{allStock[0].thickness}} MM Thick</span><span>x</span><span>{{allStock[0].width}} MM Width</span><span> </span><span>Length Coil</span></h3>
+                    </div>
+                    <div class="pull-left " ng-if="allStock[0].category.name == 'Roundbar'">
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].moc.name}}</span><span>{{allStock[0].category.name}}</span></h3>
+                        <h3 class="font-karla-bold pop-up "><span>{{allStock[0].gradesstandards.name}}</span><span></span><span>Dia {{allStock[0].diameter}} MM</span></h3>
                     </div>
                 </div>
                 <table class="table table-bordered request-buyer-table view-prod text-center">
@@ -275,15 +280,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                       <tr ng-repeat="stock in allStock">
+                        <tr ng-repeat="stock in allStock">
                             <td>TBI{{stock.inventoryId}}</td>
                             <td>{{stock.createdAt | date:'mediumDate'}}</td>
                             <td><span ng-if="stock.category.name==='Pipes' || stock.category.name==='Roundbar'">{{stock.totalQty}}</span>
-                            <span ng-if="stock.category.name==='Coil'">1</span>
-                            <span ng-if="stock.category.name==='Plates/Sheets'">{{stock.quantityInNos}}</span>
+                                <span ng-if="stock.category.name==='Coil'">1</span>
+                                <span ng-if="stock.category.name==='Plates/Sheets'">{{stock.quantityInNos}}</span>
                             </td>
                             <td>{{stock.seller.warehouseAddress}}, {{stock.seller.warehouseCity}}, {{stock.seller.warehousePincode}}</td>
-                            <td>VIEW</td>
+                            <td class="text-center font-karla " ng-if="stock.mtcStatus != 'Notavailable'">
+                                <div class="item-info-detail ">
+                                    <h3 ng-if="stock.mtcStatus == 'Original'">MTC Certified</h3>
+                                    <h3 ng-if="stock.mtcStatus == 'Photocopy'">MTC Certified (Photocopy)</h3>
+                                </div>
+                                <div class="chpass text-center ">
+                                    <a fancybox-box ng-href="{{stock.mtcImage | uploadpath}}" rel="fancybox" target="_blank">
+                                        <span class=" ">View</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-center font-karla " ng-if="stock.mtcStatus == 'Notavailable'">
+                                <div class="item-info-detail">
+                                    <h3>Not MTC Certified</h3>
+                                </div>
+                            </td>
                             <td>{{stock.status}}</td>
                             <!--<td class="view-td">
                                 <a ui-sref="view-request-buyers"><label class="view">VIEW</label></a>
