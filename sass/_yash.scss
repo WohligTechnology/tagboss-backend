@@ -198,6 +198,13 @@
     }
 }
 
+.request-buyers .request-buyer .w-auto {
+    th,
+    td {
+        width: auto !important;
+    }
+}
+
 // -------------this css is for details----------------
 .buyer-details,
 .inspection-details,
@@ -868,12 +875,12 @@
                     vertical-align: middle;
                 }
             }
-            .lbl-head{
+            .lbl-head {
                 width: 150px !important;
             }
         }
         .over-table {
-               overflow-x: auto;
+            overflow-x: auto;
             .payment-to-sellers-table {
                 .sell-pay {
                     .lbl-btn {
@@ -964,9 +971,11 @@
         }
     }
 }
-    .lbl-heads{
-                width: 150px !important;
-            }
+
+.lbl-heads {
+    width: 150px !important;
+}
+
 // --------------this css for refund-to-buyer ---------------
 .refund-to-buyers {
     .refund-to-buyer {
@@ -1091,12 +1100,35 @@
         }
     }
     .buy-head {
-        h2 {
+        h3 {
             display: inline;
         }
         .subhead {
             padding: 0 24px;
         }
+    }
+}
+
+.buy-head {
+    h3 {
+        font-weight: bold;
+        color: #043e77;
+        font-size: 20px;
+    }
+}
+
+.item-info-detail {
+    .mgn0 {
+        margin: 0;
+    }
+}
+
+.chpass {
+    .view1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #043E77;
     }
 }
 
@@ -1369,7 +1401,7 @@
 .buyer-details,
 .seller-details {
     position: relative;
-    height: 43px;
+    // height: 43px;
     .mid-btn {
         position: absolute;
         top: 0;

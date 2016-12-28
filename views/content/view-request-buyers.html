@@ -1,8 +1,8 @@
 <section class="body-main view-request-buyers">
   <div class="container-fluid">
-        <div ng-if="buyerData==undefined">
-    <h3 class="text-center">Loading</h3>
-      </div>
+    <div ng-if="buyerData==undefined">
+      <h3 class="text-center">Loading</h3>
+    </div>
     <div ng-if="buyerData" class="view-request-buyer">
       <div class="search-content">
         <div class="row">
@@ -37,12 +37,14 @@
           </tr>
         </thead>
         <tbody>
-               <tr>
+          <tr>
             <td>{{buyerData.companyAddress}}
             </td>
-            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState}},
-            {{buyerData.warehouse[0].warehouseCountry}}
-            </div>
+            <td>
+              <div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}},
+                {{buyerData.warehouse[0].warehousePincode}}
+                <br/>{{buyerData.warehouse[0].warehouseState}}, {{buyerData.warehouse[0].warehouseCountry}}
+              </div>
             </td>
             <td>TBS005<br> Dhanera Steel Ltd<br> TBB045
               <br> Raj Steel and Accessories</td>
@@ -104,8 +106,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="font-karla-bold" for="name">Contact Person</label>
-                      <input class="form-control" ng-model="buyerData.contactPerson" type="text" id="name" placeholder="Enter Contact Person"
-                        readonly>
+                      <input class="form-control" ng-model="buyerData.contactPerson" type="text" id="name" placeholder="Enter Contact Person" readonly>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -191,8 +192,8 @@
                       <div class="input-group attach">
                         <input class="form-control" type="text" id="com" placeholder="Enter PAN No." ng-model="buyerData.panNo" readonly>
                         <div class="cert-image">
-                 <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
-              </div>
+                          <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -202,8 +203,8 @@
                       <div class="input-group attach">
                         <input class="form-control" type="text" id="vat" placeholder="Enter VAT TIN No." ng-model="buyerData.vatTinNo" readonly>
                         <div class="cert-image">
-                  <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
-              </div>
+                          <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -213,8 +214,8 @@
                       <div class="input-group attach">
                         <input class="form-control" type="text" id="cst" placeholder="Enter CST TIN No." ng-model="buyerData.cstTinNo" readonly>
                         <div class="cert-image">
-                 <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
-              </div>
+                          <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -278,7 +279,9 @@
                 <p class="img-head">VAT NO. {{buyerData.vatTinNo}}</p>
               </div>
               <div>
-                 <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                <a id="fbplus_01" href="{{buyerData.imageOfVatTinNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}}" alt=" " class="get-center img-responsive ">
+                </a>
               </div>
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
@@ -295,7 +298,9 @@
                 <p class="img-head">CST NO. {{buyerData.cstTinNo}}</p>
               </div>
               <div>
-                 <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                <a id="fbplus_01" href="{{buyerData.imageOfCstTinNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}}" alt=" " class="get-center img-responsive ">
+                </a>
               </div>
               <!--<div class="verified"><p>VERIFIED</p></div>
                       <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
@@ -312,7 +317,9 @@
                 <p class="img-head">PAN NO. {{buyerData.panNo}}</p>
               </div>
               <div>
-                <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                <a id="fbplus_01" href="{{buyerData.imageOfCstTinNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                </a>
               </div>
               <!--<div class="hide verified"><p>VERIFIED</p></div>
                         <div class="pending"><p>VERIFICATION PENDING</p></div>-->
@@ -334,8 +341,9 @@
         <!-- </div> -->
       </div>
       <div class="accept-reject">
-                <button type="button" ng-if="buyerData.status==='incomplete'"  ng-disabled="buyerData.status==='incomplete'" ng-click="acceptBuyer(buyerData);" class="btn btn-primary"> Profile Incomplete</button>
-        <button type="button" ng-if="buyerData.status!=='incomplete'"  ng-click="acceptBuyer(buyerData);" class="btn btn-primary">ACCEPT</button>
+        <button type="button" ng-if="buyerData.status==='incomplete'" ng-disabled="buyerData.status==='incomplete'" ng-click="acceptBuyer(buyerData);"
+          class="btn btn-primary"> Profile Incomplete</button>
+        <button type="button" ng-if="buyerData.status!=='incomplete'" ng-click="acceptBuyer(buyerData);" class="btn btn-primary">ACCEPT</button>
         <button type="button" ng-disabled="buyerData.status==='incomplete'" ng-click="rejectBuyer(buyerData);" class="btn btn-primary">REJECT</button>
       </div>
     </div>

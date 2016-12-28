@@ -450,7 +450,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
         $scope.showSell = false;
     };
-
+    $.fancybox.close(true);
     $scope.showSellerProduct = function () {
         $scope.showSell = true;
         $scope.showProd = false;

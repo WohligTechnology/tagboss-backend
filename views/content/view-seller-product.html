@@ -52,7 +52,7 @@
                 </div>
                 <div ng-repeat="(sel,product) in allSellerProducts | groupBy:'seller.firmName'">
                     <div class="buy-head">
-                        <h2 class="order-head subhead ng-scope">{{sel}}</h2>
+                        <h3 class="order-head subhead ng-scope">{{sel}}</h3>
                     </div>
                     <div class="view-seller-product">
                         <!--<div class="magic-form">
@@ -64,7 +64,7 @@
                         <!--<div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
                     <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>-->
                     </div>
-                    <table class="table table-bordered request-buyer-table">
+                    <table class="table table-bordered request-buyer-table w-auto">
                         <thead>
                             <tr>
                                 <th><strong>Product NAME</strong></th>
@@ -105,10 +105,8 @@
                                     <span ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.quantityInNos}}</span>
                                 </td>-->
                                 <td>
-   <span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.finalPrice}} per meter</span>
-                        
+                                    <span ng-if="products.category.name==='Pipes' || products.category.name==='Roundbar'">{{products.finalPrice}} per meter</span>
                                     <span ng-if="products.category.name==='Coil' || products.category.name==='Plates/Sheets'">{{products.finalPrice}} per kg</span>
-                        
                                 </td>
                                 <td class="view-td">
                                     <!--<label class="stat">VERIFIED</label>-->
@@ -289,13 +287,13 @@
                             </td>
                             <td>{{stock.seller.warehouseAddress}}, {{stock.seller.warehouseCity}}, {{stock.seller.warehousePincode}}</td>
                             <td class="text-center font-karla " ng-if="stock.mtcStatus != 'Notavailable'">
-                                <div class="item-info-detail ">
-                                    <h3 ng-if="stock.mtcStatus == 'Original'">MTC Certified</h3>
-                                    <h3 ng-if="stock.mtcStatus == 'Photocopy'">MTC Certified (Photocopy)</h3>
+                                <div class="item-info-detail">
+                                    <h5 class="mgn0" ng-if="stock.mtcStatus == 'Original'">MTC Certified</h5>
+                                    <h5 class="mgn0" ng-if="stock.mtcStatus == 'Photocopy'">MTC Certified (Photocopy)</h5>
                                 </div>
                                 <div class="chpass text-center ">
                                     <a fancybox-box ng-href="{{stock.mtcImage | uploadpath}}" rel="fancybox" target="_blank">
-                                        <span class=" ">View</span>
+                                        <span class="view1">View</span>
                                     </a>
                                 </div>
                             </td>
