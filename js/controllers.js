@@ -1902,7 +1902,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.panNoVerified = sellerdata.panNoVerified;
             senddata.status = "verified";
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
-                toastr.error("Please verified all Documents!", "Error");
+                toastr.error("Please verify all Documents!", "Error");
             } else {
                 NavigationService.updateSeller(senddata, function (data) {
                     if (data.value == true) {
@@ -1959,7 +1959,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             console.log("new data", senddata);
 
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
-                toastr.error("Please verified all Documents!", "Error");
+                toastr.error("Please verify all Documents!", "Error");
             } else {
                 NavigationService.updateBuyer(senddata, function (data) {
                     if (data.value == true) {

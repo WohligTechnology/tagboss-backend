@@ -33,10 +33,10 @@
       </div>
       <div ng-if="AllSeller.length==0">
         <h3 class="text-center">No data Found</h3>
-        </div>
-        <div ng-if="AllSeller==undefined">
+      </div>
+      <div ng-if="AllSeller==undefined">
         <h3 class="text-center">Loading...</h3>
-        </div>
+      </div>
       <div ng-repeat="seller in AllSeller">
         <div class="request-seller-details ">
           <div class="magic-form">
@@ -66,8 +66,8 @@
               </td>
               <td>TBS{{seller.userId}}</td>
               <td>
-                <div ng-if="seller.warehouse.length>0">{{seller.warehouse[0].warehouseFirmName}},<br> {{seller.warehouse[0].warehouseAddress}},<br>                  {{seller.warehouse[0].warehouseCity}}, {{seller.warehouse[0].warehousePincode}}<br/>{{seller.warehouse[0].warehouseState}},
-                  {{seller.warehouse[0].warehouseCountry}}
+                <div ng-if="seller.warehouse.length>0">{{seller.warehouse[0].warehouseFirmName}},<br> {{seller.warehouse[0].warehouseAddress}},<br> {{seller.warehouse[0].warehouseCity}},
+                  {{seller.warehouse[0].warehousePincode}}<br/>{{seller.warehouse[0].warehouseState.name}}, {{seller.warehouse[0].warehouseCountry}}
                 </div>
               </td>
               <td>CST NO. {{seller.cstTinNo}}<br> VAT NO. {{seller.vatTinNo}}</td>
