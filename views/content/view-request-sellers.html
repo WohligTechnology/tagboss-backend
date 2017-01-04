@@ -382,6 +382,66 @@
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-4 col-1">
+            <div class="abc">
+              <div>
+                <p class="img-head">Registration No. (ECC) {{sellerData.registrationNo}}</p>
+              </div>
+              <div>
+                <a id="fbplus_01" href="{{sellerData.imageOfregistrationNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{sellerData.imageOfregistrationNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                </a>
+              </div>
+              <!--<div class="verified"><p>VERIFIED</p></div>
+                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
+              <div class="text-center">
+                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
+                <toggle-switch ng-model="sellerData.registrationNo" required on-label="Verified" off-label="Non-Verified">
+                </toggle-switch>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-2">
+            <div class="abc">
+              <div>
+                <p class="img-head">Cancelled Cheque {{sellerData.cancelledCheque}}</p>
+              </div>
+              <div>
+                <a id="fbplus_02" href="{{sellerData.imageCancelledCheque|uploadpath}}" fancybox-box>
+                  <img ng-src="{{sellerData.imageCancelledCheque|uploadpath}}" alt=" " class="get-center img-responsive ">
+                </a>
+              </div>
+              <!--<div class="verified"><p>VERIFIED</p></div>
+                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
+              <div class="text-center">
+                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
+                <toggle-switch ng-model="sellerData.cancelledCheque" required on-label="Verified" off-label="Non-Verified">
+                </toggle-switch>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-3">
+            <div class="abc">
+              <div>
+                <p class="img-head">Import Export Code {{sellerData.importExportCode}}</p>
+              </div>
+              <div>
+                <a id="fbplus_03" href="{{sellerData.imageImportExportCode|uploadpath}}" fancybox-box>
+                  <img ng-src="{{sellerData.imageImportExportCode|uploadpath}}" alt=" " class="get-center img-responsive ">
+                </a>
+              </div>
+              <!--<div class="hide verified"><p>VERIFIED</p></div>
+                        <div class="pending"><p>VERIFICATION PENDING</p></div>-->
+              <div class="text-center">
+                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
+                <toggle-switch ng-model="sellerData.importExportCode" required on-label="Verified" off-label="Non-Verified">
+                </toggle-switch>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row comment-area">
         <div class="col-md-offset-3 col-md-6 form-group form-inline">

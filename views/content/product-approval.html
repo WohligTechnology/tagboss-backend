@@ -125,7 +125,7 @@
                       <p>Status: {{inventory.status}}</p>
                       <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
                     </div>
-                    <div ng-if="inventory.status==='Inspected' || inventory.status==='Assigned' || inventory.status==='Pending'">
+                    <div ng-if="inventory.status==='Inspected' || inventory.status==='Assigned' || inventory.status==='Pending' || inventory.status==='Rejected'">
                     <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
                       <div class="">
                         <button type="button" ng-click="acceptReport(inventory);" class="btn btn-primary accept">ACCEPT</button>

@@ -35,19 +35,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.menutitle = NavigationService.makeactive("Dashboard");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
-
-
-
-
     $scope.chartConfig1 = {
-
         options: {
             //This is the Main Highcharts chart config. Any Highchart options are valid here.
             //will be overriden by values specified below.
             chart: {
                 type: 'column'
-
             },
             tooltip: {
                 style: {
@@ -1207,13 +1200,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getCountDown = function (adate, orderid, myindex) {
         var a = moment(adate);
         // var b = moment(bdate);
+        $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
-        // console.log("duration.days()", duration.days(), "duration.hours()", duration.hours(), "duration.minutes()", duration.minutes(), "duration.seconds()", duration.seconds());
-
         if (new Date(currentTime) < new Date(b)) {
             // console.log("innnnnnn");
             var interval = 1;
@@ -1221,18 +1213,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("duration1", duration);
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
-                    // document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                    // document.getElementById("counthours" + orderid + myindex).value = duration.hours();
-                    // document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
-                    // document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                    if (duration.days() > 0) {
+                        document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                    }
+                    document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
                 } else {
                     // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
                     clearInterval(timer);
                 }
             }, 1000);
         } else {
-            console.log("stop", "countercomplete" + orderid + myindex);
-            // document.getElementById("countercomplete"+myindex).innerHTML =new Date();
+            // var stop = "-"+orderid ;
+            // console.log("stop", stop);
+            // document.getElementById("countercomplete"+ orderid + myindex).innerHTML =new Date(b);
+            // $("#countercomplete"+ orderid + myindex).style.display = 'none';
+            // document.getElementById('countdown1').style.visibility = "hidden";
+            // $scope.stopcounter = stop;
+
         }
     }
 

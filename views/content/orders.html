@@ -162,8 +162,8 @@
                 </td>
                 <td>
                  {{order.deliveryStatus}}<br>
-                 <div>
-                  <div name="countercomplete{{cat  | ltrim: '-' }}{{$index}}" data-ng-init="getCountDown(order.createdAt, cat,$index)" class="font-karla inline-block time" id="countercomplete{{$index}}">
+               <div data-ng-init="getCountDown(order.createdAt, cat,$index)"  >
+                  <div ng-if="order.paymentStatus=='Pending'" name="countercomplete{{cat  | ltrim: '-' }}{{$index}}" class="font-karla inline-block time" id="countercomplete{{cat  | ltrim: '-' }}{{$index}}">
                     <form class="form-inline ng-pristine ng-valid">
                       <div class="form-group ">
                         <input type="text" class="countdays" id="countdays{{cat  | ltrim: '-' }}{{$index}}" >
@@ -187,7 +187,9 @@
                       <!--<div class="countdown1"></div>-->
                     </form>
                   </div>
-                  </div>
+</div>
+                   
+                
                   <a ui-sref="view-orders({id:order._id})"><label class="view pull-right">VIEW</label></a>
                 </td>
               </tr>
