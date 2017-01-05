@@ -331,6 +331,29 @@
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-4 col-1">
+            <div class="abc">
+              <div>
+                <p class="img-head">Registration No. (ECC) {{buyerData.registrationNo}}</p>
+              </div>
+              <div>
+                <a id="fbplus_01" href="{{buyerData.imageOfregistrationNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{buyerData.imageOfregistrationNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                </a>
+              </div>
+              <!--<div class="verified"><p>VERIFIED</p></div>
+                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
+              <div class="text-center">
+                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
+                <toggle-switch ng-model="buyerData.registrationNoVerified" required on-label="Verified" off-label="Non-Verified">
+                </toggle-switch>
+              </div>
+            </div>
+          </div>
+         
+        </div>
       </div>
       <div class="row comment-area">
         <!-- <div class="form-inline"> -->

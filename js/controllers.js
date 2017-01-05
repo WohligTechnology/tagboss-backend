@@ -1204,7 +1204,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
-        console.log('a',a, "b",b);
+        console.log('a', a, "b", b);
         // var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
@@ -1904,8 +1904,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.registrationNo = sellerdata.registrationNo;
             senddata.cancelledCheque = sellerdata.cancelledCheque;
             senddata.importExportCode = sellerdata.importExportCode;
+            senddata.registrationNoVerified = sellerdata.registrationNoVerified;
+            senddata.cancelledChequeVerified = sellerdata.cancelledChequeVerified;
+            senddata.importExportCodeVerified = sellerdata.importExportCodeVerified;
+            senddata.isAdminVerified = true;
             senddata.status = "verified";
-            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
+            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false || senddata.registrationNoVerified == false || senddata.cancelledChequeVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
             } else {
                 NavigationService.updateSeller(senddata, function (data) {
@@ -1927,6 +1931,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
             senddata.vatTinNoVerified = sellerdata.vatTinNoVerified;
             senddata.panNoVerified = sellerdata.panNoVerified;
+            senddata.registrationNo = sellerdata.registrationNo;
+            senddata.cancelledCheque = sellerdata.cancelledCheque;
+            senddata.importExportCode = sellerdata.importExportCode;
+            senddata.registrationNoVerified = sellerdata.registrationNoVerified;
+            senddata.cancelledChequeVerified = sellerdata.cancelledChequeVerified;
+            senddata.importExportCodeVerified = sellerdata.importExportCodeVerified;
+            senddata.isAdminVerified = true;
             senddata.status = "rejected";
             NavigationService.updateSeller(senddata, function (data) {
                 if (data.value == true) {
@@ -1959,10 +1970,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
             senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
             senddata.panNoVerified = buyerdata.panNoVerified;
+            senddata.registrationNo = buyerdata.registrationNo;
+            senddata.registrationNoVerified = buyerdata.registrationNoVerified;
+            senddata.isAdminVerified = true;
             senddata.status = "verified";
             console.log("new data", senddata);
 
-            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
+            if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false || senddata.registrationNoVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
             } else {
                 NavigationService.updateBuyer(senddata, function (data) {
@@ -1985,6 +1999,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.cstTinNoVerified = buyerdata.cstTinNoVerified;
             senddata.vatTinNoVerified = buyerdata.vatTinNoVerified;
             senddata.panNoVerified = buyerdata.panNoVerified;
+            senddata.registrationNo = buyerdata.registrationNo;
+            senddata.registrationNoVerified = buyerdata.registrationNoVerified;
+            senddata.isAdminVerified = true;
             senddata.status = "rejected";
             NavigationService.updateBuyer(senddata, function (data) {
                 if (data.value == true) {
