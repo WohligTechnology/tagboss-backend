@@ -1197,12 +1197,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
-    $scope.getCountDown = function (adate, orderid, myindex) {
+    $scope.getCountDown = function (adate, orderid, myindex, todate) {
+        console.log("statename", $state);
         var a = moment(adate);
         // var b = moment(bdate);
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
-        var b = moment(a).add(2, 'days');
+        var b = moment(todate);
+        console.log('a',a, "b",b);
+        // var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
@@ -1213,9 +1216,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("duration1", duration);
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
-                    if (duration.days() > 0) {
-                        document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                    }
+                    console.log("duration.days()", duration.days());
+                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
                     document.getElementById("counthours" + orderid + myindex).value = duration.hours();
                     document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
                     document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
@@ -1899,6 +1901,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.cstTinNoVerified = sellerdata.cstTinNoVerified;
             senddata.vatTinNoVerified = sellerdata.vatTinNoVerified;
             senddata.panNoVerified = sellerdata.panNoVerified;
+            senddata.registrationNo = sellerdata.registrationNo;
+            senddata.cancelledCheque = sellerdata.cancelledCheque;
+            senddata.importExportCode = sellerdata.importExportCode;
             senddata.status = "verified";
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
