@@ -312,21 +312,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.showEdit = false;
     $scope.hideEdit = true;
     $scope.showEditProduct = function (id) {
-        console.log("id",id);
+        console.log("id", id);
         $scope.showEdit = true;
         $scope.hideEdit = false;
         NavigationService.getOneInventory(id, function (data) {
             if (data.value == true) {
-                console.log("productEdit",$scope.productEdit);
+                console.log("productEdit", $scope.productEdit);
                 $scope.productEdit = data.data;
             }
         });
 
     };
 
+    $scope.showText = true;
+    $scope.showTextBrand = function () {
+        $scope.showText = false;
+    }
+
     $scope.showInspection = function () {
         $scope.hideEdit = true;
         $scope.showEdit = false;
+        $scope.showText = true;
     };
 
 

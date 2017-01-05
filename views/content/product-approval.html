@@ -176,16 +176,16 @@
                                 </div>
                                 <div class="col-md-6">
                                   <div class="sec-foot">
-                   <!--<select class="form-control" id="brand" name="" disabled>
+                  <span ng-if="showText==false"> <select class="form-control" id="brand" name="" >
                                         <option value="">{{productEdit.brand.name}}</option>
-                                    </select>-->
-                                    <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id="">
-                    <div class="side-btn">
+                                    </select></span>
+                                   <span ng-if="showText==true"> <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
+                    <div ng-if="showText==true" class="side-btn">
                            <div class="form-group inline-block">
               <button class="btn btn-primary text-uppercase">Accept</button>
             </div>
             <div class="form-group inline-block">
-              <button class="btn btn-primary text-uppercase">Reject</button>
+              <button ng-click="showTextBrand()" class="btn btn-primary text-uppercase">Reject</button>
             </div>
                     </div>
                   </div>
@@ -211,14 +211,14 @@
                                     <label for="cat" class="font-karla-bold">Select Shape</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <select class="form-control" id="cat" name="">
+                                    <select class="form-control" id="cat" name="" disabled>
                                         <option value="">{{productEdit.category.name}}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <!-- Pipes -->{{productEdit.category.name}}dasd
-                        <div class="div" ng-if="productEdit.category.name==='Pipes'">
+                        <!-- Pipes -->
+                        <div class="div" ng-if="productEdit.category.name=='Pipes'">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -508,7 +508,7 @@
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="divs" ng-hide="productEdit.mtcStatus=='Notavailable'">
-                                            <a fancybox-box ng-href="{{productEdit.mtcImage | serverimage}}" rel="fancybox">
+                                            <a fancybox-box ng-href="{{productEdit.mtcImage | uploadpath}}" rel="fancybox">
                                                 <p class="font-karla upload-place">View uploaded file.</p>
                                             </a>
                                         </div>
@@ -529,7 +529,7 @@
                             </div>
                         </div>
                         <!-- plates/sheet -->
-                        <div class="div" ng-if="productEdit.category.name=='Plates/Sheets'">
+                        <div class="div" ng-if="productEdit.category.name=='Plates/Sheets'">    
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -689,7 +689,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="exciseSheets" class="font-karla-bold exciseps"><span>Excise Modvat per sheet</span>
-            <span>(included in price per sheet)</span></label>
+                         <span>(included in price per sheet)</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="exciseSheets" ng-model="productEdit.exciseModvatPerProduct" id="exciseSheets"
@@ -758,7 +758,7 @@
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="divs" ng-hide="productEdit.mtcStatus=='Notavailable'">
-                                            <a fancybox-box ng-href="{{productEdit.mtcImage | serverimage}}" rel="fancybox">
+                                            <a fancybox-box ng-href="{{productEdit.mtcImage | uploadpath}}" rel="fancybox">
                                                 <p class="font-karla upload-place">View uploaded file.</p>
                                             </a>
                                         </div>
@@ -779,7 +779,7 @@
                             </div>
                         </div>
                         <!-- coil -->
-                        <div class="div" ng-if="productEdit.category.name=='Coil'">
+                        <div class="div" ng-if="productEdit.category.name=='Coil'">     
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -907,7 +907,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="exciseKg" class="font-karla-bold excise"><span>Per KG Excise Modvat</span>
-                <span>(included in price per kg)</span></label>
+                         <span>(included in price per kg)</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="exciseKg" ng-model="productEdit.exciseModvatPerKg" id="exciseKg" readonly>
@@ -928,7 +928,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="exciseProduct" class="font-karla-bold excisec"><span>Excise Modvat per coil</span>
-                <span>(included in price per coil)</span></label>
+                         <span>(included in price per coil)</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="exciseProduct" ng-model="productEdit.exciseModvatPerProduct" id="exciseProduct"
@@ -997,7 +997,7 @@
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="divs" ng-hide="productEdit.mtcStatus=='Notavailable'">
-                                            <a fancybox-box ng-href="{{productEdit.mtcImage | serverimage}}" rel="fancybox">
+                                            <a fancybox-box ng-href="{{productEdit.mtcImage | uploadpath}}" rel="fancybox">
                                                 <p class="font-karla upload-place">View uploaded file.</p>
                                             </a>
                                         </div>
@@ -1018,7 +1018,7 @@
                             </div>
                         </div>
                         <!-- roundbar -->
-                        <div class="div" ng-if="productEdit.category.name=='Roundbar'">
+                        <div class="div" ng-if="productEdit.category.name=='Roundbar'">     
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -1230,7 +1230,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="modvatExcise" class="font-karla-bold excise"><span>Per KG Excise Modvat</span>
-                    <span>(included in price per kg)</span></label>
+                                <span>(included in price per kg)</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="modvatExcise" ng-model="productEdit.exciseModvatPerKg" id="modvatExcise" readonly>
@@ -1252,7 +1252,7 @@
                                     <div class="col-md-6">
                                         <!--<label for="brand" class="font-karla-bold">Total wt of above stock (kg)</label>-->
                                         <label for="totalwtpipe" class="font-karla-bold excisewt"><span>Total weight of above</span>
-                    <span>stock in kgs</span></label>
+                           <span>stock in kgs</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="totalwtpipe" id="totalwtpipe" ng-model="productEdit.totalWt" readonly>
@@ -1273,7 +1273,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="modvatplate" class="font-karla-bold exciseps"><span>Excise Modvat per mtr</span>
-            <span>(included in price per mtr)</span></label>
+                         <span>(included in price per mtr)</span></label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="modvatplate" id="modvatplate" ng-model="productEdit.exciseModvatPerProduct"
@@ -1343,7 +1343,7 @@
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="divs" ng-hide="productEdit.mtcStatus=='Notavailable'">
-                                            <a fancybox-box ng-href="{{productEdit.mtcImage | serverimage}}" rel="fancybox">
+                                            <a fancybox-box ng-href="{{productEdit.mtcImage | uploadpath}}" rel="fancybox">
                                                 <p class="font-karla upload-place">View uploaded file.</p>
                                             </a>
                                         </div>
@@ -1369,7 +1369,7 @@
                             <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="saveEdited(productEdit,editProduct)" onclick="Click();">Submit</button>
                         </div>
                         <div class="subbtn inline-block pacebtn">
-                            <button class="btn btn-primary font-gotham-medium text-uppercase" ui-sref="seller-account">Cancel</button>
+                            <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="showInspection()" >Cancel</button>
                         </div>
                     </div>
                 </form>
