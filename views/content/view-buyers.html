@@ -187,7 +187,7 @@
       <div class="view-request-buyers">
         <div class="view-request-buyer ">
           
-   <table class="table table-bordered view-request-buyer-table">
+   <table align="center" class="table table-bordered view-request-buyer-table">
         <thead>
           <tr>
             <th><strong>ADDRESS</strong></th>
@@ -439,13 +439,7 @@
               <div>
                  <img ng-src="{{buyerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
-              <!--<div class="verified"><p>VERIFIED</p></div>
-                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
-              <div class="text-center">
-                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="buyerData.vatTinNoVerified" on-label="Verified" off-label="Non-Verified">
-                </toggle-switch>
-              </div>
+   
             </div>
           </div>
           <div class="col-md-4 col-2">
@@ -456,13 +450,7 @@
               <div>
                  <img ng-src="{{buyerData.imageOfCstTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
-              <!--<div class="verified"><p>VERIFIED</p></div>
-                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
-              <div class="text-center">
-                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="buyerData.cstTinNoVerified" on-label="Verified" off-label="Non-Verified">
-                </toggle-switch>
-              </div>
+      
             </div>
           </div>
           <div class="col-md-4 col-3">
@@ -473,15 +461,25 @@
               <div>
                 <img ng-src="{{buyerData.imageOfPanNo|uploadpath}} " alt=" " class="get-center img-responsive ">
               </div>
-              <!--<div class="hide verified"><p>VERIFIED</p></div>
-                        <div class="pending"><p>VERIFICATION PENDING</p></div>-->
-              <div class="text-center">
-                <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
-                <toggle-switch ng-model="buyerData.panNoVerified" on-label="Verified" off-label="Non-Verified">
-                </toggle-switch>
-              </div>
+     
             </div>
           </div>
+        </div>
+         <div class="row">
+          <div class="col-md-4 col-1">
+            <div class="abc">
+              <div>
+                <p class="img-head">Registration No. (ECC) {{buyerData.registrationNo}}</p>
+              </div>
+              <div>
+                <a id="fbplus_01" href="{{buyerData.imageOfregistrationNo|uploadpath}}" fancybox-box>
+                  <img ng-src="{{buyerData.imageOfregistrationNo|uploadpath}} " alt=" " class="get-center img-responsive ">
+                </a>
+              </div>
+          
+            </div>
+          </div>
+         
         </div>
       </div>
         </div>
