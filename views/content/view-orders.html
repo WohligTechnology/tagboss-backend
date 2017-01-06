@@ -583,15 +583,28 @@
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
                                                     <div class="">
-                                                        <select name="" id="" class="form-control">
-                                            <option value="">Active</option>
-                                            <option value="">Cancelled</option>
+                                                        <select ng-model="order.status" name="" id="" class="form-control">
+                                            <option>Active</option>
+                                            <option>Cancelled</option>
                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                             <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="">Comments Status</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 no-padding">
+                                                    <div class="">
+                                                        <textarea ng-model="order.orderCancelledComment"> </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="text-center">
-                                                <button type="button" class="btn btn-primary return mt5">SUBMIT</button>
+                                                <button type="submit" class="btn btn-primary return mt5">SUBMIT</button>
                                             </div>
                                         </form>
                                     </div>
