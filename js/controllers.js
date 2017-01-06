@@ -437,16 +437,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
 
-    $scope.editProductData = function(productdata){
+    $scope.editProductData = function (productdata) {
         console.log("product", productdata);
-        var senddata ={};
+        var senddata = {};
         senddata._id = productdata._id;
         senddata.brand = productdata.brand._id;
         senddata.details = productdata.details;
         senddata.type = productdata.type._id;
         senddata.gradesstandards = productdata.gradesstandards._id;
-        NavigationService.editProduct(senddata, function(data){
-toastr.success("Product Updated Successfully", "Information")
+        NavigationService.editProduct(senddata, function (data) {
+            toastr.success("Product Updated Successfully", "Information")
         });
     }
 
@@ -1591,7 +1591,11 @@ toastr.success("Product Updated Successfully", "Information")
             console.log("status", status);
             var senddata = {};
             senddata._id = id;
-            senddata.isBlocked = status;
+            if (status === "Block") {
+                senddata.isBlocked = true;
+            } else {
+                senddata.isBlocked = false;
+            }
             NavigationService.updateUser(senddata, function (data) {
                 toastr.success("Seller Status Updated!", "Information");
 

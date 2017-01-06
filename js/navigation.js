@@ -582,6 +582,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     editProduct: function (senddata, callback) {
+      var data =  senddata;
+      return $http({
+        url: adminURL + "inventory/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     getAllSellerProducts: function (callback) {
       // var data = senddata;
       return $http({
