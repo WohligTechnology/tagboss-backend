@@ -103,8 +103,8 @@
             </td>
             <td></td>
             <td>
-              <span></span>
-              <span></span>
+              <span ng-if="seller.isBlocked==true">Blocked</span>
+              <span ng-if="seller.isBlocked==false">Unblocked</span>
               <span><br><a ui-sref="view-sellers({'id':seller._id})" class="pull-right"><label class="view">VIEW</label></a></span>
             </td>
           </tr>

@@ -47,10 +47,10 @@
               <form class="form-horizontal enable" role="form">
                 <div class="form-group">
                   <label class="col-sm-6 control-label" for="">Change Status</label>
-                  <div class="col-sm-6">
-                    <select ng-model="isDisabled" ng-change="updateUser(sellerData._id,isDisabled)" name="user" class="form-control">
-                        <option value="true">Block</option>
-                        <option value="false">Unblock</option>
+                  <div class="col-sm-6">{{sellerData.isBlocked}}
+                    <select ng-model="sellerData.isDisabled" ng-change="updateUser(sellerData._id,sellerData.isBlocked)" name="user" class="form-control">
+                        <option >Block</option>
+                        <option >Unblock</option>
                     </select>
                   </div>
                 </div>

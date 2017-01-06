@@ -436,6 +436,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
+
+    $scope.editProductData = function(productdata){
+        console.log("product", productdata);
+        var senddata ={};
+        senddata._id = productdata._id;
+        senddata.brand = productdata.brand._id;
+        senddata.details = productdata.details;
+        senddata.type = productdata.type._id;
+        senddata.gradesstandards = productdata.gradesstandards._id;
+        NavigationService.editProduct(senddata, function(data){
+toastr.success("Product Updated Successfully", "Information")
+        });
+    }
+
 })
 
 .controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -1574,7 +1588,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
 
         $scope.updateUser = function (id, status) {
-
+            console.log("status", status);
             var senddata = {};
             senddata._id = id;
             senddata.isBlocked = status;
@@ -1963,12 +1977,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.importExportCodeVerified = sellerdata.importExportCodeVerified;
             senddata.isAdminVerified = true;
             senddata.status = "rejected";
-            NavigationService.updateSeller(senddata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Seller Status Updated!", "Information");
-                    $state.go("request-sellers");
-                }
-            });
+            // console.log()
+            if (senddata.comment === "" || senddata.comment == undefined) {
+                toastr.error("Please enter comment!", "Error");
+            } else {
+                NavigationService.updateSeller(senddata, function (data) {
+                    if (data.value == true) {
+                        toastr.success("Seller Status Updated!", "Information");
+                        $state.go("request-sellers");
+                    }
+                });
+            }
+
         }
     })
     .controller('View-request-buyersCtrl', function ($scope, $state, toastr, TemplateService, NavigationService, $timeout) {
