@@ -448,11 +448,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         console.log("product", productdata);
         var senddata = {};
         senddata._id = productdata._id;
-        senddata.brand = productdata.brand._id;
+        senddata.brand = productdata.brand.name;
         senddata.details = productdata.details;
-        senddata.type = productdata.type._id;
-        senddata.gradesstandards = productdata.gradesstandards._id;
+        // senddata.type = productdata.type.name;
+        // senddata.gradesstandards = productdata.gradesstandards.name;
         NavigationService.editProduct(senddata, function (data) {
+            $scope.showInspection();
+             $scope.getInventory();
             toastr.success("Product Updated Successfully", "Information")
         });
     }
