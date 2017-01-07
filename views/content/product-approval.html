@@ -175,9 +175,9 @@
                                     <label for="brand" class="font-karla-bold">Brand</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <div class="sec-foot">
-                  <span ng-if="showText==false"> <select class="form-control" id="brand" name="" >
-                                        <option value="">{{productEdit.brand.name}}</option>
+                                  <div class="sec-foot">{{productEdit.brand.name}}
+                  <span ng-if="showText==false"> <select ng-model="productEdit.brand.name" class="form-control" id="brand" name="" >
+                                        <option ng-repeat="brand in allBrand" value="{{brand._id}}">{{brand.name}}</option>
                                     </select></span>
                                    <span ng-if="showText==true"> <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
                     <div ng-if="showText==true" class="side-btn">

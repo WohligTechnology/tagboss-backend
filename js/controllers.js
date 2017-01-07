@@ -352,11 +352,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getBrands(function (data) {
             if (data.value == true) {
                 $scope.allBrand = data.data.results;
+                console.log("branddata", $scope.allBrand);
             }
         });
     }
-
-$scope.getAllBrands();
+    $scope.getAllBrands();
 
     $scope.getInventory = function () {
         NavigationService.getInventory($scope.filter, function (data) {
