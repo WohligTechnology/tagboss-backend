@@ -36,7 +36,7 @@
                   <td>{{coupon.createdAt | date : "dd-MM-y"}} to {{coupon.endDate | date : "dd-MM-y"}}</td>
                   <td>{{coupon.type}}</td>
                   <td>{{coupon.amount}}</td>
-                  <td>{{coupon.city}}</td>
+                  <td>{{coupon.city.toString()}}</td>
                   <td>
                     <div class="text-center">
                       <span ng-click="openedit('Edit',coupon._id);">Edit</span>

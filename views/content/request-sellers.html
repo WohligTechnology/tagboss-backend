@@ -73,7 +73,7 @@
               <td>CST NO. {{seller.cstTinNo}}<br> VAT NO. {{seller.vatTinNo}}</td>
               <td class="view-td">
                 <!--<label class="stat">VERIFIED</label>-->
-                <label class="stat">{{seller.status}}</label>
+                <label class="stat" style="text-transform:capitalize;">{{seller.status}}</label>
                 <a ui-sref="view-request-sellers({'id':seller._id})"><label class="view">VIEW</label></a>
               </td>
             </tr>

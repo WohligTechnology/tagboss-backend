@@ -348,8 +348,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.filter = {};
     $scope.filter.page = 1;
 
+    $scope.getAllBrands = function () {
+        NavigationService.getBrands(function (data) {
+            if (data.value == true) {
+                $scope.allBrand = data.data.results;
+            }
+        });
+    }
 
-
+$scope.getAllBrands();
 
     $scope.getInventory = function () {
         NavigationService.getInventory($scope.filter, function (data) {
