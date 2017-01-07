@@ -454,8 +454,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         // senddata.gradesstandards = productdata.gradesstandards.name;
         NavigationService.editProduct(senddata, function (data) {
             $scope.showInspection();
-             $scope.getInventory();
+            $scope.getInventory();
             toastr.success("Product Updated Successfully", "Information")
+        });
+    }
+
+
+    $scope.updateBrand = function (branddata) {
+        console.log("branddata", branddata);
+        // var senddata
+        NavigationService.updateBrand(branddata, function (data) {
+             $scope.getInventory();
+           toastr.success("Brand Updated Successfully", "Information")
         });
     }
 

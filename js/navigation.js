@@ -120,6 +120,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+    updateBrand: function (branddata,callback) {
+      var data = branddata;
+      return $http({
+        url: adminURL + "brand/save",
+        method: "POST",
+        data:data
+      }).success(callback);
+    },
+
     getGradesStandards: function (id, callback) {
       var data = {
         _id: id
