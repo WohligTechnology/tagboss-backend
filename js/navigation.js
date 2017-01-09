@@ -131,6 +131,24 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+        updateType: function (typedata,callback) {
+      var data = typedata;
+      return $http({
+        url: adminURL + "type/save",
+        method: "POST",
+        data:data
+      }).success(callback);
+    },
+
+       updateGrade: function (gradedata,callback) {
+      var data = gradedata;
+      return $http({
+        url: adminURL + "GradesStandards/save",
+        method: "POST",
+        data:data
+      }).success(callback);
+    },
+
     getGradesStandards: function (id, callback) {
       var data = {
         _id: id

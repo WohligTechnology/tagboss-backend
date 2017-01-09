@@ -170,8 +170,8 @@
                                     <label for="brand" class="font-karla-bold">Brand</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="sec-foot">
-                                        <span ng-if="showText==false"> <select ng-model="productEdit.brand.name" class="form-control" id="brand" name="" >
+                                    <div class="sec-foot">{{productEdit.brand}}
+                                        <span ng-if="showText==false"> <select ng-model="productEdit.brand._id" class="form-control" id="brand" name="" >
                                         <option ng-repeat="brand in allBrand" value="{{brand._id}}">{{brand.name}}</option>
                                     </select></span>
                                         <span ng-if="showText==true">
@@ -252,8 +252,8 @@
                                         <label for="type" class="font-karla-bold">Type</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="sec-foot">
-                                            <span ng-if="showTextType==false"> <select ng-model="productEdit.type.name" class="form-control" id="type" name="" >
+                                        <div class="sec-foot">{{productEdit.type}}
+                                            <span ng-if="showTextType==false"> <select ng-model="productEdit.type._id" class="form-control" id="type" name="" >
                                         <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
                                     </select></span>
                                             <span ng-if="showTextType==true">
@@ -292,14 +292,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="sec-foot">
-                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards.name" class="form-control" id="gradesstandards" name="" >
+                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards._id" class="form-control" id="gradesstandards" name="" >
                                         <option ng-repeat="gradesstandards in allGrade" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
                                     </select></span>
                                             <span ng-if="showTextGrade==true">
                           <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
                                             <div ng-if="showTextGrade==true" class="side-btn">
                                                 <div class="form-group inline-block">
-                                                    <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                                    <button ng-click="updateGrade(productEdit.gradesstandards)" class="btn btn-primary text-uppercase">Accept</button>
                                                 </div>
                                                 <div class="form-group inline-block">
                                                     <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
@@ -585,10 +585,21 @@
                                         <label for="type" class="font-karla-bold">Type</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <!--<select class="form-control" id="type" name="" disabled>
-                                        <option value="">{{productEdit.type.name}}</option>
-                                    </select>-->
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextType==false"> <select ng-model="productEdit.type.name" class="form-control" id="type" name="" >
+                                        <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
+                                    </select></span>
+                                            <span ng-if="showTextType==true">
+                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id=""></span>
+                                            <div ng-if="showTextType==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextTypeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -607,13 +618,24 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="grade" class="font-karla-bold">Standard / Grades</label>
+                                        <label for="type" class="font-karla-bold">Standard / Grade</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <!--<select class="form-control" id="grade" name="" disabled>
-                                        <option value="">{{productEdit.gradesstandards.name}}</option>
-                                    </select>-->
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards._id" class="form-control" id="gradesstandards" name="" >
+                                        <option ng-repeat="gradesstandards in allGrade" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
+                                    </select></span>
+                                            <span ng-if="showTextGrade==true">
+                          <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
+                                            <div ng-if="showTextGrade==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateGrade(productEdit.gradesstandards)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -835,10 +857,21 @@
                                         <label for="type" class="font-karla-bold">Type</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <!--<select class="form-control" id="type" name="" disabled>
-                                        <option value="">{{productEdit.type.name}}</option>
-                                    </select>-->
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextType==false"> <select ng-model="productEdit.type._id" class="form-control" id="type" name="" >
+                                        <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
+                                    </select></span>
+                                            <span ng-if="showTextType==true">
+                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id=""></span>
+                                            <div ng-if="showTextType==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextTypeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -857,13 +890,24 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="grade" class="font-karla-bold">Standard / Grades</label>
+                                        <label for="type" class="font-karla-bold">Standard / Grade</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <!--<select class="form-control" id="grade" name="" disabled>
-                                        <option value="">{{productEdit.gradesstandards.name}}</option>
-                                    </select>-->
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards._id" class="form-control" id="gradesstandards" name="" >
+                                        <option ng-repeat="gradesstandards in allGrade" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
+                                    </select></span>
+                                            <span ng-if="showTextGrade==true">
+                          <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
+                                            <div ng-if="showTextGrade==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateGrade(productEdit.gradesstandards)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1083,13 +1127,24 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="grade" class="font-karla-bold">Standard / Grades</label>
+                                        <label for="type" class="font-karla-bold">Standard / Grade</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <!--<select class="form-control" id="grade" name="" disabled>
-                                        <option value="">{{productEdit.gradesstandards.name}}</option>
-                                    </select>-->
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards._id" class="form-control" id="gradesstandards" name="" >
+                                        <option ng-repeat="gradesstandards in allGrade" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
+                                    </select></span>
+                                            <span ng-if="showTextGrade==true">
+                          <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
+                                            <div ng-if="showTextGrade==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateGrade(productEdit.gradesstandards)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

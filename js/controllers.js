@@ -476,10 +476,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         console.log("product", productdata);
         var senddata = {};
         senddata._id = productdata._id;
-        senddata.brand = productdata.brand.name;
+        senddata.brand = productdata.brand._id;
         senddata.details = productdata.details;
-        // senddata.type = productdata.type.name;
-        // senddata.gradesstandards = productdata.gradesstandards.name;
+        if(productdata.category.name!=='Roundbar'){
+        senddata.type = productdata.type._id;
+        }
+        senddata.gradesstandards = productdata.gradesstandards._id;
         NavigationService.editProduct(senddata, function (data) {
             $scope.showInspection();
             $scope.getInventory();
@@ -494,6 +496,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.updateBrand(branddata, function (data) {
              $scope.getInventory();
            toastr.success("Brand Updated Successfully", "Information")
+        });
+    }
+
+    $scope.updateType = function (typedata) {
+        console.log("typedata", typedata);
+        NavigationService.updateType(typedata, function (data) {
+             $scope.getInventory();
+           toastr.success("Type Updated Successfully", "Information")
+        });
+    }
+
+     $scope.updateGrade = function (gradedata) {
+        console.log("gradedata", gradedata);
+        NavigationService.updateGrade(gradedata, function (data) {
+             $scope.getInventory();
+           toastr.success("Grade / Standards Updated Successfully", "Information")
         });
     }
 
