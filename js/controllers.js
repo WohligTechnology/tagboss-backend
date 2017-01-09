@@ -298,7 +298,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.menutitle = NavigationService.makeactive("Product Approval");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-  
+
     $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
 
@@ -324,12 +324,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.showText = false;
     }
 
-     $scope.showTextType = true;
+    $scope.showTextType = true;
     $scope.showTextTypeDiv = function () {
         $scope.showTextType = false;
     }
 
-     $scope.showTextGrade = true;
+    $scope.showTextGrade = true;
     $scope.showTextGradeDiv = function () {
         $scope.showTextGrade = false;
     }
@@ -340,8 +340,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.hideEdit = true;
         $scope.showEdit = false;
         $scope.showText = true;
-          $scope.showTextType = true;
-           $scope.showTextGrade = true;
+        $scope.showTextType = true;
+        $scope.showTextGrade = true;
     };
 
 
@@ -361,30 +361,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getBrands(function (data) {
             if (data.value == true) {
                 $scope.allBrand = data.data.results;
-              }
+            }
         });
     }
     $scope.getAllBrands();
 
 
-        $scope.getAllTypes = function (id) {
-           NavigationService.getTypes(id,function (data) {
+    $scope.getAllTypes = function (id) {
+        NavigationService.getTypes(id, function (data) {
             if (data.value == true) {
                 $scope.allType = data.data;
-             }
+            }
         });
     }
-    
 
-           $scope.getAllGrades = function (id) {
-           NavigationService.getGradesStandards(id,function (data) {
+
+    $scope.getAllGrades = function (id) {
+        NavigationService.getGradesStandards(id, function (data) {
             if (data.value == true) {
                 $scope.allGrade = data.data;
-             }
+            }
         });
     }
 
-    
+
 
     $scope.getInventory = function () {
         NavigationService.getInventory($scope.filter, function (data) {
@@ -478,8 +478,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         senddata._id = productdata._id;
         senddata.brand = productdata.brand._id;
         senddata.details = productdata.details;
-        if(productdata.category.name!=='Roundbar'){
-        senddata.type = productdata.type._id;
+        if (productdata.category.name !== 'Roundbar') {
+            senddata.type = productdata.type._id;
         }
         senddata.gradesstandards = productdata.gradesstandards._id;
         NavigationService.editProduct(senddata, function (data) {
@@ -494,24 +494,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         console.log("branddata", branddata);
         // var senddata
         NavigationService.updateBrand(branddata, function (data) {
-             $scope.getInventory();
-           toastr.success("Brand Updated Successfully", "Information")
+            $scope.getInventory();
+            toastr.success("Brand Updated Successfully", "Information")
         });
     }
 
     $scope.updateType = function (typedata) {
         console.log("typedata", typedata);
         NavigationService.updateType(typedata, function (data) {
-             $scope.getInventory();
-           toastr.success("Type Updated Successfully", "Information")
+            $scope.getInventory();
+            toastr.success("Type Updated Successfully", "Information")
         });
     }
 
-     $scope.updateGrade = function (gradedata) {
+    $scope.updateGrade = function (gradedata) {
         console.log("gradedata", gradedata);
         NavigationService.updateGrade(gradedata, function (data) {
-             $scope.getInventory();
-           toastr.success("Grade / Standards Updated Successfully", "Information")
+            $scope.getInventory();
+            toastr.success("Grade / Standards Updated Successfully", "Information")
         });
     }
 
@@ -1215,10 +1215,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     };
 
 
-    $scope.updateOrderStatus = function(orderdata){
+    $scope.updateOrderStatus = function (orderdata) {
         console.log("aaa", orderdata);
-var senddata ={};
-senddata._id = orderdata._id;
+        var senddata = {};
+        senddata._id = orderdata._id;
     };
 
     $scope.getOneOrder = function () {
@@ -1263,6 +1263,15 @@ senddata._id = orderdata._id;
         console.log("paymentstatus", paymentstatus, id);
     };
 
+    $scope.getOrderCount = function (id) {
+        NavigationService.getOrderCount(id, function (data) {
+            if (data.value == true) {
+                $scope.allCount = data.data;
+            }
+        });
+    }
+
+    $scope.getOrderCount();
     $scope.editOrder = function (id) {
         $scope.order = {};
         var subid = id.slice(1);
@@ -2445,24 +2454,24 @@ senddata._id = orderdata._id;
 
 
 
-          $scope.showEdit = false;
-    $scope.hideEdit = true;
-    $scope.showEditProduct = function (id) {
-         $scope.showEdit = true;
-        $scope.hideEdit = false;
-        NavigationService.getOneInventory(id, function (data) {
-            if (data.value == true) {
-                console.log("productEdit", $scope.productEdit);
-                $scope.productEdit = data.data;
-            }
-        });
-
-    };
-
-    $scope.showInspection = function () {
-        $scope.hideEdit = true;
         $scope.showEdit = false;
-    };
+        $scope.hideEdit = true;
+        $scope.showEditProduct = function (id) {
+            $scope.showEdit = true;
+            $scope.hideEdit = false;
+            NavigationService.getOneInventory(id, function (data) {
+                if (data.value == true) {
+                    console.log("productEdit", $scope.productEdit);
+                    $scope.productEdit = data.data;
+                }
+            });
+
+        };
+
+        $scope.showInspection = function () {
+            $scope.hideEdit = true;
+            $scope.showEdit = false;
+        };
 
 
 

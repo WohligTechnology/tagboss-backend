@@ -149,6 +149,17 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getOrderCount: function (senddata,callback) {
+      var data = senddata;
+      return $http({
+        url: adminURL + "bill/getOrderCount",
+        method: "POST",
+        data:data
+      }).success(callback);
+    },
+
+    
+
     getGradesStandards: function (id, callback) {
       var data = {
         _id: id
