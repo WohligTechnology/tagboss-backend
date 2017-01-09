@@ -147,8 +147,6 @@
         </div>
     </div>
 </section>
-
-
 <section class="sell-login addproduct editproduct" ng-show="showEdit">
     <div class="sell-log">
         <div class="container-fluid">
@@ -177,7 +175,7 @@
                                         <option ng-repeat="brand in allBrand" value="{{brand._id}}">{{brand.name}}</option>
                                     </select></span>
                                         <span ng-if="showText==true">
-                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
+                                         <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
                                         <div ng-if="showText==true" class="side-btn">
                                             <div class="form-group inline-block">
                                                 <button ng-click="updateBrand(productEdit.brand)" class="btn btn-primary text-uppercase">Accept</button>
@@ -248,33 +246,30 @@
                                     </div>
                                 </div>
                             </div>-->
-
-                              <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="type" class="font-karla-bold">Type</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="sec-foot">
-                                        <span ng-if="showTextType==false"> <select ng-model="productEdit.type.name" class="form-control" id="type" name="" >
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="type" class="font-karla-bold">Type</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextType==false"> <select ng-model="productEdit.type.name" class="form-control" id="type" name="" >
                                         <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
                                     </select></span>
-                                        <span ng-if="showTextType==true">
+                                            <span ng-if="showTextType==true">
                                                                                <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id=""></span>
-                                        <div ng-if="showTextType==true" class="side-btn">
-                                            <div class="form-group inline-block">
-                                                <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
-                                            </div>
-                                            <div class="form-group inline-block">
-                                                <button ng-click="showTextTypeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                            <div ng-if="showTextType==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextTypeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -290,30 +285,30 @@
                                     </div>
                                 </div>
                             </div>
-                              <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="type" class="font-karla-bold">Standard / Grade</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="sec-foot">
-                                        <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards.name" class="form-control" id="gradesstandards" name="" >
-                                        <option ng-repeat="gradesstandards in allType" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="type" class="font-karla-bold">Standard / Grade</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="sec-foot">
+                                            <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards.name" class="form-control" id="gradesstandards" name="" >
+                                        <option ng-repeat="gradesstandards in allGrade" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
                                     </select></span>
-                                        <span ng-if="showTextGrade==true">
-                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
-                                        <div ng-if="showTextGrade==true" class="side-btn">
-                                            <div class="form-group inline-block">
-                                                <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
-                                            </div>
-                                            <div class="form-group inline-block">
-                                                <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                            <span ng-if="showTextGrade==true">
+                          <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
+                                            <div ng-if="showTextGrade==true" class="side-btn">
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                                </div>
+                                                <div class="form-group inline-block">
+                                                    <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">

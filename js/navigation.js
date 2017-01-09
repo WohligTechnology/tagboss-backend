@@ -121,13 +121,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-     getTypes: function (callback) {
-      return $http({
-        url: adminURL + "brand/search",
-        method: "POST"
-      }).success(callback);
-    },
-
+     
     updateBrand: function (branddata,callback) {
       var data = branddata;
       return $http({
@@ -143,6 +137,17 @@ var navigationservice = angular.module('navigationservice', [])
       };
       return $http({
         url: adminURL + "GradesStandards/getGradesStandardsByMoc",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+     getTypes: function (id, callback) {
+      var data = {
+        _id: id
+      };
+      return $http({
+        url: adminURL + "type/getTypeByCategory",
         method: "POST",
         data: data
       }).success(callback);

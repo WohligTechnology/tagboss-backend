@@ -310,8 +310,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.hideEdit = false;
         NavigationService.getOneInventory(id, function (data) {
             if (data.value == true) {
-                console.log("productEdit", $scope.productEdit);
                 $scope.productEdit = data.data;
+                $scope.getAllTypes($scope.productEdit.category._id);
+                $scope.getAllGrades($scope.productEdit.moc._id);
+
             }
         });
 
@@ -359,22 +361,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getBrands(function (data) {
             if (data.value == true) {
                 $scope.allBrand = data.data.results;
-                console.log("branddata", $scope.allBrand);
-            }
+              }
         });
     }
     $scope.getAllBrands();
 
 
-        $scope.getAllTypes = function () {
-        // NavigationService.getTypes(function (data) {
-        //     if (data.value == true) {
-        //         $scope.allType = data.data.results;
-        //         console.log("Typedata", $scope.allType);
-        //     }
-        // });
+        $scope.getAllTypes = function (id) {
+           NavigationService.getTypes(id,function (data) {
+            if (data.value == true) {
+                $scope.allType = data.data;
+             }
+        });
     }
-    $scope.getAllTypes();
+    
+
+           $scope.getAllGrades = function (id) {
+           NavigationService.getGradesStandards(id,function (data) {
+            if (data.value == true) {
+                $scope.allGrade = data.data;
+             }
+        });
+    }
+
+    
 
     $scope.getInventory = function () {
         NavigationService.getInventory($scope.filter, function (data) {
