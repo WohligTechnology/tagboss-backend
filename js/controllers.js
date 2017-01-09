@@ -1213,6 +1213,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         });
     };
+
+
+    $scope.updateOrderStatus = function(orderdata){
+        console.log("aaa", orderdata);
+var senddata ={};
+senddata._id = orderdata._id;
+    };
+
     $scope.getOneOrder = function () {
         $scope.calcst = 0.00;
         $scope.calvat = 0.00;

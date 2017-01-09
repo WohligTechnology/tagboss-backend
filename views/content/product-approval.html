@@ -170,7 +170,7 @@
                                     <label for="brand" class="font-karla-bold">Brand</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="sec-foot">{{productEdit.brand}}
+                                    <div class="sec-foot">
                                         <span ng-if="showText==false"> <select ng-model="productEdit.brand._id" class="form-control" id="brand" name="" >
                                         <option ng-repeat="brand in allBrand" value="{{brand._id}}">{{brand.name}}</option>
                                     </select></span>
@@ -252,7 +252,7 @@
                                         <label for="type" class="font-karla-bold">Type</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="sec-foot">{{productEdit.type}}
+                                        <div class="sec-foot">
                                             <span ng-if="showTextType==false"> <select ng-model="productEdit.type._id" class="form-control" id="type" name="" >
                                         <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
                                     </select></span>
