@@ -298,14 +298,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.menutitle = NavigationService.makeactive("Product Approval");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.brands = [{
-        name: 'Tata Steel'
-    }, {
-        name: 'Tata Steel'
-    }, {
-        name: 'Tata Steel'
-    }];
-
+  
     $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
 
@@ -329,10 +322,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.showText = false;
     }
 
+     $scope.showTextType = true;
+    $scope.showTextTypeDiv = function () {
+        $scope.showTextType = false;
+    }
+
+     $scope.showTextGrade = true;
+    $scope.showTextGradeDiv = function () {
+        $scope.showTextGrade = false;
+    }
+
+
+
     $scope.showInspection = function () {
         $scope.hideEdit = true;
         $scope.showEdit = false;
         $scope.showText = true;
+          $scope.showTextType = true;
+           $scope.showTextGrade = true;
     };
 
 
@@ -357,6 +364,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
     $scope.getAllBrands();
+
+
+        $scope.getAllTypes = function () {
+        // NavigationService.getTypes(function (data) {
+        //     if (data.value == true) {
+        //         $scope.allType = data.data.results;
+        //         console.log("Typedata", $scope.allType);
+        //     }
+        // });
+    }
+    $scope.getAllTypes();
 
     $scope.getInventory = function () {
         NavigationService.getInventory($scope.filter, function (data) {
@@ -2388,6 +2406,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 }
             });
         }
+
+
+
+          $scope.showEdit = false;
+    $scope.hideEdit = true;
+    $scope.showEditProduct = function (id) {
+         $scope.showEdit = true;
+        $scope.hideEdit = false;
+        NavigationService.getOneInventory(id, function (data) {
+            if (data.value == true) {
+                console.log("productEdit", $scope.productEdit);
+                $scope.productEdit = data.data;
+            }
+        });
+
+    };
+
+    $scope.showInspection = function () {
+        $scope.hideEdit = true;
+        $scope.showEdit = false;
+    };
+
+
+
     })
 
 .controller('Coupon-codeCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {

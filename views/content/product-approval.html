@@ -1,60 +1,60 @@
 <section class="body-main view-products assign-agency">
-  <div class="container-fluid">
-    <div class="view-product assign">
-      <div class="search-content">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search">
-              <span class="input-group-btn">
+    <div class="container-fluid">
+        <div class="view-product assign">
+            <div class="search-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group search-top">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
                   <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
                   <!-- <button class="btn btn-default" type="button">Go!</button> -->
                 </span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- <div class="excel-upload ">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <div class="excel-upload ">
                       <img src="img/excel-icon.png" >
                       <label>CONVERT TO EXCEL</label>
                   </div> -->
-            <div class="select-prod pull-right">
-              <select>
+                        <div class="select-prod pull-right">
+                            <select>
                       <option value="all">ALL</option>
                       <option value="saab">Approved</option>
                       <option value="opel">Rejected</option>
                       <option value="audi">Pending</option>
                     </select>
+                        </div>
+                        <div class="feed-assign">
+                            <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feed-assign">
-              <button type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div ng-show="hideEdit">
-        <div class="assign-agency-details">
-          <label class="detail-heading">INSPECTION AND APPROVAL</label>
-          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-          <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-        </div>
-        <table class="table table-bordered assign-agency-table">
-          <thead>
-            <tr>
-              <th><strong>NAME</strong></th>
-              <th><strong>PRODUCT</strong></th>
-              <th><strong>QUANTITY</strong></th>
-              <th><strong>INSPECTION AGENCY</strong></th>
-              <th><strong>STATUS</strong></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="inventory in getAllInventory">
-              <form name="reportform{{$index}}">
-                <td>
-                  <div class="magic-form">
-                    <div class="magic-resize">
-                      <input class="magic-checkbox" type="checkbox" name="layout" id="add-one{{$index}}" value="option1">
-                      <label class="text" for="add-one{{$index}}">
+            <div ng-show="hideEdit">
+                <div class="assign-agency-details">
+                    <label class="detail-heading">INSPECTION AND APPROVAL</label>
+                    <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                    <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+                </div>
+                <table class="table table-bordered assign-agency-table">
+                    <thead>
+                        <tr>
+                            <th><strong>NAME</strong></th>
+                            <th><strong>PRODUCT</strong></th>
+                            <th><strong>QUANTITY</strong></th>
+                            <th><strong>INSPECTION AGENCY</strong></th>
+                            <th><strong>STATUS</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="inventory in getAllInventory">
+                            <form name="reportform{{$index}}">
+                                <td>
+                                    <div class="magic-form">
+                                        <div class="magic-resize">
+                                            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one{{$index}}" value="option1">
+                                            <label class="text" for="add-one{{$index}}">
                             <p class="comp-name"> {{inventory.seller.firmName}}   </p>
                             <!--<p>Warehouse</p>
                             <p>
@@ -65,45 +65,45 @@
                               <p>
                              {{inventory.seller.companyAddress}}</p>
                           </label>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <ul class="prod-details">
-                    <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
-                    <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
-                    <!--<li>  SCH           </li>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <ul class="prod-details">
+                                        <li> {{inventory.brand.name}}, {{inventory.moc.name}} </li>
+                                        <li> {{inventory.category.name}}, {{inventory.gradesstandards.name}}</li>
+                                        <!--<li>  SCH           </li>
                         <li>  OD in mm   </li>-->
-                    <li> {{inventory.thickness}} </li>
-                    <li> {{inventory.length}} </li>
-                    <li> {{inventory.width}} </li>
-                    <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct(inventory._id)">EDIT</button>
-                  </ul>
-                </td>
-                <td>{{inventory.quantityInNos}}</td>
-                <td class="feed-col">
-                  <!--<select ng-model="myid">
+                                        <li> {{inventory.thickness}} </li>
+                                        <li> {{inventory.length}} </li>
+                                        <li> {{inventory.width}} </li>
+                                        <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct(inventory._id)">EDIT</button>
+                                    </ul>
+                                </td>
+                                <td>{{inventory.quantityInNos}}</td>
+                                <td class="feed-col">
+                                    <!--<select ng-model="myid">
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                        </select>-->
-                  <p>
-                    <div class="form-group" ng-if="inventory.status==='Pending'">
-                      <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
+                                    <p>
+                                        <div class="form-group" ng-if="inventory.status==='Pending'">
+                                            <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
                       <option  value="">Select Agency</option>
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                  
                 </select>
-                      <div class="error-msg1" ng-if="errmsg==true && myindex==$index && inventory.status==='Pending'">Please Select Agency Name.</div>
-                    </div>
-                  </p>
-                  <p ng-if="inventory.status!=='Pending'" class="upload-date">
-                    {{inventory.agencyid.agencyName}}
-                  </p>
-                  <p ng-if="inventory.status!=='Pending'">
-                    Due On : {{inventory.duedate | date:'mediumDate'}}
-                  </p>
-                </td>
-                <td class="text-center feed-col">
-                  <!--<div>
+                                            <div class="error-msg1" ng-if="errmsg==true && myindex==$index && inventory.status==='Pending'">Please Select Agency Name.</div>
+                                        </div>
+                                    </p>
+                                    <p ng-if="inventory.status!=='Pending'" class="upload-date">
+                                        {{inventory.agencyid.agencyName}}
+                                    </p>
+                                    <p ng-if="inventory.status!=='Pending'">
+                                        Due On : {{inventory.duedate | date:'mediumDate'}}
+                                    </p>
+                                </td>
+                                <td class="text-center feed-col">
+                                    <!--<div>
                     <div>
                       <p>Status: {{inventory.status}}</p>
                       <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
@@ -120,52 +120,49 @@
                       <p ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
                     </div>
                   </div>-->
-
-                   <div>
-                    <div>
-                      <p>Status: {{inventory.status}}</p>
-                      <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
-                    </div>
-                    <div ng-if="inventory.status==='Inspected' || inventory.status==='Assigned' || inventory.status==='Pending' || inventory.status==='Rejected'">
-                    <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
-                      <div class="">
-                        <button type="button" ng-click="acceptReport(inventory);" class="btn btn-primary accept">ACCEPT</button>
-                        <button type="button" ng-click="rejectReport(inventory);" class="btn btn-primary reject">REJECT</button>
-                      </div>
-                    </div>
-                    <div  ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
-                     <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
-                      <p ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
-                    </div>
-                  </div>
-                </td>
-              </form>
-            </tr>
-          </tbody>
-        </table>
-        <ul uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getInventory()"></ul>
-      </div>
+                                    <div>
+                                        <div>
+                                            <p>Status: {{inventory.status}}</p>
+                                            <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
+                                        </div>
+                                        <div ng-if="inventory.status==='Inspected' || inventory.status==='Assigned' || inventory.status==='Pending' || inventory.status==='Rejected'">
+                                            <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
+                                            <div class="">
+                                                <button type="button" ng-click="acceptReport(inventory);" class="btn btn-primary accept">ACCEPT</button>
+                                                <button type="button" ng-click="rejectReport(inventory);" class="btn btn-primary reject">REJECT</button>
+                                            </div>
+                                        </div>
+                                        <div ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
+                                            <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
+                                            <p ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getInventory()"></ul>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
-
-
 
 
 <section class="sell-login addproduct editproduct" ng-show="showEdit">
     <div class="sell-log">
         <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 text-center relative">
-          <h3 class="popularprdts font-gotham-medium text-uppercase">
-            EDIT Product
-          </h3>
-          <div class="back-insp pull-right" ng-click="showInspection()">
-            <p>
-              < bact to inspection and approval</p>
-          </div>
-        </div>
-        </div>
+            <div class="row">
+                <div class="col-md-12 text-center relative">
+                    <h3 class="popularprdts font-gotham-medium text-uppercase">
+                        EDIT Product
+                    </h3>
+                    <div class="back-insp pull-right" ng-click="showInspection()">
+                        <p>
+                            < bact to inspection and approval</p>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <form name="editProduct">
                     <div class="col-md-offset-3 col-md-6">
@@ -175,23 +172,21 @@
                                     <label for="brand" class="font-karla-bold">Brand</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <div class="sec-foot">
-                  <span ng-if="showText==false"> <select ng-model="productEdit.brand.name" class="form-control" id="brand" name="" >
+                                    <div class="sec-foot">
+                                        <span ng-if="showText==false"> <select ng-model="productEdit.brand.name" class="form-control" id="brand" name="" >
                                         <option ng-repeat="brand in allBrand" value="{{brand._id}}">{{brand.name}}</option>
                                     </select></span>
-                                   <span ng-if="showText==true">
-                                       
-                                        <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
-                    <div ng-if="showText==true" class="side-btn">
-                           <div class="form-group inline-block">
-              <button ng-click="updateBrand(productEdit.brand)" class="btn btn-primary text-uppercase">Accept</button>
-            </div>
-            <div class="form-group inline-block">
-              <button ng-click="showTextBrand()" class="btn btn-primary text-uppercase">Reject</button>
-            </div>
-                    </div>
-                  </div>
-                                   
+                                        <span ng-if="showText==true">
+                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.brand.name" id=""></span>
+                                        <div ng-if="showText==true" class="side-btn">
+                                            <div class="form-group inline-block">
+                                                <button ng-click="updateBrand(productEdit.brand)" class="btn btn-primary text-uppercase">Accept</button>
+                                            </div>
+                                            <div class="form-group inline-block">
+                                                <button ng-click="showTextBrand()" class="btn btn-primary text-uppercase">Reject</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -243,19 +238,43 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="type" class="font-karla-bold">Type</label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <!--<select class="form-control" id="type" name="" disabled>
-                                        <option value="">{{productEdit.type.name}}</option>
-                                    </select>-->
-                                     <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                              
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                                    </div>
+                                </div>
+                            </div>-->
+
+                              <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="type" class="font-karla-bold">Type</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="sec-foot">
+                                        <span ng-if="showTextType==false"> <select ng-model="productEdit.type.name" class="form-control" id="type" name="" >
+                                        <option ng-repeat="type in allType" value="{{type._id}}">{{type.name}}</option>
+                                    </select></span>
+                                        <span ng-if="showTextType==true">
+                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id=""></span>
+                                        <div ng-if="showTextType==true" class="side-btn">
+                                            <div class="form-group inline-block">
+                                                <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                            </div>
+                                            <div class="form-group inline-block">
+                                                <button ng-click="showTextTypeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -271,19 +290,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="brand" class="font-karla-bold">Standard / Grades</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!--<select class="form-control" id="type" name="" disabled>
-                                        <option value="">{{productEdit.gradesstandards.name}}</option>
-                                    </select>-->
-                                     <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                              <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="type" class="font-karla-bold">Standard / Grade</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="sec-foot">
+                                        <span ng-if="showTextGrade==false"> <select ng-model="productEdit.gradesstandards.name" class="form-control" id="gradesstandards" name="" >
+                                        <option ng-repeat="gradesstandards in allType" value="{{gradesstandards._id}}">{{gradesstandards.name}}</option>
+                                    </select></span>
+                                        <span ng-if="showTextGrade==true">
+                                                                               <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id=""></span>
+                                        <div ng-if="showTextGrade==true" class="side-btn">
+                                            <div class="form-group inline-block">
+                                                <button ng-click="updateType(productEdit.type)" class="btn btn-primary text-uppercase">Accept</button>
+                                            </div>
+                                            <div class="form-group inline-block">
+                                                <button ng-click="showTextGradeDiv()" class="btn btn-primary text-uppercase">Reject</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -531,7 +561,7 @@
                             </div>
                         </div>
                         <!-- plates/sheet -->
-                        <div class="div" ng-if="productEdit.category.name=='Plates/Sheets'">    
+                        <div class="div" ng-if="productEdit.category.name=='Plates/Sheets'">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -563,7 +593,7 @@
                                         <!--<select class="form-control" id="type" name="" disabled>
                                         <option value="">{{productEdit.type.name}}</option>
                                     </select>-->
-                                    <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
                                     </div>
                                 </div>
                             </div>
@@ -588,7 +618,7 @@
                                         <!--<select class="form-control" id="grade" name="" disabled>
                                         <option value="">{{productEdit.gradesstandards.name}}</option>
                                     </select>-->
-                                     <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
                                     </div>
                                 </div>
                             </div>
@@ -781,7 +811,7 @@
                             </div>
                         </div>
                         <!-- coil -->
-                        <div class="div" ng-if="productEdit.category.name=='Coil'">     
+                        <div class="div" ng-if="productEdit.category.name=='Coil'">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -813,7 +843,7 @@
                                         <!--<select class="form-control" id="type" name="" disabled>
                                         <option value="">{{productEdit.type.name}}</option>
                                     </select>-->
-                                    <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.type.name" id="">
                                     </div>
                                 </div>
                             </div>
@@ -838,7 +868,7 @@
                                         <!--<select class="form-control" id="grade" name="" disabled>
                                         <option value="">{{productEdit.gradesstandards.name}}</option>
                                     </select>-->
-                                     <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
                                     </div>
                                 </div>
                             </div>
@@ -1020,7 +1050,7 @@
                             </div>
                         </div>
                         <!-- roundbar -->
-                        <div class="div" ng-if="productEdit.category.name=='Roundbar'">     
+                        <div class="div" ng-if="productEdit.category.name=='Roundbar'">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -1064,7 +1094,7 @@
                                         <!--<select class="form-control" id="grade" name="" disabled>
                                         <option value="">{{productEdit.gradesstandards.name}}</option>
                                     </select>-->
-                                     <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
+                                        <input type="text" class="form-control" name="" ng-model="productEdit.gradesstandards.name" id="">
                                     </div>
                                 </div>
                             </div>
@@ -1371,7 +1401,7 @@
                             <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="editProductData(productEdit)">Submit</button>
                         </div>
                         <div class="subbtn inline-block pacebtn">
-                            <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="showInspection()" >Cancel</button>
+                            <button class="btn btn-primary font-gotham-medium text-uppercase" ng-click="showInspection()">Cancel</button>
                         </div>
                     </div>
                 </form>

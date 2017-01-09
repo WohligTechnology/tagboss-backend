@@ -120,6 +120,14 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+
+     getTypes: function (callback) {
+      return $http({
+        url: adminURL + "brand/search",
+        method: "POST"
+      }).success(callback);
+    },
+
     updateBrand: function (branddata,callback) {
       var data = branddata;
       return $http({
