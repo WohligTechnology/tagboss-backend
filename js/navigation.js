@@ -67,6 +67,24 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+    getOneRefundRequest: function (id, callback) {
+      var data = { _id: id};
+      return $http({
+        url: adminURL + "ReturnRequest/getOne",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+     updateRefundRequest: function (senddata, callback) {
+      var data = senddata
+      return $http({
+        url: adminURL + "ReturnRequest/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     getOneInventory: function (idata, callback) {
       var data = {
         inventory: idata

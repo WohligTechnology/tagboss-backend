@@ -2174,20 +2174,43 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
     })
-    .controller('Refund-to-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('Refund-to-buyersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
         $scope.template = TemplateService.changecontent("refund-to-buyers");
         $scope.menutitle = NavigationService.makeactive("Refund-to-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.openstandard = function () {
-            $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/refundbuyer.html",
-                scope: $scope,
+        $scope.openstandard = function (id) {
+            NavigationService.getOneRefundRequest(id, function (data) {
+                if (data.value == true) {
 
-                //                windowClass: "width80",
+                    $scope.requestData = data.data;
+                    refundmod = $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/refundbuyer.html",
+                        scope: $scope,
+                    });
+                }
+            });
+
+        };
+
+
+        $scope.updateRefundRequest = function (refunddata) {
+            var senddata = {};
+            senddata._id = refunddata._id;
+            senddata.status = refunddata.status;
+            senddata.reason = refunddata.reason;
+            senddata.comment = refunddata.comment;
+            NavigationService.updateRefundRequest(senddata, function (data) {
+                if (data.value == true) {
+                    refundmod.close();
+                    $scope.getAllRefundRequest();
+                    toastr.success("Record Successfully Updated", "Information");
+                }
             });
         };
+
+
         $scope.openView = function () {
             $uibModal.open({
                 animation: true,
