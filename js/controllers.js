@@ -210,6 +210,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             height: 300
         }
     };
+
+
+    $scope.getDashboard = function () {
+        NavigationService.getDashboard(function (data) {
+            if (data.value == true) {
+                // $scope.allData = data.data;
+                $scope.allOrders = data.data[0].latestOrders;
+               
+            }
+        });
+    }
+
+
+    $scope.getDashboard();
 })
 
 .controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {

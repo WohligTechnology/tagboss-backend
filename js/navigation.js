@@ -650,6 +650,14 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getDashboard: function (callback) {
+      // var data = senddata;
+      return $http({
+        url: adminURL + "user/getAdminDashboard",
+        method: "POST"
+      }).success(callback);
+    },
+
 
 
   };
