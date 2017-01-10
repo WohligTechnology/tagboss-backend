@@ -217,6 +217,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (data.value == true) {
                 // $scope.allData = data.data;
                 $scope.allOrders = data.data[0].latestOrders;
+                $scope.latestBuyerPayments = data.data[1].latestPayments;
+                $scope.latestBuyerPendingPayments = data.data[2].latestPendingPayments;
+                $scope.buyers = data.data[3].buyers;
+                $scope.sellers = data.data[4].sellers;
+                $scope.orderStatus = data.data[5].orderStatus;
+                $scope.topFiveSellers = data.data[6].topFiveSellers;
+                $scope.topFiveBuyers = data.data[7].topFiveBuyers;
+                $scope.latestPaymentToSellers = data.data[8].latestPaymentToSellers;
+                $scope.categoryWiseSales = data.data[9].categoryWiseSales;
+                $scope.avgOrderDelivered = data.data[10].avgOrderDelivered;
+                $scope.newCustomer = data.data[11].newCustomer;
+                
                
             }
         });
