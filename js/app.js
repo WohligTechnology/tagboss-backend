@@ -326,6 +326,9 @@ firstapp.filter('uploadpath', function () {
   };
 });
 
+
+
+
 firstapp.directive('uploadImage', function ($http, $filter) {
   console.log("innnnn");
   return {

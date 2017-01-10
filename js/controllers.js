@@ -228,8 +228,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 $scope.categoryWiseSales = data.data[9].categoryWiseSales;
                 $scope.avgOrderDelivered = data.data[10].avgOrderDelivered;
                 $scope.newCustomer = data.data[11].newCustomer;
-                
-               
+
+
             }
         });
     }
@@ -2234,6 +2234,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 //setup some logic for the chart
             }
         };
+
+        $scope.filter = {};
+        $scope.filter.page = 1;
+        $scope.getAllRefundRequest = function () {
+            NavigationService.getAllRefundRequest($scope.filter, function (data) {
+                if (data.value == true) {
+                    $scope.allRefundRequest = data.data.results;
+                    console.log("$scope.allRefundRequest", $scope.allRefundRequest);
+                }
+            });
+        }
+        $scope.getAllRefundRequest();
     })
     .controller('SettingCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("setting");
