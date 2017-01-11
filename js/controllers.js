@@ -327,7 +327,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
-
+    $currentDate = new Date();
     $scope.showEdit = false;
     $scope.hideEdit = true;
     $scope.showEditProduct = function (id) {
@@ -1699,7 +1699,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.getSellerDashboard($state.params.id, function (data) {
                 if (data.value == true) {
                     $scope.sellerDashboard = data.data;
-                    console.log("$scope.sellerDashboard",$scope.sellerDashboard);
+                    console.log("$scope.sellerDashboard", $scope.sellerDashboard);
                 }
             });
         };
@@ -2227,8 +2227,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 animation: true,
                 templateUrl: "views/modal/refundbuyerview.html",
                 scope: $scope,
-
-                //                windowClass: "width80",
+                // windowClass: "width80",
             });
         };
         $scope.barChartConfig = {

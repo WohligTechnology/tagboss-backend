@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="mile">
                                     <p>Order Placed</p>
-                                    <p>{{detailBill.createdAt | date:'dd/mm/yy'}}</p>
+                                    <p>{{detailBill.createdAt |date : "dd/MM/y"}}</p>
                                 </div>
                             </div>
                             <div class="progress-bar">
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="mile">
                                     <p>Payment of Order</p>
-                                    <p>{{detailBill.order.paymentTimeStamp| date:'dd/mm/yy'}}</p>
+                                    <p>{{detailBill.order.paymentTimeStamp| date:"dd/MM/y"}}</p>
                                 </div>
                             </div>
                             <div class="progress-bar">
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="mile">
                                     <p>Order Dispatched</p>
-                                    <p>{{detailBill.orderDispatchedTimestamp| date:'dd/mm/yy'}}</p>
+                                    <p>{{detailBill.orderDispatchedTimestamp| date:"dd/MM/y"}}</p>
                                 </div>
                             </div>
                             <div class="progress-bar">
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="mile miles">
                                     <p>Order Delivered</p>
-                                    <p>{{detailBill.orderDispatchedTimestamp| date:'dd/mm/yy'}}</p>
+                                    <p>{{detailBill.orderDispatchedTimestamp| date:"dd/MM/y"}}</p>
                                 </div>
                             </div>
                         </div>
