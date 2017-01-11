@@ -499,6 +499,17 @@
                                             <!--<div class="text-center">
                                             <button type="button" class="btn btn-primary return mt5">SUBMIT</button>
                                         </div>-->
+                                            <div class="row" ng-if="detailBill.order.paymentMethod==='NEFT / RTGS'">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="">Transaction ID : </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 no-padding">
+                                                    <div class="">
+                                                                </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -517,14 +528,14 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="control-label" for="">Delivery Status</label>
+                                                        <label class="control-label" for="">Delivery                                                            Status</label>
                                                         <!-- <div class="col-sm-6 text-center">
                                               <button type="button" class="btn btn-primary return">RETURN</button>
                                           </div> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
-                                                    <select required ng-model="detailBill.deliveryStatus" name="status"  id="" class="form-control">
+                                                    <select required ng-model="detailBill.deliveryStatus" name="status" id="" class="form-control">
                                               <option value="Pending">Pending</option>
                                               <option value="Dispatched">Dispatched</option>
                                               <option value="Delivered">Delivered</option>
@@ -536,15 +547,15 @@
                                                 <p class="text-uppercase">XYZ Transporter</p>
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="Textstatus" ng-model="detailBill.transporterComment" class="form-control font-karla-bold trans" >Dispatched From Bhivan...</textarea>
+                                                <textarea name="Textstatus" ng-model="detailBill.transporterComment" class="form-control font-karla-bold trans">Dispatched From Bhivan...</textarea>
                                             </div>
                                             <div class="text-center subbtn">
                                                 <div class="attach">
                                                     <!--<button class="btn btn-danger file-upload" name="button">-->
                                                     TRANSPORTER RECEIPT
-                                                                                    <upload-image ng-model="detailBill.transporterReceiept" no-view></upload-image>
-                                    <!-- <upload-image ng-model="formData.resume" ng-callback="changeit" no-view="" class="ng-pristine ng-untouched ng-valid ng-empty"></upload-image> -->
-                                 </button>
+                                                    <upload-image ng-model="detailBill.transporterReceiept" no-view></upload-image>
+                                                    <!-- <upload-image ng-model="formData.resume" ng-callback="changeit" no-view="" class="ng-pristine ng-untouched ng-valid ng-empty"></upload-image> -->
+                                                    </button>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary font-gotham-medium mt5 text-uppercase">Submit</button>
                                             </div>
@@ -590,8 +601,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                             <div class="row">
+                                            <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="control-label" for="">Comments Status</label>

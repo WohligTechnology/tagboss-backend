@@ -63,15 +63,14 @@
             <label class="detail-heading" for="add-one">
                 TBB{{buyerData.userId}} {{buyerData.firstName}} {{buyerData.lastName}}
               </label>
-            <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
-              titles="['one','two','three']" aria-labelledby="default-rating"></span>
+          
             <div class="mid-btn">
               <button ui-sref="orders({type:'buyer',id:buyerData._id})" type="button" class="btn btn-default btn-o">Order</button>
               <button ui-sref="dashboard" type="button" class="btn btn-default">Dashboard</button>
             </div>
           </div>
         </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+       
         <div class="date pull-right">Date: {{buyerData.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
       </div>
       <div class="row">
@@ -140,7 +139,7 @@
         <thead>
           <tr>
             <th><strong>ADDRESS</strong></th>
-            <th><strong>WAREHOUSE ADDRESS</strong></th>
+            <!--<th><strong>WAREHOUSE ADDRESS</strong></th>-->
             <!--<th><strong>REFERENCES</strong></th>-->
           </tr>
         </thead>
@@ -148,10 +147,10 @@
                <tr>
             <td>{{buyerData.companyAddress}}
             </td>
-            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState.name}},
+            <!--<td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState.name}},
             {{buyerData.warehouse[0].warehouseCountry}}
             </div>
-            </td>
+            </td>-->
             <!--<td>TBS005<br> Dhanera Steel Ltd<br> TBB045
               <br> Raj Steel and Accessories</td>-->
           </tr>

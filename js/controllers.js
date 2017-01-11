@@ -327,7 +327,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
-    $currentDate = new Date();
+    $scope.currentDate = new Date();
     $scope.showEdit = false;
     $scope.hideEdit = true;
     $scope.showEditProduct = function (id) {
@@ -1333,13 +1333,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getCountDown = function (adate, orderid, myindex, todate) {
-        console.log("statename", $state);
+        // console.log("statename", $state);
         var a = moment(adate);
         // var b = moment(bdate);
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
-        console.log('a', a, "b", b);
+        // console.log('a', a, "b", b);
         // var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
@@ -1351,7 +1351,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("duration1", duration);
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
-                    console.log("duration.days()", duration.days());
+                    // console.log("duration.days()", duration.days());
                     document.getElementById("countdays" + orderid + myindex).value = duration.days();
                     document.getElementById("counthours" + orderid + myindex).value = duration.hours();
                     document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
@@ -2623,6 +2623,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     });
     $.fancybox.close(true);
 
+    $scope.currentDate = new Date();
     $scope.getUser = function () {
         NavigationService.getUser(function (data) {
             if (data.value == true) {
@@ -2661,7 +2662,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $(window).scrollTop(0);
     });
     $.fancybox.close(true);
-
+$scope.currentDate = new Date();
     // $scope.pdfURL = "http://localhost:1337/upload/readFile";
     $scope.getInspectionUser = function () {
         NavigationService.getInspectionUser(function (data) {

@@ -123,13 +123,12 @@
           <div class="order-details ">
             <div class="magic-form">
               <div class="magic-resize">
-                <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                 <label class="detail-heading" for="add-one">
                     ORDER ID TBO{{order.order.orderId}}_{{order.orderBillId}}
                   </label>
               </div>
             </div>
-            <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+          
             <div class="date pull-right">Date: {{order.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
           </div>
           <table class="table table-bordered order-table">
@@ -160,7 +159,7 @@
              
                 </td>
                 <td>
-                  Rs. {{order.subTotal}}/-
+                {{order.subTotal| currency:'&#8377;'}}
                 </td>
                 <td>
                  {{order.deliveryStatus}}<br>
