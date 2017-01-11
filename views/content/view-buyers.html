@@ -95,59 +95,8 @@
           </div>
         </div>
       </div>
-      <div class="stat-row-2">
-        <div class="row">
-          <div class="col-md-8 stat-cols ">
-            <div class="sale-content ">
-              <div class="diagram"></div>
-              <label class="text-center">SALE</label>
-            </div>
-          </div>
-          <div class="col-md-4 stat-cols">
-            <div class="frequancy-content">
-              <div class="diagram"></div>
-              <label class="text-center">FREQUENTLY SOLD</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div classs="row">
-        <div class="col-md-offset-1 col-md-4">
-          <h2 class="text-center cent-align">Total Buyer</h2>
-          <h2 class="text-center">2252</h2>
-        </div>
-        <div class="col-md-offset-1 col-md-4 dashboard">
-          <div class="details">
-            <div class="head">
-              <h2>top 5 buyers</h2>
-            </div>
-            <div class="info">
-              <ol>
-                <li>
-                  <p>Mirage Steel, Ahemdabad Rs.75,550/-
-                  </p>
-                </li>
-                <li>
-                  <p>Mirage Steel, Ahemdabad Rs.75,550/-
-                  </p>
-                </li>
-                <li>
-                  <p>Mirage Steel, Ahemdabad Rs.75,550/-
-                  </p>
-                </li>
-                <li>
-                  <p>Mirage Steel, Ahemdabad Rs.75,550/-
-                  </p>
-                </li>
-                <li>
-                  <p>Mirage Steel, Ahemdabad Rs.75,550/-
-                  </p>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+  
       <!--<table class="table table-bordered">
         <thead>
           <tr>
@@ -192,19 +141,19 @@
           <tr>
             <th><strong>ADDRESS</strong></th>
             <th><strong>WAREHOUSE ADDRESS</strong></th>
-            <th><strong>REFERENCES</strong></th>
+            <!--<th><strong>REFERENCES</strong></th>-->
           </tr>
         </thead>
         <tbody>
                <tr>
             <td>{{buyerData.companyAddress}}
             </td>
-            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState}},
+            <td><div ng-if="buyerData.warehouse.length>0">{{buyerData.warehouse[0].warehouseFirmName}},<br> {{buyerData.warehouse[0].warehouseAddress}},<br> {{buyerData.warehouse[0].warehouseCity}}, {{buyerData.warehouse[0].warehousePincode}}<br/>{{buyerData.warehouse[0].warehouseState.name}},
             {{buyerData.warehouse[0].warehouseCountry}}
             </div>
             </td>
-            <td>TBS005<br> Dhanera Steel Ltd<br> TBB045
-              <br> Raj Steel and Accessories</td>
+            <!--<td>TBS005<br> Dhanera Steel Ltd<br> TBB045
+              <br> Raj Steel and Accessories</td>-->
           </tr>
           </tr>
         </tbody>
@@ -329,7 +278,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="font-karla-bold" for="State">State</label>
-                      <input class="form-control" type="text" id="State" ng-model="buyerData.state" placeholder="Enter State" readonly>
+                      <input class="form-control" type="text" id="State" ng-model="buyerData.state.name" placeholder="Enter State" readonly>
                     </div>
                   </div>
                 </div>
