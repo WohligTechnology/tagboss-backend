@@ -23,7 +23,7 @@
             <h2>payments</h2>
           </div>
           <div class="info">
-            <ol ng-if="latestBuyerPayments.length>0">
+            <ol>
               <li ng-repeat="payment in latestBuyerPayments">
                 <p>{{payment.buyer.firstName}} {{payment.buyer.lastName}}, {{payment.buyer.city}}
                   <br/> {{payment.totalAmount | currency:'&#8377;'}}
@@ -31,10 +31,6 @@
               </li>
              
             </ol>
-
-            <p ng-if="latestBuyerPayments.length==>0">
-              <h4>Data not Found</h4>
-            </p>
           </div>
         </div>
       </div>
@@ -44,7 +40,7 @@
             <h2>pending payments</h2>
           </div>
           <div class="info">
-            <ol ng-if="latestBuyerPendingPayments.length>0">
+            <ol>
               <li ng-repeat="pendingpayment in latestBuyerPendingPayments">
                 <p>{{pendingpayment.buyer.firstName}} {{pendingpayment.buyer.lastName}}, {{pendingpayment.buyer.city}}
                   <br/> {{pendingpayment.totalAmount | currency:'&#8377;'}}
@@ -52,10 +48,6 @@
               </li>
               
             </ol>
-
-            <p ng-if="latestBuyerPendingPayments.length==>0">
-              <h4>Data not Found</h4>
-            </p>
           </div>
         </div>
       </div>
@@ -108,10 +100,6 @@
                 </p>
               </li>
             </ol>
-
-             <p ng-if="topFiveSellers==0">
-              <h4>Data not Found</h4>
-            </p>
           </div>
         </div>
       </div>
@@ -129,10 +117,6 @@
                 </p>
               </li>
             </ol>
-
-              <p ng-if="topFiveBuyers==0">
-              <h4>Data not Found</h4>
-            </p>
           </div>
         </div>
       </div>
@@ -167,10 +151,6 @@
               </li>
               
             </ol>
-
-            <p ng-if="categoryWiseSales==0">
-              <h4>Data not Found</h4>
-            </p>
           </div>
         </div>
       </div>

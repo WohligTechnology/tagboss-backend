@@ -107,6 +107,25 @@
             </div>
           </div>
         </div>
+
+         <div class="head-1">
+          <div class="row">
+            <div class="form-group">
+              <div class="col-md-5">
+                <label>Max Use</label>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                  <input type="text" name="maxUsed" only-Digits required ng-model="coupon.maxUsed" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2">
+              </div>
+              <div class="error-msg" ng-if="frmcoupon.maxUsed.$invalid && frmcoupon.maxUsed.$touched">Please Enter Max Use.</div>
+            </div>
+          </div>
+        </div>
+
         <div class="head-1">
           <div class="row">
             <div class="form-group">
@@ -173,7 +192,7 @@
               </div>
               <div class="col-md-6">
                 <div class="">
-                  <input ng-model="coupon.city"  type="text" name="city" class="form-control">
+                  <input ng-model="coupon.city" type="text" name="city" class="form-control">
                 </div>
               </div>
               <div class="error-msg" ng-if="frmcoupon.city.$invalid && frmcoupon.city.$touched">Please Enter City.</div>

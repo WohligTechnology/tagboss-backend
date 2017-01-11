@@ -76,7 +76,7 @@
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
             <label class="detail-heading" for="add-one">
-                TBS001 MIRAGE STEEL LTD.
+                TBS{{sellerData.userId}} {{sellerData.firmName}}
               </label>
             <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
               titles="['one','two','three']" aria-labelledby="default-rating"></span>
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+        <div class="date pull-right">Date: {{sellerData.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
       </div>
       <div class="details-1">
         <div class="head-1">
@@ -96,7 +96,7 @@
               <div class="col-md-6 text-center">
                 <p>seller rating</p>
                 <div class="values">
-                  <span uib-rating="" ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
+                  <span uib-rating="" ng-model="sellerDashboard.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"
                     titles="['one','two','three']" aria-labelledby="default-rating" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"><span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3" aria-valuetext="three">
     <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">(*)</span>
                   <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star"
@@ -121,14 +121,14 @@
                   <!-- end ngRepeat: r in range track by $index -->
                   </span>
                   </span>
-                  <label class="rating">3.5</label>
+                  <label class="rating">{{sellerDashboard.rating}}</label>
                 </div>
               </div>
               <div class="col-md-6 text-center">
                 <p>gross sales</p>
                 <div class="values">
                   <i class="fa fa-inr" aria-hidden="true"></i>
-                  <label>28,00,500</label>
+                  <label>{{sellerDashboard[1].grossSales| currency:'&#8377;'}}</label>
                 </div>
               </div>
             </div>

@@ -529,6 +529,19 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getSellerDashboard: function (id, callback) {
+      var data = {
+        'seller': id
+      };
+      return $http({
+        url: adminURL + "user/getSellerDashboard",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+    
+
     getOneBuyer: function (id, callback) {
       var data = {
         '_id': id

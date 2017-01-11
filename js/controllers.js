@@ -1695,6 +1695,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         });
 
+        $scope.getSellerDashboard = function () {
+            NavigationService.getSellerDashboard($state.params.id, function (data) {
+                if (data.value == true) {
+                    $scope.sellerDashboard = data.data;
+                    console.log("$scope.sellerDashboard",$scope.sellerDashboard);
+                }
+            });
+        };
+
+        $scope.getSellerDashboard();
+
         $scope.updateUser = function (id, status) {
             console.log("status", status);
             var senddata = {};
