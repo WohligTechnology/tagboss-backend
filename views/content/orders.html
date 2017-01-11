@@ -100,12 +100,12 @@
           <h2 ng-if="selleris==false" class="order-head">TBO{{cat  | ltrim: '-' }}</h2>
           <h2 ng-if="selleris==false" class="order-head subhead">BUYER NAME: <span>{{value[0].buyer.firstName}} {{value[0].buyer.lastName}}</span></h2>
        <p class="pull-right">      <div class="row pull-right">
-                                                <div class="col-sm-12">
-                                                    <div ng-click="editOrder(cat);" class="form-group">
-                                                        <label class="control-label" for="">Payment Status</label>
-                                                        <!-- <div class="col-sm-6 text-center">
-                                              <button type="button" class="btn btn-primary return">RETURN</button>
-                                          </div> -->
+                                                <div class="">
+                                                    <div  class="form-group">
+                                                        <label class="control-label inline-block" for="">Payment Status :{{value[0].paymentStatus}}</label>
+                                                         <div class="inline-block">
+                                              <button type="button" ng-click="editOrder(cat);" class="btn btn-primary return">EDIT</button>
+                                          </div> 
                                                     </div>
                                                 </div>
                                                 <!--<div class="col-sm-6 no-padding">
