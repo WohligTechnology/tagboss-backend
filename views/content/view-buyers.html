@@ -59,7 +59,7 @@
       <div class="buyer-details ">
         <div class="magic-form">
           <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+            <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">-->
             <label class="detail-heading" for="add-one">
                 TBB{{buyerData.userId}} {{buyerData.firstName}} {{buyerData.lastName}}
               </label>
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+        <div class="date pull-right">Date: {{buyerData.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
       </div>
       <div class="row">
         <div class="stat-row-1">
