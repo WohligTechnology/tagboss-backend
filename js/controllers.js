@@ -1351,11 +1351,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("duration1", duration);
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
-                    // console.log("duration.days()", duration.days());
-                    // document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                    // document.getElementById("counthours" + orderid + myindex).value = duration.hours();
-                    // document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
-                    // document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                    console.log("duration.days()", duration.days());
+                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                    document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
                 } else {
                     // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
                     clearInterval(timer);
