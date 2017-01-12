@@ -493,6 +493,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (data.value == true) {
                 // toastr.success("Assign Successfully", "Information");
                 $scope.getInventory();
+                $state.reload();
             }
         });
     }
