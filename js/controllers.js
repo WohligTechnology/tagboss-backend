@@ -2081,13 +2081,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false || senddata.registrationNoVerified == false || senddata.cancelledChequeVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
             } else {
-                console.log("senddata", senddata);
-                // NavigationService.updateSeller(senddata, function (data) {
-                //     if (data.value == true) {
-                //         toastr.success("Seller Status Updated!", "Information");
-                //         $state.go("request-sellers");
-                //     }
-                // });
+                NavigationService.updateSeller(senddata, function (data) {
+                    if (data.value == true) {
+                        toastr.success("Seller Status Updated!", "Information");
+                        $state.go("request-sellers");
+                    }
+                });
             }
         }
 

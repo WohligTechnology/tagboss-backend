@@ -34,9 +34,10 @@
                 <div class="form-group">
                   <label class="col-sm-6 control-label" for="">Change Status</label>
                   <div class="col-sm-6">
-                    <select name="" id="" class="form-control">
-                        <option value="">Enabled</option>
-                        <option value="">Disabled</option>
+                    <select ng-model="buyerData.isBlocked" ng-change="updateUser(buyerData._id,buyerData.isBlocked)" name="user" class="form-control">
+                      
+                        <option ng-selected="buyerData.isBlocked==true" >Block</option>
+                        <option ng-selected="buyerData.isBlocked==false" selected>Unblock</option>
                     </select>
                   </div>
                 </div>
