@@ -2068,17 +2068,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.registrationNoVerified = sellerdata.registrationNoVerified;
             senddata.cancelledChequeVerified = sellerdata.cancelledChequeVerified;
             senddata.importExportCodeVerified = sellerdata.importExportCodeVerified;
+            senddata.securityDepositAmount = sellerdata.securityDepositAmount;
+            senddata.securityDepositComment = sellerdata.securityDepositComment;
+            senddata.securityDepositTransactionId = sellerdata.securityDepositTransactionId;
+            if(_.isEmpty(senddata.securityDepositAmount) && _.isEmpty(senddata.securityDepositComment) && _.isEmpty(senddata.securityDepositTransactionId)){
+                senddata.securityDepositStatus = false;
+            }else{
+                senddata.securityDepositStatus =true;
+            }
             senddata.isAdminVerified = true;
             senddata.status = "verified";
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false || senddata.registrationNoVerified == false || senddata.cancelledChequeVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
             } else {
-                NavigationService.updateSeller(senddata, function (data) {
-                    if (data.value == true) {
-                        toastr.success("Seller Status Updated!", "Information");
-                        $state.go("request-sellers");
-                    }
-                });
+                console.log("senddata", senddata);
+                // NavigationService.updateSeller(senddata, function (data) {
+                //     if (data.value == true) {
+                //         toastr.success("Seller Status Updated!", "Information");
+                //         $state.go("request-sellers");
+                //     }
+                // });
             }
         }
 
@@ -2127,7 +2136,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
 
         $scope.acceptBuyer = function (buyerdata) {
-            console.log("sdata", buyerdata);
             var senddata = {}
             senddata._id = buyerdata._id;
             senddata.email = buyerdata.email;
@@ -2156,7 +2164,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
 
         $scope.rejectBuyer = function (buyerdata) {
-            console.log("sdata", buyerdata);
             var senddata = {}
             senddata._id = buyerdata._id;
             senddata.email = buyerdata.email;
