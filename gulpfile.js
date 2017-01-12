@@ -26,6 +26,7 @@ var jsArray = [
     './bower_components/smart-app-banner/smart-app-banner.js',
     './bower_components/angular-filter/dist/angular-filter.min.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
+     './bower_components/moment/moment.js',
     './js/app.js',
     './js/language.js',
     './js/controllers.js',

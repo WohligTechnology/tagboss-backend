@@ -58,14 +58,12 @@
         <div class="request-buyer-details ">
           <div class="magic-form">
             <div class="magic-resize">
-              <input class="magic-checkbox" type="checkbox" name="layout" id="add-one{{$index}}" value="option1">
               <label class="detail-heading" for="add-one{{$index}}">
               TBS{{buyer.userId}} {{buyer.firmName}}.
             </label>
             </div>
           </div>
-          <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-          <div class="date pull-right">Date: {{buyer.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
+           <div class="date pull-right">Date: {{buyer.createdAt |  date:"dd MMMM yyyy ' | ' h:mma"}}</div>
         </div>
         <table class="table table-bordered request-buyer-table">
           <thead>

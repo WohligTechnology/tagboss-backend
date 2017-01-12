@@ -1318,7 +1318,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.updateOrder = function (orderdata) {
-        console.log("Aaa", orderdata);
         var senddata = {};
         senddata._id = orderdata._id;
         senddata.paymentStatus = orderdata.paymentStatus;
@@ -1327,6 +1326,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
             if (data.value == true) {
                 toastr.success("Order Payment Status Updated!", "Information");
+                $state.reload();
                 ordermod.close();
             }
         });
