@@ -30,8 +30,7 @@
       </div>
       <div class="view-products-details ">
         <label class="detail-heading">REQUEST FOR INSPECTION</label>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+        <!--<div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>-->
       </div>
       <div ng-if="getAllInventory.length==0">
         <h3 class="text-center">No data Found</h3>
@@ -54,7 +53,6 @@
               <td>
                 <div class="magic-form">
                   <div class="magic-resize">
-                    <input class="magic-checkbox" type="checkbox" name="layout{{$index}}" id="add-one{{$index}}" value="{{inventory._id}}">
                     <label class="text" for="add-one{{$index}}">
                             <p class="comp-name">  {{inventory.seller.firmName}}  </p>
                             <p>
@@ -73,7 +71,7 @@
                   <li> {{inventory.length}} </li>
                   <li> {{inventory.width}} </li>
                 </ul>
-                <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct(inventory._id)">EDIT</button>
+                <button type="button" class="btn btn-primary assign-btn" ng-click="showEditProduct(inventory._id)">VIEW</button>
                            
               </td>
               <td>{{inventory.quantityInNos}}</td>

@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Agency id</label>
-                    <p>{{agencyDetails.agencyId}}</p>
+                    <p>TBA{{agencyDetails.agencyId}}</p>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -42,8 +42,8 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>telephone no.</label>
-                    <input type="text" required ng-model="agencyDetails.telephone" class="form-control">
+                    <label>Password</label>
+                    <input type="password" required ng-model="agencyDetails.password" class="form-control">
                   </div>
                 </div>
               </div>
@@ -54,12 +54,13 @@
                     <textarea class="form-control" required ng-model="agencyDetails.address" rows="3" id="comment"></textarea>
                   </div>
                 </div>
-                <div class="col-md-6">
+                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>fax no.</label>
-                    <input type="text" required ng-model="agencyDetails.faxno" class="form-control">
+                    <label>telephone no.</label>
+                    <input type="text" required ng-model="agencyDetails.telephone" class="form-control">
                   </div>
                 </div>
+               
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -87,7 +88,11 @@
                     <input type="text" required ng-model="agencyDetails.state" class="form-control">
                   </div>
                 </div>
-                <div class="col-md-6">
+                 <div class="col-md-6">
+                  <div class="form-group">
+                    <label>fax no.</label>
+                    <input type="text"  ng-model="agencyDetails.faxno" class="form-control">
+                  </div>
                 </div>
               </div>
               <button type="submit" ng-click="updateAgency(agencyDetails)" class="btn btn-lg btn-block">update</button>
