@@ -2064,7 +2064,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 // console.log("aaaaa",$scope.sellerData);
             }
         });
-
+// $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+    $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         $scope.acceptSeller = function (sellerdata) {
             var senddata = {}
             senddata._id = sellerdata._id;

@@ -327,15 +327,20 @@
             <div class="abc">
               <div>
                 <p class="img-head">VAT NO. {{sellerData.vatTinNo}}</p>
-                <p>{{sellerData.imageOfVatTinNo}}</p>
+                <!--<p>{{sellerData.imageOfVatTinNo}}</p>-->
               </div>
-              <div>
+              <div ng-if="$.jStorage.get('yaesPdf') == true">
+                 
                 <a id="fbplus_01" href="{{sellerData.imageOfVatTinNo|uploadpath}}" fancybox-box>
                   <img ng-src="{{sellerData.imageOfVatTinNo|uploadpath}} " alt=" " class="get-center img-responsive ">
                 </a>
+
+                </div>
+              <div ng-if="$.jStorage.get('yaesPdf') != true">
+                
+                  <a href="{{pdfURL}}={{sellerData.imageOfVatTinNo}}" target="_blank"><img src="../img/pdf-image.png"/></a>
+             
               </div>
-              <!--<div class="verified"><p>VERIFIED</p></div>
-                      <div class="hide pending"><p>VERIFICATION PENDING</p></div>-->
               <div class="text-center">
                 <!--<toggle-switch ng-model="switchStatus"><toggle-switch>-->
                 <toggle-switch ng-model="sellerData.vatTinNoVerified" required on-label="Verified" off-label="Non-Verified">
