@@ -505,7 +505,31 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
+                                                    <div class=""> <label class="control-label" for="">{{detailBill.order.buyerTransactionID}}</label>
+                                                                </div>
+                                                </div>
+                                            </div>
+                                             <div class="row" ng-if="detailBill.order.paymentMethod==='NEFT / RTGS'">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="">Bank Name : </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 no-padding">
                                                     <div class="">
+                                                         <label class="control-label" for="">{{detailBill.order.paymentBankName}}</label>
+                                                                </div>
+                                                </div>
+                                            </div>
+                                                                                 <div class="row" ng-if="detailBill.order.paymentMethod==='NEFT / RTGS'">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="">Date : </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 no-padding">
+                                                    <div class="">
+                                                         <label class="control-label" for="">{{detailBill.order.neftRtgsPaymentTimestamp | date:"dd MMMM yyyy "}}</label>
                                                                 </div>
                                                 </div>
                                             </div>
@@ -552,7 +576,7 @@
                                                 <div class="attach">
                                                     <!--<button class="btn btn-danger file-upload" name="button">-->
                                                     TRANSPORTER RECEIPT
-                                                    <upload-image ng-model="detailBill.transporterReceiept" no-view></upload-image>
+                                                    <upload-image ng-model="detailBill.transporterReceiept"></upload-image>
                                                     <!-- <upload-image ng-model="formData.resume" ng-callback="changeit" no-view="" class="ng-pristine ng-untouched ng-valid ng-empty"></upload-image> -->
                                                     </button>
                                                 </div>
@@ -584,7 +608,7 @@
                             <div class="info1 vieworders1">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form class="form-horizontal" role="form">
+                                        <form ng-submit="updateBill(order)" class="form-horizontal" role="form">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -593,9 +617,9 @@
                                                 </div>
                                                 <div class="col-sm-6 no-padding">
                                                     <div class="">
-                                                        <select ng-model="order.status" name="" id="" class="form-control">
-                                            <option>Active</option>
-                                            <option>Cancelled</option>
+                                                        <select ng-model="order.deliveryStatus" name="" id="" class="form-control">
+                                            <option value="Active">Active</option>
+                                            <option value="Returned">Cancelled</option>
                                         </select>
                                                     </div>
                                                 </div>
@@ -613,7 +637,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <button type="submit" ng-click="updateOrderStatus(order)" class="btn btn-primary return mt5">SUBMIT</button>
+                                                <!--<button type="submit" ng-change="updateBill(order)" ng-click="updateOrderStatus(order)" class="btn btn-primary return mt5">SUBMIT</button>-->
+                                                 <button type="submit" class="btn btn-primary return mt5">SUBMIT</button>
                                             </div>
                                         </form>
                                     </div>

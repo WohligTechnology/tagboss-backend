@@ -583,6 +583,15 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     editAgency: function (sendadata,callback) {
+       var data = sendadata;
+      return $http({
+        url: adminURL + "inspection/save",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
     getAllPayments: function (senddata, callback) {
       var data = senddata;
       return $http({

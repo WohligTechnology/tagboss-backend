@@ -781,7 +781,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.navigation = NavigationService.getnav();
 })
 
-.controller('EditAgencyDetailsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('EditAgencyDetailsCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("edit-agency-details");
     $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
     TemplateService.title = $scope.menutitle;
@@ -798,6 +798,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getAgencyDetails();
+
+    $scope.editAgency = function(agencydata){
+        NavigationService.editAgency(agencydata, function(data){
+            if(data.value==true){
+                 toastr.success("Agency Edited Successfully", "Information");
+               
+            }
+        })
+    }
 })
 
 .controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -1229,6 +1238,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     $scope.updateBill = function (orderdata) {
         var senddata = {};
+        senddata.orderCancelledComment = orderdata.orderCancelledComment;
         senddata._id = orderdata._id;
         senddata.deliveryStatus = orderdata.deliveryStatus;
         senddata.transporterComment = orderdata.transporterComment;
@@ -1306,6 +1316,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOrder($scope.order.orderid, function (data) {
             if (data.value == true) {
                 $scope.orderData = data.data;
+                $scope.orderData.neftRtgsPaymentTimestamp = new Date($scope.orderData.neftRtgsPaymentTimestamp);
                 console.log("aa", $scope.orderData);
                 ordermod = $uibModal.open({
                     animation: true,
@@ -2049,6 +2060,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;
+       
                 // console.log("aaaaa",$scope.sellerData);
             }
         });

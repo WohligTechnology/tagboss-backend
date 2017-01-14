@@ -307,8 +307,18 @@ firstapp.directive('img', function ($compile, $parse) {
 //  };
 // });
 
-firstapp.filter('uploadpath', function () {
+firstapp.filter('uploadpath', function ($scope) {
   return function (input, width, height, style) {
+  // console.log('input',input);
+  
+           var n = input.indexOf(".pdf");
+  if(n != -1){
+    console.log('notPdf');
+ $scope.notPdf = true;
+  }else{
+    console.log('yesPdf');
+    $scope.yesPdf = true;
+  }
     var other = "";
     if (width && width !== "") {
       other += "&width=" + width;

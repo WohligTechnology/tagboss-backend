@@ -111,7 +111,7 @@
                   <div class="col-md-6 ">
                     <div class="form-group ">
                       <label class="font-karla-bold " for="Registered ">Registered Name</label>
-                      <input class="form-control " type="text " id="Registered " placeholder="Enter Registered Name" ng-model="sellerData.registerdName"
+                      <input class="form-control " type="text " id="Registered " placeholder="Enter Registered Name" ng-model="sellerData.firmName"
                         readonly>
                     </div>
                   </div>
@@ -327,6 +327,7 @@
             <div class="abc">
               <div>
                 <p class="img-head">VAT NO. {{sellerData.vatTinNo}}</p>
+                <p>{{sellerData.imageOfVatTinNo}}</p>
               </div>
               <div>
                 <a id="fbplus_01" href="{{sellerData.imageOfVatTinNo|uploadpath}}" fancybox-box>

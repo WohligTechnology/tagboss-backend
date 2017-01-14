@@ -1,6 +1,6 @@
 <div class="form-group">
     <div class="img-box" ng-if="image && !isMultiple" ng-hide="noShow">
-        {{image}}
+        
         <img ng-src="{{image.url}}" imageonload="upload(image)" change="{{image}}" type="{{image.file.type}}" />
         <div class="delete-image">
             <i class="ln ln-cross"></i>
