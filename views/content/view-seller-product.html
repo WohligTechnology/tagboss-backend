@@ -67,6 +67,7 @@
                     <table class="table table-bordered request-buyer-table w-auto">
                         <thead>
                             <tr>
+                                <th><strong>SR. NO.</strong></th>
                                 <th><strong>Product NAME</strong></th>
                                 <!--<th><strong>GRADE</strong></th>-->
                                 <!--<th><strong>SIZE</strong></th>
@@ -78,6 +79,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="products in product">
+                                <td>TB{{products.category.name}}{{products.product.productId}}</td>
                                 <td>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Pipes'">
                                         {{products.moc.name}} {{products.type.name}} {{products.category.name}}<br/> {{products.gradesstandards.name}}
@@ -94,7 +96,7 @@
                                     </div>
                                     <div class="item-info-detail pro-name" ng-if="products.category.name == 'Coil'">
                                         {{products.moc.name}} {{products.category.name}}<br/> {{products.gradesstandards.name}}
-                                        {{products.thickness}} MM Thick x {{products.width}} MM Width Length Coil
+                                        {{products.thickness}} MM Thick x {{products.width}} MM Width x Length Coil
                                     </div>
                                 </td>
                                 <!--<td>{{pro.gradesstandards.name}}</td>-->

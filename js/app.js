@@ -308,20 +308,8 @@ firstapp.directive('img', function ($compile, $parse) {
 // });
 
 firstapp.filter('uploadpath', function () {
-  return function (input, width, height, style) {
-  console.log('input',input);
-  
-           var n = input.indexOf(".pdf");
-           console.log('nnnn',n);
-  if(n != -1){
-    // console.log('notPdf');
-    // $.jStorage.flush();
-//  $scope.notPdf = true;
-  }else{
-    // console.log('yesPdf');
-    $.jStorage.set('yaesPdf',true);
-    // $scope.yesPdf = true;
-  }
+  return function (input, width, height, style) {  
+          
     var other = "";
     if (width && width !== "") {
       other += "&width=" + width;

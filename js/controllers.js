@@ -325,7 +325,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+    $rootScope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
     $scope.currentDate = new Date();
     $scope.showEdit = false;
@@ -781,7 +781,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.navigation = NavigationService.getnav();
 })
 
-.controller('EditAgencyDetailsCtrl', function ($scope,toastr, TemplateService, NavigationService, $timeout) {
+.controller('EditAgencyDetailsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("edit-agency-details");
     $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
     TemplateService.title = $scope.menutitle;
@@ -799,11 +799,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     $scope.getAgencyDetails();
 
-    $scope.editAgency = function(agencydata){
-        NavigationService.editAgency(agencydata, function(data){
-            if(data.value==true){
-                 toastr.success("Agency Edited Successfully", "Information");
-               
+    $scope.editAgency = function (agencydata) {
+        NavigationService.editAgency(agencydata, function (data) {
+            if (data.value == true) {
+                toastr.success("Agency Edited Successfully", "Information");
+
             }
         })
     }
@@ -1699,10 +1699,41 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("View-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+        $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;
+                 if ($scope.sellerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfVatTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfVatTinNoIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfCstTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfCstTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfCstTinNoIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfPanNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfPanNoIsPdf = true;
+                } else {
+                    $scope.imageOfPanNoIsPdf = false;
+                }
+                 if ($scope.sellerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfregistrationNoIsPdf = true;
+                } else {
+                    $scope.imageOfregistrationNoIsPdf = false;
+                }
+                 if ($scope.sellerData.imageCancelledCheque.indexOf(".pdf") != -1) {
+                    $scope.imageCancelledChequeIsPdf = true;
+                } else {
+                    $scope.imageCancelledChequeIsPdf = false;
+                }
+                if ($scope.sellerData.imageImportExportCode.indexOf(".pdf") != -1) {
+                    $scope.imageImportExportCodeIsPdf = true;
+                } else {
+                    $scope.imageImportExportCodeIsPdf = false;
+                }
+                
                 console.log("sellerdata", $scope.sellerData);
             }
         });
@@ -2003,7 +2034,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.rate = 3;
         $scope.max = 5;
         $scope.isReadonly = false;
-
+ $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         $scope.hoveringOver = function (value) {
             $scope.overStar = value;
             $scope.percent = 100 * (value / $scope.max);
@@ -2012,6 +2043,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
+                 if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfVatTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfVatTinNoIsPdf = false;
+                }
+                if ($scope.buyerData.imageOfCstTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfCstTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfCstTinNoIsPdf = false;
+                }
+                if ($scope.buyerData.imageOfPanNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfPanNoIsPdf = true;
+                } else {
+                    $scope.imageOfPanNoIsPdf = false;
+                }
+                 if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfregistrationNoIsPdf = true;
+                } else {
+                    $scope.imageOfregistrationNoIsPdf = false;
+                }
+                
                 console.log("buyerdata", $scope.buyerData);
             }
         });
@@ -2021,10 +2073,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.filter = {};
         $scope.getAllSeller = function (searchdata) {
             NavigationService.getAllSeller(searchdata, function (data) {
                 if (data.value == true) {
-                    $scope.AllSeller = data.data;
+                    $scope.AllSeller = data.data.results;
                 } else {
                     $scope.AllSeller = [];
                 }
@@ -2042,7 +2095,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.getAllBuyer = function (searchdata) {
             NavigationService.getAllBuyer(searchdata, function (data) {
                 if (data.value == true) {
-                    $scope.AllBuyer = data.data;
+                    $scope.AllBuyer = data.data.results;
                     console.log("Buyer", $scope.AllBuyer);
                 } else {
                     $scope.AllBuyer = [];
@@ -2060,12 +2113,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;
-       
-                // console.log("aaaaa",$scope.sellerData);
+                if ($scope.sellerData.imageCancelledCheque.indexOf(".pdf") != -1) {
+                    $scope.imageCancelledChequeIsPdf = true;
+                } else {
+                    $scope.imageCancelledChequeIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfVatTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfVatTinNoIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfCstTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfCstTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfCstTinNoIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfPanNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfPanNoIsPdf = true;
+                } else {
+                    $scope.imageOfPanNoIsPdf = false;
+                }
+                if ($scope.sellerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfregistrationNoIsPdf = true;
+                } else {
+                    $scope.imageOfregistrationNoIsPdf = false;
+                }
             }
         });
-// $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
-    $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+        // $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+        $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         $scope.acceptSeller = function (sellerdata) {
             var senddata = {}
             senddata._id = sellerdata._id;
@@ -2085,10 +2161,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.securityDepositAmount = sellerdata.securityDepositAmount;
             senddata.securityDepositComment = sellerdata.securityDepositComment;
             senddata.securityDepositTransactionId = sellerdata.securityDepositTransactionId;
-            if(_.isEmpty(senddata.securityDepositAmount) && _.isEmpty(senddata.securityDepositComment) && _.isEmpty(senddata.securityDepositTransactionId)){
+            if (_.isEmpty(senddata.securityDepositAmount) && _.isEmpty(senddata.securityDepositComment) && _.isEmpty(senddata.securityDepositTransactionId)) {
                 senddata.securityDepositStatus = false;
-            }else{
-                senddata.securityDepositStatus =true;
+            } else {
+                senddata.securityDepositStatus = true;
             }
             senddata.isAdminVerified = true;
             senddata.status = "verified";
@@ -2141,9 +2217,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("View-request-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+          $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
+                 if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfVatTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfVatTinNoIsPdf = false;
+                }
+                if ($scope.buyerData.imageOfCstTinNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfCstTinNoIsPdf = true;
+                } else {
+                    $scope.imageOfCstTinNoIsPdf = false;
+                }
+                if ($scope.buyerData.imageOfPanNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfPanNoIsPdf = true;
+                } else {
+                    $scope.imageOfPanNoIsPdf = false;
+                }
+                 if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                    $scope.imageOfregistrationNoIsPdf = true;
+                } else {
+                    $scope.imageOfregistrationNoIsPdf = false;
+                }
                 // console.log("aaaaa",$scope.sellerData);
             }
         });
@@ -2684,7 +2781,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $(window).scrollTop(0);
     });
     $.fancybox.close(true);
-$scope.currentDate = new Date();
+    $scope.currentDate = new Date();
     // $scope.pdfURL = "http://localhost:1337/upload/readFile";
     $scope.getInspectionUser = function () {
         NavigationService.getInspectionUser(function (data) {

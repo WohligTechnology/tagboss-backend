@@ -698,6 +698,11 @@
         margin-bottom: 10px;
       }
       
+      .order-attach {
+        position: relative;
+        background: #043E77;
+      }
+      
       .subbtn {
         margin-bottom: 25px;
         ;
@@ -2114,7 +2119,7 @@
             width: 30px;
           }
         }
-        .edit-pay-status{
+        .edit-pay-status {
           width: 369px;
           resize: none;
         }
@@ -2739,13 +2744,14 @@
         }
       }
       
-      .statusplace{
+      .statusplace {
         padding: 0 10px;
       }
-
-      .editplace{
+      
+      .editplace {
         padding: 0 10px 0 0;
       }
+      
       //bootstrap forms
       /* Start writing sass here */
       
