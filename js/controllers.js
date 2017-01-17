@@ -1684,15 +1684,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-        $scope.getAllVerifiedBuyer = function () {
-            NavigationService.getAllVerifiedBuyer(function (data) {
+        $scope.filter = {};
+        $scope.filter.pagenumber = 1;
+        $scope.getAllBuyer = function () {
+            NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
-                    $scope.AllBuyer = data.data.results;
+                    $scope.AllBuyer = data.data;
                     console.log("Buyer", $scope.AllBuyer);
                 }
             });
         }
-        $scope.getAllVerifiedBuyer();
+        $scope.getAllBuyer();
     })
     .controller('View-sellersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-sellers");
@@ -1703,7 +1705,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;
-                 if ($scope.sellerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                if ($scope.sellerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
                     $scope.imageOfVatTinNoIsPdf = true;
                 } else {
                     $scope.imageOfVatTinNoIsPdf = false;
@@ -1718,12 +1720,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 } else {
                     $scope.imageOfPanNoIsPdf = false;
                 }
-                 if ($scope.sellerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                if ($scope.sellerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
                     $scope.imageOfregistrationNoIsPdf = true;
                 } else {
                     $scope.imageOfregistrationNoIsPdf = false;
                 }
-                 if ($scope.sellerData.imageCancelledCheque.indexOf(".pdf") != -1) {
+                if ($scope.sellerData.imageCancelledCheque.indexOf(".pdf") != -1) {
                     $scope.imageCancelledChequeIsPdf = true;
                 } else {
                     $scope.imageCancelledChequeIsPdf = false;
@@ -1733,7 +1735,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 } else {
                     $scope.imageImportExportCodeIsPdf = false;
                 }
-                
+
                 console.log("sellerdata", $scope.sellerData);
             }
         });
@@ -2034,7 +2036,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.rate = 3;
         $scope.max = 5;
         $scope.isReadonly = false;
- $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+        $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         $scope.hoveringOver = function (value) {
             $scope.overStar = value;
             $scope.percent = 100 * (value / $scope.max);
@@ -2043,7 +2045,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
-                 if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
                     $scope.imageOfVatTinNoIsPdf = true;
                 } else {
                     $scope.imageOfVatTinNoIsPdf = false;
@@ -2058,12 +2060,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 } else {
                     $scope.imageOfPanNoIsPdf = false;
                 }
-                 if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
                     $scope.imageOfregistrationNoIsPdf = true;
                 } else {
                     $scope.imageOfregistrationNoIsPdf = false;
                 }
-                
+
                 console.log("buyerdata", $scope.buyerData);
             }
         });
@@ -2217,11 +2219,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("View-request-buyers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+        $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
         NavigationService.getOneBuyer($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.buyerData = data.data;
-                 if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
+                if ($scope.buyerData.imageOfVatTinNo.indexOf(".pdf") != -1) {
                     $scope.imageOfVatTinNoIsPdf = true;
                 } else {
                     $scope.imageOfVatTinNoIsPdf = false;
@@ -2236,7 +2238,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 } else {
                     $scope.imageOfPanNoIsPdf = false;
                 }
-                 if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
+                if ($scope.buyerData.imageOfregistrationNo.indexOf(".pdf") != -1) {
                     $scope.imageOfregistrationNoIsPdf = true;
                 } else {
                     $scope.imageOfregistrationNoIsPdf = false;

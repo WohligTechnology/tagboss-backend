@@ -58,7 +58,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getAllRefundRequest: function (sdata, callback) {
+    getAllRefundRequest: function (sdata, callback) {
       var data = sdata;
       return $http({
         url: adminURL + "ReturnRequest/search",
@@ -68,7 +68,9 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getOneRefundRequest: function (id, callback) {
-      var data = { _id: id};
+      var data = {
+        _id: id
+      };
       return $http({
         url: adminURL + "ReturnRequest/getOne",
         method: "POST",
@@ -76,7 +78,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     updateRefundRequest: function (senddata, callback) {
+    updateRefundRequest: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "ReturnRequest/save",
@@ -148,44 +150,44 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
-     
-    updateBrand: function (branddata,callback) {
+
+    updateBrand: function (branddata, callback) {
       var data = branddata;
       return $http({
         url: adminURL + "brand/save",
         method: "POST",
-        data:data
+        data: data
       }).success(callback);
     },
 
-        updateType: function (typedata,callback) {
+    updateType: function (typedata, callback) {
       var data = typedata;
       return $http({
         url: adminURL + "type/save",
         method: "POST",
-        data:data
+        data: data
       }).success(callback);
     },
 
-       updateGrade: function (gradedata,callback) {
+    updateGrade: function (gradedata, callback) {
       var data = gradedata;
       return $http({
         url: adminURL + "GradesStandards/save",
         method: "POST",
-        data:data
+        data: data
       }).success(callback);
     },
 
-     getOrderCount: function (senddata,callback) {
+    getOrderCount: function (senddata, callback) {
       var data = senddata;
       return $http({
         url: adminURL + "bill/getOrderCount",
         method: "POST",
-        data:data
+        data: data
       }).success(callback);
     },
 
-    
+
 
     getGradesStandards: function (id, callback) {
       var data = {
@@ -198,7 +200,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getTypes: function (id, callback) {
+    getTypes: function (id, callback) {
       var data = {
         _id: id
       };
@@ -511,13 +513,21 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllVerifiedBuyer: function (callback) {
+    // getAllVerifiedBuyer: function (callback) {
+    //   return $http({
+    //     url: adminURL + "user/getAllVerifiedBuyer",
+    //     method: "POST"
+    //   }).success(callback);
+    // },
+
+    getAllBuyerTotals: function (fdata, callback) {
+      var data = fdata;
       return $http({
-        url: adminURL + "user/getAllVerifiedBuyer",
-        method: "POST"
+        url: adminURL + "user/getAllBuyerTotals",
+        method: "POST",
+        data: data
       }).success(callback);
     },
-
     getOneSeller: function (id, callback) {
       var data = {
         '_id': id
@@ -529,7 +539,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getSellerDashboard: function (id, callback) {
+    getSellerDashboard: function (id, callback) {
       var data = {
         'seller': id
       };
@@ -540,7 +550,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    
+
 
     getOneBuyer: function (id, callback) {
       var data = {
@@ -583,8 +593,8 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     editAgency: function (sendadata,callback) {
-       var data = sendadata;
+    editAgency: function (sendadata, callback) {
+      var data = sendadata;
       return $http({
         url: adminURL + "inspection/save",
         method: "POST",
@@ -682,8 +692,8 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     editProduct: function (senddata, callback) {
-      var data =  senddata;
+    editProduct: function (senddata, callback) {
+      var data = senddata;
       return $http({
         url: adminURL + "inventory/save",
         method: "POST",
@@ -699,7 +709,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getDashboard: function (callback) {
+    getDashboard: function (callback) {
       // var data = senddata;
       return $http({
         url: adminURL + "user/getAdminDashboard",
