@@ -1345,14 +1345,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
     $scope.getCountDown = function (adate, orderid, myindex, todate) {
-        // console.log("statename", $state);
+        console.log("statename", $state);
         var a = moment(adate);
-        // var b = moment(bdate);
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
-        // console.log('a', a, "b", b);
-        // var b = moment(a).add(2, 'days');
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
@@ -1364,22 +1361,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
                 if (duration > 0) {
                     // console.log("duration.days()", duration.days());
+                    // $scope.days = duration.days();;
                     document.getElementById("countdays" + orderid + myindex).value = duration.days();
                     document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    // $scope.hours= duration.hours();
                     document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    // $scope.minutes =duration.minutes();
                     document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                    // $scope.seconds= duration.seconds();
                 } else {
                     // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
                     clearInterval(timer);
                 }
             }, 1000);
         } else {
-            // var stop = "-"+orderid ;
-            // console.log("stop", stop);
-            // document.getElementById("countercomplete"+ orderid + myindex).innerHTML =new Date(b);
-            // $("#countercomplete"+ orderid + myindex).style.display = 'none';
-            // document.getElementById('countdown1').style.visibility = "hidden";
-            // $scope.stopcounter = stop;
+        //   console.log("in Else");
 
         }
     }
@@ -1687,9 +1683,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.getAllBuyer = function () {
-            NavigationService.getAllBuyerTotals($scope.filter, function (data) {
+            NavigationService.getAllVerifiedBuyer(function (data) {
                 if (data.value == true) {
-                    $scope.AllBuyer = data.data;
+                    $scope.AllBuyer = data.data.results;
                     console.log("Buyer", $scope.AllBuyer);
                 }
             });

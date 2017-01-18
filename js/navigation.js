@@ -1,6 +1,6 @@
-// var adminURL = "http://localhost:1337/";
-// var adminURL = "http://104.155.129.33:1337/";
-var adminURL = "http://192.168.0.13:1337/";
+var adminURL = "http://localhost:1337/";
+var adminURL = "http://104.155.129.33:1337/";
+// var adminURL = "http://192.168.0.13:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -514,12 +514,12 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    // getAllVerifiedBuyer: function (callback) {
-    //   return $http({
-    //     url: adminURL + "user/getAllVerifiedBuyer",
-    //     method: "POST"
-    //   }).success(callback);
-    // },
+    getAllVerifiedBuyer: function (callback) {
+      return $http({
+        url: adminURL + "user/getAllVerifiedBuyer",
+        method: "POST"
+      }).success(callback);
+    },
 
     getAllBuyerTotals: function (fdata, callback) {
       var data = fdata;

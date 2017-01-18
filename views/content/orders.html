@@ -163,6 +163,7 @@
                 </td>
                 <td>
                  {{order.deliveryStatus}}<br>
+                 <div ng-if="value[0].order.paymentStatus==='Pending'">
                <div data-ng-init="getCountDown(order.order.createdAt, cat,$index, order.order.paymentToTimestamp)"  >
                   <div ng-if="order.paymentStatus=='Pending'" name="countercomplete{{cat  | ltrim: '-' }}{{$index}}" class="font-karla inline-block time" id="countercomplete{{cat  | ltrim: '-' }}{{$index}}">
                     <form class="form-inline ng-pristine ng-valid">
@@ -188,6 +189,7 @@
                       <!--<div class="countdown1"></div>-->
                     </form>
                   </div>
+</div>
 </div>
                    
                 
