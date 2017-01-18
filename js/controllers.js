@@ -325,7 +325,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $rootScope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+    $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
     // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
     $scope.currentDate = new Date();
     $scope.showEdit = false;

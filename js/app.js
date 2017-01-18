@@ -264,11 +264,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'EditAgencyDetailsCtrl'
     })
 
-    .state('inspection-login', {
-      url: "/inspection-login",
-      templateUrl: "views/template.html",
-      controller: 'InspectionLoginCtrl'
-    });
+  .state('inspection-login', {
+    url: "/inspection-login",
+    templateUrl: "views/template.html",
+    controller: 'InspectionLoginCtrl'
+  });
 
   $urlRouterProvider.otherwise("/dashboard");
   $locationProvider.html5Mode(isproduction);
@@ -308,8 +308,8 @@ firstapp.directive('img', function ($compile, $parse) {
 // });
 
 firstapp.filter('uploadpath', function () {
-  return function (input, width, height, style) {  
-          
+  return function (input, width, height, style) {
+
     var other = "";
     if (width && width !== "") {
       other += "&width=" + width;
