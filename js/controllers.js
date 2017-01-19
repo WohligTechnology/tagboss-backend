@@ -1344,12 +1344,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
+$currentDate = new Date();
     $scope.getCountDown = function (adate, orderid, myindex, todate) {
         console.log("statename", $state);
         var a = moment(adate);
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
+        $scope.toDate = new Date(todate);
         var cdate = new Date();
         var currentTime = moment(cdate);
         var duration = moment.duration(b.diff(currentTime));
