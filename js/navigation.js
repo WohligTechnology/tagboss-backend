@@ -50,6 +50,37 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+     getNotifications: function (callback) {
+      return $http({
+        url: adminURL + "user/getNotificationCount",
+        method: "POST"
+      }).success(callback);
+    },
+
+     updateOrderReadStatus: function (callback) {
+      return $http({
+        url: adminURL + "user/updateOrderReadStatus",
+        method: "POST"
+      }).success(callback);
+    },
+
+        updateSellerReadStatus: function (callback) {
+      return $http({
+        url: adminURL + "user/updateSellerReadStatus",
+        method: "POST"
+      }).success(callback);
+    },
+
+        updateBuyerReadStatus: function (callback) {
+      return $http({
+        url: adminURL + "user/updateBuyerReadStatus",
+        method: "POST"
+      }).success(callback);
+    },
+
+    
+
+
     getInventory: function (idata, callback) {
       var data = idata;
       return $http({

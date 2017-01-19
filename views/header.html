@@ -104,19 +104,19 @@
             </div>
           </div> -->
           <div class="icons">
-            <div class="seller">
+            <div ng-click="updateOrderReadStatus()" class="seller">
               <i class="fa fa-book" aria-hidden="true"></i>
-              <div class="badge primary-bg">0</div>
+              <div  class="badge primary-bg">{{orders}}</div>
               <label>Orders</label>
             </div>
-            <div class="seller">
+            <div  ng-click="updateSellerReadStatus()" class="seller">
               <i class="fa fa-user" aria-hidden="true"></i>
-              <div class="badge primary-bg">0</div>
+              <div class="badge primary-bg">{{sellers}}</div>
               <label>Sellers</label>
             </div>
-            <div class="buyer">
+            <div ng-click="updateBuyerReadStatus()" class="buyer">
               <i class="fa fa-user" aria-hidden="true"></i>
-              <div class="badge primary-bg">0</div>
+              <div class="badge primary-bg">{{buyers}}</div>
               <label>Buyers</label>
             </div>
             <div class="h-icon" ui-sref="dashboard">

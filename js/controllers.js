@@ -1344,7 +1344,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
-$currentDate = new Date();
+
     $scope.getCountDown = function (adate, orderid, myindex, todate) {
         console.log("statename", $state);
         var a = moment(adate);
@@ -1352,8 +1352,10 @@ $currentDate = new Date();
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
         $scope.toDate = new Date(todate);
-        var cdate = new Date();
+         var cdate = new Date();
         var currentTime = moment(cdate);
+        $scope.currentDate = cdate;
+       
         var duration = moment.duration(b.diff(currentTime));
         if (new Date(currentTime) < new Date(b)) {
             // console.log("innnnnnn");
@@ -2771,6 +2773,47 @@ $currentDate = new Date();
             }
         });
     }
+
+    $scope.getNotifications = function(){
+        NavigationService.getNotifications(function(data){
+            if(data.value==true){
+                $scope.orders = data.data[0].orders;
+                $scope.sellers = data.data[1].sellers;
+                $scope.buyers = data.data[2].buyers;
+            }
+        });
+    }
+
+       $scope.updateOrderReadStatus = function(){
+        NavigationService.updateOrderReadStatus(function(data){
+            if(data.value==true){
+               $scope.getNotifications();
+               $state.go("orders");
+            }
+        });
+    }
+
+     $scope.updateSellerReadStatus = function(){
+        NavigationService.updateSellerReadStatus(function(data){
+            if(data.value==true){
+               $scope.getNotifications();
+               $state.go("request-sellers");
+               
+            }
+        });
+    }
+
+     $scope.updateBuyerReadStatus = function(){
+        NavigationService.updateBuyerReadStatus(function(data){
+            if(data.value==true){
+               $scope.getNotifications();
+               $state.go("request-buyers");
+               
+            }
+        });
+    }
+
+    $scope.getNotifications();
 
 
 })
