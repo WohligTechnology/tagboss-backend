@@ -1346,7 +1346,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
     $scope.getCountDown = function (adate, orderid, myindex, todate) {
-        console.log("statename", $state);
+        // console.log("statename", $state);
         var a = moment(adate);
         $scope.showtimer = true;
         var orderid = orderid.substring(1, orderid.length);
@@ -1361,8 +1361,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             // console.log("innnnnnn");
             var interval = 1;
             var timer = setInterval(function () {
-                // console.log("duration1", duration);
-                duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+                    //  console.log("duration1", duration);
+           
                 if (duration > 0) {
                     // console.log("duration.days()", duration.days());
                     // $scope.days = duration.days();;
@@ -1686,10 +1687,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
-        $scope.getAllBuyer = function () {
-            NavigationService.getAllVerifiedBuyer(function (data) {
+        $scope.filter.pagesize = 10;
+        $scope.filter.sortBy = "";
+        $scope.filter.text = "";
+        $scope.filter.status = "";
+        // $scope.getAllBuyer = function () {
+        //     NavigationService.getAllVerifiedBuyer(function (data) {
+        //         if (data.value == true) {
+        //             $scope.AllBuyer = data.data.results;
+        //             console.log("Buyer", $scope.AllBuyer);
+        //         }
+        //     });
+        // }
+
+              $scope.getAllBuyer = function () {
+            NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
-                    $scope.AllBuyer = data.data.results;
+                    $scope.AllBuyer = data.data;
                     console.log("Buyer", $scope.AllBuyer);
                 }
             });
