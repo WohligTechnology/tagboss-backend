@@ -1,7 +1,7 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter', 'angular-loading-bar'])
 
-.controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
+.controller('LoginPageCtrl', function ($scope,$uibModal, TemplateService, NavigationService, $timeout, $state, toastr) {
 
         $scope.template = TemplateService.changecontent("loginpage");
         $scope.menutitle = NavigationService.makeactive("Login Page");
