@@ -18,6 +18,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'LoginPageCtrl'
     })
+    .state('forgot-password', {
+      url: "/forgot-password",
+      templateUrl: "views/template.html",
+      controller: 'forgotPasswordCtrl'
+    })
     .state('dashboard', {
       url: "/dashboard",
       templateUrl: "views/template.html",
