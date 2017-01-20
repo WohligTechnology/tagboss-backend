@@ -91,5 +91,7 @@
         </tbody>
       </table>
     </div>
+      <ul ng-if="totalItems>1" uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getAllBuyer()"></ul>
+       
   </div>
 </section>

@@ -1710,7 +1710,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data.buyers;
-                    console.log("Buyer", $scope.AllBuyer);
+                     $scope.totalItems = data.data.total;
+                    console.log("Buyer", $scope.AllBuyer, $scope.totalItems);
                 }
             });
         }
