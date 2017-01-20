@@ -2753,6 +2753,21 @@
         padding: 0 10px 0 0;
       }
       
+      .reset-main {
+        padding-left: 0;
+        .reset-head {
+          text-transform: uppercase;
+          font-weight: bold;
+          color: #333333;
+        }
+        .form-password {
+          sup {
+            color: red;
+            font-size: 100%;
+          }
+        }
+      }
+      
       //bootstrap forms
       /* Start writing sass here */
       

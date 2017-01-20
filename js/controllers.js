@@ -3,240 +3,254 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
 
-    $scope.template = TemplateService.changecontent("loginpage");
-    $scope.menutitle = NavigationService.makeactive("Login Page");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    TemplateService.header = 'views/header1.html';
-    TemplateService.sidemenu = '';
+        $scope.template = TemplateService.changecontent("loginpage");
+        $scope.menutitle = NavigationService.makeactive("Login Page");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        TemplateService.header = 'views/header1.html';
+        TemplateService.sidemenu = '';
 
-    $scope.logindata = {};
-    $scope.error = false
-    $scope.Login = function (logindata) {
-        NavigationService.Login(logindata, function (data) {
-            if (data.value == true) {
-                var successmsg = toastr.success("Login Successfully", "Information");
-                setTimeout(function () {
-                    toastr.clear(successmsg);
-                    $state.go("dashboard");
-                }, 1000);
+        $scope.logindata = {};
+        $scope.error = false
+        $scope.Login = function (logindata) {
+            NavigationService.Login(logindata, function (data) {
+                if (data.value == true) {
+                    var successmsg = toastr.success("Login Successfully", "Information");
+                    setTimeout(function () {
+                        toastr.clear(successmsg);
+                        $state.go("dashboard");
+                    }, 1000);
 
-            } else {
-                $scope.error = true;
-                toastr.error("User not Found", "Error");
-                // $scope.errmsg = "User not Found";
-            }
-        });
-    }
-})
-
-.controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("dashboard");
-    $scope.menutitle = NavigationService.makeactive("Dashboard");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.chartConfig1 = {
-        options: {
-            //This is the Main Highcharts chart config. Any Highchart options are valid here.
-            //will be overriden by values specified below.
-            chart: {
-                type: 'column'
-            },
-            tooltip: {
-                style: {
-                    padding: 10,
-                    fontWeight: 'bold'
+                } else {
+                    $scope.error = true;
+                    toastr.error("User not Found", "Error");
+                    // $scope.errmsg = "User not Found";
                 }
-            }
-        },
-        //The below properties are watched separately for changes.
-
-        //Series object (optional) - a list of series using normal Highcharts series options.
-        series: [{
-            data: [10, 15]
-        }],
-        //Title configuration (optional)
-        // title: {
-        //     text: 'Example with bold text',
-        //     floating: true,
-        //     align: 'right',
-        //     x: -30,
-        //     y: 30
-        // },
-        //Boolean to control showing loading status on chart (optional)
-        //Could be a string if you want to show specific loading text.
-        loading: false,
-        //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
-        //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
-        xAxis: {
-            currentMin: 0,
-            currentMax: 1,
-            title: {
-                text: 'values'
-            }
-        },
-        // yAxis: {
-        // currentMin: 0,
-        // currentMax: 20,
-        // title: {text: 'values'}
-        // },
-        //Whether to use Highstocks instead of Highcharts (optional). Defaults to false.
-        useHighStocks: false,
-        //size (optional) if left out the chart will default to size of the div or something sensible.
-        size: {
-            width: 300,
-            height: 300
-        },
-        //function (optional)
-        func: function (chart) {
-            //setup some logic for the chart
+            });
         }
-    };
+        $scope.forgotPassword = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/forgotpassword.html",
+                scope: $scope,
+            });
+        };
+    })
+    .controller('forgotPasswordCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
+        $scope.template = TemplateService.changecontent("forgot-password");
+        $scope.menutitle = NavigationService.makeactive("Forgot Password");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        TemplateService.sidemenu = '';
 
-    $scope.chartConfig = {
-
-        options: {
-            //This is the Main Highcharts chart config. Any Highchart options are valid here.
-            //will be overriden by values specified below.
-            chart: {
-                type: 'line'
-            },
-            tooltip: {
-                style: {
-                    padding: 10,
-                    fontWeight: 'bold'
-                }
-            }
-        },
-        //The below properties are watched separately for changes.
-
-        //Series object (optional) - a list of series using normal Highcharts series options.
-        series: [{
-            data: [10, 15, 12, 8, 7]
-        }],
-        //Title configuration (optional)
-        // title: {
-        //    text: 'Hello'
-        // },
-        //Boolean to control showing loading status on chart (optional)
-        //Could be a string if you want to show specific loading text.
-        loading: false,
-        //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
-        //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
-        xAxis: {
-            currentMin: 0,
-            currentMax: 20,
-            title: {
-                text: 'values'
-            }
-        },
-        yAxis: {
-            currentMin: 0,
-            currentMax: 20,
-            title: {
-                text: 'values'
-            }
-        },
-        //Whether to use Highstocks instead of Highcharts (optional). Defaults to false.
-        useHighStocks: false,
-        //size (optional) if left out the chart will default to size of the div or something sensible.
-        size: {
-            width: 670,
-            height: 300
-        },
-        //function (optional)
-        func: function (chart) {
-            //setup some logic for the chart
-        }
-    };
-
-    $scope.freqPie = {
-
-        options: {
-            chart: {
-                type: 'pie',
-                options3d: {
-                    enabled: true,
-                    alpha: 60,
-                    beta: 0
-                }
-            },
-            title: {
-                text: null
-            }
-
-        },
-        legend: {
-            align: 'right',
-            verticalAlign: 'top',
-            y: 0,
-            layout: 'vertical'
-        },
-
-
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 50,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Category',
-            data: [
-                ['Pipe', 35.0],
-
-                {
-                    name: 'Coil',
-                    y: 15.0,
-                    sliced: true,
-                    selected: true
+    })
+    .controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("dashboard");
+        $scope.menutitle = NavigationService.makeactive("Dashboard");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.chartConfig1 = {
+            options: {
+                //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                //will be overriden by values specified below.
+                chart: {
+                    type: 'column'
                 },
-                ['Plate/Sheet', 30],
-                ['Roundbar', 20]
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            //The below properties are watched separately for changes.
 
-            ]
-        }],
-        size: {
-            width: 350,
-            height: 300
-        }
-    };
-
-
-    $scope.getDashboard = function () {
-        NavigationService.getDashboard(function (data) {
-            if (data.value == true) {
-                // $scope.allData = data.data;
-                $scope.allOrders = data.data[0].latestOrders;
-                $scope.latestBuyerPayments = data.data[1].latestPayments;
-                $scope.latestBuyerPendingPayments = data.data[2].latestPendingPayments;
-                $scope.buyers = data.data[3].buyers;
-                $scope.sellers = data.data[4].sellers;
-                $scope.orderStatus = data.data[5].orderStatus;
-                $scope.topFiveSellers = data.data[6].topFiveSellers;
-                $scope.topFiveBuyers = data.data[7].topFiveBuyers;
-                $scope.latestPaymentToSellers = data.data[8].latestPaymentToSellers;
-                $scope.categoryWiseSales = data.data[9].categoryWiseSales;
-                $scope.avgOrderDelivered = data.data[10].avgOrderDelivered;
-                $scope.newCustomer = data.data[11].newCustomer;
-
-
+            //Series object (optional) - a list of series using normal Highcharts series options.
+            series: [{
+                data: [10, 15]
+            }],
+            //Title configuration (optional)
+            // title: {
+            //     text: 'Example with bold text',
+            //     floating: true,
+            //     align: 'right',
+            //     x: -30,
+            //     y: 30
+            // },
+            //Boolean to control showing loading status on chart (optional)
+            //Could be a string if you want to show specific loading text.
+            loading: false,
+            //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
+            //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+            xAxis: {
+                currentMin: 0,
+                currentMax: 1,
+                title: {
+                    text: 'values'
+                }
+            },
+            // yAxis: {
+            // currentMin: 0,
+            // currentMax: 20,
+            // title: {text: 'values'}
+            // },
+            //Whether to use Highstocks instead of Highcharts (optional). Defaults to false.
+            useHighStocks: false,
+            //size (optional) if left out the chart will default to size of the div or something sensible.
+            size: {
+                width: 300,
+                height: 300
+            },
+            //function (optional)
+            func: function (chart) {
+                //setup some logic for the chart
             }
-        });
-    }
+        };
+
+        $scope.chartConfig = {
+
+            options: {
+                //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                //will be overriden by values specified below.
+                chart: {
+                    type: 'line'
+                },
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            //The below properties are watched separately for changes.
+
+            //Series object (optional) - a list of series using normal Highcharts series options.
+            series: [{
+                data: [10, 15, 12, 8, 7]
+            }],
+            //Title configuration (optional)
+            // title: {
+            //    text: 'Hello'
+            // },
+            //Boolean to control showing loading status on chart (optional)
+            //Could be a string if you want to show specific loading text.
+            loading: false,
+            //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
+            //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+            xAxis: {
+                currentMin: 0,
+                currentMax: 20,
+                title: {
+                    text: 'values'
+                }
+            },
+            yAxis: {
+                currentMin: 0,
+                currentMax: 20,
+                title: {
+                    text: 'values'
+                }
+            },
+            //Whether to use Highstocks instead of Highcharts (optional). Defaults to false.
+            useHighStocks: false,
+            //size (optional) if left out the chart will default to size of the div or something sensible.
+            size: {
+                width: 670,
+                height: 300
+            },
+            //function (optional)
+            func: function (chart) {
+                //setup some logic for the chart
+            }
+        };
+
+        $scope.freqPie = {
+
+            options: {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 60,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: null
+                }
+
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 0,
+                layout: 'vertical'
+            },
 
 
-    $scope.getDashboard();
-})
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 50,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Category',
+                data: [
+                    ['Pipe', 35.0],
+
+                    {
+                        name: 'Coil',
+                        y: 15.0,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Plate/Sheet', 30],
+                    ['Roundbar', 20]
+
+                ]
+            }],
+            size: {
+                width: 350,
+                height: 300
+            }
+        };
+
+
+        $scope.getDashboard = function () {
+            NavigationService.getDashboard(function (data) {
+                if (data.value == true) {
+                    // $scope.allData = data.data;
+                    $scope.allOrders = data.data[0].latestOrders;
+                    $scope.latestBuyerPayments = data.data[1].latestPayments;
+                    $scope.latestBuyerPendingPayments = data.data[2].latestPendingPayments;
+                    $scope.buyers = data.data[3].buyers;
+                    $scope.sellers = data.data[4].sellers;
+                    $scope.orderStatus = data.data[5].orderStatus;
+                    $scope.topFiveSellers = data.data[6].topFiveSellers;
+                    $scope.topFiveBuyers = data.data[7].topFiveBuyers;
+                    $scope.latestPaymentToSellers = data.data[8].latestPaymentToSellers;
+                    $scope.categoryWiseSales = data.data[9].categoryWiseSales;
+                    $scope.avgOrderDelivered = data.data[10].avgOrderDelivered;
+                    $scope.newCustomer = data.data[11].newCustomer;
+
+
+                }
+            });
+        }
+
+
+        $scope.getDashboard();
+    })
 
 .controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("material-construct");
@@ -1704,13 +1718,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (datasort) {
                 $scope.filter.sortBy = datasort;
             }
-             if (datasearch) {
+            if (datasearch) {
                 $scope.filter.text = datasearch;
             }
             NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data.buyers;
-                     $scope.totalItems = data.data.total;
+                    $scope.totalItems = data.data.total;
                     console.log("Buyer", $scope.AllBuyer, $scope.totalItems);
                 }
             });
