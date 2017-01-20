@@ -1,5 +1,5 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
-angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter','angular-loading-bar'])
+angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter', 'angular-loading-bar'])
 
 .controller('LoginPageCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
 
@@ -1352,18 +1352,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         var orderid = orderid.substring(1, orderid.length);
         var b = moment(todate);
         $scope.toDate = new Date(todate);
-         var cdate = new Date();
+        var cdate = new Date();
         var currentTime = moment(cdate);
         $scope.currentDate = cdate;
-       
+
         var duration = moment.duration(b.diff(currentTime));
         if (new Date(currentTime) < new Date(b)) {
             // console.log("innnnnnn");
             var interval = 1;
             var timer = setInterval(function () {
-                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-                    //  console.log("duration1", duration);
-           
+                duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+                //  console.log("duration1", duration);
+
                 if (duration > 0) {
                     // console.log("duration.days()", duration.days());
                     // $scope.days = duration.days();;
@@ -1380,7 +1380,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 }
             }, 1000);
         } else {
-        //   console.log("in Else");
+            //   console.log("in Else");
 
         }
     }
@@ -1687,7 +1687,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
-        $scope.filter.pagesize = 10;
+        $scope.filter.pagesize = 1;
         $scope.filter.sortBy = "";
         $scope.filter.text = "";
         $scope.filter.status = "verified";
@@ -1700,7 +1700,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         //     });
         // }
 
-              $scope.getAllBuyer = function () {
+        $scope.getAllBuyer = function (datasort, datasearch) {
+            if (datasort) {
+                $scope.filter.sortBy = datasort;
+            }
+             if (datasearch) {
+                $scope.filter.text = datasearch;
+            }
             NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data.buyers;
@@ -2788,9 +2794,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
-    $scope.getNotifications = function(){
-        NavigationService.getNotifications(function(data){
-            if(data.value==true){
+    $scope.getNotifications = function () {
+        NavigationService.getNotifications(function (data) {
+            if (data.value == true) {
                 $scope.orders = data.data[0].orders;
                 $scope.sellers = data.data[1].sellers;
                 $scope.buyers = data.data[2].buyers;
@@ -2798,31 +2804,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         });
     }
 
-       $scope.updateOrderReadStatus = function(){
-        NavigationService.updateOrderReadStatus(function(data){
-            if(data.value==true){
-               $scope.getNotifications();
-               $state.go("orders");
+    $scope.updateOrderReadStatus = function () {
+        NavigationService.updateOrderReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("orders");
             }
         });
     }
 
-     $scope.updateSellerReadStatus = function(){
-        NavigationService.updateSellerReadStatus(function(data){
-            if(data.value==true){
-               $scope.getNotifications();
-               $state.go("request-sellers");
-               
+    $scope.updateSellerReadStatus = function () {
+        NavigationService.updateSellerReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("request-sellers");
+
             }
         });
     }
 
-     $scope.updateBuyerReadStatus = function(){
-        NavigationService.updateBuyerReadStatus(function(data){
-            if(data.value==true){
-               $scope.getNotifications();
-               $state.go("request-buyers");
-               
+    $scope.updateBuyerReadStatus = function () {
+        NavigationService.updateBuyerReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("request-buyers");
+
             }
         });
     }

@@ -13,9 +13,8 @@
           </div>
           <div class="col-md-6">
             <div class="filter pull-left">
-              <p class="total">Total Buyers - <span>0</span></p>
+              <p class="total">Total Buyers - <span>{{AllBuyer.length}}</span></p>
             </div>
- 
             <div class="more-opt1 sort-by">
               <div class="magic-form dropdown">
                 <div class="filter pull-right dropdown-toggle" data-toggle="dropdown">
@@ -23,10 +22,10 @@
                   <label class="">Sort by</label>
                   <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Amount</a></li>
-                    <li><a href="#">Total Purchase</a></li>
-                    <li><a href="#">No. of Orders</a></li>
+                    <li ng-click="getAllBuyer('All');"><a>All</a></li>
+                    <li ng-click="getAllBuyer('Amount');"><a>Amount</a></li>
+                    <li ng-click="getAllBuyer('TotalPurchase');"><a>Total Purchase</a></li>
+                    <li ng-click="getAllBuyer('NoOfOrders');"><a>No. of Orders</a></li>
                   </ul>
                 </div>
               </div>
@@ -35,9 +34,9 @@
         </div>
       </div>
     </div>
-    <div  ng-repeat="buyer in AllBuyer">
-    <div class="buyer-details ">
-      <!--<div class="magic-form">
+    <div ng-repeat="buyer in AllBuyer">
+      <div class="buyer-details ">
+        <!--<div class="magic-form">
           <div class="magic-resize">
             <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
             <label class="detail-heading" for="add-two">
@@ -47,50 +46,50 @@
         </div>
         <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
         <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>-->
+      </div>
+      <table class="table table-bordered buyer-table">
+        <thead>
+          <tr>
+            <th><strong>SR. NO.</strong></th>
+            <th><strong>NAME</strong></th>
+            <th><strong>TOTAL ORDERS</strong></th>
+            <th><strong>TOTAL SALES</strong></th>
+            <th><strong>PENDING PAYMENT</strong></th>
+            <th><strong>ACTION</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              TBB{{buyer.userId}}
+            </td>
+            <td>
+              <span>{{buyer.firstName}} {{buyer.lastName}}</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>{{buyer.totalOrders}}</span>
+              <span></span>
+              <span></span>
+            </td>
+            <td>
+              <span>{{buyer.totalSales| currency:'&#8377;'}}</span>
+              <span></span>
+              <span></span>
+              <span class="result"></span>
+            </td>
+            <td>
+              <span>{{buyer.pendingPayment| currency:'&#8377;'}}</span>
+            </td>
+            <td>
+              <span></span>
+              <span></span>
+              <span><br><a ui-sref="view-buyers({id:buyer._id})" class="pull-right"><label class="view">VIEW</label></a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table class="table table-bordered buyer-table">
-      <thead>
-        <tr>
-          <th><strong>SR. NO.</strong></th>
-          <th><strong>NAME</strong></th>
-          <th><strong>TOTAL ORDERS</strong></th>
-          <th><strong>TOTAL SALES</strong></th>
-          <th><strong>PENDING PAYMENT</strong></th>
-          <th><strong>STATUS</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr >
-          <td>
-            TBB{{buyer.userId}}
-          </td>
-          <td>
-            <span>{{buyer.firmName}} {{buyer.lastName}}</span>
-            <span></span>
-            <span></span>
-          </td>
-          <td>
-            <span>250</span>
-            <span></span>
-            <span></span>
-          </td>
-          <td>
-            <span>Rs. 3000/-</span>
-            <span></span>
-            <span></span>
-            <span class="result"></span>
-          </td>
-          <td></td>
-          <td>
-            <span></span>
-            <span></span>
-            <span><br><a ui-sref="view-buyers({id:buyer._id})" class="pull-right"><label class="view">VIEW</label></a></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-
   </div>
 </section>
