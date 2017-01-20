@@ -19,7 +19,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       controller: 'LoginPageCtrl'
     })
     .state('forgot-password', {
-      url: "/forgot-password",
+      url: "/forgot-password/:email",
       templateUrl: "views/template.html",
       controller: 'forgotPasswordCtrl'
     })

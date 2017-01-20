@@ -51,7 +51,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Forgot Password");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.header = 'views/header1.html';
         TemplateService.sidemenu = '';
+        
 
     })
     .controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -2799,7 +2801,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 //     $state.go("dashboard");
                 // }
             } else {
-                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details" || $state.current.name == "forgot-password") {
 
                 } else {
                     $state.go("loginpage");
