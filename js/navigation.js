@@ -571,7 +571,8 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getSellerDashboard: function (id, callback) {
+
+ getSellerDashboard: function (id, callback) {
       var data = {
         'seller': id
       };
@@ -580,6 +581,18 @@ var navigationservice = angular.module('navigationservice', [])
         method: "POST",
         data: data
       }).success(callback);
+    },
+
+   
+    forgotPassword: function (emailid, callback) {
+      var data = {
+        'email': emailid
+      };
+     return $http({
+        url: adminURL + " Register/forgotPassword",
+        method: "POST",
+        data: data
+       }).success(callback);
     },
 
 
