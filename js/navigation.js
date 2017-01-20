@@ -1,6 +1,5 @@
-// var adminURL = "http://localhost:1337/";
-var adminURL = "http://104.155.129.33:1337/";
-// var adminURL = "http://192.168.0.13:1337/";
+var adminURL = "http://localhost:1337/";
+// var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -589,7 +588,7 @@ var navigationservice = angular.module('navigationservice', [])
         'email': emailid
       };
      return $http({
-        url: adminURL + " Register/forgotPassword",
+        url: adminURL + "Register/forgotPassword",
         method: "POST",
         data: data
        }).success(callback);

@@ -1,7 +1,7 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter', 'angular-loading-bar'])
 
-    .controller('LoginPageCtrl', function ($scope, $uibModal, TemplateService, NavigationService, $timeout, $state, toastr) {
+.controller('LoginPageCtrl', function ($scope, $uibModal, TemplateService, NavigationService, $timeout, $state, toastr) {
 
         $scope.template = TemplateService.changecontent("loginpage");
         $scope.menutitle = NavigationService.makeactive("Login Page");
@@ -29,20 +29,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
         $scope.forgotPassword = function () {
-            $uibModal.open({
+            forgotmod =$uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/forgotpassword.html",
                 scope: $scope,
             });
         };
-        $scope.submitForm = function (form) {
-            console.log('form', form);
-            if (form.$valid) {
-                alert("yes valid");
-            } else {
-                alert("not valid");
-            }
-            // $scope.forgotpasswd
+        $scope.forgotPasswordSubmit = function (formdata) {
+            NavigationService.forgotPassword(formdata, function (data) {
+                if (data.value == true) {
+                    forgotmod.close();
+                    toastr.success("Password sent to your registerd Email ID", "Information");
+                }else{
+                     toastr.error("Email ID not found!", "Error");
+                }
+            });
         }
     })
     .controller('forgotPasswordCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
@@ -261,611 +262,611 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.getDashboard();
     })
 
-    .controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("material-construct");
-        $scope.menutitle = NavigationService.makeactive("Material Construct");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+.controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("material-construct");
+    $scope.menutitle = NavigationService.makeactive("Material Construct");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        $scope.getMaterial = function () {
-            NavigationService.getMaterial(function (data) {
-                if (data.value == true) {
-                    $scope.allData = data.data;
-                } else {
-                    $scope.allData = [];
-                }
-            });
-        }
-        $scope.getMaterial();
-        $scope.errmsg = false;
-        $scope.addMoc = function (mocdata, cat, indexid) {
-            if (mocdata != undefined) {
-                var senddata = {};
-                senddata.category = cat;
-                senddata.name = mocdata.mocname;
-
-                console.log("searchdata", senddata);
-
-                NavigationService.addMoc(senddata, function (data) {
-                    if (data.value == true) {
-                        // $scope.formdata ={};
-                        toastr.success("MOC added Successfully", "Information");
-                        document.getElementById(indexid).value = "";
-                        $scope.errmsg = false;
-                        $scope.getMaterial();
-                    }
-                });
+    $scope.getMaterial = function () {
+        NavigationService.getMaterial(function (data) {
+            if (data.value == true) {
+                $scope.allData = data.data;
             } else {
-                $scope.errmsg = true;
-                $scope.myindex = indexid;
+                $scope.allData = [];
             }
-        }
+        });
+    }
+    $scope.getMaterial();
+    $scope.errmsg = false;
+    $scope.addMoc = function (mocdata, cat, indexid) {
+        if (mocdata != undefined) {
+            var senddata = {};
+            senddata.category = cat;
+            senddata.name = mocdata.mocname;
 
-        $scope.hidetext = false;
-        $scope.showtext = true;
-        $scope.showEditData = function (indexid) {
-            $scope.hidetext = true;
-            $scope.showtext = false;
-            $scope.indexid = indexid;
-        }
+            console.log("searchdata", senddata);
 
-        $scope.editMoc = function (mocdata, cat, indexid) {
-            if (mocdata.name !== "") {
-                var senddata = {};
-                senddata.category = cat;
-                senddata.name = mocdata.name;
-                senddata._id = mocdata._id;
-                $scope.hidetext = false;
-                $scope.showtext = true;
-                $scope.indexid = "a";
-                NavigationService.editMoc(senddata, function (data) {
-                    if (data.value == true) {
-                        // $scope.formdata ={};
-                        toastr.success("MOC updated Successfully", "Information");
-                        $scope.errmsg = false;
-                        $scope.getMaterial();
-                    }
-                });
-            } else {
-                $scope.errmsg = true;
-                $scope.myindex = indexid;
-            }
-        }
-        $scope.deleteMoc = function (mocid) {
-            NavigationService.deleteMoc(mocid, function (data) {
+            NavigationService.addMoc(senddata, function (data) {
                 if (data.value == true) {
-                    toastr.success("MOC deleted Successfully", "Information");
+                    // $scope.formdata ={};
+                    toastr.success("MOC added Successfully", "Information");
+                    document.getElementById(indexid).value = "";
+                    $scope.errmsg = false;
                     $scope.getMaterial();
                 }
             });
+        } else {
+            $scope.errmsg = true;
+            $scope.myindex = indexid;
         }
+    }
 
-    })
+    $scope.hidetext = false;
+    $scope.showtext = true;
+    $scope.showEditData = function (indexid) {
+        $scope.hidetext = true;
+        $scope.showtext = false;
+        $scope.indexid = indexid;
+    }
 
-    .controller('ProdApprovalCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $filter) {
-        $scope.template = TemplateService.changecontent("product-approval");
-        $scope.menutitle = NavigationService.makeactive("Product Approval");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+    $scope.editMoc = function (mocdata, cat, indexid) {
+        if (mocdata.name !== "") {
+            var senddata = {};
+            senddata.category = cat;
+            senddata.name = mocdata.name;
+            senddata._id = mocdata._id;
+            $scope.hidetext = false;
+            $scope.showtext = true;
+            $scope.indexid = "a";
+            NavigationService.editMoc(senddata, function (data) {
+                if (data.value == true) {
+                    // $scope.formdata ={};
+                    toastr.success("MOC updated Successfully", "Information");
+                    $scope.errmsg = false;
+                    $scope.getMaterial();
+                }
+            });
+        } else {
+            $scope.errmsg = true;
+            $scope.myindex = indexid;
+        }
+    }
+    $scope.deleteMoc = function (mocid) {
+        NavigationService.deleteMoc(mocid, function (data) {
+            if (data.value == true) {
+                toastr.success("MOC deleted Successfully", "Information");
+                $scope.getMaterial();
+            }
+        });
+    }
 
-        $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
-        // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
-        $scope.currentDate = new Date();
-        $scope.showEdit = false;
+})
+
+.controller('ProdApprovalCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $filter) {
+    $scope.template = TemplateService.changecontent("product-approval");
+    $scope.menutitle = NavigationService.makeactive("Product Approval");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+    // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+    $scope.currentDate = new Date();
+    $scope.showEdit = false;
+    $scope.hideEdit = true;
+    $scope.showEditProduct = function (id) {
+        console.log("id", id);
+        $scope.showEdit = true;
+        $scope.hideEdit = false;
+        NavigationService.getOneInventory(id, function (data) {
+            if (data.value == true) {
+                $scope.productEdit = data.data;
+                $scope.getAllTypes($scope.productEdit.category._id);
+                $scope.getAllGrades($scope.productEdit.moc._id);
+
+            }
+        });
+
+    };
+
+    $scope.showText = true;
+    $scope.showTextBrand = function () {
+        $scope.showText = false;
+    }
+
+    $scope.showTextType = true;
+    $scope.showTextTypeDiv = function () {
+        $scope.showTextType = false;
+    }
+
+    $scope.showTextGrade = true;
+    $scope.showTextGradeDiv = function () {
+        $scope.showTextGrade = false;
+    }
+
+
+
+    $scope.showInspection = function () {
         $scope.hideEdit = true;
-        $scope.showEditProduct = function (id) {
-            console.log("id", id);
-            $scope.showEdit = true;
-            $scope.hideEdit = false;
-            NavigationService.getOneInventory(id, function (data) {
-                if (data.value == true) {
-                    $scope.productEdit = data.data;
-                    $scope.getAllTypes($scope.productEdit.category._id);
-                    $scope.getAllGrades($scope.productEdit.moc._id);
-
-                }
-            });
-
-        };
-
+        $scope.showEdit = false;
         $scope.showText = true;
-        $scope.showTextBrand = function () {
-            $scope.showText = false;
-        }
-
         $scope.showTextType = true;
-        $scope.showTextTypeDiv = function () {
-            $scope.showTextType = false;
-        }
-
         $scope.showTextGrade = true;
-        $scope.showTextGradeDiv = function () {
-            $scope.showTextGrade = false;
-        }
+    };
 
 
-
-        $scope.showInspection = function () {
-            $scope.hideEdit = true;
-            $scope.showEdit = false;
-            $scope.showText = true;
-            $scope.showTextType = true;
-            $scope.showTextGrade = true;
-        };
-
-
-        $scope.getAgency = function () {
-            NavigationService.getAgency(function (data) {
-                if (data.value == true) {
-                    $scope.getAllAgency = data.data.results;
-                }
-            });
-        }
-        $scope.getAgency();
-
-        $scope.filter = {};
-        $scope.filter.page = 1;
-
-        $scope.getAllBrands = function () {
-            NavigationService.getBrands(function (data) {
-                if (data.value == true) {
-                    $scope.allBrand = data.data.results;
-                }
-            });
-        }
-        $scope.getAllBrands();
-
-
-        $scope.getAllTypes = function (id) {
-            NavigationService.getTypes(id, function (data) {
-                if (data.value == true) {
-                    $scope.allType = data.data;
-                }
-            });
-        }
-
-
-        $scope.getAllGrades = function (id) {
-            NavigationService.getGradesStandards(id, function (data) {
-                if (data.value == true) {
-                    $scope.allGrade = data.data;
-                }
-            });
-        }
-
-
-
-        $scope.getInventory = function () {
-            NavigationService.getInventory($scope.filter, function (data) {
-                if (data.value == true) {
-                    $scope.getAllInventory = data.data.results;
-                    $scope.totalItems = data.data.total;
-                    console.log("filter", $scope.filter);
-                }
-            });
-        }
-        $scope.getInventory();
-
-        $scope.errmsg = false;
-        $scope.assignInspection = function (inventorydata, indexid) {
-            console.log("asssign", inventorydata.agentIDTemp, indexid);
-            if (inventorydata.agentIDTemp != undefined) {
-
-                var senddata = {};
-                senddata._id = inventorydata._id;
-                senddata.agencyid = inventorydata.agentIDTemp;
-                senddata.productId = inventorydata.product.productId;
-                senddata.firstName = inventorydata.seller.firstName;
-                senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
-                $scope.mydate = new Date();
-                $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
-                senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
-                senddata.report = inventorydata.report;
-                if (inventorydata.category.name === "Pipes") {
-                    senddata.price = inventorydata.ratePerKgMtr;
-                    senddata.quantity = inventorydata.totalQty;
-
-                } else {
-                    senddata.price = inventorydata.pricePerKg;
-                    senddata.quantity = inventorydata.quantityInNos;
-                }
-                senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-                NavigationService.assignInspection(senddata, function (data) {
-                    if (data.value == true) {
-                        toastr.success("Assign Successfully", "Information");
-                        $scope.errmsg = false;
-                        $scope.getInventory();
-                    }
-                });
-            } else {
-                $scope.errmsg = true;
-                $scope.myindex = indexid;
+    $scope.getAgency = function () {
+        NavigationService.getAgency(function (data) {
+            if (data.value == true) {
+                $scope.getAllAgency = data.data.results;
             }
-        }
+        });
+    }
+    $scope.getAgency();
 
-        $scope.rejectReport = function (inventorydata) {
+    $scope.filter = {};
+    $scope.filter.page = 1;
+
+    $scope.getAllBrands = function () {
+        NavigationService.getBrands(function (data) {
+            if (data.value == true) {
+                $scope.allBrand = data.data.results;
+            }
+        });
+    }
+    $scope.getAllBrands();
+
+
+    $scope.getAllTypes = function (id) {
+        NavigationService.getTypes(id, function (data) {
+            if (data.value == true) {
+                $scope.allType = data.data;
+            }
+        });
+    }
+
+
+    $scope.getAllGrades = function (id) {
+        NavigationService.getGradesStandards(id, function (data) {
+            if (data.value == true) {
+                $scope.allGrade = data.data;
+            }
+        });
+    }
+
+
+
+    $scope.getInventory = function () {
+        NavigationService.getInventory($scope.filter, function (data) {
+            if (data.value == true) {
+                $scope.getAllInventory = data.data.results;
+                $scope.totalItems = data.data.total;
+                console.log("filter", $scope.filter);
+            }
+        });
+    }
+    $scope.getInventory();
+
+    $scope.errmsg = false;
+    $scope.assignInspection = function (inventorydata, indexid) {
+        console.log("asssign", inventorydata.agentIDTemp, indexid);
+        if (inventorydata.agentIDTemp != undefined) {
+
             var senddata = {};
             senddata._id = inventorydata._id;
-            senddata.email = inventorydata.seller.email;
+            senddata.agencyid = inventorydata.agentIDTemp;
+            senddata.productId = inventorydata.product.productId;
             senddata.firstName = inventorydata.seller.firstName;
-            NavigationService.rejectReport(senddata, function (data) {
-                if (data.value == true) {
-                    // toastr.success("Assign Successfully", "Information");
-                    $scope.getInventory();
-                }
-            });
-        }
-
-        $scope.acceptReport = function (inventorydata) {
-            var senddata = {};
-            senddata._id = inventorydata._id;
-            senddata.email = inventorydata.seller.email;
-            senddata.firstName = inventorydata.seller.firstName;
-            senddata.quantity = inventorydata.quantityInNos;
             senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+            $scope.mydate = new Date();
+            $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
+            senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
             senddata.report = inventorydata.report;
-
-            if (inventorydata.ratePerKgMtr) {
+            if (inventorydata.category.name === "Pipes") {
                 senddata.price = inventorydata.ratePerKgMtr;
-            }
-            if (inventorydata.pricePerKg) {
+                senddata.quantity = inventorydata.totalQty;
+
+            } else {
                 senddata.price = inventorydata.pricePerKg;
+                senddata.quantity = inventorydata.quantityInNos;
             }
             senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-            NavigationService.acceptReport(senddata, function (data) {
+            NavigationService.assignInspection(senddata, function (data) {
                 if (data.value == true) {
-                    // toastr.success("Assign Successfully", "Information");
+                    toastr.success("Assign Successfully", "Information");
+                    $scope.errmsg = false;
                     $scope.getInventory();
-                    // $state.reload();
                 }
             });
+        } else {
+            $scope.errmsg = true;
+            $scope.myindex = indexid;
         }
+    }
 
-
-        $scope.editProductData = function (productdata) {
-            console.log("product", productdata);
-            var senddata = {};
-            senddata._id = productdata._id;
-            senddata.brand = productdata.brand._id;
-            senddata.details = productdata.details;
-            if (productdata.category.name !== 'Roundbar') {
-                senddata.type = productdata.type._id;
+    $scope.rejectReport = function (inventorydata) {
+        var senddata = {};
+        senddata._id = inventorydata._id;
+        senddata.email = inventorydata.seller.email;
+        senddata.firstName = inventorydata.seller.firstName;
+        NavigationService.rejectReport(senddata, function (data) {
+            if (data.value == true) {
+                // toastr.success("Assign Successfully", "Information");
+                $scope.getInventory();
             }
-            senddata.gradesstandards = productdata.gradesstandards._id;
-            NavigationService.editProduct(senddata, function (data) {
-                $scope.showInspection();
-                $scope.getInventory();
-                toastr.success("Product Updated Successfully", "Information")
-            });
+        });
+    }
+
+    $scope.acceptReport = function (inventorydata) {
+        var senddata = {};
+        senddata._id = inventorydata._id;
+        senddata.email = inventorydata.seller.email;
+        senddata.firstName = inventorydata.seller.firstName;
+        senddata.quantity = inventorydata.quantityInNos;
+        senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+        senddata.report = inventorydata.report;
+
+        if (inventorydata.ratePerKgMtr) {
+            senddata.price = inventorydata.ratePerKgMtr;
         }
-
-
-        $scope.updateBrand = function (branddata) {
-            console.log("branddata", branddata);
-            // var senddata
-            NavigationService.updateBrand(branddata, function (data) {
-                $scope.getInventory();
-                toastr.success("Brand Updated Successfully", "Information")
-            });
+        if (inventorydata.pricePerKg) {
+            senddata.price = inventorydata.pricePerKg;
         }
-
-        $scope.updateType = function (typedata) {
-            console.log("typedata", typedata);
-            NavigationService.updateType(typedata, function (data) {
+        senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+        NavigationService.acceptReport(senddata, function (data) {
+            if (data.value == true) {
+                // toastr.success("Assign Successfully", "Information");
                 $scope.getInventory();
-                toastr.success("Type Updated Successfully", "Information")
-            });
+                // $state.reload();
+            }
+        });
+    }
+
+
+    $scope.editProductData = function (productdata) {
+        console.log("product", productdata);
+        var senddata = {};
+        senddata._id = productdata._id;
+        senddata.brand = productdata.brand._id;
+        senddata.details = productdata.details;
+        if (productdata.category.name !== 'Roundbar') {
+            senddata.type = productdata.type._id;
         }
+        senddata.gradesstandards = productdata.gradesstandards._id;
+        NavigationService.editProduct(senddata, function (data) {
+            $scope.showInspection();
+            $scope.getInventory();
+            toastr.success("Product Updated Successfully", "Information")
+        });
+    }
 
-        $scope.updateGrade = function (gradedata) {
-            console.log("gradedata", gradedata);
-            NavigationService.updateGrade(gradedata, function (data) {
-                $scope.getInventory();
-                toastr.success("Grade / Standards Updated Successfully", "Information")
-            });
-        }
 
-    })
+    $scope.updateBrand = function (branddata) {
+        console.log("branddata", branddata);
+        // var senddata
+        NavigationService.updateBrand(branddata, function (data) {
+            $scope.getInventory();
+            toastr.success("Brand Updated Successfully", "Information")
+        });
+    }
 
-    .controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("view-seller-product");
-        $scope.menutitle = NavigationService.makeactive("View Seller Products");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+    $scope.updateType = function (typedata) {
+        console.log("typedata", typedata);
+        NavigationService.updateType(typedata, function (data) {
+            $scope.getInventory();
+            toastr.success("Type Updated Successfully", "Information")
+        });
+    }
 
-        $scope.showProd = false;
+    $scope.updateGrade = function (gradedata) {
+        console.log("gradedata", gradedata);
+        NavigationService.updateGrade(gradedata, function (data) {
+            $scope.getInventory();
+            toastr.success("Grade / Standards Updated Successfully", "Information")
+        });
+    }
+
+})
+
+.controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("view-seller-product");
+    $scope.menutitle = NavigationService.makeactive("View Seller Products");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.showProd = false;
+    $scope.showSell = true;
+    $scope.showProduct = function (id) {
+        $scope.showProd = true;
+        NavigationService.getInventoryByProduct(id, function (data) {
+            if (data.value == true) {
+                $scope.allStock = data.data;
+                console.log(" $scope.getStock", $scope.allStock);
+            }
+        });
+        $scope.showSell = false;
+    };
+    $.fancybox.close(true);
+    $scope.showSellerProduct = function () {
         $scope.showSell = true;
-        $scope.showProduct = function (id) {
-            $scope.showProd = true;
-            NavigationService.getInventoryByProduct(id, function (data) {
-                if (data.value == true) {
-                    $scope.allStock = data.data;
-                    console.log(" $scope.getStock", $scope.allStock);
-                }
-            });
-            $scope.showSell = false;
-        };
-        $.fancybox.close(true);
-        $scope.showSellerProduct = function () {
-            $scope.showSell = true;
-            $scope.showProd = false;
-        };
+        $scope.showProd = false;
+    };
 
-        $scope.getMocByCat = function (id) {
-            NavigationService.getMocByCat(id, function (data) {
-                if (data.value == true) {
-                    $scope.allMoc = data.data;
-                    console.log("aaa", $scope.allMoc);
-                }
-            });
-        }
-
-
-
-        $scope.getAllCategory = function () {
-            NavigationService.getAllCategory(function (data) {
-                if (data.value == true) {
-                    $scope.allCategory = data.data.results;
-                    console.log("cat", $scope.allCategory);
-                }
-            });
-        }
-
-        $scope.getAllCategory();
-
-
-        $scope.getAllSellerProducts = function () {
-            NavigationService.getAllSellerProducts(function (data) {
-                if (data.value == true) {
-                    $scope.allSellerProducts = data.data;
-                    console.log("$scope.allSellerProducts", $scope.allSellerProducts);
-                }
-            });
-        }
-
-        $scope.getAllSellerProducts();
-
-    })
-
-
-    .controller('InspectionAgenciesCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
-        $scope.template = TemplateService.changecontent("inspection-agencies");
-        $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-
-        $scope.openInspection = function (data, id) {
-            $scope.modaltitle = data;
-            if (id != undefined) {
-                NavigationService.getOneAgency(id, function (data) {
-                    if (data.value == true) {
-                        $scope.agency = data.data;
-                    }
-                });
-            } else {
-                $scope.agency = {};
+    $scope.getMocByCat = function (id) {
+        NavigationService.getMocByCat(id, function (data) {
+            if (data.value == true) {
+                $scope.allMoc = data.data;
+                console.log("aaa", $scope.allMoc);
             }
-            $scope.agencypop = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/inspection.html",
-                scope: $scope,
-            });
-        };
-        $scope.agency = {};
-        $scope.addAgency = function (agency) {
-            NavigationService.addAgency(agency, function (data) {
+        });
+    }
+
+
+
+    $scope.getAllCategory = function () {
+        NavigationService.getAllCategory(function (data) {
+            if (data.value == true) {
+                $scope.allCategory = data.data.results;
+                console.log("cat", $scope.allCategory);
+            }
+        });
+    }
+
+    $scope.getAllCategory();
+
+
+    $scope.getAllSellerProducts = function () {
+        NavigationService.getAllSellerProducts(function (data) {
+            if (data.value == true) {
+                $scope.allSellerProducts = data.data;
+                console.log("$scope.allSellerProducts", $scope.allSellerProducts);
+            }
+        });
+    }
+
+    $scope.getAllSellerProducts();
+
+})
+
+
+.controller('InspectionAgenciesCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
+    $scope.template = TemplateService.changecontent("inspection-agencies");
+    $scope.menutitle = NavigationService.makeactive("Inspection Agencies");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.openInspection = function (data, id) {
+        $scope.modaltitle = data;
+        if (id != undefined) {
+            NavigationService.getOneAgency(id, function (data) {
                 if (data.value == true) {
-                    // console.log("done");
-                    toastr.success("Agency Added Successfully", "Information");
-                    closeAgencyPopup();
-                    $scope.agency = {};
-                    $scope.getAgency();
+                    $scope.agency = data.data;
                 }
             });
+        } else {
+            $scope.agency = {};
         }
+        $scope.agencypop = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/inspection.html",
+            scope: $scope,
+        });
+    };
+    $scope.agency = {};
+    $scope.addAgency = function (agency) {
+        NavigationService.addAgency(agency, function (data) {
+            if (data.value == true) {
+                // console.log("done");
+                toastr.success("Agency Added Successfully", "Information");
+                closeAgencyPopup();
+                $scope.agency = {};
+                $scope.getAgency();
+            }
+        });
+    }
 
-        $scope.deleteAgency = function (id) {
-            NavigationService.deleteAgency(id, function (data) {
-                if (data.value == true) {
-                    $scope.getAgency();
-                    toastr.success("Agency Deleted Successfully", "Information");
-                }
-            });
-        }
+    $scope.deleteAgency = function (id) {
+        NavigationService.deleteAgency(id, function (data) {
+            if (data.value == true) {
+                $scope.getAgency();
+                toastr.success("Agency Deleted Successfully", "Information");
+            }
+        });
+    }
 
-        $scope.getAgency = function () {
-            NavigationService.getAgency(function (data) {
-                if (data.value == true) {
-                    $scope.allAgency = data.data.results;
-                } else {
-                    $scope.allAgency = "";
-                }
-            });
-        }
+    $scope.getAgency = function () {
+        NavigationService.getAgency(function (data) {
+            if (data.value == true) {
+                $scope.allAgency = data.data.results;
+            } else {
+                $scope.allAgency = "";
+            }
+        });
+    }
 
-        $scope.getAgency();
+    $scope.getAgency();
 
-        closeAgencyPopup = function () {
-            $scope.agencypop.close();
-        }
+    closeAgencyPopup = function () {
+        $scope.agencypop.close();
+    }
 
-    })
+})
 
-    .controller('AddInspectionAgencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("add-inspection-agency");
-        $scope.menutitle = NavigationService.makeactive("Add Inspection Agency");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('AddInspectionAgencyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("add-inspection-agency");
+    $scope.menutitle = NavigationService.makeactive("Add Inspection Agency");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('AddTransporterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("add-transporter");
-        $scope.menutitle = NavigationService.makeactive("Add Transporter");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('AddTransporterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("add-transporter");
+    $scope.menutitle = NavigationService.makeactive("Add Transporter");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('TransportorderCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("transport-order");
-        $scope.menutitle = NavigationService.makeactive("Transport Order");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+.controller('TransportorderCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("transport-order");
+    $scope.menutitle = NavigationService.makeactive("Transport Order");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-    })
+})
 
-    .controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
-        $scope.template = TemplateService.changecontent("brands");
-        $scope.menutitle = NavigationService.makeactive("Brands");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+.controller('BrandsCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    $scope.template = TemplateService.changecontent("brands");
+    $scope.menutitle = NavigationService.makeactive("Brands");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        $scope.getBrands = function () {
-            NavigationService.getBrands(function (data) {
-                if (data.value == true) {
-                    $scope.allBrands = data.data.results;
-                } else {
-                    $scope.allBrands = [];
-                }
-            });
-        }
+    $scope.getBrands = function () {
+        NavigationService.getBrands(function (data) {
+            if (data.value == true) {
+                $scope.allBrands = data.data.results;
+            } else {
+                $scope.allBrands = [];
+            }
+        });
+    }
 
-        $scope.getBrands();
+    $scope.getBrands();
 
-        $scope.openBrand = function () {
-            $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/brandmanufacturer.html",
-                scope: $scope,
-            });
-        };
+    $scope.openBrand = function () {
+        $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/brandmanufacturer.html",
+            scope: $scope,
+        });
+    };
 
-    })
+})
 
-    .controller('TransportersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("transporters");
-        $scope.menutitle = NavigationService.makeactive("Transporters");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('TransportersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("transporters");
+    $scope.menutitle = NavigationService.makeactive("Transporters");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('AdsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("ads");
-        $scope.menutitle = NavigationService.makeactive("Ads");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('AdsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("ads");
+    $scope.menutitle = NavigationService.makeactive("Ads");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('AddAdCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("add-ad");
-        $scope.menutitle = NavigationService.makeactive("Add ad");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('AddAdCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("add-ad");
+    $scope.menutitle = NavigationService.makeactive("Add ad");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('ReportsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("reports");
-        $scope.menutitle = NavigationService.makeactive("Reports");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('ReportsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("reports");
+    $scope.menutitle = NavigationService.makeactive("Reports");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('TransporterPaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("transporter-payment");
-        $scope.menutitle = NavigationService.makeactive("Transporter Payment");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('TransporterPaymentCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("transporter-payment");
+    $scope.menutitle = NavigationService.makeactive("Transporter Payment");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('PendingDeliveryCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("pending-delivery");
-        $scope.menutitle = NavigationService.makeactive("Pending Delivery");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('PendingDeliveryCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("pending-delivery");
+    $scope.menutitle = NavigationService.makeactive("Pending Delivery");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('SuperAdminCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("super-admin");
-        $scope.menutitle = NavigationService.makeactive("Super Admin");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('SuperAdminCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("super-admin");
+    $scope.menutitle = NavigationService.makeactive("Super Admin");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('PaymentProcessCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("payment-process");
-        $scope.menutitle = NavigationService.makeactive("Payment Process");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('PaymentProcessCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("payment-process");
+    $scope.menutitle = NavigationService.makeactive("Payment Process");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('PaymentTransactionMasterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("payment-transaction-master");
-        $scope.menutitle = NavigationService.makeactive("Payment Transaction Master");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+.controller('PaymentTransactionMasterCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("payment-transaction-master");
+    $scope.menutitle = NavigationService.makeactive("Payment Transaction Master");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
 
-    .controller('EditAgencyDetailsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("edit-agency-details");
-        $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        TemplateService.header = 'views/headeragency.html';
-        TemplateService.sidemenu = 'views/sidemenuagency.html';
+.controller('EditAgencyDetailsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("edit-agency-details");
+    $scope.menutitle = NavigationService.makeactive("Edit Agency Details");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.header = 'views/headeragency.html';
+    TemplateService.sidemenu = 'views/sidemenuagency.html';
 
-        $scope.getAgencyDetails = function () {
-            NavigationService.getAgencyByID(function (data) {
-                if (data.value == true) {
-                    $scope.agencyDetails = data.data;
-                }
-            });
-        }
+    $scope.getAgencyDetails = function () {
+        NavigationService.getAgencyByID(function (data) {
+            if (data.value == true) {
+                $scope.agencyDetails = data.data;
+            }
+        });
+    }
 
-        $scope.getAgencyDetails();
+    $scope.getAgencyDetails();
 
-        $scope.editAgency = function (agencydata) {
-            NavigationService.editAgency(agencydata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Agency Edited Successfully", "Information");
+    $scope.editAgency = function (agencydata) {
+        NavigationService.editAgency(agencydata, function (data) {
+            if (data.value == true) {
+                toastr.success("Agency Edited Successfully", "Information");
 
-                }
-            })
-        }
-    })
+            }
+        })
+    }
+})
 
-    .controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
-        $scope.template = TemplateService.changecontent("inspection-login");
-        $scope.menutitle = NavigationService.makeactive("Inspection Login");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        TemplateService.header = 'views/headeragencylogin.html';
-        TemplateService.sidemenu = '';
+.controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
+    $scope.template = TemplateService.changecontent("inspection-login");
+    $scope.menutitle = NavigationService.makeactive("Inspection Login");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.header = 'views/headeragencylogin.html';
+    TemplateService.sidemenu = '';
 
 
-        $scope.logindata = {};
-        $scope.error = false
-        $scope.Login = function (logindata) {
-            NavigationService.InspectionLogin(logindata, function (data) {
-                if (data.value == true) {
-                    $state.go("view-products");
-                } else {
-                    $scope.error = true;
-                    $scope.errmsg = data.data.message;
-                }
-            });
-        }
+    $scope.logindata = {};
+    $scope.error = false
+    $scope.Login = function (logindata) {
+        NavigationService.InspectionLogin(logindata, function (data) {
+            if (data.value == true) {
+                $state.go("view-products");
+            } else {
+                $scope.error = true;
+                $scope.errmsg = data.data.message;
+            }
+        });
+    }
 
-    })
+})
 
-    .controller('SellerDashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("seller-dashboard");
-        $scope.menutitle = NavigationService.makeactive("Seller Dashboard");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.rate = 3;
-        $scope.max = 5;
-    })
+.controller('SellerDashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("seller-dashboard");
+    $scope.menutitle = NavigationService.makeactive("Seller Dashboard");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.rate = 3;
+    $scope.max = 5;
+})
 
-    .controller('GradesStandardsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+.controller('GradesStandardsCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         $scope.template = TemplateService.changecontent("grades-standards");
         $scope.menutitle = NavigationService.makeactive("Grades Standards");
         TemplateService.title = $scope.menutitle;
@@ -1162,547 +1163,547 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
     })
 
-    .controller('ViewOrdersCtrl', function ($scope, toastr, $state, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("view-orders");
-        $scope.menutitle = NavigationService.makeactive("View orders");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.today = function () {
-            $scope.dt = new Date();
-        };
-        $scope.today();
+.controller('ViewOrdersCtrl', function ($scope, toastr, $state, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("view-orders");
+    $scope.menutitle = NavigationService.makeactive("View orders");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
 
-        $scope.clear = function () {
-            $scope.dt = null;
-        };
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
 
-        $scope.inlineOptions = {
-            customClass: getDayClass,
-            minDate: new Date(),
-            showWeeks: true
-        };
+    $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
 
-        $scope.dateOptions = {
-            dateDisabled: disabled,
-            formatYear: 'yy',
-            maxDate: new Date(2020, 5, 22),
-            minDate: new Date(),
-            startingDay: 1
-        };
+    $scope.dateOptions = {
+        dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2020, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+    };
 
-        // Disable weekend selection
-        function disabled(data) {
-            var date = data.date,
-                mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        }
+    // Disable weekend selection
+    function disabled(data) {
+        var date = data.date,
+            mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
 
-        $scope.toggleMin = function () {
-            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-        };
+    $scope.toggleMin = function () {
+        $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+        $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
 
-        $scope.toggleMin();
+    $scope.toggleMin();
 
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-        };
+    $scope.open1 = function () {
+        $scope.popup1.opened = true;
+    };
 
-        $scope.open2 = function () {
-            $scope.popup2.opened = true;
-        };
+    $scope.open2 = function () {
+        $scope.popup2.opened = true;
+    };
 
-        $scope.setDate = function (year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
+    $scope.setDate = function (year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
 
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-        $scope.popup1 = {
-            opened: false
-        };
+    $scope.popup1 = {
+        opened: false
+    };
 
-        $scope.popup2 = {
-            opened: false
-        };
+    $scope.popup2 = {
+        opened: false
+    };
 
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+    }, {
+        date: afterTomorrow,
+        status: 'partially'
+    }];
 
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
                 }
             }
-
-            return '';
         }
 
-
-        $scope.updateBill = function (orderdata) {
-            var senddata = {};
-            senddata.orderCancelledComment = orderdata.orderCancelledComment;
-            senddata._id = orderdata._id;
-            senddata.deliveryStatus = orderdata.deliveryStatus;
-            senddata.transporterComment = orderdata.transporterComment;
-            senddata.transporterReceiept = orderdata.transporterReceiept;
-            NavigationService.updateBill(senddata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Order Status Updated!", "Information");
-                    window.history.back();
-                }
-            });
-        };
+        return '';
+    }
 
 
-        $scope.updateOrderStatus = function (orderdata) {
-            console.log("aaa", orderdata);
-            var senddata = {};
-            senddata._id = orderdata._id;
-        };
-
-        $scope.getOneOrder = function () {
-            $scope.calcst = 0.00;
-            $scope.calvat = 0.00;
-            NavigationService.getOneOrder($state.params.id, function (data) {
-                if (data.value == true) {
-                    $scope.detailBill = data.data;
-                    $scope.sizeQty = $scope.detailBill.sizeQty;
-                    if ($scope.detailBill.order.delivery[0].deliveryState == $scope.detailBill.warehouse.warehouseState) {
-                        $scope.calvat = ($scope.detailBill.price * ($scope.detailBill.inventory.vat / 100));
-                        $scope.vat = ($scope.calvat).toFixed(2);
-                        $scope.cst = 0.00;
-                    } else {
-                        $scope.calcst = ($scope.detailBill.price * ($scope.detailBill.inventory.cst / 100));
-                        $scope.cst = ($scope.calcst).toFixed(2);
-                        $scope.vat = 0.00;
-                    }
-
-                    // $scope.discount = ($scope.detailBill.inventory.finalPrice * ($scope.detailBill.inventory.discount / 100)).toFixed(2);
-                    // $scope.granTotal = ($scope.detailBill.price + $scope.calvat + $scope.detailBill.transporterCharges) - $scope.discount;
-                    $scope.granTotal = ($scope.detailBill.price + $scope.calcst + $scope.calvat + $scope.detailBill.transporterCharges);
-                    console.log($scope.vat, $scope.granTotal, $scope.calcst);
-                    console.log("$scope.detailBill", $scope.detailBill);
-                } else {
-                    $scope.detailBill = "";
-                }
-            });
-        }
-        $scope.getOneOrder();
-    })
-
-
-    .controller('OrdersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state, $uibModal) {
-
-        $scope.template = TemplateService.changecontent("orders");
-        $scope.menutitle = NavigationService.makeactive("Orders");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-
-        $scope.updateOrder = function (paymentstatus, id) {
-            console.log("paymentstatus", paymentstatus, id);
-        };
-
-        $scope.getOrderCount = function (id) {
-            NavigationService.getOrderCount(id, function (data) {
-                if (data.value == true) {
-                    $scope.allCount = data.data;
-                }
-            });
-        }
-
-        $scope.getOrderCount();
-        $scope.editOrder = function (id) {
-            $scope.order = {};
-            var subid = id.slice(1);
-            $scope.order.orderid = subid;
-            NavigationService.getOrder($scope.order.orderid, function (data) {
-                if (data.value == true) {
-                    $scope.orderData = data.data;
-                    $scope.orderData.neftRtgsPaymentTimestamp = new Date($scope.orderData.neftRtgsPaymentTimestamp);
-                    console.log("aa", $scope.orderData);
-                    ordermod = $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/editorder.html",
-                        scope: $scope,
-                    });
-                }
-            });
-
-
-        }
-
-        $scope.updateOrder = function (orderdata) {
-            var senddata = {};
-            senddata._id = orderdata._id;
-            senddata.paymentStatus = orderdata.paymentStatus;
-            senddata.paymentMethod = "NEFT/RTGS";
-            senddata.comment = orderdata.comment;
-            NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
-                if (data.value == true) {
-                    toastr.success("Order Payment Status Updated!", "Information");
-                    $state.reload();
-                    ordermod.close();
-                }
-            });
-        }
-
-
-        $scope.getCountDown = function (adate, orderid, myindex, todate) {
-            // console.log("statename", $state);
-            var a = moment(adate);
-            $scope.showtimer = true;
-            var orderid = orderid.substring(1, orderid.length);
-            var b = moment(todate);
-            $scope.toDate = new Date(todate);
-            var cdate = new Date();
-            var currentTime = moment(cdate);
-            $scope.currentDate = cdate;
-
-            var duration = moment.duration(b.diff(currentTime));
-            if (new Date(currentTime) < new Date(b)) {
-                // console.log("innnnnnn");
-                var interval = 1;
-                var timer = setInterval(function () {
-                    duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-                    //  console.log("duration1", duration);
-
-                    if (duration > 0) {
-                        // console.log("duration.days()", duration.days());
-                        // $scope.days = duration.days();;
-                        document.getElementById("countdays" + orderid + myindex).value = duration.days();
-                        document.getElementById("counthours" + orderid + myindex).value = duration.hours();
-                        // $scope.hours= duration.hours();
-                        document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
-                        // $scope.minutes =duration.minutes();
-                        document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
-                        // $scope.seconds= duration.seconds();
-                    } else {
-                        // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
-                        clearInterval(timer);
-                    }
-                }, 1000);
-            } else {
-                //   console.log("in Else");
-
-            }
-        }
-
-        // $scope.getCountDown();
-        $scope.today = function () {
-            $scope.dt = new Date();
-        };
-        $scope.today();
-
-        $scope.clear = function () {
-            $scope.dt = null;
-        };
-
-        $scope.inlineOptions = {
-            customClass: getDayClass,
-            minDate: new Date(),
-            showWeeks: true
-        };
-
-        $scope.dateOptions = {
-            dateDisabled: disabled,
-            formatYear: 'yy',
-            maxDate: new Date(2020, 5, 22),
-            minDate: new Date(),
-            startingDay: 1
-        };
-
-        // Disable weekend selection
-        function disabled(data) {
-            var date = data.date,
-                mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        }
-
-        $scope.toggleMin = function () {
-            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-        };
-
-        $scope.toggleMin();
-
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-        };
-
-        $scope.open2 = function () {
-            $scope.popup2.opened = true;
-        };
-
-        $scope.setDate = function (year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        $scope.popup1 = {
-            opened: false
-        };
-
-        $scope.popup2 = {
-            opened: false
-        };
-
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
-
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-
-            return '';
-        }
-
+    $scope.updateBill = function (orderdata) {
         var senddata = {};
-        if ($state.params.id) {
-            if ($state.params.type === "seller") {
-                senddata.sellerid = $state.params.id;
-            } else if ($state.params.type === "buyer") {
-                senddata.buyerid = $state.params.id;
+        senddata.orderCancelledComment = orderdata.orderCancelledComment;
+        senddata._id = orderdata._id;
+        senddata.deliveryStatus = orderdata.deliveryStatus;
+        senddata.transporterComment = orderdata.transporterComment;
+        senddata.transporterReceiept = orderdata.transporterReceiept;
+        NavigationService.updateBill(senddata, function (data) {
+            if (data.value == true) {
+                toastr.success("Order Status Updated!", "Information");
+                window.history.back();
             }
-            senddata.status = "All"
-            senddata.createdAt = ""
+        });
+    };
 
-            if ($state.params.type === "coupon") {
-                senddata.code = $state.params.id;
-                NavigationService.getAllOrdersByCoupon(senddata, function (data) {
-                    if (data.value == true) {
-                        $scope.allData = data.data.results;
-                        console.log("$scope.aaaaallData", $scope.allData);
-                    } else {
-                        $scope.allData = [];
-                    }
+
+    $scope.updateOrderStatus = function (orderdata) {
+        console.log("aaa", orderdata);
+        var senddata = {};
+        senddata._id = orderdata._id;
+    };
+
+    $scope.getOneOrder = function () {
+        $scope.calcst = 0.00;
+        $scope.calvat = 0.00;
+        NavigationService.getOneOrder($state.params.id, function (data) {
+            if (data.value == true) {
+                $scope.detailBill = data.data;
+                $scope.sizeQty = $scope.detailBill.sizeQty;
+                if ($scope.detailBill.order.delivery[0].deliveryState == $scope.detailBill.warehouse.warehouseState) {
+                    $scope.calvat = ($scope.detailBill.price * ($scope.detailBill.inventory.vat / 100));
+                    $scope.vat = ($scope.calvat).toFixed(2);
+                    $scope.cst = 0.00;
+                } else {
+                    $scope.calcst = ($scope.detailBill.price * ($scope.detailBill.inventory.cst / 100));
+                    $scope.cst = ($scope.calcst).toFixed(2);
+                    $scope.vat = 0.00;
+                }
+
+                // $scope.discount = ($scope.detailBill.inventory.finalPrice * ($scope.detailBill.inventory.discount / 100)).toFixed(2);
+                // $scope.granTotal = ($scope.detailBill.price + $scope.calvat + $scope.detailBill.transporterCharges) - $scope.discount;
+                $scope.granTotal = ($scope.detailBill.price + $scope.calcst + $scope.calvat + $scope.detailBill.transporterCharges);
+                console.log($scope.vat, $scope.granTotal, $scope.calcst);
+                console.log("$scope.detailBill", $scope.detailBill);
+            } else {
+                $scope.detailBill = "";
+            }
+        });
+    }
+    $scope.getOneOrder();
+})
+
+
+.controller('OrdersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state, $uibModal) {
+
+    $scope.template = TemplateService.changecontent("orders");
+    $scope.menutitle = NavigationService.makeactive("Orders");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.updateOrder = function (paymentstatus, id) {
+        console.log("paymentstatus", paymentstatus, id);
+    };
+
+    $scope.getOrderCount = function (id) {
+        NavigationService.getOrderCount(id, function (data) {
+            if (data.value == true) {
+                $scope.allCount = data.data;
+            }
+        });
+    }
+
+    $scope.getOrderCount();
+    $scope.editOrder = function (id) {
+        $scope.order = {};
+        var subid = id.slice(1);
+        $scope.order.orderid = subid;
+        NavigationService.getOrder($scope.order.orderid, function (data) {
+            if (data.value == true) {
+                $scope.orderData = data.data;
+                $scope.orderData.neftRtgsPaymentTimestamp = new Date($scope.orderData.neftRtgsPaymentTimestamp);
+                console.log("aa", $scope.orderData);
+                ordermod = $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/editorder.html",
+                    scope: $scope,
                 });
             }
-            if ($state.params.type !== "coupon") {
-                NavigationService.getAllOrdersBySeller(senddata, function (data) {
-                    if (data.value == true) {
-                        $scope.selleris = true;
-                        $scope.allData = data.data;
-                        console.log("$scope.aaaaallData", $scope.allData);
-                    } else {
-                        $scope.allData = [];
-                    }
-                });
+        });
+
+
+    }
+
+    $scope.updateOrder = function (orderdata) {
+        var senddata = {};
+        senddata._id = orderdata._id;
+        senddata.paymentStatus = orderdata.paymentStatus;
+        senddata.paymentMethod = "NEFT/RTGS";
+        senddata.comment = orderdata.comment;
+        NavigationService.updateOrderStatusByAdmin(senddata, function (data) {
+            if (data.value == true) {
+                toastr.success("Order Payment Status Updated!", "Information");
+                $state.reload();
+                ordermod.close();
             }
+        });
+    }
+
+
+    $scope.getCountDown = function (adate, orderid, myindex, todate) {
+        // console.log("statename", $state);
+        var a = moment(adate);
+        $scope.showtimer = true;
+        var orderid = orderid.substring(1, orderid.length);
+        var b = moment(todate);
+        $scope.toDate = new Date(todate);
+        var cdate = new Date();
+        var currentTime = moment(cdate);
+        $scope.currentDate = cdate;
+
+        var duration = moment.duration(b.diff(currentTime));
+        if (new Date(currentTime) < new Date(b)) {
+            // console.log("innnnnnn");
+            var interval = 1;
+            var timer = setInterval(function () {
+                duration = moment.duration(duration.asSeconds() - interval, 'seconds');
+                //  console.log("duration1", duration);
+
+                if (duration > 0) {
+                    // console.log("duration.days()", duration.days());
+                    // $scope.days = duration.days();;
+                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                    document.getElementById("counthours" + orderid + myindex).value = duration.hours();
+                    // $scope.hours= duration.hours();
+                    document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
+                    // $scope.minutes =duration.minutes();
+                    document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
+                    // $scope.seconds= duration.seconds();
+                } else {
+                    // document.getElementById("countercomplete" + orderid + myindex).innerHTML = moment().format('MMMM Do YYY');
+                    clearInterval(timer);
+                }
+            }, 1000);
         } else {
-            senddata.sellerid = "";
-            senddata.status = "All"
-            senddata.createdAt = ""
-            NavigationService.getAllOrders(senddata, function (data) {
-                if (data.value == true) {
-                    $scope.selleris = false;
-                    $scope.allData = data.data;
-                    console.log("$scope.allData", $scope.allData);
-                } else {
-                    $scope.allData = [];
-                }
-            });
+            //   console.log("in Else");
+
         }
+    }
 
+    // $scope.getCountDown();
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
 
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
 
-    })
+    $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
 
-    .controller('CategogiesCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.dateOptions = {
+        dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2020, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+    };
 
-        $scope.template = TemplateService.changecontent("categories");
-        $scope.menutitle = NavigationService.makeactive("Categories");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.oneAtATime = true;
-    })
+    // Disable weekend selection
+    function disabled(data) {
+        var date = data.date,
+            mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
 
-    .controller('CategoryPriceRangeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.toggleMin = function () {
+        $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+        $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
 
-        $scope.template = TemplateService.changecontent("category-price-range");
-        $scope.menutitle = NavigationService.makeactive("category-price-range");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.oneAtATime = true;
-        $scope.getMaterial = function () {
-            NavigationService.getMaterial(function (data) {
-                if (data.value == true) {
-                    $scope.allData = data.data;
-                    // console.log("$scope.allData ", $scope.allData);
-                } else {
-                    $scope.allData = [];
-                }
-            });
-        }
-        $scope.getMaterial();
+    $scope.toggleMin();
 
-        $scope.updatePercentage = function (moc) {
-            console.log("in percentage", moc);
-            var senddata = {};
-            senddata._id = moc._id;
-            senddata.pricePercentage = moc.pricePercentage;
-            NavigationService.editPercentage(senddata, function (data) {
-                if (data.value == true) {
-                    $scope.getMaterial();
-                }
-            });
-        }
+    $scope.open1 = function () {
+        $scope.popup1.opened = true;
+    };
 
-    })
+    $scope.open2 = function () {
+        $scope.popup2.opened = true;
+    };
 
-    .controller('SellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("sellers");
-        $scope.menutitle = NavigationService.makeactive("Sellers");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.today = function () {
-            $scope.dt = new Date();
-        };
-        $scope.today();
+    $scope.setDate = function (year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
 
-        $scope.clear = function () {
-            $scope.dt = null;
-        };
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-        $scope.inlineOptions = {
-            customClass: getDayClass,
-            minDate: new Date(),
-            showWeeks: true
-        };
+    $scope.popup1 = {
+        opened: false
+    };
 
-        $scope.dateOptions = {
-            dateDisabled: disabled,
-            formatYear: 'yy',
-            maxDate: new Date(2020, 5, 22),
-            minDate: new Date(),
-            startingDay: 1
-        };
+    $scope.popup2 = {
+        opened: false
+    };
 
-        // Disable weekend selection
-        function disabled(data) {
-            var date = data.date,
-                mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        }
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+    }, {
+        date: afterTomorrow,
+        status: 'partially'
+    }];
 
-        $scope.toggleMin = function () {
-            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-        };
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-        $scope.toggleMin();
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-        };
-
-        $scope.open2 = function () {
-            $scope.popup2.opened = true;
-        };
-
-        $scope.setDate = function (year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        $scope.popup1 = {
-            opened: false
-        };
-
-        $scope.popup2 = {
-            opened: false
-        };
-
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
-
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
                 }
             }
-
-            return '';
         }
 
+        return '';
+    }
 
-        $scope.getAllVerifiedSeller = function () {
+    var senddata = {};
+    if ($state.params.id) {
+        if ($state.params.type === "seller") {
+            senddata.sellerid = $state.params.id;
+        } else if ($state.params.type === "buyer") {
+            senddata.buyerid = $state.params.id;
+        }
+        senddata.status = "All"
+        senddata.createdAt = ""
 
-            NavigationService.getAllVerifiedSeller(function (data) {
+        if ($state.params.type === "coupon") {
+            senddata.code = $state.params.id;
+            NavigationService.getAllOrdersByCoupon(senddata, function (data) {
                 if (data.value == true) {
-                    $scope.AllSeller = data.data.results;
-                    console.log("sellers", $scope.AllSeller);
+                    $scope.allData = data.data.results;
+                    console.log("$scope.aaaaallData", $scope.allData);
+                } else {
+                    $scope.allData = [];
                 }
             });
         }
-        $scope.getAllVerifiedSeller();
-    })
+        if ($state.params.type !== "coupon") {
+            NavigationService.getAllOrdersBySeller(senddata, function (data) {
+                if (data.value == true) {
+                    $scope.selleris = true;
+                    $scope.allData = data.data;
+                    console.log("$scope.aaaaallData", $scope.allData);
+                } else {
+                    $scope.allData = [];
+                }
+            });
+        }
+    } else {
+        senddata.sellerid = "";
+        senddata.status = "All"
+        senddata.createdAt = ""
+        NavigationService.getAllOrders(senddata, function (data) {
+            if (data.value == true) {
+                $scope.selleris = false;
+                $scope.allData = data.data;
+                console.log("$scope.allData", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
+    }
 
-    .controller('BuyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+
+
+})
+
+.controller('CategogiesCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+
+    $scope.template = TemplateService.changecontent("categories");
+    $scope.menutitle = NavigationService.makeactive("Categories");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.oneAtATime = true;
+})
+
+.controller('CategoryPriceRangeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+
+    $scope.template = TemplateService.changecontent("category-price-range");
+    $scope.menutitle = NavigationService.makeactive("category-price-range");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.oneAtATime = true;
+    $scope.getMaterial = function () {
+        NavigationService.getMaterial(function (data) {
+            if (data.value == true) {
+                $scope.allData = data.data;
+                // console.log("$scope.allData ", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
+    }
+    $scope.getMaterial();
+
+    $scope.updatePercentage = function (moc) {
+        console.log("in percentage", moc);
+        var senddata = {};
+        senddata._id = moc._id;
+        senddata.pricePercentage = moc.pricePercentage;
+        NavigationService.editPercentage(senddata, function (data) {
+            if (data.value == true) {
+                $scope.getMaterial();
+            }
+        });
+    }
+
+})
+
+.controller('SellersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("sellers");
+    $scope.menutitle = NavigationService.makeactive("Sellers");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
+
+    $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
+
+    $scope.dateOptions = {
+        dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2020, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+        var date = data.date,
+            mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.toggleMin = function () {
+        $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+        $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
+
+    $scope.toggleMin();
+
+    $scope.open1 = function () {
+        $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function () {
+        $scope.popup2.opened = true;
+    };
+
+    $scope.setDate = function (year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+        opened: false
+    };
+
+    $scope.popup2 = {
+        opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+    }, {
+        date: afterTomorrow,
+        status: 'partially'
+    }];
+
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    }
+
+
+    $scope.getAllVerifiedSeller = function () {
+
+        NavigationService.getAllVerifiedSeller(function (data) {
+            if (data.value == true) {
+                $scope.AllSeller = data.data.results;
+                console.log("sellers", $scope.AllSeller);
+            }
+        });
+    }
+    $scope.getAllVerifiedSeller();
+})
+
+.controller('BuyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("buyers");
         $scope.menutitle = NavigationService.makeactive("Buyer");
         TemplateService.title = $scope.menutitle;
@@ -2073,7 +2074,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     })
 
 
-    .controller('View-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('View-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-buyers");
         $scope.menutitle = NavigationService.makeactive("View-buyers");
         TemplateService.title = $scope.menutitle;
@@ -2714,207 +2715,207 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     })
 
-    .controller('Coupon-codeCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
-        $scope.template = TemplateService.changecontent("coupon-code");
-        $scope.menutitle = NavigationService.makeactive("Coupon-code");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+.controller('Coupon-codeCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $uibModal) {
+    $scope.template = TemplateService.changecontent("coupon-code");
+    $scope.menutitle = NavigationService.makeactive("Coupon-code");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        $scope.openedit = function (data, id) {
-            $scope.title = data;
-            if (id) {
-                NavigationService.getOneCoupon(id, function (data) {
-                    if (data.value == true) {
-                        $scope.coupon = data.data;
-                        $scope.coupon.startDate = new Date($scope.coupon.startDate);
-                        $scope.coupon.endDate = new Date($scope.coupon.endDate);
-                    }
-                });
-            } else {
-                $scope.coupon = {};
-            }
-            openmodc = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/openedit.html",
-                scope: $scope,
-                windowClass: "width60",
-            });
-        };
-
-        $scope.filter = {};
-        $scope.filter.page = 1;
-
-        $scope.getAllCoupon = function () {
-            NavigationService.getAllCoupon($scope.filter, function (data) {
+    $scope.openedit = function (data, id) {
+        $scope.title = data;
+        if (id) {
+            NavigationService.getOneCoupon(id, function (data) {
                 if (data.value == true) {
-                    $scope.allCoupon = data.data.results;
-                    $scope.totalItems = data.data.total;
-                    console.log("coupon", $scope.allCoupon);
+                    $scope.coupon = data.data;
+                    $scope.coupon.startDate = new Date($scope.coupon.startDate);
+                    $scope.coupon.endDate = new Date($scope.coupon.endDate);
                 }
             });
+        } else {
+            $scope.coupon = {};
         }
-
-        $scope.getAllCoupon();
-
-        $scope.addCoupon = function (coupondata) {
-            console.log("aa", coupondata);
-            NavigationService.addCoupon(coupondata, function (data) {
-                if (data.value == true) {
-                    openmodc.close();
-                    toastr.success("Coupon Added!", "Information");
-                    $scope.getAllCoupon();
-                }
-            });
-        }
-
-        $scope.editCoupon = function () {
-
-        }
-
-        $scope.deleteCoupon = function (id) {
-            NavigationService.deleteCoupon(id, function (data) {
-                if (data.value == true) {
-                    toastr.success("Coupon Deleted!", "Information");
-                    $scope.getAllCoupon();
-                }
-            });
-        }
-
-    })
-
-    .controller('headerctrl', function ($scope, TemplateService, NavigationService, $state) {
-        $scope.template = TemplateService;
-        $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $(window).scrollTop(0);
+        openmodc = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/openedit.html",
+            scope: $scope,
+            windowClass: "width60",
         });
-        $.fancybox.close(true);
+    };
 
-        $scope.currentDate = new Date();
-        $scope.getUser = function () {
-            NavigationService.getUser(function (data) {
-                if (data.value == true) {
-                    $scope.userData = data.data;
-                    // if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
-                    //     $state.go("dashboard");
-                    // }
+    $scope.filter = {};
+    $scope.filter.page = 1;
+
+    $scope.getAllCoupon = function () {
+        NavigationService.getAllCoupon($scope.filter, function (data) {
+            if (data.value == true) {
+                $scope.allCoupon = data.data.results;
+                $scope.totalItems = data.data.total;
+                console.log("coupon", $scope.allCoupon);
+            }
+        });
+    }
+
+    $scope.getAllCoupon();
+
+    $scope.addCoupon = function (coupondata) {
+        console.log("aa", coupondata);
+        NavigationService.addCoupon(coupondata, function (data) {
+            if (data.value == true) {
+                openmodc.close();
+                toastr.success("Coupon Added!", "Information");
+                $scope.getAllCoupon();
+            }
+        });
+    }
+
+    $scope.editCoupon = function () {
+
+    }
+
+    $scope.deleteCoupon = function (id) {
+        NavigationService.deleteCoupon(id, function (data) {
+            if (data.value == true) {
+                toastr.success("Coupon Deleted!", "Information");
+                $scope.getAllCoupon();
+            }
+        });
+    }
+
+})
+
+.controller('headerctrl', function ($scope, TemplateService, NavigationService, $state) {
+    $scope.template = TemplateService;
+    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $(window).scrollTop(0);
+    });
+    $.fancybox.close(true);
+
+    $scope.currentDate = new Date();
+    $scope.getUser = function () {
+        NavigationService.getUser(function (data) {
+            if (data.value == true) {
+                $scope.userData = data.data;
+                // if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+                //     $state.go("dashboard");
+                // }
+            } else {
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
+
                 } else {
-                    if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
-
-                    } else {
-                        $state.go("loginpage");
-                    }
-
-                }
-            });
-        }
-
-        $scope.getUser();
-
-
-        $scope.Logout = function () {
-            NavigationService.Logout(function (data) {
-                if (data.value == true) {
                     $state.go("loginpage");
                 }
-            });
-        }
 
-        $scope.getNotifications = function () {
-            NavigationService.getNotifications(function (data) {
-                if (data.value == true) {
-                    $scope.orders = data.data[0].orders;
-                    $scope.sellers = data.data[1].sellers;
-                    $scope.buyers = data.data[2].buyers;
-                }
-            });
-        }
-
-        $scope.updateOrderReadStatus = function () {
-            NavigationService.updateOrderReadStatus(function (data) {
-                if (data.value == true) {
-                    $scope.getNotifications();
-                    $state.go("orders");
-                }
-            });
-        }
-
-        $scope.updateSellerReadStatus = function () {
-            NavigationService.updateSellerReadStatus(function (data) {
-                if (data.value == true) {
-                    $scope.getNotifications();
-                    $state.go("request-sellers");
-
-                }
-            });
-        }
-
-        $scope.updateBuyerReadStatus = function () {
-            NavigationService.updateBuyerReadStatus(function (data) {
-                if (data.value == true) {
-                    $scope.getNotifications();
-                    $state.go("request-buyers");
-
-                }
-            });
-        }
-
-        $scope.getNotifications();
-
-
-    })
-
-    .controller('headeragencyctrl', function ($scope, TemplateService, NavigationService, $state) {
-        $scope.template = TemplateService;
-        $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $(window).scrollTop(0);
+            }
         });
-        $.fancybox.close(true);
-        $scope.currentDate = new Date();
-        // $scope.pdfURL = "http://localhost:1337/upload/readFile";
-        $scope.getInspectionUser = function () {
-            NavigationService.getInspectionUser(function (data) {
-                if (data.value == true) {
-                    $scope.userData = data.data;
-                } else {
-                    if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
-                        $state.go("inspection-login");
-                    }
-                }
-            });
-        }
+    }
 
-        $scope.getInspectionUser();
+    $scope.getUser();
 
 
-        $scope.Logout = function () {
-            NavigationService.InspectionLogout(function (data) {
-                if (data.value == true) {
+    $scope.Logout = function () {
+        NavigationService.Logout(function (data) {
+            if (data.value == true) {
+                $state.go("loginpage");
+            }
+        });
+    }
+
+    $scope.getNotifications = function () {
+        NavigationService.getNotifications(function (data) {
+            if (data.value == true) {
+                $scope.orders = data.data[0].orders;
+                $scope.sellers = data.data[1].sellers;
+                $scope.buyers = data.data[2].buyers;
+            }
+        });
+    }
+
+    $scope.updateOrderReadStatus = function () {
+        NavigationService.updateOrderReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("orders");
+            }
+        });
+    }
+
+    $scope.updateSellerReadStatus = function () {
+        NavigationService.updateSellerReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("request-sellers");
+
+            }
+        });
+    }
+
+    $scope.updateBuyerReadStatus = function () {
+        NavigationService.updateBuyerReadStatus(function (data) {
+            if (data.value == true) {
+                $scope.getNotifications();
+                $state.go("request-buyers");
+
+            }
+        });
+    }
+
+    $scope.getNotifications();
+
+
+})
+
+.controller('headeragencyctrl', function ($scope, TemplateService, NavigationService, $state) {
+    $scope.template = TemplateService;
+    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $(window).scrollTop(0);
+    });
+    $.fancybox.close(true);
+    $scope.currentDate = new Date();
+    // $scope.pdfURL = "http://localhost:1337/upload/readFile";
+    $scope.getInspectionUser = function () {
+        NavigationService.getInspectionUser(function (data) {
+            if (data.value == true) {
+                $scope.userData = data.data;
+            } else {
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details") {
                     $state.go("inspection-login");
                 }
-            });
-        }
-    })
+            }
+        });
+    }
 
-    .controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
+    $scope.getInspectionUser();
 
-        $scope.changeLanguage = function () {
 
-            if (!$.jStorage.get("language")) {
+    $scope.Logout = function () {
+        NavigationService.InspectionLogout(function (data) {
+            if (data.value == true) {
+                $state.go("inspection-login");
+            }
+        });
+    }
+})
+
+.controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
+
+    $scope.changeLanguage = function () {
+
+        if (!$.jStorage.get("language")) {
+            $translate.use("hi");
+            $.jStorage.set("language", "hi");
+        } else {
+            if ($.jStorage.get("language") == "en") {
                 $translate.use("hi");
                 $.jStorage.set("language", "hi");
             } else {
-                if ($.jStorage.get("language") == "en") {
-                    $translate.use("hi");
-                    $.jStorage.set("language", "hi");
-                } else {
-                    $translate.use("en");
-                    $.jStorage.set("language", "en");
-                }
+                $translate.use("en");
+                $.jStorage.set("language", "en");
             }
-            //  $rootScope.$apply();
-        };
+        }
+        //  $rootScope.$apply();
+    };
 
 
-    })
+})
 
-    ;
+;
