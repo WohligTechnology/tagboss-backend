@@ -1690,7 +1690,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.filter.pagesize = 10;
         $scope.filter.sortBy = "";
         $scope.filter.text = "";
-        $scope.filter.status = "";
+        $scope.filter.status = "verified";
         // $scope.getAllBuyer = function () {
         //     NavigationService.getAllVerifiedBuyer(function (data) {
         //         if (data.value == true) {
@@ -1703,7 +1703,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
               $scope.getAllBuyer = function () {
             NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
-                    $scope.AllBuyer = data.data;
+                    $scope.AllBuyer = data.data.buyers;
                     console.log("Buyer", $scope.AllBuyer);
                 }
             });
