@@ -29,7 +29,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
         $scope.forgotPassword = function () {
-            forgotmod =$uibModal.open({
+            forgotmod = $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/forgotpassword.html",
                 scope: $scope,
@@ -40,20 +40,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 if (data.value == true) {
                     forgotmod.close();
                     toastr.success("Password sent to your registerd Email ID", "Information");
-                }else{
-                     toastr.error("Email ID not found!", "Error");
+                } else {
+                    toastr.error("Email ID not found!", "Error");
                 }
             });
         }
     })
-    .controller('forgotPasswordCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
+    .controller('forgotPasswordCtrl', function ($scope, TemplateService,$location, NavigationService, $timeout, $state, toastr) {
         $scope.template = TemplateService.changecontent("forgot-password");
         $scope.menutitle = NavigationService.makeactive("Forgot Password");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         TemplateService.header = 'views/header1.html';
         TemplateService.sidemenu = '';
-        
+
+
+        $scope.getEmailId = function () {
+            console.log("$state.params.email",$location.absUrl());
+            NavigationService.getForgotPasswordEmail($location.absUrl(), function (data) {
+                if (data.value == true) {
+                    $scope.email = data;
+                    console.log("email", $scope.email);
+                }
+            })
+        };
+
+        $scope.getEmailId();
+
+        $scope.resetPassword = function (formdata) {
+            NavigationService.resetPassword(formdata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Password Changed Successfully!", "Information");
+                }
+            });
+        }
 
     })
     .controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {

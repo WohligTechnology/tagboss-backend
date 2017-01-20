@@ -594,6 +594,19 @@ var navigationservice = angular.module('navigationservice', [])
        }).success(callback);
     },
 
+     getForgotPasswordEmail: function (emailid, callback) {
+      var data = {
+        'forgotPasswordLink': emailid
+      };
+     return $http({
+        url: adminURL + "Register/emailVerification ",
+        method: "POST",
+        data: data
+       }).success(callback);
+    },
+
+    
+
 
 
     getOneBuyer: function (id, callback) {
