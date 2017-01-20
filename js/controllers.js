@@ -1687,7 +1687,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
-        $scope.filter.pagesize = 1;
+        $scope.filter.pagesize = 10;
         $scope.filter.sortBy = "";
         $scope.filter.text = "";
         $scope.filter.status = "verified";
@@ -1703,11 +1703,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.getAllBuyer = function (datasort, datasearch) {
             if (datasort) {
                 $scope.filter.sortBy = datasort;
+                //  $scope.filter.pagenumber = 2;
             }
              if (datasearch) {
                 $scope.filter.text = datasearch;
             }
-            NavigationService.getAllBuyerTotals($scope.filter, function (data) {
+              NavigationService.getAllBuyerTotals($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data.buyers;
                      $scope.totalItems = data.data.total;
