@@ -2168,14 +2168,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filter = {};
         $scope.filter.page = 1;
-        $scope.getAllBuyer = function (searchdata, status) {
-            if (searchdata) {
-                $scope.filter.keyword = searchdata;
-            }
+        $scope.getAllBuyer = function (searchdata, status, pagenumber) {
+            
             if (status) {
                 $scope.filter.status = status;
             } else {
                 $scope.filter.status = "All";
+            }
+            if (searchdata) {
+                $scope.filter.keyword = searchdata;
+            }
+            if(pagenumber){
+                $scope.filter.page = pagenumber;
             }
             NavigationService.getAllBuyer($scope.filter, function (data) {
                 if (data.value == true) {

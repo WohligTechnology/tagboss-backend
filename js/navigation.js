@@ -527,9 +527,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getAllBuyer: function (sdata, callback) {
-      var data = {
-        "status": sdata
-      };
+      var data =  sdata;
       return $http({
         url: adminURL + "user/getAllBuyer",
         method: "POST",
