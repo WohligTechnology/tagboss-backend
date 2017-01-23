@@ -5,8 +5,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
-              <span class="input-group-btn">
+              <input type="text" ng-model="keyword" class="form-control" placeholder="Search by Seller ID or Name">
+              <span ng-click="getAllSeller(keyword);" class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
               </span>
             </div>
@@ -19,11 +19,11 @@
                   <label class="">Filter by Status</label>
                   <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
                   <ul class="dropdown-menu" role="menu">
-                    <li ng-click="getAllSeller('All');"><a>All</a></li>
-                    <li ng-click="getAllSeller('pending');"><a>Pending Verification</a></li>
+                    <li ng-click="getAllSeller(keyword,'All');"><a>All</a></li>
+                    <li ng-click="getAllSeller(keyword,'pending');"><a>Pending Verification</a></li>
                     <!--<li ng-click="getAllSeller('verified');"><a>Verified</a></li>-->
-                    <li ng-click="getAllSeller('rejected');"><a>Rejected</a></li>
-                    <li ng-click="getAllSeller('incomplete');"><a>Profile Incomplete</a></li>
+                    <li ng-click="getAllSeller(keyword,'rejected');"><a>Rejected</a></li>
+                    <li ng-click="getAllSeller(keyword,'incomplete');"><a>Profile Incomplete</a></li>
                   </ul>
                 </div>
               </div>
@@ -78,44 +78,8 @@
           </tbody>
         </table>
       </div>
-      <!--<div class="request-seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-            <label class="detail-heading" for="add-two">
-                  TBS002 MIRAGE STEEL LTD.
-                </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-      </div>
-      <table class="table table-bordered request-seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>REFERENCE</strong></th>
-            <th><strong>WAREHOUSE ADD</strong></th>
-            <th><strong>CERTIFICATIONS</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>TBS005</td>
-            <td>15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>{{seller.vatTinNo}}
-            <td>CST NO. XXXXXX<br> VAT NO. XXXXXX</td>
-            <td class="view-td">
-              <label class="stat">VERIFIED</label>
-              <!--<label class="stat">REJECTED</label>
-              <a ui-sref="view-request-sellers"><label class="view">VIEW</label></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>-->
+       <ul ng-if="totalItems>10" uib-pagination total-items="totalItems" ng-model="filter.page" ng-change="getAllSeller()"></ul>
+     
     </div>
   </div>
 </section>

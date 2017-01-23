@@ -2147,18 +2147,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.filter = {};
-        $scope.getAllSeller = function (searchdata) {
-            NavigationService.getAllSeller(searchdata, function (data) {
+         $scope.filter = {};
+        $scope.filter.page = 1;
+        $scope.getAllSeller = function (searchdata, status, pagenumber) {
+             if (status) {
+                $scope.filter.status = status;
+            } else {
+                $scope.filter.status = "All";
+            }
+            if (searchdata) {
+                $scope.filter.keyword = searchdata;
+            }
+            if (pagenumber) {
+                $scope.filter.page = pagenumber;
+            }
+            NavigationService.getAllSeller($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllSeller = data.data.results;
+                    $scope.totalItems = data.data.total;
                 } else {
                     $scope.AllSeller = [];
                 }
             });
         }
-        var status = "All";
-        $scope.getAllSeller(status);
+         $scope.getAllSeller();
     })
     .controller('Request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("request-buyers");
@@ -2169,7 +2181,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.filter = {};
         $scope.filter.page = 1;
         $scope.getAllBuyer = function (searchdata, status, pagenumber) {
-            
             if (status) {
                 $scope.filter.status = status;
             } else {
@@ -2178,7 +2189,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (searchdata) {
                 $scope.filter.keyword = searchdata;
             }
-            if(pagenumber){
+            if (pagenumber) {
                 $scope.filter.page = pagenumber;
             }
             NavigationService.getAllBuyer($scope.filter, function (data) {
