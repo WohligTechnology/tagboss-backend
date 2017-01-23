@@ -46,7 +46,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
     })
-    .controller('forgotPasswordCtrl', function ($scope, TemplateService,$location, NavigationService, $timeout, $state, toastr) {
+    .controller('forgotPasswordCtrl', function ($scope, TemplateService, $location, NavigationService, $timeout, $state, toastr) {
         $scope.template = TemplateService.changecontent("forgot-password");
         $scope.menutitle = NavigationService.makeactive("Forgot Password");
         TemplateService.title = $scope.menutitle;
@@ -56,10 +56,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
         $scope.getEmailId = function () {
-            console.log("$state.params.email",$location.absUrl());
+            console.log("$state.params.email", $location.absUrl());
             NavigationService.getForgotPasswordEmail($location.absUrl(), function (data) {
                 if (data.value == true) {
-                    $scope.email = data;
+                    $scope.email = data.data.email;
                     console.log("email", $scope.email);
                 }
             })
@@ -68,9 +68,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.getEmailId();
 
         $scope.resetPassword = function (formdata) {
-            NavigationService.resetPassword(formdata, function (data) {
+            var senddata = {};
+            senddata.email = $scope.email;
+            senddata.password = formdata;
+            NavigationService.resetPassword(senddata, function (data) {
                 if (data.value == true) {
                     toastr.success("Password Changed Successfully!", "Information");
+                    $state.go("loginpage");
                 }
             });
         }
@@ -2162,18 +2166,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-        $scope.getAllBuyer = function (searchdata) {
-            NavigationService.getAllBuyer(searchdata, function (data) {
+        $scope.filter = {};
+        $scope.filter.page = 1;
+        $scope.getAllBuyer = function (searchdata, status) {
+            if (searchdata) {
+                $scope.filter.keyword = searchdata;
+            }
+            if (status) {
+                $scope.filter.status = status;
+            } else {
+                $scope.filter.status = "All";
+            }
+            NavigationService.getAllBuyer($scope.filter, function (data) {
                 if (data.value == true) {
                     $scope.AllBuyer = data.data.results;
+                    $scope.totalItems = data.data.total;
                     console.log("Buyer", $scope.AllBuyer);
                 } else {
                     $scope.AllBuyer = [];
                 }
             });
         }
-        var status = "All";
-        $scope.getAllBuyer(status);
+
+        $scope.getAllBuyer();
     })
     .controller('View-request-sellersCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("view-request-sellers");

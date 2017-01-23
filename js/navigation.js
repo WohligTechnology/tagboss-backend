@@ -77,7 +77,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    
+
 
 
     getInventory: function (idata, callback) {
@@ -606,7 +606,15 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     
-
+ resetPassword: function (pdata, callback) {
+      var data = pdata;
+      return $http({
+        url: adminURL + "register/resetPassword",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+    
 
 
     getOneBuyer: function (id, callback) {
