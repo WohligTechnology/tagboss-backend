@@ -92,7 +92,7 @@ var navigationservice = angular.module('navigationservice', [])
     getAllRefundRequest: function (sdata, callback) {
       var data = sdata;
       return $http({
-        url: adminURL + "ReturnRequest/search",
+        url: adminURL + "ReturnRequest/getAll",
         method: "POST",
         data: data
       }).success(callback);
