@@ -1361,8 +1361,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getOrderCount();
     $scope.editOrder = function (id) {
         $scope.order = {};
-        var subid = id.slice(1);
-        $scope.order.orderid = subid;
+        // var subid = id.slice(1);
+        // $scope.order.orderid = subid;
+        $scope.order.orderid = id;
         NavigationService.getOrder($scope.order.orderid, function (data) {
             if (data.value == true) {
                 $scope.orderData = data.data;
@@ -1412,8 +1413,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var interval = 1;
             var timer = setInterval(function () {
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-                  if (duration > 0) {
-                     document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                if (duration > 0) {
+                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
                     document.getElementById("counthours" + orderid + myindex).value = duration.hours();
                     // $scope.hours= duration.hours();
                     document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
@@ -1522,11 +1523,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         return '';
     }
 
-     $scope.getAllOrders =function(){
-               NavigationService.getAllOrders($scope.filter, function (data) {
+    $scope.getAllOrders = function (fromDate , toDate, deliveryStatus) {
+        if(fromDate){
+            $scope.filter.fromDate = fromDate;
+        }else{
+            $scope.filter.fromDate = "";
+        }
+        if(toDate){
+            $scope.filter.toDate = toDate;
+        }else{
+            $scope.filter.toDate = "";
+        }
+        if(deliveryStatus){
+            $scope.filter.deliveryStatus =deliveryStatus ;
+        }else{
+            $scope.filter.deliveryStatus ="Pending" ;
+        }
+
+        NavigationService.getAllOrders($scope.filter, function (data) {
             if (data.value == true) {
                 $scope.selleris = false;
-                $scope.allData = data.data;
+                $scope.allData = data.data.orders;
+                $scope.totalItems = data.data.total;
                 console.log("$scope.allData", $scope.allData);
             } else {
                 $scope.allData = [];
@@ -1538,8 +1556,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     var senddata = {};
 
     $scope.filter = {};
-    $scope.filter.pagenumber =1;
-    $scope.filter.pagesize =1;
+    $scope.filter.pagenumber = 1;
+    $scope.filter.pagesize = 10;
     if ($state.params.id) {
         if ($state.params.type === "seller") {
             senddata.sellerid = $state.params.id;
@@ -1572,12 +1590,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
     } else {
-       
- $scope.getAllOrders();
+
+        $scope.getAllOrders();
     }
 
 
-   
+
 
 
 })
@@ -2151,10 +2169,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("Request-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-         $scope.filter = {};
+        $scope.filter = {};
         $scope.filter.page = 1;
         $scope.getAllSeller = function (searchdata, status, pagenumber) {
-             if (status) {
+            if (status) {
                 $scope.filter.status = status;
             } else {
                 $scope.filter.status = "All";
@@ -2174,7 +2192,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 }
             });
         }
-         $scope.getAllSeller();
+        $scope.getAllSeller();
     })
     .controller('Request-buyersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("request-buyers");
@@ -2491,7 +2509,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
         $scope.filter = {};
         $scope.filter.page = 1;
-        $scope.getAllRefundRequest = function (searchdata,status,pagenumber) {
+        $scope.getAllRefundRequest = function (searchdata, status, pagenumber) {
             if (status) {
                 $scope.filter.status = status;
             } else {
