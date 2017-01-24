@@ -1412,16 +1412,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             var interval = 1;
             var timer = setInterval(function () {
                 duration = moment.duration(duration.asSeconds() - interval, 'seconds');
-                //  console.log("duration1", duration);
-
-                if (duration > 0) {
-                    // console.log("duration.days()", duration.days());
-                    // $scope.days = duration.days();;
-                    document.getElementById("countdays" + orderid + myindex).value = duration.days();
+                  if (duration > 0) {
+                     document.getElementById("countdays" + orderid + myindex).value = duration.days();
                     document.getElementById("counthours" + orderid + myindex).value = duration.hours();
                     // $scope.hours= duration.hours();
                     document.getElementById("countmin" + orderid + myindex).value = duration.minutes();
-                    // $scope.minutes =duration.minutes();
                     document.getElementById("countseconds" + orderid + myindex).value = duration.seconds();
                     // $scope.seconds= duration.seconds();
                 } else {
@@ -1527,7 +1522,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         return '';
     }
 
+     $scope.getAllOrders =function(){
+               NavigationService.getAllOrders($scope.filter, function (data) {
+            if (data.value == true) {
+                $scope.selleris = false;
+                $scope.allData = data.data;
+                console.log("$scope.allData", $scope.allData);
+            } else {
+                $scope.allData = [];
+            }
+        });
+    }
+
+
     var senddata = {};
+
+    $scope.filter = {};
+    $scope.filter.pagenumber =1;
+    $scope.filter.pagesize =1;
     if ($state.params.id) {
         if ($state.params.type === "seller") {
             senddata.sellerid = $state.params.id;
@@ -1560,20 +1572,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             });
         }
     } else {
-        senddata.sellerid = "";
-        senddata.status = "All"
-        senddata.createdAt = ""
-        NavigationService.getAllOrders(senddata, function (data) {
-            if (data.value == true) {
-                $scope.selleris = false;
-                $scope.allData = data.data;
-                console.log("$scope.allData", $scope.allData);
-            } else {
-                $scope.allData = [];
-            }
-        });
+       
+ $scope.getAllOrders();
     }
 
+
+   
 
 
 })

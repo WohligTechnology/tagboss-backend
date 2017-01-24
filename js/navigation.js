@@ -89,6 +89,8 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+
+
     getAllRefundRequest: function (sdata, callback) {
       var data = sdata;
       return $http({
@@ -138,15 +140,23 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getAllOrders: function (senddata, callback) {
+    // getAllOrders: function (senddata, callback) {
+    //   var data = senddata
+    //   return $http({
+    //     url: adminURL + "bill/getAllOrders",
+    //     method: "POST",
+    //     data: data
+    //   }).success(callback);
+    // },
+
+  getAllOrders: function (senddata, callback) {
       var data = senddata
       return $http({
-        url: adminURL + "bill/getAllOrders",
+        url: adminURL + "Order/getAllOrderAdmin",
         method: "POST",
         data: data
       }).success(callback);
     },
-
 
 
     getAllOrdersByCoupon: function (senddata, callback) {
