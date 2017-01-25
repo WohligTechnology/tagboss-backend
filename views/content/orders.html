@@ -45,10 +45,10 @@
                   <label class="">Filter by Status</label>
                   <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a>All</a></li>
-                    <li><a>Pending Delivery</a></li>
-                    <li><a>Delivered</a></li>
-                    <li><a>Dispatched</a></li>
+                    <li ng-click="getAllOrders(filter.fromDate,filter.toDate, 'All')"><a>All</a></li>
+                    <li ng-click="getAllOrders(filter.fromDate,filter.toDate, 'Pending')"><a>Pending Delivery</a></li>
+                    <li ng-click="getAllOrders(filter.fromDate,filter.toDate, 'Delivered')"><a>Delivered</a></li>
+                    <li ng-click="getAllOrders(filter.fromDate,filter.toDate, 'Dispatched')"><a>Dispatched</a></li>
                   </ul>
                 </div>
               </div>

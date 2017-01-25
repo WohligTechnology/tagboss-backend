@@ -1540,7 +1540,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         if (deliveryStatus) {
             $scope.filter.deliveryStatus = deliveryStatus;
         } else {
-            $scope.filter.deliveryStatus = "Pending";
+            $scope.filter.deliveryStatus = "All";
         }
 
         NavigationService.getAllOrders($scope.filter, function (data) {
