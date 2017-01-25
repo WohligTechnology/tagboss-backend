@@ -5,15 +5,15 @@
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
-              <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
-              <span class="input-group-btn">
+              <input type="text" ng-model="filter.text" ng-change="getAllVerifiedSeller()" class="form-control" placeholder="Search by Seller ID or Name">
+              <span ng-click="getAllVerifiedSeller()" class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
               </span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="filter pull-left">
-              <p class="total">Total Sellers - <span>0</span></p>
+              <p class="total">Total Sellers - <span>{{totalItems}}</span></p>
             </div>
             <div class="more-opt pull-right">
               <div class="magic-form dropdown">
@@ -35,11 +35,11 @@
                   <!--<input class="magic-checkbox" type="checkbox" name="layout" id="add-more" value="option1">-->
                   <label class="">Sort by</label>
                   <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Amount</a></li>
-                    <li><a href="#">Total Purchase</a></li>
-                    <li><a href="#">No. of Orders</a></li>
+                 <ul class="dropdown-menu" role="menu">
+                    <li ng-click="getAllVerifiedSeller('All');"><a>All</a></li>
+                    <li ng-click="getAllVerifiedSeller('Amount');"><a>Amount</a></li>
+                    <li ng-click="getAllVerifiedSeller('TotalPurchase');"><a>Total Purchase</a></li>
+                    <li ng-click="getAllVerifiedSeller('NoOfOrders');"><a>No. of Orders</a></li>
                   </ul>
                 </div>
               </div>
@@ -86,22 +86,22 @@
              TBS{{seller.userId}}
             </td>
             <td>
-              <span>{{seller.firmName}}</span>
+              <span>{{seller.firstName}} {{seller.lastName}}</span>
               <span></span>
               <span></span>
             </td>
             <td>
-              <span>250</span>
+              <span>{{seller.totalOrders}}</span>
               <span></span>
               <span></span>
             </td>
             <td>
-              <span>Rs. 3000/-</span>
+              <span>{{seller.totalSales| currency:'&#8377;'}}</span>
               <span></span>
               <span></span>
               <span class="result"></span>
             </td>
-            <td></td>
+            <td> {{seller.pendingPayment| currency:'&#8377;'}}</td>
             <td>
               <span ng-if="seller.isBlocked==true">Blocked</span>
               <span ng-if="seller.isBlocked==false">Unblocked</span>
@@ -111,408 +111,8 @@
         </tbody>
       </table>
       </div>
-      <!--<div class="seller-details ">
-      </div>-->
-      <!--<table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>SR. NO.</strong></th>
-            <th><strong>SELLER NAME</strong></th>
-            <th><strong>TOTAL NO. OF ORDER</strong></th>
-            <th><strong>TOTAL SALES</strong></th>
-            <th><strong>PENDING PAYMENT</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              <span>RAJ STEEL</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>250</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>Rs. 3000/-</span>
-              <span></span>
-              <span></span>
-              <span class="result"></span>
-            </td>
-            <td></td>
-            <td>
-              <span></span>
-              <span></span>
-              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="seller-details ">
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>SR. NO.</strong></th>
-            <th><strong>SELLER NAME</strong></th>
-            <th><strong>TOTAL NO. OF ORDER</strong></th>
-            <th><strong>TOTAL SALES</strong></th>
-            <th><strong>PENDING PAYMENT</strong></th>
-            <th><strong>STATUS</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              3
-            </td>
-            <td>
-              <span>RAJ STEEL</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>250</span>
-              <span></span>
-              <span></span>
-            </td>
-            <td>
-              <span>Rs. 3000/-</span>
-              <span></span>
-              <span></span>
-              <span class="result"></span>
-            </td>
-            <td></td>
-            <td>
-              <span></span>
-              <span></span>
-              <span><br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>-->
-      <!--<div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-two" value="option1">
-            <label class="detail-heading" for="add-two">
-                           TBS001 MIRAGE STEEL LTD.
-                         </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
+      <ul ng-if="totalItems>10" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getAllVerifiedSeller()" class="pagination-sm" ></ul>
 
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-three" value="option1">
-            <label class="detail-heading" for="add-three">
-                               TBS001 MIRAGE STEEL LTD.
-                             </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-four" value="option1">
-            <label class="detail-heading" for="add-four">
-                                   TBS001 MIRAGE STEEL LTD.
-                                 </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-five" value="option1">
-            <label class="detail-heading" for="add-five">
-                                       TBS001 MIRAGE STEEL LTD.
-                                     </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-six" value="option1">
-            <label class="detail-heading" for="add-six">
-                                           TBS001 MIRAGE STEEL LTD.
-                                         </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="seller-details ">
-        <div class="magic-form">
-          <div class="magic-resize">
-            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-            <label class="detail-heading" for="add-one">
-                                               TBS001 MIRAGE STEEL LTD.
-                                             </label>
-          </div>
-        </div>
-        <div class="starred pull-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-        <div class="date pull-right">Date: 02 June, 2016 | Time: 11.51 PM</div>
-
-      </div>
-      <table class="table table-bordered seller-table">
-        <thead>
-          <tr>
-            <th><strong>ADDRESS</strong></th>
-            <th><strong>ORDER ID</strong></th>
-            <th><strong>ORDER DETAILS</strong></th>
-            <th><strong>SALE TILL DATE</strong></th>
-            <th><strong>BUYER</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              15/18 Rhythm House, Kaala Ghoda, Fort, Mumbai - 400005 India
-            </td>
-            <td>
-              <span>0987</span>
-              <span>6251</span>
-              <span>5589</span>
-            </td>
-            <td>
-              <span>200 - SS - ASTM 303H</span>
-              <span>v500 - MS - ASTM 103L</span>
-              <span>125 - AL - ASTM 98</span>
-            </td>
-            <td>
-              <span>Rs. 7,85,587/-</span>
-              <span> Rs. 8,58,756/-</span>
-              <span>Rs. 3,55,898/-</span>
-              <span class="result">Rs. 5,55,55,666/-</span>
-            </td>
-            <td>
-              <span>Raj SteelRaj Steel</span>
-              <span>Dhanera Steel</span>
-              <span>H. R Steel<br><a ui-sref="view-sellers" class="pull-right"><label class="view">VIEW</label></a></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>-->
     </div>
   </div>
 </section>

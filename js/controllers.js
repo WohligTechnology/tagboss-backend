@@ -1739,13 +1739,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         return '';
     }
 
+    $scope.filter = {};
+    $scope.filter.pagenumber = 1;
+    $scope.filter.pagesize = 10;
+    $scope.filter.sortBy = "";
+    $scope.filter.text = "";
+    $scope.filter.status = "verified";
 
-    $scope.getAllVerifiedSeller = function () {
-
-        NavigationService.getAllVerifiedSeller(function (data) {
+    $scope.getAllVerifiedSeller = function (datasort, datasearch) {
+        if (datasort) {
+            $scope.filter.sortBy = datasort;
+              }
+        if (datasearch) {
+            $scope.filter.text = datasearch;
+        }
+        NavigationService.getAllVerifiedSeller($scope.filter, function (data) {
             if (data.value == true) {
-                $scope.AllSeller = data.data.results;
+                $scope.AllSeller = data.data.sellers;
+                $scope.totalItems = data.data.total;
                 console.log("sellers", $scope.AllSeller);
+            }else{
+                $scope.AllSeller =[];
             }
         });
     }
@@ -1786,6 +1800,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                     $scope.AllBuyer = data.data.buyers;
                     $scope.totalItems = data.data.total;
                     console.log("Buyer", $scope.AllBuyer, $scope.totalItems);
+                } else {
+                    $scope.AllBuyer = [];
                 }
             });
         }
@@ -2180,6 +2196,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
             if (searchdata) {
                 $scope.filter.keyword = searchdata;
+            } else {
+                $scope.filter.keyword = "";
             }
             if (pagenumber) {
                 $scope.filter.page = pagenumber;
