@@ -8,12 +8,9 @@
               <span>FROM</span>
               <div class="input-group date date1">
                 <input type="text" class="form-control cal-input ng-pristine ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date ng-touched"
-                  uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"
+                  uib-datepicker-popup="dd-MM-yyyy"  ng-model="filter.fromDate" is-open="popup1.opened" datepicker-options="dateOptions"
                   ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required">
-                <div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html"
-                  class="ng-not-empty ng-invalid ng-invalid-date-disabled" style="">
-                  <!-- ngIf: isOpen -->
-                </div>
+               
                 <span class="input-group-btn">
                                 <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
                               </span>
@@ -21,12 +18,9 @@
               <span>TO</span>
               <div class="input-group date">
                 <input type="text" class="form-control cal-input ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date"
-                  uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions"
+                  uib-datepicker-popup="dd-MM-yyyy" ng-change="getAllOrders(filter.fromDate,filter.toDate)" ng-model="filter.toDate" is-open="popup2.opened" datepicker-options="dateOptions"
                   ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required="required">
-                <div uib-datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html"
-                  class="ng-not-empty ng-valid">
-                  <!-- ngIf: isOpen -->
-                </div>
+               
                 <span class="input-group-btn">
                                <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
                              </span>
@@ -51,10 +45,10 @@
                   <label class="">Filter by Status</label>
                   <i class="fa fa-caret-down carrot" aria-hidden="true"></i>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Pending Delivery</a></li>
-                    <li><a href="#">Delivered</a></li>
-                    <li><a href="#">Dispatched</a></li>
+                    <li><a>All</a></li>
+                    <li><a>Pending Delivery</a></li>
+                    <li><a>Delivered</a></li>
+                    <li><a>Dispatched</a></li>
                   </ul>
                 </div>
               </div>
@@ -202,6 +196,9 @@
         </div>
           </div>
        
+
+         <ul ng-if="totalItems>10" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getAllOrders()"></ul>
+     
       </div>
     </div>
   </div>

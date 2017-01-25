@@ -1444,7 +1444,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.inlineOptions = {
         customClass: getDayClass,
         minDate: new Date(),
-        showWeeks: true
+        showWeeks: false
     };
 
     $scope.dateOptions = {
@@ -1452,14 +1452,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
         minDate: new Date(),
-        startingDay: 1
+        startingDay: 1,
+        showWeeks: false
     };
 
     // Disable weekend selection
     function disabled(data) {
         var date = data.date,
             mode = data.mode;
-        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        // return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
 
     $scope.toggleMin = function () {
@@ -1510,7 +1511,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             mode = data.mode;
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -1519,25 +1519,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 }
             }
         }
-
         return '';
     }
 
-    $scope.getAllOrders = function (fromDate , toDate, deliveryStatus) {
-        if(fromDate){
+    $scope.filter = {};
+    $scope.filter.pagenumber = 1;
+    $scope.filter.pagesize = 10;
+
+    $scope.getAllOrders = function (fromDate, toDate, deliveryStatus) {
+        if (fromDate) {
             $scope.filter.fromDate = fromDate;
-        }else{
+        } else {
             $scope.filter.fromDate = "";
         }
-        if(toDate){
+        if (toDate) {
             $scope.filter.toDate = toDate;
-        }else{
+        } else {
             $scope.filter.toDate = "";
         }
-        if(deliveryStatus){
-            $scope.filter.deliveryStatus =deliveryStatus ;
-        }else{
-            $scope.filter.deliveryStatus ="Pending" ;
+        if (deliveryStatus) {
+            $scope.filter.deliveryStatus = deliveryStatus;
+        } else {
+            $scope.filter.deliveryStatus = "Pending";
         }
 
         NavigationService.getAllOrders($scope.filter, function (data) {
@@ -1545,7 +1548,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 $scope.selleris = false;
                 $scope.allData = data.data.orders;
                 $scope.totalItems = data.data.total;
-                console.log("$scope.allData", $scope.allData);
+                console.log("$scope.allData", $scope.allData, "$scope.totalItems", $scope.totalItems);
             } else {
                 $scope.allData = [];
             }
@@ -1555,9 +1558,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
     var senddata = {};
 
-    $scope.filter = {};
-    $scope.filter.pagenumber = 1;
-    $scope.filter.pagesize = 10;
+
     if ($state.params.id) {
         if ($state.params.type === "seller") {
             senddata.sellerid = $state.params.id;
