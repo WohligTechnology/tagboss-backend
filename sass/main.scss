@@ -2768,6 +2768,15 @@
         }
       }
       
+      .spinner {
+position: fixed;
+top: 50%;
+left: 50%;
+@include transform(translate(-50%,
+-50%));
+z-index: 9999;
+opacity: 1;
+}
       //bootstrap forms
       /* Start writing sass here */
       

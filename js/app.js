@@ -9,8 +9,12 @@ var firstapp = angular.module('firstapp', [
   'angulartics.google.analytics'
 ]);
 
-firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
   // for http request with session
+  cfpLoadingBarProvider.includeSpinner = true;
+cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+cfpLoadingBarProvider.spinnerTemplate = '<img class="spinner" src="img/Loader.gif" alt="">';
+cfpLoadingBarProvider.includeBar = false;
   $httpProvider.defaults.withCredentials = true;
   $stateProvider
     .state('loginpage', {
