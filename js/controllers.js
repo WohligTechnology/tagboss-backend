@@ -859,7 +859,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 })
 
-.controller('InspectionLoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('InspectionLoginCtrl', function ($scope,toastr, $uibModal, TemplateService, NavigationService, $timeout, $state) {
     $scope.template = TemplateService.changecontent("inspection-login");
     $scope.menutitle = NavigationService.makeactive("Inspection Login");
     TemplateService.title = $scope.menutitle;
@@ -880,6 +880,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             }
         });
     }
+
+
+     $scope.forgotPassword = function () {
+            forgotmod = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/inspectionforgotpassword.html",
+                scope: $scope,
+            });
+        };
+        $scope.forgotPasswordSubmit = function (formdata) {
+            NavigationService.forgotPasswordInspection(formdata, function (data) {
+                if (data.value == true) {
+                    forgotmod.close();
+                    toastr.success("Password sent to your registerd Email ID", "Information");
+                } else {
+                    toastr.error("Email ID not found!", "Error");
+                }
+            });
+        }
 
 })
 

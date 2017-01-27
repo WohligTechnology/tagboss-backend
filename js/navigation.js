@@ -1,5 +1,5 @@
-// var adminURL = "http://localhost:1337/";
-var adminURL = "http://104.155.129.33:1337/";
+var adminURL = "http://localhost:1337/";
+// var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -605,6 +605,17 @@ var navigationservice = angular.module('navigationservice', [])
       };
      return $http({
         url: adminURL + "Register/forgotPassword",
+        method: "POST",
+        data: data
+       }).success(callback);
+    },
+
+       forgotPasswordInspection: function (emailid, callback) {
+      var data = {
+        'email': emailid
+      };
+     return $http({
+        url: adminURL + "Inspection/forgotPassword",
         method: "POST",
         data: data
        }).success(callback);
