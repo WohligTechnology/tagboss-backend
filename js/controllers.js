@@ -1,4 +1,6 @@
 Window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
+var adminURL = "http://localhost:1337/";
+// var adminURL = "http://104.155.129.33:1337/";
 angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toastr', 'ui.tinymce', 'navigationservice', 'highcharts-ng', 'ui.bootstrap', 'ngAnimate', 'imageupload', 'ngSanitize', 'angular-flexslider', 'ksSwiper', 'toggle-switch', 'angular.filter', 'angular-loading-bar'])
 
 .controller('LoginPageCtrl', function ($scope, $uibModal, TemplateService, NavigationService, $timeout, $state, toastr) {
@@ -859,7 +861,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 })
 
-.controller('InspectionLoginCtrl', function ($scope,toastr, $uibModal, TemplateService, NavigationService, $timeout, $state) {
+.controller('InspectionLoginCtrl', function ($scope, toastr, $uibModal, TemplateService, NavigationService, $timeout, $state) {
     $scope.template = TemplateService.changecontent("inspection-login");
     $scope.menutitle = NavigationService.makeactive("Inspection Login");
     TemplateService.title = $scope.menutitle;
@@ -882,23 +884,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
 
-     $scope.forgotPassword = function () {
-            forgotmod = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/inspectionforgotpassword.html",
-                scope: $scope,
-            });
-        };
-        $scope.forgotPasswordSubmit = function (formdata) {
-            NavigationService.forgotPasswordInspection(formdata, function (data) {
-                if (data.value == true) {
-                    forgotmod.close();
-                    toastr.success("Password sent to your registerd Email ID", "Information");
-                } else {
-                    toastr.error("Email ID not found!", "Error");
-                }
-            });
-        }
+    $scope.forgotPassword = function () {
+        forgotmod = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/inspectionforgotpassword.html",
+            scope: $scope,
+        });
+    };
+    $scope.forgotPasswordSubmit = function (formdata) {
+        NavigationService.forgotPasswordInspection(formdata, function (data) {
+            if (data.value == true) {
+                forgotmod.close();
+                toastr.success("Password sent to your registerd Email ID", "Information");
+            } else {
+                toastr.error("Email ID not found!", "Error");
+            }
+        });
+    }
 
 })
 
@@ -1768,7 +1770,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.getAllVerifiedSeller = function (datasort, datasearch) {
         if (datasort) {
             $scope.filter.sortBy = datasort;
-              }
+        }
         if (datasearch) {
             $scope.filter.text = datasearch;
         }
@@ -1777,8 +1779,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 $scope.AllSeller = data.data.sellers;
                 $scope.totalItems = data.data.total;
                 console.log("sellers", $scope.AllSeller);
-            }else{
-                $scope.AllSeller =[];
+            } else {
+                $scope.AllSeller = [];
             }
         });
     }
@@ -2758,6 +2760,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                     $scope.myindex = myindex;
                 }
             });
+        }
+
+        $scope.exportExcel = function () {
+            // NavigationService.exportExcel(function (data) {
+            //     if (data.value == true) {
+            //         console.log("exported");
+            //     }
+            // });
+
+            window.open(adminURL + 'Transaction/generateExcel', '_blank');
+            window.close();
         }
 
 

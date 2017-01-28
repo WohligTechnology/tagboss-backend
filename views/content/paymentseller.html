@@ -1,19 +1,18 @@
 <section class="body-main payment-to-sellers">
   <div class="container-fluid">
     <div class="payment-to-seller">
-      <div class="search-content">
+      <!--<div class="search-content">
         <div class="row">
           <div class="col-md-6">
             <div class="input-group search-top">
               <input type="text" class="form-control" placeholder="Search by Seller ID or Name">
               <span class="input-group-btn">
                 <i class="btn btn-default fa fa-search" aria-hidden="true"></i>
-                <!-- <button class="btn btn-default" type="button">Go!</button> -->
-              </span>
+               </span>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="received-sent hide">
         <div class="row">
           <div class="col-md-6">
@@ -127,7 +126,7 @@
                   <th>Transaction ID</th>
                   <th>Order ID</th>
                   <th>Date</th>
-                  <th>Seller Date</th>
+                  <th>Seller ID</th>
                   <th>Order Value</th>
                   <th>Net Payable</th>
                   <th>Payment Amount</th>
@@ -167,7 +166,7 @@
               </div>
               <div class="col-md-6">
                 <form>
-                  <div class="form-group">
+                  <div ng-click="exportExcel()" class="form-group">
                     <button class="btn btn-default convert">Download</button>
                   </div>
                 </form>
@@ -263,8 +262,8 @@
               <div class="col-md-6">
                 <form>
                   <div class="form-group label-head">
-                    <label for="text">Total Amount Paid:</label>
-                    <label for="text">27100 </label>
+                    <!--<label for="text">Total Amount Paid:</label>
+                    <label for="text">27100 </label>-->
                   </div>
                 </form>
               </div>
