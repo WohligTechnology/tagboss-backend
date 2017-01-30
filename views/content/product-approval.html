@@ -84,6 +84,7 @@
                                     <!--<select ng-model="myid">
                    <option  ng-repeat="agency in getAllAgency" value="{{agency._id}}">{{agency.agencyName}}</option>
                        </select>-->
+                       <div ng-if="inventory.seller.status==='verified'">
                                     <p>
                                         <div class="form-group" ng-if="inventory.status==='Pending'">
                                             <select required name="status{{$index}}" ng-model="inventory.agentIDTemp">
@@ -100,6 +101,7 @@
                                     <p ng-if="inventory.status!=='Pending'">
                                         Due On : {{inventory.duedate | date:'mediumDate'}}
                                     </p>
+                                    </div>
                                 </td>
                                 <td class="text-center feed-col">
                                     <!--<div>
@@ -124,6 +126,10 @@
                                             <p>Status: {{inventory.status}}</p>
                                             <button ng-if="inventory.status==='Pending'" ng-click="assignInspection(inventory, $index)" type="button" class="btn btn-primary assign-btn">ASSIGN</button>
                                         </div>
+                                        <div ng-if="inventory.seller.status!=='verified'">
+                                            <p>Seller Not Verified</p>
+                                            </div>
+                                        <div ng-if="inventory.seller.status==='verified'">
                                         <div ng-if="inventory.status==='Inspected' || inventory.status==='Assigned' || inventory.status==='Pending' || inventory.status==='Rejected'">
                                             <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
                                             <div class="">
@@ -134,6 +140,7 @@
                                         <div ng-if="inventory.status==='Verified' || inventory.status==='Rejected'">
                                             <span ng-if="inventory.report"> <a href="{{pdfURL}}={{inventory.report}}" target="_blank"><img src="img/pdf-image.png"></a></span>
                                             <p ng-if="inventory.status==='Verified'"> The product is upto mark.</p>
+                                        </div>
                                         </div>
                                     </div>
                                 </td>

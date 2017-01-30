@@ -1833,7 +1833,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         $scope.menutitle = NavigationService.makeactive("View-sellers");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+        $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
         NavigationService.getOneSeller($state.params.id, function (data) {
             if (data.value == true) {
                 $scope.sellerData = data.data;

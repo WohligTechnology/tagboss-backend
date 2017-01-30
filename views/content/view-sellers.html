@@ -59,7 +59,7 @@
               titles="['one','two','three']" aria-labelledby="default-rating"></span>
             <div class="mid-btn">
               <button ui-sref="orders({type:'seller',id:sellerData._id})" type="button" class="btn btn-default btn-o">Order</button>
-              <button ui-sref="dashboard" type="button" class="btn btn-default">Dashboard</button>
+              <!--<button ui-sref="dashboard" type="button" class="btn btn-default">Dashboard</button>-->
             </div>
           </div>
         </div>
@@ -123,9 +123,9 @@
                 <p>top product categories (by revenue)</p>
                 <div class="values">
                   <label>
-                  <span>pipes</span>
-                  <span>sheets</span>
-                  <span>coil</span>
+                  <span ng-repeat="topProduct in sellerDashboard[2].topProduct">{{topProduct.name}}</span>
+                  <!--<span>sheets</span>
+                  <span>coil</span>-->
                 </label>
                 </div>
               </div>
@@ -222,7 +222,7 @@
                     </div>
                     <div class="bar-color lgcolor"></div>
                     <div class="circle">
-                      <span>25%</span>sellerData
+                      <span>25%</span>
                     </div>
                   </div>
                   <div class="progress-bar">
