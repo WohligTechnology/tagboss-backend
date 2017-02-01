@@ -1,5 +1,5 @@
-var adminURL = "http://localhost:1337/";
-// var adminURL = "http://104.155.129.33:1337/";
+// var adminURL = "http://localhost:1337/";
+var adminURL = "http://104.155.129.33:1337/";
 
 var imgurl = adminURL + "upload/";
 var imgpath = adminURL + "upload/readFile";
@@ -49,28 +49,28 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-     getNotifications: function (callback) {
+    getNotifications: function (callback) {
       return $http({
         url: adminURL + "user/getNotificationCount",
         method: "POST"
       }).success(callback);
     },
 
-     updateOrderReadStatus: function (callback) {
+    updateOrderReadStatus: function (callback) {
       return $http({
         url: adminURL + "user/updateOrderReadStatus",
         method: "POST"
       }).success(callback);
     },
 
-        updateSellerReadStatus: function (callback) {
+    updateSellerReadStatus: function (callback) {
       return $http({
         url: adminURL + "user/updateSellerReadStatus",
         method: "POST"
       }).success(callback);
     },
 
-        updateBuyerReadStatus: function (callback) {
+    updateBuyerReadStatus: function (callback) {
       return $http({
         url: adminURL + "user/updateBuyerReadStatus",
         method: "POST"
@@ -149,7 +149,7 @@ var navigationservice = angular.module('navigationservice', [])
     //   }).success(callback);
     // },
 
-  getAllOrders: function (senddata, callback) {
+    getAllOrders: function (senddata, callback) {
       var data = senddata
       return $http({
         url: adminURL + "Order/getAllOrderAdmin",
@@ -526,7 +526,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getAllSeller: function (sdata, callback) {
-      var data =  sdata;
+      var data = sdata;
       return $http({
         url: adminURL + "user/getAllSeller",
         method: "POST",
@@ -535,7 +535,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getAllBuyer: function (sdata, callback) {
-      var data =  sdata;
+      var data = sdata;
       return $http({
         url: adminURL + "user/getAllBuyer",
         method: "POST",
@@ -550,12 +550,12 @@ var navigationservice = angular.module('navigationservice', [])
     //   }).success(callback);
     // },
 
-      getAllVerifiedSeller: function (fdata,callback) {
-        var data = fdata;
+    getAllVerifiedSeller: function (fdata, callback) {
+      var data = fdata;
       return $http({
         url: adminURL + "user/getSellers",
         method: "POST",
-        data:data
+        data: data
       }).success(callback);
     },
 
@@ -587,7 +587,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
 
- getSellerDashboard: function (id, callback) {
+    getSellerDashboard: function (id, callback) {
       var data = {
         'seller': id
       };
@@ -598,42 +598,42 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-   
+
     forgotPassword: function (emailid, callback) {
       var data = {
         'email': emailid
       };
-     return $http({
+      return $http({
         url: adminURL + "Register/forgotPassword",
         method: "POST",
         data: data
-       }).success(callback);
+      }).success(callback);
     },
 
-       forgotPasswordInspection: function (emailid, callback) {
+    forgotPasswordInspection: function (emailid, callback) {
       var data = {
         'email': emailid
       };
-     return $http({
+      return $http({
         url: adminURL + "Inspection/forgotPassword",
         method: "POST",
         data: data
-       }).success(callback);
+      }).success(callback);
     },
 
-     getForgotPasswordEmail: function (emailid, callback) {
+    getForgotPasswordEmail: function (emailid, callback) {
       var data = {
         'forgotPasswordLink': emailid
       };
-     return $http({
+      return $http({
         url: adminURL + "Register/emailVerification ",
         method: "POST",
         data: data
-       }).success(callback);
+      }).success(callback);
     },
 
-    
- resetPassword: function (pdata, callback) {
+
+    resetPassword: function (pdata, callback) {
       var data = pdata;
       return $http({
         url: adminURL + "register/resetPassword",
@@ -641,7 +641,7 @@ var navigationservice = angular.module('navigationservice', [])
         data: data
       }).success(callback);
     },
-    
+
 
 
     getOneBuyer: function (id, callback) {

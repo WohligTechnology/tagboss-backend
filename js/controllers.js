@@ -291,310 +291,625 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     })
 
 .controller('MaterialConstructCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("material-construct");
-    $scope.menutitle = NavigationService.makeactive("Material Construct");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
+        $scope.template = TemplateService.changecontent("material-construct");
+        $scope.menutitle = NavigationService.makeactive("Material Construct");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-    $scope.getMaterial = function () {
-        NavigationService.getMaterial(function (data) {
-            if (data.value == true) {
-                $scope.allData = data.data;
+        $scope.getMaterial = function () {
+            NavigationService.getMaterial(function (data) {
+                if (data.value == true) {
+                    $scope.allData = data.data;
+                } else {
+                    $scope.allData = [];
+                }
+            });
+        }
+        $scope.getMaterial();
+        $scope.errmsg = false;
+        $scope.addMoc = function (mocdata, cat, indexid) {
+            if (mocdata != undefined) {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.mocname;
+
+                console.log("searchdata", senddata);
+
+                NavigationService.addMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC added Successfully", "Information");
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
             } else {
-                $scope.allData = [];
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
             }
-        });
-    }
-    $scope.getMaterial();
-    $scope.errmsg = false;
-    $scope.addMoc = function (mocdata, cat, indexid) {
-        if (mocdata != undefined) {
-            var senddata = {};
-            senddata.category = cat;
-            senddata.name = mocdata.mocname;
+        }
 
-            console.log("searchdata", senddata);
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
 
-            NavigationService.addMoc(senddata, function (data) {
+        $scope.editMoc = function (mocdata, cat, indexid) {
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+        $scope.deleteMoc = function (mocid) {
+            NavigationService.deleteMoc(mocid, function (data) {
                 if (data.value == true) {
-                    // $scope.formdata ={};
-                    toastr.success("MOC added Successfully", "Information");
-                    document.getElementById(indexid).value = "";
-                    $scope.errmsg = false;
+                    toastr.success("MOC deleted Successfully", "Information");
                     $scope.getMaterial();
                 }
             });
-        } else {
-            $scope.errmsg = true;
-            $scope.myindex = indexid;
         }
-    }
 
-    $scope.hidetext = false;
-    $scope.showtext = true;
-    $scope.showEditData = function (indexid) {
-        $scope.hidetext = true;
-        $scope.showtext = false;
-        $scope.indexid = indexid;
-    }
+    })
+    .controller('addInchCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("add-inch");
+        $scope.menutitle = NavigationService.makeactive("Add Inch");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-    $scope.editMoc = function (mocdata, cat, indexid) {
-        if (mocdata.name !== "") {
-            var senddata = {};
-            senddata.category = cat;
-            senddata.name = mocdata.name;
-            senddata._id = mocdata._id;
-            $scope.hidetext = false;
-            $scope.showtext = true;
-            $scope.indexid = "a";
-            NavigationService.editMoc(senddata, function (data) {
+        $scope.allData = [{
+            id: 1,
+            name: 'data1'
+        }, {
+            id: 2,
+            name: 'data2'
+        }];
+
+
+        $scope.errmsg = false;
+        $scope.addMoc = function (mocdata, cat, indexid) {
+            if (mocdata != undefined) {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.mocname;
+
+                console.log("searchdata", senddata);
+
+                NavigationService.addMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC added Successfully", "Information");
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
+
+        $scope.editMoc = function (mocdata, cat, indexid) {
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+        $scope.deleteMoc = function (mocid) {
+            NavigationService.deleteMoc(mocid, function (data) {
                 if (data.value == true) {
-                    // $scope.formdata ={};
-                    toastr.success("MOC updated Successfully", "Information");
-                    $scope.errmsg = false;
+                    toastr.success("MOC deleted Successfully", "Information");
                     $scope.getMaterial();
                 }
             });
-        } else {
-            $scope.errmsg = true;
-            $scope.myindex = indexid;
         }
-    }
-    $scope.deleteMoc = function (mocid) {
-        NavigationService.deleteMoc(mocid, function (data) {
-            if (data.value == true) {
-                toastr.success("MOC deleted Successfully", "Information");
-                $scope.getMaterial();
+
+    })
+    .controller('addScheduleCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("add-schedule");
+        $scope.menutitle = NavigationService.makeactive("Add Inch");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.allData = [{
+            id: 1,
+            name: 'data1'
+        }, {
+            id: 2,
+            name: 'data2'
+        }];
+
+
+        $scope.errmsg = false;
+        $scope.addMoc = function (mocdata, cat, indexid) {
+            if (mocdata != undefined) {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.mocname;
+
+                console.log("searchdata", senddata);
+
+                NavigationService.addMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC added Successfully", "Information");
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
             }
-        });
-    }
+        }
 
-})
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
 
-.controller('ProdApprovalCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $filter) {
-    $scope.template = TemplateService.changecontent("product-approval");
-    $scope.menutitle = NavigationService.makeactive("Product Approval");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-
-    $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
-    // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
-    $scope.currentDate = new Date();
-    $scope.showEdit = false;
-    $scope.hideEdit = true;
-    $scope.showEditProduct = function (id) {
-        console.log("id", id);
-        $scope.showEdit = true;
-        $scope.hideEdit = false;
-        NavigationService.getOneInventory(id, function (data) {
-            if (data.value == true) {
-                $scope.productEdit = data.data;
-                $scope.getAllTypes($scope.productEdit.category._id);
-                $scope.getAllGrades($scope.productEdit.moc._id);
-
+        $scope.editMoc = function (mocdata, cat, indexid) {
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
             }
-        });
+        }
+        $scope.deleteMoc = function (mocid) {
+            NavigationService.deleteMoc(mocid, function (data) {
+                if (data.value == true) {
+                    toastr.success("MOC deleted Successfully", "Information");
+                    $scope.getMaterial();
+                }
+            });
+        }
 
-    };
+    })
+    .controller('addThicknessCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("add-thickness");
+        $scope.menutitle = NavigationService.makeactive("Add Thickness");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-    $scope.showText = true;
-    $scope.showTextBrand = function () {
-        $scope.showText = false;
-    }
-
-    $scope.showTextType = true;
-    $scope.showTextTypeDiv = function () {
-        $scope.showTextType = false;
-    }
-
-    $scope.showTextGrade = true;
-    $scope.showTextGradeDiv = function () {
-        $scope.showTextGrade = false;
-    }
+        $scope.allData = [{
+            id: 1,
+            name: 'data1'
+        }, {
+            id: 2,
+            name: 'data2'
+        }];
 
 
+        $scope.errmsg = false;
+        $scope.addMoc = function (mocdata, cat, indexid) {
+            if (mocdata != undefined) {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.mocname;
 
-    $scope.showInspection = function () {
-        $scope.hideEdit = true;
+                console.log("searchdata", senddata);
+
+                NavigationService.addMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC added Successfully", "Information");
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
+
+        $scope.editMoc = function (mocdata, cat, indexid) {
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+        $scope.deleteMoc = function (mocid) {
+            NavigationService.deleteMoc(mocid, function (data) {
+                if (data.value == true) {
+                    toastr.success("MOC deleted Successfully", "Information");
+                    $scope.getMaterial();
+                }
+            });
+        }
+
+    })
+    .controller('addOdmmCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("add-odmm");
+        $scope.menutitle = NavigationService.makeactive("Add ODMM");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.allData = [{
+            id: 1,
+            name: 'data1'
+        }, {
+            id: 2,
+            name: 'data2'
+        }];
+
+
+        $scope.errmsg = false;
+        $scope.addMoc = function (mocdata, cat, indexid) {
+            if (mocdata != undefined) {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.mocname;
+
+                console.log("searchdata", senddata);
+
+                NavigationService.addMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC added Successfully", "Information");
+                        document.getElementById(indexid).value = "";
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+
+        $scope.hidetext = false;
+        $scope.showtext = true;
+        $scope.showEditData = function (indexid) {
+            $scope.hidetext = true;
+            $scope.showtext = false;
+            $scope.indexid = indexid;
+        }
+
+        $scope.editMoc = function (mocdata, cat, indexid) {
+            if (mocdata.name !== "") {
+                var senddata = {};
+                senddata.category = cat;
+                senddata.name = mocdata.name;
+                senddata._id = mocdata._id;
+                $scope.hidetext = false;
+                $scope.showtext = true;
+                $scope.indexid = "a";
+                NavigationService.editMoc(senddata, function (data) {
+                    if (data.value == true) {
+                        // $scope.formdata ={};
+                        toastr.success("MOC updated Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getMaterial();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
+            }
+        }
+        $scope.deleteMoc = function (mocid) {
+            NavigationService.deleteMoc(mocid, function (data) {
+                if (data.value == true) {
+                    toastr.success("MOC deleted Successfully", "Information");
+                    $scope.getMaterial();
+                }
+            });
+        }
+
+    })
+    .controller('ProdApprovalCtrl', function ($scope, toastr, TemplateService, NavigationService, $timeout, $filter) {
+        $scope.template = TemplateService.changecontent("product-approval");
+        $scope.menutitle = NavigationService.makeactive("Product Approval");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.pdfURL = "http://104.155.129.33:1337/upload/readFile?file";
+        // $scope.pdfURL = "http://localhost:1337/upload/readFile?file";
+        $scope.currentDate = new Date();
         $scope.showEdit = false;
+        $scope.hideEdit = true;
+        $scope.showEditProduct = function (id) {
+            console.log("id", id);
+            $scope.showEdit = true;
+            $scope.hideEdit = false;
+            NavigationService.getOneInventory(id, function (data) {
+                if (data.value == true) {
+                    $scope.productEdit = data.data;
+                    $scope.getAllTypes($scope.productEdit.category._id);
+                    $scope.getAllGrades($scope.productEdit.moc._id);
+
+                }
+            });
+
+        };
+
         $scope.showText = true;
+        $scope.showTextBrand = function () {
+            $scope.showText = false;
+        }
+
         $scope.showTextType = true;
+        $scope.showTextTypeDiv = function () {
+            $scope.showTextType = false;
+        }
+
         $scope.showTextGrade = true;
-    };
+        $scope.showTextGradeDiv = function () {
+            $scope.showTextGrade = false;
+        }
 
 
-    $scope.getAgency = function () {
-        NavigationService.getAgency(function (data) {
-            if (data.value == true) {
-                $scope.getAllAgency = data.data.results;
+
+        $scope.showInspection = function () {
+            $scope.hideEdit = true;
+            $scope.showEdit = false;
+            $scope.showText = true;
+            $scope.showTextType = true;
+            $scope.showTextGrade = true;
+        };
+
+
+        $scope.getAgency = function () {
+            NavigationService.getAgency(function (data) {
+                if (data.value == true) {
+                    $scope.getAllAgency = data.data.results;
+                }
+            });
+        }
+        $scope.getAgency();
+
+        $scope.filter = {};
+        $scope.filter.page = 1;
+
+        $scope.getAllBrands = function () {
+            NavigationService.getBrands(function (data) {
+                if (data.value == true) {
+                    $scope.allBrand = data.data.results;
+                }
+            });
+        }
+        $scope.getAllBrands();
+
+
+        $scope.getAllTypes = function (id) {
+            NavigationService.getTypes(id, function (data) {
+                if (data.value == true) {
+                    $scope.allType = data.data;
+                }
+            });
+        }
+
+
+        $scope.getAllGrades = function (id) {
+            NavigationService.getGradesStandards(id, function (data) {
+                if (data.value == true) {
+                    $scope.allGrade = data.data;
+                }
+            });
+        }
+
+
+
+        $scope.getInventory = function () {
+            NavigationService.getInventory($scope.filter, function (data) {
+                if (data.value == true) {
+                    $scope.getAllInventory = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    console.log("filter", $scope.filter);
+                }
+            });
+        }
+        $scope.getInventory();
+
+        $scope.errmsg = false;
+        $scope.assignInspection = function (inventorydata, indexid) {
+            console.log("asssign", inventorydata.agentIDTemp, indexid);
+            if (inventorydata.agentIDTemp != undefined) {
+
+                var senddata = {};
+                senddata._id = inventorydata._id;
+                senddata.agencyid = inventorydata.agentIDTemp;
+                senddata.productId = inventorydata.product.productId;
+                senddata.firstName = inventorydata.seller.firstName;
+                senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+                $scope.mydate = new Date();
+                $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
+                senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
+                senddata.report = inventorydata.report;
+                if (inventorydata.category.name === "Pipes") {
+                    senddata.price = inventorydata.ratePerKgMtr;
+                    senddata.quantity = inventorydata.totalQty;
+
+                } else {
+                    senddata.price = inventorydata.pricePerKg;
+                    senddata.quantity = inventorydata.quantityInNos;
+                }
+                senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+                NavigationService.assignInspection(senddata, function (data) {
+                    if (data.value == true) {
+                        toastr.success("Assign Successfully", "Information");
+                        $scope.errmsg = false;
+                        $scope.getInventory();
+                    }
+                });
+            } else {
+                $scope.errmsg = true;
+                $scope.myindex = indexid;
             }
-        });
-    }
-    $scope.getAgency();
+        }
 
-    $scope.filter = {};
-    $scope.filter.page = 1;
-
-    $scope.getAllBrands = function () {
-        NavigationService.getBrands(function (data) {
-            if (data.value == true) {
-                $scope.allBrand = data.data.results;
-            }
-        });
-    }
-    $scope.getAllBrands();
-
-
-    $scope.getAllTypes = function (id) {
-        NavigationService.getTypes(id, function (data) {
-            if (data.value == true) {
-                $scope.allType = data.data;
-            }
-        });
-    }
-
-
-    $scope.getAllGrades = function (id) {
-        NavigationService.getGradesStandards(id, function (data) {
-            if (data.value == true) {
-                $scope.allGrade = data.data;
-            }
-        });
-    }
-
-
-
-    $scope.getInventory = function () {
-        NavigationService.getInventory($scope.filter, function (data) {
-            if (data.value == true) {
-                $scope.getAllInventory = data.data.results;
-                $scope.totalItems = data.data.total;
-                console.log("filter", $scope.filter);
-            }
-        });
-    }
-    $scope.getInventory();
-
-    $scope.errmsg = false;
-    $scope.assignInspection = function (inventorydata, indexid) {
-        console.log("asssign", inventorydata.agentIDTemp, indexid);
-        if (inventorydata.agentIDTemp != undefined) {
-
+        $scope.rejectReport = function (inventorydata) {
             var senddata = {};
             senddata._id = inventorydata._id;
-            senddata.agencyid = inventorydata.agentIDTemp;
-            senddata.productId = inventorydata.product.productId;
+            senddata.email = inventorydata.seller.email;
             senddata.firstName = inventorydata.seller.firstName;
-            senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
-            $scope.mydate = new Date();
-            $scope.newdate = $scope.mydate.setDate($scope.mydate.getDate() + 6);
-            senddata.duedate = $filter('date')(new Date($scope.newdate), 'MMM dd yyyy');
-            senddata.report = inventorydata.report;
-            if (inventorydata.category.name === "Pipes") {
-                senddata.price = inventorydata.ratePerKgMtr;
-                senddata.quantity = inventorydata.totalQty;
-
-            } else {
-                senddata.price = inventorydata.pricePerKg;
-                senddata.quantity = inventorydata.quantityInNos;
-            }
-            senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-            NavigationService.assignInspection(senddata, function (data) {
+            NavigationService.rejectReport(senddata, function (data) {
                 if (data.value == true) {
-                    toastr.success("Assign Successfully", "Information");
-                    $scope.errmsg = false;
+                    // toastr.success("Assign Successfully", "Information");
                     $scope.getInventory();
                 }
             });
-        } else {
-            $scope.errmsg = true;
-            $scope.myindex = indexid;
         }
-    }
 
-    $scope.rejectReport = function (inventorydata) {
-        var senddata = {};
-        senddata._id = inventorydata._id;
-        senddata.email = inventorydata.seller.email;
-        senddata.firstName = inventorydata.seller.firstName;
-        NavigationService.rejectReport(senddata, function (data) {
-            if (data.value == true) {
-                // toastr.success("Assign Successfully", "Information");
-                $scope.getInventory();
+        $scope.acceptReport = function (inventorydata) {
+            var senddata = {};
+            senddata._id = inventorydata._id;
+            senddata.email = inventorydata.seller.email;
+            senddata.firstName = inventorydata.seller.firstName;
+            senddata.quantity = inventorydata.quantityInNos;
+            senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
+            senddata.report = inventorydata.report;
+
+            if (inventorydata.ratePerKgMtr) {
+                senddata.price = inventorydata.ratePerKgMtr;
             }
-        });
-    }
-
-    $scope.acceptReport = function (inventorydata) {
-        var senddata = {};
-        senddata._id = inventorydata._id;
-        senddata.email = inventorydata.seller.email;
-        senddata.firstName = inventorydata.seller.firstName;
-        senddata.quantity = inventorydata.quantityInNos;
-        senddata.date = $filter('date')(new Date(), 'MMM dd yyyy');
-        senddata.report = inventorydata.report;
-
-        if (inventorydata.ratePerKgMtr) {
-            senddata.price = inventorydata.ratePerKgMtr;
-        }
-        if (inventorydata.pricePerKg) {
-            senddata.price = inventorydata.pricePerKg;
-        }
-        senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
-        NavigationService.acceptReport(senddata, function (data) {
-            if (data.value == true) {
-                // toastr.success("Assign Successfully", "Information");
-                $scope.getInventory();
-                // $state.reload();
+            if (inventorydata.pricePerKg) {
+                senddata.price = inventorydata.pricePerKg;
             }
-        });
-    }
-
-
-    $scope.editProductData = function (productdata) {
-        console.log("product", productdata);
-        var senddata = {};
-        senddata._id = productdata._id;
-        senddata.brand = productdata.brand._id;
-        senddata.details = productdata.details;
-        if (productdata.category.name !== 'Roundbar') {
-            senddata.type = productdata.type._id;
+            senddata.product = inventorydata.brand.name + " " + inventorydata.moc.name + " " + inventorydata.category.name
+            NavigationService.acceptReport(senddata, function (data) {
+                if (data.value == true) {
+                    // toastr.success("Assign Successfully", "Information");
+                    $scope.getInventory();
+                    // $state.reload();
+                }
+            });
         }
-        senddata.gradesstandards = productdata.gradesstandards._id;
-        NavigationService.editProduct(senddata, function (data) {
-            $scope.showInspection();
-            $scope.getInventory();
-            toastr.success("Product Updated Successfully", "Information")
-        });
-    }
 
 
-    $scope.updateBrand = function (branddata) {
-        console.log("branddata", branddata);
-        // var senddata
-        NavigationService.updateBrand(branddata, function (data) {
-            $scope.getInventory();
-            toastr.success("Brand Updated Successfully", "Information")
-        });
-    }
+        $scope.editProductData = function (productdata) {
+            console.log("product", productdata);
+            var senddata = {};
+            senddata._id = productdata._id;
+            senddata.brand = productdata.brand._id;
+            senddata.details = productdata.details;
+            if (productdata.category.name !== 'Roundbar') {
+                senddata.type = productdata.type._id;
+            }
+            senddata.gradesstandards = productdata.gradesstandards._id;
+            NavigationService.editProduct(senddata, function (data) {
+                $scope.showInspection();
+                $scope.getInventory();
+                toastr.success("Product Updated Successfully", "Information")
+            });
+        }
 
-    $scope.updateType = function (typedata) {
-        console.log("typedata", typedata);
-        NavigationService.updateType(typedata, function (data) {
-            $scope.getInventory();
-            toastr.success("Type Updated Successfully", "Information")
-        });
-    }
 
-    $scope.updateGrade = function (gradedata) {
-        console.log("gradedata", gradedata);
-        NavigationService.updateGrade(gradedata, function (data) {
-            $scope.getInventory();
-            toastr.success("Grade / Standards Updated Successfully", "Information")
-        });
-    }
+        $scope.updateBrand = function (branddata) {
+            console.log("branddata", branddata);
+            // var senddata
+            NavigationService.updateBrand(branddata, function (data) {
+                $scope.getInventory();
+                toastr.success("Brand Updated Successfully", "Information")
+            });
+        }
 
-})
+        $scope.updateType = function (typedata) {
+            console.log("typedata", typedata);
+            NavigationService.updateType(typedata, function (data) {
+                $scope.getInventory();
+                toastr.success("Type Updated Successfully", "Information")
+            });
+        }
+
+        $scope.updateGrade = function (gradedata) {
+            console.log("gradedata", gradedata);
+            NavigationService.updateGrade(gradedata, function (data) {
+                $scope.getInventory();
+                toastr.success("Grade / Standards Updated Successfully", "Information")
+            });
+        }
+
+    })
 
 .controller('ViewSellerProductsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("view-seller-product");

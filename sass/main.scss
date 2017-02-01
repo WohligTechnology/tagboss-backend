@@ -1044,7 +1044,7 @@
               input {
                 border-radius: 10px 0 0 10px;
                 background: none;
-                height: 30px;
+                height: 32px;
                 font-size: 12px;
                 &:focus {
                   outline: 0;
@@ -1077,6 +1077,9 @@
               .add-prod-cate {
                 width: 50%;
                 padding: 0 7px 0 0;
+              }
+              .wd100 {
+                width: 100%;
               }
               li {
                 list-style-type: none;
@@ -2768,17 +2771,26 @@
         }
       }
       
+      .add-ctrl {
+        .add-select-ctrl {
+          display: inline-block;
+          select {
+            width: 200px;
+          }
+        }
+      }
+      
       .spinner {
-position: fixed;
-top: 50%;
-left: 50%;
-@include transform(translate(-50%,
--50%));
-z-index: 9999;
-opacity: 1;
-// width:175px;
-// height:150px;
-}
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+        z-index: 9999;
+        opacity: 1;
+        // width:175px;
+        // height:150px;
+      }
+      
       //bootstrap forms
       /* Start writing sass here */
       
