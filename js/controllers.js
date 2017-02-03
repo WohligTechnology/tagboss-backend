@@ -1892,42 +1892,63 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     }
 
 
-    var senddata = {};
-
 
     if ($state.params.id) {
         if ($state.params.type === "seller") {
-            senddata.sellerid = $state.params.id;
+            $scope.filter.sellerid = $state.params.id;
         } else if ($state.params.type === "buyer") {
-            senddata.buyerid = $state.params.id;
+            $scope.filter.buyerid = $state.params.id;
         }
-        senddata.status = "All"
-        senddata.createdAt = ""
 
-        if ($state.params.type === "coupon") {
-            senddata.code = $state.params.id;
-            NavigationService.getAllOrdersByCoupon(senddata, function (data) {
-                if (data.value == true) {
-                    $scope.allData = data.data.results;
-                    console.log("$scope.aaaaallData", $scope.allData);
-                } else {
-                    $scope.allData = [];
-                }
-            });
+
+
+        $scope.getOrders = function (fromDate, toDate, deliveryStatus) {
+            $scope.filter.status = "All"
+
+            if (fromDate) {
+                $scope.filter.fromDate = fromDate;
+            } else {
+                $scope.filter.fromDate = "";
+            }
+            if (toDate) {
+                $scope.filter.toDate = toDate;
+            } else {
+                $scope.filter.toDate = "";
+            }
+            if (deliveryStatus) {
+                $scope.filter.deliveryStatus = deliveryStatus;
+            } else {
+                $scope.filter.deliveryStatus = "All";
+            }
+            if ($state.params.type === "coupon") {
+                $scope.filter.code = $state.params.id;
+                NavigationService.getAllOrdersByCoupon($scope.filter, function (data) {
+                    if (data.value == true) {
+                        $scope.allData = data.data.results;
+                        $scope.totalItems = data.data.total;
+                        console.log("$scope.aaaaallData", $scope.allData);
+                    } else {
+                        $scope.allData = [];
+                    }
+                });
+            }
+            if ($state.params.type !== "coupon") {
+                NavigationService.getAllOrdersBySeller($scope.filter, function (data) {
+                    if (data.value == true) {
+                        $scope.selleris = true;
+                        $scope.allData = data.data.results;
+                        $scope.totalItems = data.data.total;
+                        console.log("$scope.aaaaallData", $scope.allData);
+                    } else {
+                        $scope.allData = [];
+                    }
+                });
+            }
         }
-        if ($state.params.type !== "coupon") {
-            NavigationService.getAllOrdersBySeller(senddata, function (data) {
-                if (data.value == true) {
-                    $scope.selleris = true;
-                    $scope.allData = data.data;
-                    console.log("$scope.aaaaallData", $scope.allData);
-                } else {
-                    $scope.allData = [];
-                }
-            });
-        }
+
+        $scope.getOrders();
+
     } else {
-
         $scope.getAllOrders();
     }
 

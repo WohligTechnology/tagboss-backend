@@ -20,6 +20,6 @@ templateservicemod.service('TemplateService', function() {
     return data;
   };
 
-  this.init();
+  // this.init();
 
 });
