@@ -1863,6 +1863,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
     $scope.filter.pagesize = 10;
 
     $scope.getAllOrders = function (fromDate, toDate, deliveryStatus) {
+        $scope.isOrder = true;
+        $scope.isCoupon = false;
+        $scope.isSeller = false;
         if (fromDate) {
             $scope.filter.fromDate = fromDate;
         } else {
@@ -1903,8 +1906,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
 
 
         $scope.getOrders = function (fromDate, toDate, deliveryStatus) {
-            $scope.filter.status = "All"
-
             if (fromDate) {
                 $scope.filter.fromDate = fromDate;
             } else {
@@ -1918,7 +1919,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             if (deliveryStatus) {
                 $scope.filter.deliveryStatus = deliveryStatus;
             } else {
-                $scope.filter.deliveryStatus = "All";
+                $scope.filter.deliveryStatus = "Pending";
             }
             if ($state.params.type === "coupon") {
                 $scope.filter.code = $state.params.id;
@@ -1933,10 +1934,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 });
             }
             if ($state.params.type !== "coupon") {
+                $scope.isOrder = false;
+                $scope.isCoupon = false;
+                $scope.isSeller = true;
                 NavigationService.getAllOrdersBySeller($scope.filter, function (data) {
                     if (data.value == true) {
                         $scope.selleris = true;
                         $scope.allData = data.data.results;
+                        // $scope.allData = data.data;
                         $scope.totalItems = data.data.total;
                         console.log("$scope.aaaaallData", $scope.allData);
                     } else {
