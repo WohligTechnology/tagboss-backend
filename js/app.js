@@ -27,8 +27,8 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
       templateUrl: "views/template.html",
       controller: 'forgotPasswordCtrl'
     })
-     .state('forgot-passworinspection', {
-      url: "/forgot-passworinspection/:email",
+     .state('forgot-passwordinspection', {
+      url: "/forgot-passwordinspection/:email",
       templateUrl: "views/template.html",
       controller: 'forgotPassworInspectiondCtrl'
     })

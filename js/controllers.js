@@ -111,7 +111,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             NavigationService.resetPasswordInspection(senddata, function (data) {
                 if (data.value == true) {
                     toastr.success("Password Changed Successfully!", "Information");
-                    $state.go("loginpage");
+                    $state.go("inspection-login");
                 }
             });
         }
