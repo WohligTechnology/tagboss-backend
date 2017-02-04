@@ -167,7 +167,7 @@
               </table>
             </div>
           </div>
-          <ul ng-if="totalItems>10 || allData.length>0" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getAllOrders()"></ul>
+          <ul ng-if="totalItems>10 || allData!=undefined" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getAllOrders()"></ul>
         </div>
       </div>
   </div>
@@ -348,7 +348,7 @@
               </table>
             </div>
           </div>
-          <ul ng-if="totalItems>10 || allData.length>0" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getOrders()"></ul>
+          <ul ng-if="totalItems>10 || allData!=undefined" uib-pagination total-items="totalItems" ng-model="filter.pagenumber" ng-change="getOrders()"></ul>
         </div>
       </div>
   </div>

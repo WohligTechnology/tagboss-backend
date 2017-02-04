@@ -642,6 +642,27 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+        getForgotPasswordEmailInspection: function (emailid, callback) {
+      var data = {
+        'forgotPasswordLink': emailid
+      };
+      return $http({
+        url: adminURL + "Inspection/emailVerification ",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
+
+    resetPasswordInspection: function (pdata, callback) {
+      var data = pdata;
+      return $http({
+        url: adminURL + "Inspection/resetPassword",
+        method: "POST",
+        data: data
+      }).success(callback);
+    },
+
 
 
     getOneBuyer: function (id, callback) {

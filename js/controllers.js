@@ -82,6 +82,41 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
         }
 
     })
+
+    .controller('forgotPassworInspectiondCtrl', function ($scope, TemplateService, $location, NavigationService, $timeout, $state, toastr) {
+        $scope.template = TemplateService.changecontent("forgot-passwordinspection");
+        $scope.menutitle = NavigationService.makeactive("Forgot Password Inspection");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        TemplateService.header = 'views/headeragency.html';
+        TemplateService.sidemenu = '';
+
+
+        $scope.getEmailId = function () {
+            console.log("$state.params.email", $location.absUrl());
+            NavigationService.getForgotPasswordEmailInspection($location.absUrl(), function (data) {
+                if (data.value == true) {
+                    $scope.email = data.data.email;
+                    console.log("email", $scope.email);
+                }
+            })
+        };
+
+        $scope.getEmailId();
+
+        $scope.resetPassword = function (formdata) {
+            var senddata = {};
+            senddata.email = $scope.email;
+            senddata.password = formdata;
+            NavigationService.resetPasswordInspection(senddata, function (data) {
+                if (data.value == true) {
+                    toastr.success("Password Changed Successfully!", "Information");
+                    $state.go("loginpage");
+                }
+            });
+        }
+
+    })
     .controller('DashboardCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("dashboard");
         $scope.menutitle = NavigationService.makeactive("Dashboard");
@@ -2664,13 +2699,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
             senddata.securityDepositAmount = sellerdata.securityDepositAmount;
             senddata.securityDepositComment = sellerdata.securityDepositComment;
             senddata.securityDepositTransactionId = sellerdata.securityDepositTransactionId;
-            if (_.isEmpty(senddata.securityDepositAmount) && _.isEmpty(senddata.securityDepositComment) && _.isEmpty(senddata.securityDepositTransactionId)) {
-                senddata.securityDepositStatus = false;
-            } else {
-                senddata.securityDepositStatus = true;
-            }
+           
             senddata.isAdminVerified = true;
             senddata.status = "verified";
+             if (senddata.securityDepositAmount==='' || senddata.securityDepositComment==='' || senddata.securityDepositTransactionId==='') {
+                senddata.securityDepositStatus = false;
+           
             if (senddata.cstTinNoVerified == false || senddata.vatTinNoVerified == false || senddata.panNoVerified == false || senddata.registrationNoVerified == false || senddata.cancelledChequeVerified == false) {
                 toastr.error("Please verify all Documents!", "Error");
             } else {
@@ -2680,6 +2714,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                         $state.go("request-sellers");
                     }
                 });
+            }
+             } else {
+                senddata.securityDepositStatus = true;
+                toastr.error("securityDepositAmount !", "Error");
             }
         }
 
@@ -3276,7 +3314,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'ui.select', 'toast
                 //     $state.go("dashboard");
                 // }
             } else {
-                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details" || $state.current.name == "forgot-password") {
+                if ($state.current.name == "view-products" || $state.current.name == "edit-agency-details" || $state.current.name == "forgot-password" || $state.current.name == "forgot-passwordinspection") {
 
                 } else {
                     $state.go("loginpage");
